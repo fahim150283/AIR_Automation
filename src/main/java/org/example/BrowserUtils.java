@@ -1,0 +1,78 @@
+package org.example;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+public class BrowserUtils {
+
+    public static WebDriver driver;
+
+    public static void setDriver() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+    }
+    public static void closedriver() throws InterruptedException {
+        Thread.sleep(0600);
+        driver.close();
+    }
+
+    public static void waitById(String id) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
+    }
+
+    public static void waitByxpath(String xpath) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+    }
+
+    public static void waitByCssSelector(String cssSelector) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(cssSelector)));
+    }
+
+    public static void clickbyxpath(String s) {
+        WebElement element = driver.findElement(By.xpath(s));
+        element.click();
+    }
+
+
+    public static void inputbyxpath(String xpath, String s) {
+        WebElement element = driver.findElement(By.xpath(xpath));
+        element.click();
+        element.sendKeys(s);
+    }
+
+    public static void clickbyId(String s) {
+        WebElement element = driver.findElement(By.id(s));
+        element.click();
+    }
+
+
+    public static void inputbyid(String id, String s) {
+        WebElement element = driver.findElement(By.id(id));
+        element.click();
+        element.sendKeys(s);
+    }
+
+
+    public static void clickbycssselector(String s) {
+        WebElement element = driver.findElement(By.cssSelector(s));
+        element.click();
+    }
+
+
+    public static void inputbycssselector(String cssSelector, String s) {
+        WebElement element = driver.findElement(By.cssSelector(cssSelector));
+        element.click();
+        element.sendKeys(s);
+    }
+}
