@@ -1,0 +1,6 @@
+org\example\StepDefinitions\PreInvoice.class
+org\example\Runner\ContactsTestRunner.class
+org\example\Runner\PreInvoiceTestRunner.class
+org\example\Runner\DashboardTestRunner.class
+org\example\StepDefinitions\Dashboard.class
+org\example\StepDefinitions\Contacts.class

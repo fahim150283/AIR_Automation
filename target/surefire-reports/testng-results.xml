@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="1" total="3" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="All Test Suite" duration-ms="22648" started-at="2023-08-08T13:48:39Z" finished-at="2023-08-08T13:49:02Z">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.ContactsTestRunner@13deb50e]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.DashboardTestRunner@239963d8]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.PreInvoiceTestRunner@f6c48ac]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group>
+    </groups>
+    <test name="G:/Abul Hossain Chowdhury/Projects/Cucumber_For_AIR" duration-ms="22648" started-at="2023-08-08T13:48:39Z" finished-at="2023-08-08T13:49:02Z">
+      <class name="org.example.Runner.DashboardTestRunner">
+        <test-method status="PASS" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:org.example.Runner.DashboardTestRunner@239963d8]" name="setUpClass" is-config="true" duration-ms="412" started-at="2023-08-08T13:48:39Z" finished-at="2023-08-08T13:48:40Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@407873d3]]>
+              </value>
+            </param>
+          </params>
+        </test-method>
+        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.DashboardTestRunner@239963d8]" name="runScenario" duration-ms="9330" started-at="2023-08-08T13:48:40Z" description="Runs Cucumber Scenarios" finished-at="2023-08-08T13:48:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Load dashboard for AIR"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Dashboard Test"]]>
+              </value>
+            </param>
+          </params>
+        </test-method>
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.example.Runner.DashboardTestRunner@239963d8]" name="tearDownClass" is-config="true" duration-ms="2398" started-at="2023-08-08T13:48:49Z" finished-at="2023-08-08T13:48:52Z">
+        </test-method>
+      </class>
+      <class name="org.example.Runner.ContactsTestRunner">
+        <test-method status="PASS" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:org.example.Runner.ContactsTestRunner@13deb50e]" name="setUpClass" is-config="true" duration-ms="9" started-at="2023-08-08T13:48:52Z" finished-at="2023-08-08T13:48:52Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@407873d3]]>
+              </value>
+            </param>
+          </params>
+        </test-method>
+        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.ContactsTestRunner@13deb50e]" name="runScenario" duration-ms="7440" started-at="2023-08-08T13:48:52Z" description="Runs Cucumber Scenarios" finished-at="2023-08-08T13:48:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Load Contacts for AIR"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Contacts Test"]]>
+              </value>
+            </param>
+          </params>
+        </test-method>
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.example.Runner.ContactsTestRunner@13deb50e]" name="tearDownClass" is-config="true" duration-ms="2192" started-at="2023-08-08T13:48:59Z" finished-at="2023-08-08T13:49:01Z">
+        </test-method>
+      </class>
+      <class name="org.example.Runner.PreInvoiceTestRunner">
+        <test-method status="PASS" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:org.example.Runner.PreInvoiceTestRunner@f6c48ac]" name="setUpClass" is-config="true" duration-ms="11" started-at="2023-08-08T13:49:01Z" finished-at="2023-08-08T13:49:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@407873d3]]>
+              </value>
+            </param>
+          </params>
+        </test-method>
+        <test-method status="FAIL" signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.PreInvoiceTestRunner@f6c48ac]" name="runScenario" duration-ms="17" started-at="2023-08-08T13:49:01Z" description="Runs Cucumber Scenarios" finished-at="2023-08-08T13:49:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Search a PreInvoice for AIR"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["PreInvoice Test"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="io.cucumber.testng.UndefinedStepException">
+            <message>
+              <![CDATA[The step 'Login to Search PreInvoice' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("Login to Search PreInvoice")
+public void login_to_search_pre_invoice() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("search for preInvoice")
+public void search_for_pre_invoice() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("description of a preinvoice")
+public void description_of_a_preinvoice() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("close PreInvoice for search")
+public void close_pre_invoice_for_search() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.cucumber.testng.UndefinedStepException: The step 'Login to Search PreInvoice' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("Login to Search PreInvoice")
+public void login_to_search_pre_invoice() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("search for preInvoice")
+public void search_for_pre_invoice() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("description of a preinvoice")
+public void description_of_a_preinvoice() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("close PreInvoice for search")
+public void close_pre_invoice_for_search() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+	at io.cucumber.core.runtime.TestCaseResultObserver.assertTestCasePassed(TestCaseResultObserver.java:69)
+	at io.cucumber.testng.TestCaseResultObserver.assertTestCasePassed(TestCaseResultObserver.java:23)
+	at io.cucumber.testng.TestNGCucumberRunner.lambda$runScenario$1(TestNGCucumberRunner.java:133)
+	at io.cucumber.core.runtime.CucumberExecutionContext.lambda$runTestCase$5(CucumberExecutionContext.java:130)
+	at io.cucumber.core.runtime.RethrowingThrowableCollector.executeAndThrow(RethrowingThrowableCollector.java:23)
+	at io.cucumber.core.runtime.CucumberExecutionContext.runTestCase(CucumberExecutionContext.java:130)
+	at io.cucumber.testng.TestNGCucumberRunner.runScenario(TestNGCucumberRunner.java:129)
+	at io.cucumber.testng.AbstractTestNGCucumberTests.runScenario(AbstractTestNGCucumberTests.java:35)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:691)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:883)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1208)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:758)
+	at org.testng.TestRunner.run(TestRunner.java:613)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:87)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1137)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1062)
+	at org.testng.TestNG.run(TestNG.java:974)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:284)
+	at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:75)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:119)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:428)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548)
+]]>
+            </full-stacktrace>
+          </exception>
+        </test-method>
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.example.Runner.PreInvoiceTestRunner@f6c48ac]" name="tearDownClass" is-config="true" duration-ms="828" started-at="2023-08-08T13:49:01Z" finished-at="2023-08-08T13:49:02Z">
+        </test-method>
+      </class>
+    </test>
+  </suite>
+</testng-results>

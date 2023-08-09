@@ -1,9 +1,7 @@
 package org.example;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,17 +9,21 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class BrowserUtils {
-
     public static WebDriver driver;
 
     public static void setDriver() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
     }
+
     public static void closedriver() throws InterruptedException {
-        Thread.sleep(0600);
-        driver.close();
+        Thread.sleep(2000);
+        driver.quit();
+    }
+
+    public static void cssSelectorPressEnter(String cssSelector){
+        WebElement element = driver.findElement(By.cssSelector(cssSelector));
+        element.sendKeys(Keys.ENTER);
     }
 
     public static void waitById(String id) {
@@ -76,3 +78,4 @@ public class BrowserUtils {
         element.sendKeys(s);
     }
 }
+
