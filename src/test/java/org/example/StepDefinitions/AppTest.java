@@ -1,16 +1,18 @@
 package org.example.StepDefinitions;
 
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.example.BrowserUtils;
-import org.example.page_objects;
 import org.openqa.selenium.WebDriver;
+
 import static org.example.page_objects.*;
 
 
-public class AppTest extends BrowserUtils{
+public class AppTest extends BrowserUtils {
     WebDriver driver;
     String id;
     String xpath;
@@ -22,6 +24,11 @@ public class AppTest extends BrowserUtils{
         setDriver();
     }
 
+    @After
+    public void terdown() throws InterruptedException {
+        closedriver();
+    }
+
 
     @Given("^Launch login Page$")
     public void launchloginPage() throws InterruptedException {
@@ -30,7 +37,7 @@ public class AppTest extends BrowserUtils{
     }
 
 
-    @Given("^User enters (.*) and (.*)$")
+    @When("^User enters (.*) and (.*)$")
     public void inputCredentials(String username, String password) {
         id = "username";
         waitById(id);
@@ -47,19 +54,23 @@ public class AppTest extends BrowserUtils{
         id = "submit";
         waitById(id);
         clickbyId(id);
+        url = "http://dbankdemo.com/bank";
+//        id = "left-panel";
+        waitById(id);
+        asserttrueorfalse(id);
     }
 
 
     @And("^quit$")
     public void close() throws InterruptedException {
-        closedriver();
+        System.out.println("eh?");
     }
 
 
     @Given("^launch google page$")
     public void GooglePage() throws InterruptedException {
-        url = "https://www.google.com";
+        url = "https://www.google.com/";
         navigatetourl(url);
-        closedriver();
+        //asserttrueorfalse("Goohgle");
     }
 }

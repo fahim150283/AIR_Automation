@@ -15,7 +15,7 @@ Feature: Login Test
     Examples:
       | username             | password |
       | kignufardi@gufum.com | @Test123 |
-      | kignufardi@gufum.com | @Test123 |
+      | kignufardi@gufum.com | Test123 |
 
 
   @regression @google
