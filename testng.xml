@@ -6,6 +6,7 @@
             <class name="org.example.Runner.DashboardTestRunner"></class>
             <class name="org.example.Runner.ContactsTestRunner"></class>
             <class name="org.example.Runner.PreInvoiceTestRunner"></class>
+            <class name="org.example.Runner.PreviousPendingDeliveryTestRunner"></class>
         </classes>
     </test>
 </suite>

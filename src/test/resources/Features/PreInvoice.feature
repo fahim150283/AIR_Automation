@@ -7,7 +7,7 @@ Feature: PreInvoice Test
     And description of a preinvoice
     Then close PreInvoice for search
 
-  Scenario: launch air
+  Scenario: Create a new preInvoice
     Given login for creating new preInvoice
     And create new preInvoice
     Then close the PreInvoice window

@@ -2,16 +2,19 @@ package org.example;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Page_Options extends BrowserUtils{
     public static String id;
-    public static LocalDate today = LocalDate.now();
-    public static LocalDate yesterday = LocalDate.now().minusDays(1);
-    public static LocalDate tomorrow = LocalDate.now().plusDays(1);
     public static String xpath;
     public static String cssSelector;
     public static String url;
@@ -28,12 +31,12 @@ public class Page_Options extends BrowserUtils{
     }
 
     public static String getToday(){
-        today = LocalDate.now();
-        yesterday = LocalDate.now().minusDays(1);
-        tomorrow = LocalDate.now().plusDays(1);
-        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("MM-dd-yyyy");
-        String formattedDate = today.format(formatter2);
-        return formattedDate;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        LocalDateTime now = LocalDateTime.now();
+
+        LocalDate today = LocalDate.now();
+        String todayDate = dtf.format(today);
+        return todayDate;
     }
 
     public static void clearById(String id){
@@ -48,4 +51,23 @@ public class Page_Options extends BrowserUtils{
         WebElement element = driver.findElement(By.cssSelector(cssSelector));
         element.clear();
     }
+
+    public static void pressEnterbyXpath(String s){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath((s))));
+        WebElement element = driver.findElement(By.xpath(s));
+        element.sendKeys(Keys.ENTER);
+    }
+
+    public static void pressDownbyXpath(String s){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(s)));
+        WebElement element = driver.findElement(By.xpath(s));
+        element.sendKeys(Keys.ARROW_DOWN);
+    }
+
+//    public static void selectByindex(String s, int i){
+//        Select stateDropdown = new Select(driver.findElement(By.id(s)));
+//        stateDropdown.selectByIndex(i); // Haryana
+//    }
 }
