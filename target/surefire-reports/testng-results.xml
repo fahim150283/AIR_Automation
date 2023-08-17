@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="4" passed="4">
+<testng-results skipped="0" failed="6" total="6" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="All Test Suite" duration-ms="49092" started-at="2023-08-14T16:11:25Z" finished-at="2023-08-14T16:12:14Z">
+  <suite name="All Test Suite" duration-ms="29581" started-at="2023-08-16T10:02:18Z" finished-at="2023-08-16T10:02:48Z">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.ContactsTestRunner@13deb50e]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.DashboardTestRunner@239963d8]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.PreInvoiceTestRunner@f6c48ac]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.ContactsTestRunner@68be2bc2]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.DashboardTestRunner@2a5ca609]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.PreInvoiceTestRunner@20e2cbe0]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.PreviousPendingDeliveryTestRunner@28feb3fa]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group>
     </groups>
-    <test name="G:/Abul Hossain Chowdhury/Projects/Cucumber_For_AIR" duration-ms="49092" started-at="2023-08-14T16:11:25Z" finished-at="2023-08-14T16:12:14Z">
+    <test name="G:/Abul Hossain Chowdhury/Projects/Cucumber_For_AIR" duration-ms="29581" started-at="2023-08-16T10:02:18Z" finished-at="2023-08-16T10:02:48Z">
       <class name="org.example.Runner.DashboardTestRunner">
-        <test-method status="PASS" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:org.example.Runner.DashboardTestRunner@239963d8]" name="setUpClass" is-config="true" duration-ms="410" started-at="2023-08-14T16:11:25Z" finished-at="2023-08-14T16:11:26Z">
+        <test-method status="PASS" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:org.example.Runner.DashboardTestRunner@2a5ca609]" name="setUpClass" is-config="true" duration-ms="410" started-at="2023-08-16T10:02:18Z" finished-at="2023-08-16T10:02:18Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@4976085]]>
+                <![CDATA[org.testng.TestRunner@7b4acdc2]]>
               </value>
             </param>
           </params>
         </test-method>
-        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.DashboardTestRunner@239963d8]" name="runScenario" duration-ms="8251" started-at="2023-08-14T16:11:26Z" description="Runs Cucumber Scenarios" finished-at="2023-08-14T16:11:34Z">
+        <test-method status="FAIL" signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.DashboardTestRunner@2a5ca609]" name="runScenario" duration-ms="3363" started-at="2023-08-16T10:02:18Z" description="Runs Cucumber Scenarios" finished-at="2023-08-16T10:02:22Z">
           <params>
             <param index="0">
               <value>
@@ -34,21 +35,30 @@
               </value>
             </param>
           </params>
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+	at org.example.Page_Options.navigatetourl(Page_Options.java:25)
+	at org.example.StepDefinitions.Dashboard.dashboard(Dashboard.java:14)
+	at ✽.login for accessing dashboard(file:///G:/Abul%20Hossain%20Chowdhury/Projects/Cucumber_For_AIR/src/test/resources/Features/Dashboard.feature:5)
+]]>
+            </full-stacktrace>
+          </exception>
         </test-method>
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.example.Runner.DashboardTestRunner@239963d8]" name="tearDownClass" is-config="true" duration-ms="2810" started-at="2023-08-14T16:11:34Z" finished-at="2023-08-14T16:11:37Z">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.example.Runner.DashboardTestRunner@2a5ca609]" name="tearDownClass" is-config="true" duration-ms="2977" started-at="2023-08-16T10:02:22Z" finished-at="2023-08-16T10:02:25Z">
         </test-method>
       </class>
       <class name="org.example.Runner.ContactsTestRunner">
-        <test-method status="PASS" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:org.example.Runner.ContactsTestRunner@13deb50e]" name="setUpClass" is-config="true" duration-ms="12" started-at="2023-08-14T16:11:37Z" finished-at="2023-08-14T16:11:37Z">
+        <test-method status="PASS" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:org.example.Runner.ContactsTestRunner@68be2bc2]" name="setUpClass" is-config="true" duration-ms="9" started-at="2023-08-16T10:02:25Z" finished-at="2023-08-16T10:02:25Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@4976085]]>
+                <![CDATA[org.testng.TestRunner@7b4acdc2]]>
               </value>
             </param>
           </params>
         </test-method>
-        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.ContactsTestRunner@13deb50e]" name="runScenario" duration-ms="7138" started-at="2023-08-14T16:11:37Z" description="Runs Cucumber Scenarios" finished-at="2023-08-14T16:11:44Z">
+        <test-method status="FAIL" signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.ContactsTestRunner@68be2bc2]" name="runScenario" duration-ms="2855" started-at="2023-08-16T10:02:25Z" description="Runs Cucumber Scenarios" finished-at="2023-08-16T10:02:28Z">
           <params>
             <param index="0">
               <value>
@@ -61,21 +71,30 @@
               </value>
             </param>
           </params>
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+	at org.example.Page_Options.navigatetourl(Page_Options.java:25)
+	at org.example.StepDefinitions.Contacts.contacts(Contacts.java:13)
+	at ✽.login for accessing Contacts(file:///G:/Abul%20Hossain%20Chowdhury/Projects/Cucumber_For_AIR/src/test/resources/Features/Contacts.feature:5)
+]]>
+            </full-stacktrace>
+          </exception>
         </test-method>
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.example.Runner.ContactsTestRunner@13deb50e]" name="tearDownClass" is-config="true" duration-ms="2712" started-at="2023-08-14T16:11:44Z" finished-at="2023-08-14T16:11:47Z">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.example.Runner.ContactsTestRunner@68be2bc2]" name="tearDownClass" is-config="true" duration-ms="961" started-at="2023-08-16T10:02:28Z" finished-at="2023-08-16T10:02:29Z">
         </test-method>
       </class>
       <class name="org.example.Runner.PreInvoiceTestRunner">
-        <test-method status="PASS" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:org.example.Runner.PreInvoiceTestRunner@f6c48ac]" name="setUpClass" is-config="true" duration-ms="14" started-at="2023-08-14T16:11:47Z" finished-at="2023-08-14T16:11:47Z">
+        <test-method status="PASS" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:org.example.Runner.PreInvoiceTestRunner@20e2cbe0]" name="setUpClass" is-config="true" duration-ms="11" started-at="2023-08-16T10:02:29Z" finished-at="2023-08-16T10:02:29Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@4976085]]>
+                <![CDATA[org.testng.TestRunner@7b4acdc2]]>
               </value>
             </param>
           </params>
         </test-method>
-        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.PreInvoiceTestRunner@f6c48ac]" name="runScenario" duration-ms="11797" started-at="2023-08-14T16:11:47Z" description="Runs Cucumber Scenarios" finished-at="2023-08-14T16:11:58Z">
+        <test-method status="FAIL" signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.PreInvoiceTestRunner@20e2cbe0]" name="runScenario" duration-ms="2857" started-at="2023-08-16T10:02:29Z" description="Runs Cucumber Scenarios" finished-at="2023-08-16T10:02:31Z">
           <params>
             <param index="0">
               <value>
@@ -88,8 +107,17 @@
               </value>
             </param>
           </params>
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+	at org.example.Page_Options.navigatetourl(Page_Options.java:25)
+	at org.example.StepDefinitions.PreInvoice.login_for_accessing_pre_invoice(PreInvoice.java:17)
+	at ✽.Login to Search PreInvoice(file:///G:/Abul%20Hossain%20Chowdhury/Projects/Cucumber_For_AIR/src/test/resources/Features/PreInvoice.feature:5)
+]]>
+            </full-stacktrace>
+          </exception>
         </test-method>
-        <test-method status="PASS" signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.PreInvoiceTestRunner@f6c48ac]" name="runScenario" duration-ms="12861" started-at="2023-08-14T16:11:58Z" description="Runs Cucumber Scenarios" finished-at="2023-08-14T16:12:11Z">
+        <test-method status="FAIL" signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.PreInvoiceTestRunner@20e2cbe0]" name="runScenario" duration-ms="2853" started-at="2023-08-16T10:02:31Z" description="Runs Cucumber Scenarios" finished-at="2023-08-16T10:02:34Z">
           <params>
             <param index="0">
               <value>
@@ -102,8 +130,76 @@
               </value>
             </param>
           </params>
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+	at org.example.Page_Options.navigatetourl(Page_Options.java:25)
+	at org.example.StepDefinitions.PreInvoice.login_for_creating_new_pre_invoice(PreInvoice.java:54)
+	at ✽.login for creating new preInvoice(file:///G:/Abul%20Hossain%20Chowdhury/Projects/Cucumber_For_AIR/src/test/resources/Features/PreInvoice.feature:11)
+]]>
+            </full-stacktrace>
+          </exception>
         </test-method>
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.example.Runner.PreInvoiceTestRunner@f6c48ac]" name="tearDownClass" is-config="true" duration-ms="3073" started-at="2023-08-14T16:12:11Z" finished-at="2023-08-14T16:12:14Z">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.example.Runner.PreInvoiceTestRunner@20e2cbe0]" name="tearDownClass" is-config="true" duration-ms="3024" started-at="2023-08-16T10:02:34Z" finished-at="2023-08-16T10:02:37Z">
+        </test-method>
+      </class>
+      <class name="org.example.Runner.PreviousPendingDeliveryTestRunner">
+        <test-method status="PASS" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:org.example.Runner.PreviousPendingDeliveryTestRunner@28feb3fa]" name="setUpClass" is-config="true" duration-ms="376" started-at="2023-08-16T10:02:37Z" finished-at="2023-08-16T10:02:38Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@7b4acdc2]]>
+              </value>
+            </param>
+          </params>
+        </test-method>
+        <test-method status="FAIL" signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.PreviousPendingDeliveryTestRunner@28feb3fa]" name="runScenario" duration-ms="2825" started-at="2023-08-16T10:02:38Z" description="Runs Cucumber Scenarios" finished-at="2023-08-16T10:02:40Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Search a Previous Pending Delivery for AIR"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Previous Pending Delivery Test"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+	at org.example.Page_Options.navigatetourl(Page_Options.java:25)
+	at org.example.StepDefinitions.PreviousPendingDelivery.login_to_search_previous_pending_delivery(PreviousPendingDelivery.java:13)
+	at ✽.Login to Search Previous Pending Delivery(file:///G:/Abul%20Hossain%20Chowdhury/Projects/Cucumber_For_AIR/src/test/resources/Features/PreviousPendingDelivery.feature:5)
+]]>
+            </full-stacktrace>
+          </exception>
+        </test-method>
+        <test-method status="FAIL" signature="runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:org.example.Runner.PreviousPendingDeliveryTestRunner@28feb3fa]" name="runScenario" duration-ms="4022" started-at="2023-08-16T10:02:40Z" description="Runs Cucumber Scenarios" finished-at="2023-08-16T10:02:45Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Create a new Previous Pending Delivery"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Previous Pending Delivery Test"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+	at org.example.BrowserUtils.closedriver(BrowserUtils.java:28)
+	at org.example.StepDefinitions.PreviousPendingDelivery.close_the_previous_pending_delivery_window(PreviousPendingDelivery.java:57)
+	at ✽.close the Previous Pending Delivery window(file:///G:/Abul%20Hossain%20Chowdhury/Projects/Cucumber_For_AIR/src/test/resources/Features/PreviousPendingDelivery.feature:13)
+]]>
+            </full-stacktrace>
+          </exception>
+        </test-method>
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:org.example.Runner.PreviousPendingDeliveryTestRunner@28feb3fa]" name="tearDownClass" is-config="true" duration-ms="3022" started-at="2023-08-16T10:02:45Z" finished-at="2023-08-16T10:02:48Z">
         </test-method>
       </class>
     </test>

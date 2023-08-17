@@ -3,6 +3,9 @@ package org.example;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -13,9 +16,10 @@ public class BrowserUtils {
     public static WebDriver driver;
 
     public static void setDriver() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        System.setProperty("webdriver.chrome.driver","C:/BrowserDriver/chromedriver.exe");
+        ChromeOptions co = new ChromeOptions();
+        co.setBinary("C:/BrowserDriver/chrome-win64/chrome-win64/chrome.exe");
+        driver = new ChromeDriver(co);
     }
 
     public static void closedriver() throws InterruptedException {
@@ -29,7 +33,7 @@ public class BrowserUtils {
     }
 
     public static void waitById(String id) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
     }
 

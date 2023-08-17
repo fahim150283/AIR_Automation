@@ -78,8 +78,6 @@ public class PreInvoice extends Page_Options {
         id = "select2-distributor_list-container";
         waitById(id);
         clickbyId(id);
-//        pressDownbyXpath(xpath);
-//        pressEnterbyXpath(xpath);
 
         //search for bhai bhai and hit enter
         cssSelector = ".select2-search--dropdown > .select2-search__field";
@@ -131,7 +129,7 @@ public class PreInvoice extends Page_Options {
         clickbyId(id);
 
         //Click ok button in the alert
-        driver.switchTo().alert().accept();
+        AlertAccept();
     }
 
     @Then("close the PreInvoice window")

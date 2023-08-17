@@ -1,4 +1,22 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 49.37 s - in TestSuite
+Tests run: 6, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 29.848 s <<< FAILURE! - in TestSuite
+org.example.Runner.DashboardTestRunner.runScenario["Load dashboard for AIR", "Dashboard Test"](1)  Time elapsed: 3.388 s  <<< FAILURE!
+java.lang.NullPointerException
+
+org.example.Runner.ContactsTestRunner.runScenario["Load Contacts for AIR", "Contacts Test"](1)  Time elapsed: 2.878 s  <<< FAILURE!
+java.lang.NullPointerException
+
+org.example.Runner.PreInvoiceTestRunner.runScenario["Search a PreInvoice for AIR", "PreInvoice Test"](1)  Time elapsed: 2.881 s  <<< FAILURE!
+java.lang.NullPointerException
+
+org.example.Runner.PreInvoiceTestRunner.runScenario["Create a new preInvoice", "PreInvoice Test"](2)  Time elapsed: 2.859 s  <<< FAILURE!
+java.lang.NullPointerException
+
+org.example.Runner.PreviousPendingDeliveryTestRunner.runScenario["Search a Previous Pending Delivery for AIR", "Previous Pending Delivery Test"](1)  Time elapsed: 2.837 s  <<< FAILURE!
+java.lang.NullPointerException
+
+org.example.Runner.PreviousPendingDeliveryTestRunner.runScenario["Create a new Previous Pending Delivery", "Previous Pending Delivery Test"](2)  Time elapsed: 4.005 s  <<< FAILURE!
+java.lang.NullPointerException
+
