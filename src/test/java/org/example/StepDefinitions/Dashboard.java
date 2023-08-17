@@ -25,10 +25,13 @@ public class Dashboard extends Page_Options {
         cssSelector = ".active:nth-child(2) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
+        switchTab();
+        scrollToTheBottom();
     }
 
     @Then("^Close Driver for dashboard$")
     public void closeDriver() throws InterruptedException {
+        Thread.sleep(2000);
         closedriver();
     }
 }

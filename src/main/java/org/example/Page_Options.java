@@ -88,4 +88,14 @@ public class Page_Options extends BrowserUtils {
 //        WebElement modalFrame = driver.findElement(By.tagName(s));
 //        driver.switchTo().frame(modalFrame);
 //    }
+
+    public static void switchTab(){
+        String mainWindowHandle = driver.getWindowHandle();
+        for (String handle : driver.getWindowHandles()) {
+            if (!handle.equals(mainWindowHandle)) {
+                driver.switchTo().window(handle);
+                break; // Switch to the first non-main window (new tab)
+            }
+        }
+    }
 }
