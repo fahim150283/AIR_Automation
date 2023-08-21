@@ -7,8 +7,8 @@ import io.cucumber.testng.CucumberOptions;
 import org.example.Page_Options;
 
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-reports-html/cucumber.html",
-                "json:target/cucumber-reports/cucumber.json"},
+        plugin = {"pretty", "html:target/cucumber-reports-html/CancelInvoice.html",
+                "json:target/cucumber-reports/CancelInvoice.json"},
         features = {"G:/Abul Hossain Chowdhury/Projects/Cucumber_For_AIR/src/test/resources/Features/CancelInvoice.feature"},
         glue = {"org.example.StepDefinitions"}
 //        ,tags = "@regression" //it runs all the scenarios of the feature file that contains @regression

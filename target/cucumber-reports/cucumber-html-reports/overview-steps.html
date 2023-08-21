@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.tablesorter.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="css/cucumber.css" type="text/css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<link rel="shortcut icon" href="images/favicon.png"/>
+
+<script>
+$(document).ready(function() {
+    // this will tell tablesorter to try looking for the data-value attribute
+    // if present, it'll sort by that instead
+    // otherwise, it'll sort by the text content of the table cell
+    $("#tablesorter").tablesorter({
+        textAttribute: 'data-value',
+        // ignores the first row of the header, the 'scenario', 'steps', since
+        // sorting those doesn't make sense
+        selectorHeaders: '> thead tr:not(.dont-sort) th',
+        // use a stable sort
+        sortStable: true
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<title>Cucumber Reports (no 1) - Steps Overview</title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navigation">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <p class="navbar-text navbar-left">Cucumber Report</p>
+      <ul class="nav navbar-nav navbar-right">
+        <li role="presentation" ><a href="overview-features.html">Features</a></li>
+        <li role="presentation" ><a href="overview-tags.html">Tags</a></li>
+        <li role="presentation"     class="active" ><a href="overview-steps.html">Steps</a></li>
+        <li role="presentation" ><a href="overview-failures.html">Failures</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="col-md-5 col-md-offset-1">
+
+<table class="table table-bordered" id="build-info">
+  <thead>
+    <tr>
+      <th>Project</th>
+        <th>Number</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info">
+      <td>Cucumber Reporting</td>
+        <td>1</td>
+      <td>21 Aug 2023, 16:08</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+  <div class="col-md-3 col-md-offset-2">
+  </div>
+</div>
+
+
+<div id="report-lead" class="container-fluid">
+  <div class="col-md-10 col-md-offset-1">
+    <h2>Steps Statistics</h2>
+      <p>The following graph shows step statistics for this build. Below list is based on results.
+ step does not provide information about result then is not listed below.
+ Additionally @Before and @After are not counted because they are part of the scenarios, not steps.</p>
+  </div>
+</div>
+
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <table id="tablesorter" class="stats-table table-hover">
+
+        <thead>
+          <tr class="header">
+            <th>Implementation</th>
+            <th>Occurrences</th>
+            <th>Average duration</th>
+            <th>Max duration</th>
+            <th>Total durations</th>
+            <th>Ratio</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+              <td class="location">org.example.StepDefinitions.CancelInvoice.close_cancelled_invoice_for_search()</td>
+              <td>1</td>
+              <td class="duration" data-value="4632000000">4.632</td>
+              <td class="duration" data-value="4632000000">4.632</td>
+              <td class="duration" data-value="4632000000">4.632</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.CancelInvoice.close_the_cancel_invoice_window()</td>
+              <td>1</td>
+              <td class="duration" data-value="4135000000">4.135</td>
+              <td class="duration" data-value="4135000000">4.135</td>
+              <td class="duration" data-value="4135000000">4.135</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.CancelInvoice.create_new_cancel_invoice()</td>
+              <td>1</td>
+              <td class="duration" data-value="2811000000">2.811</td>
+              <td class="duration" data-value="2811000000">2.811</td>
+              <td class="duration" data-value="2811000000">2.811</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.CancelInvoice.description_of_a_cancelled_invoice()</td>
+              <td>1</td>
+              <td class="duration" data-value="102000000">0.102</td>
+              <td class="duration" data-value="102000000">0.102</td>
+              <td class="duration" data-value="102000000">0.102</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.CancelInvoice.login_for_cancellation_of_an_invoice()</td>
+              <td>1</td>
+              <td class="duration" data-value="4871000000">4.871</td>
+              <td class="duration" data-value="4871000000">4.871</td>
+              <td class="duration" data-value="4871000000">4.871</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.CancelInvoice.login_to_search_cancelled_invoice()</td>
+              <td>1</td>
+              <td class="duration" data-value="5434000000">5.434</td>
+              <td class="duration" data-value="5434000000">5.434</td>
+              <td class="duration" data-value="5434000000">5.434</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.CancelInvoice.search_for_cancelled_invoice()</td>
+              <td>1</td>
+              <td class="duration" data-value="132000000">0.132</td>
+              <td class="duration" data-value="132000000">0.132</td>
+              <td class="duration" data-value="132000000">0.132</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.CancelOrder.close_cancel_order_for_search()</td>
+              <td>1</td>
+              <td class="duration" data-value="4138000000">4.138</td>
+              <td class="duration" data-value="4138000000">4.138</td>
+              <td class="duration" data-value="4138000000">4.138</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.CancelOrder.close_the_cancel_order_window()</td>
+              <td>1</td>
+              <td class="duration" data-value="4633000000">4.633</td>
+              <td class="duration" data-value="4633000000">4.633</td>
+              <td class="duration" data-value="4633000000">4.633</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.CancelOrder.create_new_order_to_cancel()</td>
+              <td>1</td>
+              <td class="duration" data-value="2700000000">2.700</td>
+              <td class="duration" data-value="2700000000">2.700</td>
+              <td class="duration" data-value="2700000000">2.700</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.CancelOrder.description_of_a_order_to_cancel()</td>
+              <td>1</td>
+              <td class="duration" data-value="130000000">0.130</td>
+              <td class="duration" data-value="130000000">0.130</td>
+              <td class="duration" data-value="130000000">0.130</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.CancelOrder.login_for_creating_new_order_to_cancel()</td>
+              <td>1</td>
+              <td class="duration" data-value="5811000000">5.811</td>
+              <td class="duration" data-value="5811000000">5.811</td>
+              <td class="duration" data-value="5811000000">5.811</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.CancelOrder.login_to_search_cancel_order()</td>
+              <td>1</td>
+              <td class="duration" data-value="6516000000">6.516</td>
+              <td class="duration" data-value="6516000000">6.516</td>
+              <td class="duration" data-value="6516000000">6.516</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.CancelOrder.search_for_cancel_order()</td>
+              <td>1</td>
+              <td class="duration" data-value="107000000">0.107</td>
+              <td class="duration" data-value="107000000">0.107</td>
+              <td class="duration" data-value="107000000">0.107</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Collections.close_collection()</td>
+              <td>1</td>
+              <td class="duration" data-value="2638000000">2.638</td>
+              <td class="duration" data-value="2638000000">2.638</td>
+              <td class="duration" data-value="2638000000">2.638</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Collections.close_the_collection_window()</td>
+              <td>1</td>
+              <td class="duration" data-value="4633000000">4.633</td>
+              <td class="duration" data-value="4633000000">4.633</td>
+              <td class="duration" data-value="4633000000">4.633</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Collections.create_new_collection()</td>
+              <td>1</td>
+              <td class="duration" data-value="3437000000">3.437</td>
+              <td class="duration" data-value="3437000000">3.437</td>
+              <td class="duration" data-value="3437000000">3.437</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Collections.description_of_a_collection()</td>
+              <td>1</td>
+              <td class="duration" data-value="11000000">0.011</td>
+              <td class="duration" data-value="11000000">0.011</td>
+              <td class="duration" data-value="11000000">0.011</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Collections.login_for_creating_collection()</td>
+              <td>1</td>
+              <td class="duration" data-value="5826000000">5.826</td>
+              <td class="duration" data-value="5826000000">5.826</td>
+              <td class="duration" data-value="5826000000">5.826</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Collections.login_to_search_collection()</td>
+              <td>1</td>
+              <td class="duration" data-value="6442000000">6.442</td>
+              <td class="duration" data-value="6442000000">6.442</td>
+              <td class="duration" data-value="6442000000">6.442</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Collections.search_for_collection()</td>
+              <td>1</td>
+              <td class="duration" data-value="4732000000">4.732</td>
+              <td class="duration" data-value="4732000000">4.732</td>
+              <td class="duration" data-value="4732000000">4.732</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Contacts.close()</td>
+              <td>1</td>
+              <td class="duration" data-value="2639000000">2.639</td>
+              <td class="duration" data-value="2639000000">2.639</td>
+              <td class="duration" data-value="2639000000">2.639</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Contacts.contacts()</td>
+              <td>1</td>
+              <td class="duration" data-value="3537000000">3.537</td>
+              <td class="duration" data-value="3537000000">3.537</td>
+              <td class="duration" data-value="3537000000">3.537</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Contacts.search_for_employee()</td>
+              <td>1</td>
+              <td class="duration" data-value="1228000000">1.228</td>
+              <td class="duration" data-value="1228000000">1.228</td>
+              <td class="duration" data-value="1228000000">1.228</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Dashboard.clickDashboard()</td>
+              <td>1</td>
+              <td class="duration" data-value="4357000000">4.357</td>
+              <td class="duration" data-value="4357000000">4.357</td>
+              <td class="duration" data-value="4357000000">4.357</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Dashboard.closeDriver()</td>
+              <td>1</td>
+              <td class="duration" data-value="4650000000">4.650</td>
+              <td class="duration" data-value="4650000000">4.650</td>
+              <td class="duration" data-value="4650000000">4.650</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Dashboard.dashboard()</td>
+              <td>1</td>
+              <td class="duration" data-value="3971000000">3.971</td>
+              <td class="duration" data-value="3971000000">3.971</td>
+              <td class="duration" data-value="3971000000">3.971</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.DistributorInvoices.close_invoice_for_search()</td>
+              <td>1</td>
+              <td class="duration" data-value="4146000000">4.146</td>
+              <td class="duration" data-value="4146000000">4.146</td>
+              <td class="duration" data-value="4146000000">4.146</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.DistributorInvoices.close_the_invoice_window()</td>
+              <td>1</td>
+              <td class="duration" data-value="4628000000">4.628</td>
+              <td class="duration" data-value="4628000000">4.628</td>
+              <td class="duration" data-value="4628000000">4.628</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.DistributorInvoices.create_new_invoice()</td>
+              <td>1</td>
+              <td class="duration" data-value="2985000000">2.985</td>
+              <td class="duration" data-value="2985000000">2.985</td>
+              <td class="duration" data-value="2985000000">2.985</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.DistributorInvoices.description_of_an_invoice()</td>
+              <td>1</td>
+              <td class="duration" data-value="248000000">0.248</td>
+              <td class="duration" data-value="248000000">0.248</td>
+              <td class="duration" data-value="248000000">0.248</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.DistributorInvoices.login_for_invoice()</td>
+              <td>1</td>
+              <td class="duration" data-value="5180000000">5.180</td>
+              <td class="duration" data-value="5180000000">5.180</td>
+              <td class="duration" data-value="5180000000">5.180</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.DistributorInvoices.login_to_search_invoice()</td>
+              <td>1</td>
+              <td class="duration" data-value="6506000000">6.506</td>
+              <td class="duration" data-value="6506000000">6.506</td>
+              <td class="duration" data-value="6506000000">6.506</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.DistributorInvoices.search_for_invoice()</td>
+              <td>1</td>
+              <td class="duration" data-value="189000000">0.189</td>
+              <td class="duration" data-value="189000000">0.189</td>
+              <td class="duration" data-value="189000000">0.189</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Order.close_order_for_search()</td>
+              <td>1</td>
+              <td class="duration" data-value="4640000000">4.640</td>
+              <td class="duration" data-value="4640000000">4.640</td>
+              <td class="duration" data-value="4640000000">4.640</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Order.close_the_order_window()</td>
+              <td>1</td>
+              <td class="duration" data-value="2638000000">2.638</td>
+              <td class="duration" data-value="2638000000">2.638</td>
+              <td class="duration" data-value="2638000000">2.638</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Order.create_new_order()</td>
+              <td>1</td>
+              <td class="duration" data-value="3949000000">3.949</td>
+              <td class="duration" data-value="3949000000">3.949</td>
+              <td class="duration" data-value="3949000000">3.949</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Order.description_of_a_order()</td>
+              <td>1</td>
+              <td class="duration" data-value="107000000">0.107</td>
+              <td class="duration" data-value="107000000">0.107</td>
+              <td class="duration" data-value="107000000">0.107</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Order.login_for_creating_new_order()</td>
+              <td>1</td>
+              <td class="duration" data-value="5310000000">5.310</td>
+              <td class="duration" data-value="5310000000">5.310</td>
+              <td class="duration" data-value="5310000000">5.310</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Order.login_to_search_order()</td>
+              <td>1</td>
+              <td class="duration" data-value="5394000000">5.394</td>
+              <td class="duration" data-value="5394000000">5.394</td>
+              <td class="duration" data-value="5394000000">5.394</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.Order.search_for_order()</td>
+              <td>1</td>
+              <td class="duration" data-value="2110000000">2.110</td>
+              <td class="duration" data-value="2110000000">2.110</td>
+              <td class="duration" data-value="2110000000">2.110</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.PreInvoice.closePreInvoice()</td>
+              <td>1</td>
+              <td class="duration" data-value="4660000000">4.660</td>
+              <td class="duration" data-value="4660000000">4.660</td>
+              <td class="duration" data-value="4660000000">4.660</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.PreInvoice.close_the_pre_invoice_window()</td>
+              <td>1</td>
+              <td class="duration" data-value="4622000000">4.622</td>
+              <td class="duration" data-value="4622000000">4.622</td>
+              <td class="duration" data-value="4622000000">4.622</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.PreInvoice.create_new_pre_invoice()</td>
+              <td>1</td>
+              <td class="duration" data-value="3521000000">3.521</td>
+              <td class="duration" data-value="3521000000">3.521</td>
+              <td class="duration" data-value="3521000000">3.521</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.PreInvoice.description_of_a_preinvoice()</td>
+              <td>1</td>
+              <td class="duration" data-value="1911000000">1.911</td>
+              <td class="duration" data-value="1911000000">1.911</td>
+              <td class="duration" data-value="1911000000">1.911</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.PreInvoice.login_for_accessing_pre_invoice()</td>
+              <td>1</td>
+              <td class="duration" data-value="5284000000">5.284</td>
+              <td class="duration" data-value="5284000000">5.284</td>
+              <td class="duration" data-value="5284000000">5.284</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.PreInvoice.login_for_creating_new_pre_invoice()</td>
+              <td>1</td>
+              <td class="duration" data-value="5758000000">5.758</td>
+              <td class="duration" data-value="5758000000">5.758</td>
+              <td class="duration" data-value="5758000000">5.758</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.PreInvoice.search_for_pre_invoice()</td>
+              <td>1</td>
+              <td class="duration" data-value="89000000">0.089</td>
+              <td class="duration" data-value="89000000">0.089</td>
+              <td class="duration" data-value="89000000">0.089</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.PreviousPendingDelivery.close_previous_pending_delivery_for_search()</td>
+              <td>1</td>
+              <td class="duration" data-value="6667000000">6.667</td>
+              <td class="duration" data-value="6667000000">6.667</td>
+              <td class="duration" data-value="6667000000">6.667</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.PreviousPendingDelivery.close_the_previous_pending_delivery_window()</td>
+              <td>1</td>
+              <td class="duration" data-value="6642000000">6.642</td>
+              <td class="duration" data-value="6642000000">6.642</td>
+              <td class="duration" data-value="6642000000">6.642</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.PreviousPendingDelivery.create_new_previous_pending_delivery()</td>
+              <td>1</td>
+              <td class="duration" data-value="7909000000">7.909</td>
+              <td class="duration" data-value="7909000000">7.909</td>
+              <td class="duration" data-value="7909000000">7.909</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.PreviousPendingDelivery.description_of_a_previous_pending_delivery()</td>
+              <td>1</td>
+              <td class="duration" data-value="3206000000">3.206</td>
+              <td class="duration" data-value="3206000000">3.206</td>
+              <td class="duration" data-value="3206000000">3.206</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.PreviousPendingDelivery.login_for_creating_new_previous_pending_delivery()</td>
+              <td>1</td>
+              <td class="duration" data-value="5704000000">5.704</td>
+              <td class="duration" data-value="5704000000">5.704</td>
+              <td class="duration" data-value="5704000000">5.704</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.PreviousPendingDelivery.login_to_search_previous_pending_delivery()</td>
+              <td>1</td>
+              <td class="duration" data-value="6864000000">6.864</td>
+              <td class="duration" data-value="6864000000">6.864</td>
+              <td class="duration" data-value="6864000000">6.864</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">org.example.StepDefinitions.PreviousPendingDelivery.search_for_previous_pending_delivery()</td>
+              <td>1</td>
+              <td class="duration" data-value="73000000">0.073</td>
+              <td class="duration" data-value="73000000">0.073</td>
+              <td class="duration" data-value="73000000">0.073</td>
+              <td class="passed">100.00%</td>
+            </tr>
+        </tbody>
+
+        <tfoot class="total">
+          <tr>
+            <td>55</td>
+            <td>55</td>
+            <td class="duration">3.730</td>
+            <td class="duration">7.909</td>
+            <td class="duration">3:25.193</td>
+            <td>Totals</td>
+          </tr>
+        </tfoot>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<nav class="navbar navbar-default" id="footer">
+  <div class="container-fluid">
+    <p class="navbar-text navbar-right">
+        <small>generate Cucumber HTML reports via:&nbsp;</small>
+        <a class="navbar-link" href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-reporting">Standalone</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-sandwich">Sandwich</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/maven-cucumber-reporting">Maven</a>
+        &nbsp;&nbsp;
+    </p>
+  </div>
+</nav>
+
+</body>
+</html>

@@ -9,6 +9,9 @@
             <class name="org.example.Runner.PreviousPendingDeliveryTestRunner"></class>
             <class name="org.example.Runner.OrderTestRunner"></class>
             <class name="org.example.Runner.CancelOrderTestRunner"></class>
+            <class name="org.example.Runner.DistributorInvoicesTestRunner"></class>
+            <class name="org.example.Runner.CancelInvoiceTestRunner"></class>
+            <class name="org.example.Runner.CollectionsTestRunner"></class>
         </classes>
     </test>
 </suite>

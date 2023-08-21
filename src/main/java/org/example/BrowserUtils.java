@@ -100,5 +100,10 @@ public class BrowserUtils {
         // element.click();
         element.sendKeys(s);
     }
+
+    public static void clickByName(String name) {
+        WebElement element = driver.findElement(By.name(name));
+         element.click();
+    }
 }
 

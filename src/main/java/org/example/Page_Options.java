@@ -104,21 +104,21 @@ public class Page_Options extends BrowserUtils {
         }
     }
 
-    public static int getValuebyName(String s){
+    public static double getValuebyName(String s){
         WebElement inputElement = driver.findElement(By.name(s));
 
         // Check if the input has a value
         String value = inputElement.getAttribute("value");
-        int intValue = Integer.parseInt(value);
-        return intValue;
+        double Value = Double.parseDouble(value);
+        return Value;
     }
 
-    public static int getValuebyXpath(String s){
+    public static double getValuebyXpath(String s){
         WebElement inputElement = driver.findElement(By.xpath(s));
 
         // Check if the input has a value
         String value = inputElement.getAttribute("value");
-        int intValue = Integer.parseInt(value);
-        return intValue;
+        double Value = Double.parseDouble(value);
+        return Value;
     }
 }
