@@ -33,22 +33,27 @@ public class BrowserUtils {
     }
 
     public static void waitById(String id) {
-        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver,5);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
+    }
+
+    public static void waitByName(String id) {
+        WebDriverWait wait = new WebDriverWait(driver,5);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
     }
 
     public static void waitByxpath(String xpath) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
     }
 
     public static void waitByCssSelector(String cssSelector) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(cssSelector)));
     }
 
     public static void clickbyxpath(String s) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(s)));
         WebElement element = driver.findElement(By.xpath(s));
         element.click();
@@ -62,7 +67,7 @@ public class BrowserUtils {
     }
 
     public static void clickbyId(String s) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.elementToBeClickable(By.id(s)));
         WebElement element = driver.findElement(By.id(s));
         element.click();
@@ -77,7 +82,7 @@ public class BrowserUtils {
 
 
     public static void clickbycssselector(String s) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(s)));
         WebElement element = driver.findElement(By.cssSelector(s));
         element.click();
@@ -87,6 +92,12 @@ public class BrowserUtils {
     public static void inputbycssselector(String cssSelector, String s) {
         WebElement element = driver.findElement(By.cssSelector(cssSelector));
        // element.click();
+        element.sendKeys(s);
+    }
+
+    public static void inputbyName(String name, String s) {
+        WebElement element = driver.findElement(By.name(name));
+        // element.click();
         element.sendKeys(s);
     }
 }

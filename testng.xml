@@ -8,6 +8,7 @@
             <class name="org.example.Runner.PreInvoiceTestRunner"></class>
             <class name="org.example.Runner.PreviousPendingDeliveryTestRunner"></class>
             <class name="org.example.Runner.OrderTestRunner"></class>
+            <class name="org.example.Runner.CancelOrderTestRunner"></class>
         </classes>
     </test>
 </suite>

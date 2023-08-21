@@ -9,7 +9,7 @@ import org.example.Page_Options;
 public class PreviousPendingDelivery extends Page_Options {
     @Given("Login to Search Previous Pending Delivery")
     public void login_to_search_previous_pending_delivery() {
-        url = "http://192.168.11.182/air";
+        url = "http://192.168.11.182/air_2/air";
         navigatetourl(url);
         id = "username";
         inputbyid(id, "h.abul");
@@ -46,7 +46,7 @@ public class PreviousPendingDelivery extends Page_Options {
 
     @Given("login for creating new Previous Pending Delivery")
     public void login_for_creating_new_previous_pending_delivery() {
-        url = "http://192.168.11.182/air";
+        url = "http://192.168.11.182/air_2/air";
         navigatetourl(url);
         id = "username";
         inputbyid(id, "h.abul");

@@ -10,7 +10,7 @@ public class Order extends Page_Options {
 
     @Given("Login to Search Order")
     public void login_to_search_order() {
-        url = "http://192.168.11.182/air";
+        url = "http://192.168.11.182/air_2/air";
         navigatetourl(url);
         id = "username";
         inputbyid(id, "h.abul");
@@ -46,7 +46,7 @@ public class Order extends Page_Options {
 
     @Given("login for creating new Order")
     public void login_for_creating_new_order() throws InterruptedException {
-        url = "http://192.168.11.182/air";
+        url = "http://192.168.11.182/air_2/air";
         navigatetourl(url);
         id = "username";
         inputbyid(id, "h.abul");
@@ -132,7 +132,6 @@ public class Order extends Page_Options {
         //save
         xpath = "//*[@id=\"add_region\"]";
         clickbyxpath(xpath);
-
         AlertAccept();
     }
 

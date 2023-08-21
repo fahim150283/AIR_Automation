@@ -13,7 +13,7 @@ public class PreInvoice extends Page_Options {
 
     @Given("^Login to Search PreInvoice$")
     public void login_for_accessing_pre_invoice() {
-        url = "http://192.168.11.182/air";
+        url = "http://192.168.11.182/air_2/air";
         navigatetourl(url);
         id = "username";
         inputbyid(id, "h.abul");
@@ -50,7 +50,7 @@ public class PreInvoice extends Page_Options {
     @Given("login for creating new preInvoice")
 //    @Test
     public void login_for_creating_new_pre_invoice() {
-        url = "http://192.168.11.182/air";
+        url = "http://192.168.11.182/air_2/air";
         navigatetourl(url);
         id = "username";
         inputbyid(id, "h.abul");
