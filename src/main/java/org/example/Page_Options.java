@@ -7,13 +7,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Page_Options extends BrowserUtils {
     public static String id;
+    public static String classname;
     public static String name;
     public static String xpath;
     public static String cssSelector;
@@ -37,6 +37,16 @@ public class Page_Options extends BrowserUtils {
         LocalDate today = LocalDate.now();
         String todayDate = dtf.format(today);
         return todayDate;
+    }
+
+    public static String getLastMonth() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        LocalDateTime now = LocalDateTime.now();
+
+        LocalDate today = LocalDate.now();
+        LocalDate lastMonthDate = today.minusMonths(2);
+        String date = dtf.format(lastMonthDate);
+        return date;
     }
 
     public static void clearById(String id) {
@@ -118,6 +128,15 @@ public class Page_Options extends BrowserUtils {
 
         // Check if the input has a value
         String value = inputElement.getAttribute("value");
+        double Value = Double.parseDouble(value);
+        return Value;
+    }
+
+    public static double getTextbyXpath(String s){
+        WebElement inputElement = driver.findElement(By.xpath(s));
+
+        // Check if the input has a value
+        String value = inputElement.getText();
         double Value = Double.parseDouble(value);
         return Value;
     }

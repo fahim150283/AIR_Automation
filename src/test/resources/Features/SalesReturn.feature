@@ -1,10 +1,10 @@
-Feature: Finish Goods Store Test
+Feature: Sales Return Test
 
 
-  Scenario: Search a Store for AIR
-    Given Login to Search Store
-    When search for store
-    And description of a store
+  Scenario: Search a Sales Return for AIR
+    Given Login to Search Sales Return
+    When search for Sales Return
+    And description of a Sales Return
     Then close Sales Return
 
   Scenario: Create a new Sales Return

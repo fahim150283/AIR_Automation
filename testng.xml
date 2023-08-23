@@ -12,6 +12,7 @@
             <class name="org.example.Runner.DistributorInvoicesTestRunner"></class>
             <class name="org.example.Runner.CancelInvoiceTestRunner"></class>
             <class name="org.example.Runner.CollectionsTestRunner"></class>
+            <class name="org.example.Runner.SalesReturnTestRunner"></class>
         </classes>
     </test>
 </suite>

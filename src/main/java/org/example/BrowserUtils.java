@@ -32,6 +32,11 @@ public class BrowserUtils {
         element.sendKeys(Keys.ENTER);
     }
 
+    public static void pressEnterById(String id){
+        WebElement element = driver.findElement(By.id(id));
+        element.sendKeys(Keys.ENTER);
+    }
+
     public static void waitById(String id) {
         WebDriverWait wait = new WebDriverWait(driver,5);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
@@ -104,6 +109,13 @@ public class BrowserUtils {
     public static void clickByName(String name) {
         WebElement element = driver.findElement(By.name(name));
          element.click();
+    }
+
+    public static void clickByClassName(String name) {
+        WebElement element = driver.findElement(By.className(name));
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(By.className(name)));
+        element.click();
     }
 }
 
