@@ -5,6 +5,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.example.Page_Options;
 
+import java.util.Random;
+
 public class Distributors extends Page_Options {
     @Given("login for creation of a Distributor")
     public void login_for_creation_of_a_distributor() {
@@ -38,13 +40,13 @@ public class Distributors extends Page_Options {
 
         //Reference
         id = "add_ref";
-        inputbyid(id,"Fahim bhai");
+        inputbyid(id,"Salam bhai");
         //SDF
         id = "add_sdf";
-        inputbyid(id,"Fahim bhai");
+        inputbyid(id,"Salam bhai");
         //RDF
         id = "add_rdf";
-        inputbyid(id,"Fahim bhai");
+        inputbyid(id,"Salam bhai");
         //date
         id = "add_start_date";
         waitById(id);
@@ -86,10 +88,18 @@ public class Distributors extends Page_Options {
         inputbycssselector(cssSelector, "default");
         cssSelectorPressEnter(cssSelector);
 
+
+        // Create a Random object
+        Random random = new Random();
+        // Generate a random number
+        int randomNumber = random.nextInt(99999);
+        // Concatenate the random number to the string
+        String result = "TEST" + randomNumber;
+
         //B P code
         id = "add_code";
         waitById(id);
-        inputbyid(id,"TEST123");
+        inputbyid(id,result);
 
         //RSM
         Thread.sleep(1500);
@@ -164,9 +174,10 @@ public class Distributors extends Page_Options {
 
 
         //Name Of Distributor/Firm
+        String name = "TEST" + random.nextInt(99999);
         id = "add_name";
         waitById(id);
-        inputbyid(id, "TEST_STORE");
+        inputbyid(id,name);
 
         //Proprietor Name
         id = "add_o_name";
@@ -267,8 +278,9 @@ public class Distributors extends Page_Options {
         //Area Demarcation
         xpath = "//*[@id=\"add_distributors_form\"]/div/div/div/div/div[3]/div/table/tbody/tr[1]/td[3]/span/span[1]/span";
         waitByxpath(xpath);
-        clickbyxpath(xpath);
-        pressDownbyXpath(xpath);
+        inputbyxpath(xpath,"noakhali");
+        pressEnterbyXpath(xpath);
+        pressESCbyXpath(xpath);
 
         //Point Name
         id = "add_point_name";
@@ -277,11 +289,10 @@ public class Distributors extends Page_Options {
         //Routes
         xpath = "//*[@id=\"add_distributors_form\"]/div/div/div/div/div[3]/div/table/tbody/tr[3]/td[3]/span/span[1]/span";
         waitByxpath(xpath);
-        clickbyxpath(xpath);
-        cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
-        waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, "default");
-        cssSelectorPressEnter(cssSelector);
+        inputbyxpath(xpath,"default");
+        pressEnterbyXpath(xpath);
+        pressESCbyXpath(xpath);
+
 
         //Key Markets
         id = "add_k_market";
@@ -358,7 +369,7 @@ public class Distributors extends Page_Options {
 
         //D/F Quantity Of The Competitors
         //Igloo
-        id = "add_ig_cont";
+        id = "add_ig_comp";
         waitById(id);
         inputbyid(id,"1000");
         // Polar
@@ -530,9 +541,39 @@ public class Distributors extends Page_Options {
         Thread.sleep(1000);
 
         //Status
+        id = "add_status";
+        waitById(id);
+        clickbyId(id);
+        xpath = "//option[. = 'In Active']";
+        waitByxpath(xpath);
+        clickbyxpath(xpath);
+
+
         //Approve
+        id = "add_is_approve";
+        waitById(id);
+        clickbyId(id);
+        xpath = "//*[@id=\"add_is_approve\"]/option[1]";
+        waitByxpath(xpath);
+        clickbyxpath(xpath);
+
+
         //Approval Date
+        id = "add_appr_start_date";
+        waitById(id);
+        clickbyId(id);
+        inputbyid(id,getLastMonth());
+
         //Closing Date:
+        id = "add_appr_close_date";
+        waitById(id);
+        clickbyId(id);
+        inputbyid(id,"01/01/2030");
+
+
+        //Save button
+        id = "add_distributors";
+        clickbyId(id);
     }
     @Then("close the Distributor window")
     public void close_the_distributor_window() throws InterruptedException {

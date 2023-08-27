@@ -76,6 +76,11 @@ public class Page_Options extends BrowserUtils {
         element.sendKeys(Keys.ENTER);
     }
 
+    public static void pressESCbyXpath(String s) {
+        WebElement element = driver.findElement(By.xpath(s));
+        element.sendKeys(Keys.ESCAPE);
+    }
+
     public static void pressDownbyXpath(String s) {
         WebDriverWait wait = new WebDriverWait(driver,5);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(s)));
