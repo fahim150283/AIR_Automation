@@ -3,6 +3,7 @@ package org.example.StepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.example.Page_Options;
 
 import java.util.Random;
@@ -40,13 +41,13 @@ public class Distributors extends Page_Options {
 
         //Reference
         id = "add_ref";
-        inputbyid(id,"Salam bhai");
+        inputbyid(id,"Nobody");
         //SDF
         id = "add_sdf";
-        inputbyid(id,"Salam bhai");
+        inputbyid(id,"Nobody");
         //RDF
         id = "add_rdf";
-        inputbyid(id,"Salam bhai");
+        inputbyid(id,"Nobody");
         //date
         id = "add_start_date";
         waitById(id);
@@ -544,7 +545,7 @@ public class Distributors extends Page_Options {
         id = "add_status";
         waitById(id);
         clickbyId(id);
-        xpath = "//option[. = 'In Active']";
+        xpath = "//option[. = 'Active']";
         waitByxpath(xpath);
         clickbyxpath(xpath);
 
@@ -580,4 +581,64 @@ public class Distributors extends Page_Options {
         Thread.sleep(2000);
         closedriver();
     }
+
+
+//    @Given("Login to Search Distributor")
+//    public void login_to_search_distributor() {
+//        url = "http://192.168.11.182/air_2/air";
+//        navigatetourl(url);
+//        id = "username";
+//        inputbyid(id, "h.abul");
+//        id = "password";
+//        inputbyid(id, "savoy123");
+//        id = "login";
+//        clickbyId(id);
+//
+//        cssSelector = ".menues-bar:nth-child(10) .active";
+//        waitByCssSelector(cssSelector);
+//        clickbycssselector(cssSelector);
+//    }
+//    @When("search for Distributor")
+//    public void search_for_distributor() throws InterruptedException {
+//        Thread.sleep(2000);
+//        id = "search_input1";
+//        waitById(id);
+//        inputbyid(id, "TEST123");
+//    }
+//
+//    @And("description of a Distributor")
+//    public void descriptionOfADistributor() throws InterruptedException {
+//        Thread.sleep(2000);
+//        cssSelector = "#btn_view";
+//        waitByCssSelector(cssSelector);
+//        clickbycssselector(cssSelector);
+//    }
+//
+//    @Then("close Distributor for search")
+//    public void close_distributor_for_search() throws InterruptedException {
+//        Thread.sleep(2000);
+//        closedriver();
+//    }
+//
+//
+//    @Given("Login to edit a Distributor")
+//    public void login_to_edit_a_distributor() {
+//        // Write code here that turns the phrase above into concrete actions
+//        throw new io.cucumber.java.PendingException();
+//    }
+//    @When("search for a Distributor to edit")
+//    public void search_for_a_distributor_to_edit() {
+//        // Write code here that turns the phrase above into concrete actions
+//        throw new io.cucumber.java.PendingException();
+//    }
+//    @And("edit")
+//    public void edit() {
+//        // Write code here that turns the phrase above into concrete actions
+//        throw new io.cucumber.java.PendingException();
+//    }
+//    @Then("close Distributor for editing")
+//    public void close_distributor_for_editing() {
+//        // Write code here that turns the phrase above into concrete actions
+//        throw new io.cucumber.java.PendingException();
+//    }
 }
