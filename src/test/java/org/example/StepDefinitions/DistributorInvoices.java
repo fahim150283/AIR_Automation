@@ -9,16 +9,9 @@ import org.example.Page_Options;
 public class DistributorInvoices extends Page_Options {
     @Given("Login to Search Invoice")
     public void login_to_search_invoice() {
-        url = "http://192.168.11.182/air_2/air";
-        navigatetourl(url);
-        id = "username";
-        inputbyid(id, "h.abul");
-        id = "password";
-        inputbyid(id, "savoy123");
-        id = "login";
-        clickbyId(id);
+        Login("h.abul");
 
-        cssSelector = ".menues-bar:nth-child(11) .active";
+        cssSelector = ".menues-bar:nth-child(13) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }
@@ -46,16 +39,9 @@ public class DistributorInvoices extends Page_Options {
 
     @Given("login for Invoice")
     public void login_for_invoice() {
-        url = "http://192.168.11.182/air_2/air";
-        navigatetourl(url);
-        id = "username";
-        inputbyid(id, "h.abul");
-        id = "password";
-        inputbyid(id, "savoy123");
-        id = "login";
-        clickbyId(id);
+        Login("h.abul");
 
-        cssSelector = ".menues-bar:nth-child(11) .active";
+        cssSelector = ".menues-bar:nth-child(13) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }

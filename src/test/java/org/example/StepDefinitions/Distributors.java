@@ -11,14 +11,7 @@ import java.util.Random;
 public class Distributors extends Page_Options {
     @Given("login for creation of a Distributor")
     public void login_for_creation_of_a_distributor() {
-        url = "http://192.168.11.182/air_2/air";
-        navigatetourl(url);
-        id = "username";
-        inputbyid(id, "h.abul");
-        id = "password";
-        inputbyid(id, "savoy123");
-        id = "login";
-        clickbyId(id);
+        Login("h.abul");
 
         cssSelector = ".menues-bar:nth-child(10) .active";
         waitByCssSelector(cssSelector);

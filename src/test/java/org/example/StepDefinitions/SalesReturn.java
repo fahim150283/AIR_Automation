@@ -27,7 +27,7 @@ public class SalesReturn extends Page_Options {
         id = "menu-search";
         waitById(id);
         inputbyid(id, "sales return");
-        cssSelector = ".menues-bar:nth-child(14) .active";
+        cssSelector = ".menues-bar:nth-child(17) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }
@@ -68,7 +68,7 @@ public class SalesReturn extends Page_Options {
         id = "menu-search";
         waitById(id);
         inputbyid(id, "sales return");
-        cssSelector = ".menues-bar:nth-child(14) .active";
+        cssSelector = ".menues-bar:nth-child(17) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }

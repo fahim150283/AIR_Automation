@@ -9,14 +9,7 @@ public class Contacts extends Page_Options {
 
     @Given("^login for accessing Contacts$")
     public void contacts() {
-        url = "http://192.168.11.182/air_2/air";
-        navigatetourl(url);
-        id = "username";
-        inputbyid(id, "h.abul");
-        id = "password";
-        inputbyid(id, "savoy123");
-        id = "login";
-        clickbyId(id);
+        Login("h.abul");
     }
 
     @When("search for employee")

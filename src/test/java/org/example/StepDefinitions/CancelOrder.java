@@ -10,14 +10,7 @@ public class CancelOrder extends Page_Options {
 
     @Given("Login to Search CancelOrder")
     public void login_to_search_cancel_order() {
-        url = "http://192.168.11.182/air_2/air";
-        navigatetourl(url);
-        id = "username";
-        inputbyid(id, "h.abul");
-        id = "password";
-        inputbyid(id, "savoy123");
-        id = "login";
-        clickbyId(id);
+        Login("h.abul");
 
         cssSelector = ".menues-bar:nth-child(7) .active";
         waitByCssSelector(cssSelector);
@@ -46,14 +39,7 @@ public class CancelOrder extends Page_Options {
 
     @Given("login for Cancelling a Order")
     public void login_for_creating_new_order_to_cancel() {
-        url = "http://192.168.11.182/air_2/air";
-        navigatetourl(url);
-        id = "username";
-        inputbyid(id, "h.abul");
-        id = "password";
-        inputbyid(id, "savoy123");
-        id = "login";
-        clickbyId(id);
+        Login("h.abul");
 
         cssSelector = ".menues-bar:nth-child(7) .active";
         waitByCssSelector(cssSelector);

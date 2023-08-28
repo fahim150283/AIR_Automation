@@ -19,7 +19,7 @@ public class Order extends Page_Options {
         id = "login";
         clickbyId(id);
 
-        cssSelector = ".menues-bar:nth-child(13) .active";
+        cssSelector = ".menues-bar:nth-child(16) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }
@@ -55,7 +55,7 @@ public class Order extends Page_Options {
         id = "login";
         clickbyId(id);
 
-        cssSelector = ".menues-bar:nth-child(13) .active";
+        cssSelector = ".menues-bar:nth-child(16) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }

@@ -10,14 +10,7 @@ public class Dashboard extends Page_Options {
 
     @Given("^login for accessing dashboard$")
     public void dashboard() {
-        url = "http://192.168.11.182/air_2/air";
-        navigatetourl(url);
-        id = "username";
-        inputbyid(id, "h.abul");
-        id = "password";
-        inputbyid(id, "savoy123");
-        id = "login";
-        clickbyId(id);
+        Login("h.abul");
     }
 
     @When("^click the Dashboard$")

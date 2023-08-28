@@ -11,14 +11,7 @@ import java.util.Random;
 public class Collections extends Page_Options {
     @Given("Login to Search Collection")
     public void login_to_search_collection() {
-        url = "http://192.168.11.182/air_2/air";
-        navigatetourl(url);
-        id = "username";
-        inputbyid(id, "h.abul");
-        id = "password";
-        inputbyid(id, "savoy123");
-        id = "login";
-        clickbyId(id);
+        Login("h.abul");
 
         cssSelector = ".menues-bar:nth-child(8) .active";
         waitByCssSelector(cssSelector);
@@ -46,14 +39,7 @@ public class Collections extends Page_Options {
 
     @Given("login for creating Collection")
     public void login_for_creating_collection() {
-        url = "http://192.168.11.182/air_2/air";
-        navigatetourl(url);
-        id = "username";
-        inputbyid(id, "h.abul");
-        id = "password";
-        inputbyid(id, "savoy123");
-        id = "login";
-        clickbyId(id);
+        Login("h.abul");
 
         cssSelector = ".menues-bar:nth-child(8) .active";
         waitByCssSelector(cssSelector);

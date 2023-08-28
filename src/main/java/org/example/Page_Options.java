@@ -18,6 +18,7 @@ public class Page_Options extends BrowserUtils {
     public static String xpath;
     public static String cssSelector;
     public static String url;
+    public static String username;
     public static String tempName;
 
     public static void navigatetourl(String URL) {
@@ -37,6 +38,17 @@ public class Page_Options extends BrowserUtils {
         LocalDate today = LocalDate.now();
         String todayDate = dtf.format(today);
         return todayDate;
+    }
+
+    public static String getTodaynTime() {
+        // Get the current date and time
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        // Format the date and time with AM/PM
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyyyy'T'HH:mm");
+        String formattedDateTime = currentDateTime.format(formatter);
+        System.out.println(formattedDateTime);
+        return formattedDateTime;
     }
 
     public static String getLastMonth() {
@@ -144,5 +156,16 @@ public class Page_Options extends BrowserUtils {
         String value = inputElement.getText();
         double Value = Double.parseDouble(value);
         return Value;
+    }
+
+    public static void Login(String username){
+        url = "http://192.168.11.182/air_2/air";
+        navigatetourl(url);
+        id = "username";
+        inputbyid(id, username);
+        id = "password";
+        inputbyid(id, "savoy123");
+        id = "login";
+        clickbyId(id);
     }
 }
