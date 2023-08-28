@@ -47,7 +47,7 @@ public class Page_Options extends BrowserUtils {
         // Format the date and time with AM/PM
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyyyy'T'HH:mm");
         String formattedDateTime = currentDateTime.format(formatter);
-        System.out.println(formattedDateTime);
+//        System.out.println(formattedDateTime);
         return formattedDateTime;
     }
 
