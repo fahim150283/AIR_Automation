@@ -31,6 +31,14 @@ public class Page_Options extends BrowserUtils {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight * 0.9)");
     }
 
+    public static void scrollTo_ByXpath(String s){
+        WebElement element = driver.findElement(By.xpath(s));
+
+        // Scroll the element into view
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({behavior: 'auto', block: 'center', inline: 'center'});", element);
+
+    }
+
     public static String getToday() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         LocalDateTime now = LocalDateTime.now();
@@ -45,7 +53,7 @@ public class Page_Options extends BrowserUtils {
         LocalDateTime currentDateTime = LocalDateTime.now();
 
         // Format the date and time with AM/PM
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyyyy'T'HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyyyy'T'hh:mm a");
         String formattedDateTime = currentDateTime.format(formatter);
 //        System.out.println(formattedDateTime);
         return formattedDateTime;
@@ -68,6 +76,11 @@ public class Page_Options extends BrowserUtils {
 
     public static void clearByXpath(String xpath) {
         WebElement element = driver.findElement(By.xpath(xpath));
+        element.clear();
+    }
+
+    public static void clearByid(String id) {
+        WebElement element = driver.findElement(By.id(id));
         element.clear();
     }
 
@@ -100,6 +113,13 @@ public class Page_Options extends BrowserUtils {
         element.sendKeys(Keys.ARROW_DOWN);
     }
 
+    public static void pressDownbyid(String s) {
+        WebDriverWait wait = new WebDriverWait(driver,5);
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(s)));
+        WebElement element = driver.findElement(By.id(s));
+        element.sendKeys(Keys.ARROW_DOWN);
+    }
+
     public static void pressDownbyCssSelector(String s) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(s)));
@@ -116,10 +136,6 @@ public class Page_Options extends BrowserUtils {
         driver.switchTo().alert().accept();
     }
 
-//    public static void SwitchToModal(String s){
-//        WebElement modalFrame = driver.findElement(By.tagName(s));
-//        driver.switchTo().frame(modalFrame);
-//    }
 
     public static void switchTab(){
         String mainWindowHandle = driver.getWindowHandle();
@@ -142,6 +158,15 @@ public class Page_Options extends BrowserUtils {
 
     public static double getValuebyXpath(String s){
         WebElement inputElement = driver.findElement(By.xpath(s));
+
+        // Check if the input has a value
+        String value = inputElement.getAttribute("value");
+        double Value = Double.parseDouble(value);
+        return Value;
+    }
+
+    public static double getValuebyId(String s){
+        WebElement inputElement = driver.findElement(By.id(s));
 
         // Check if the input has a value
         String value = inputElement.getAttribute("value");

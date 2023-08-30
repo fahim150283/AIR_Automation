@@ -15,11 +15,13 @@ public class test extends Page_Options {
     //    @BeforeMethod
     @Test
     public void login_for_creating_new_pre_invoice() throws InterruptedException {
-        Random random = new Random();
+        navigatetourl("https://www.google.com/");
+        xpath = "//*[@id=\"APjFqb\"]";
+        waitByxpath(xpath);
+        inputbyxpath(xpath, "778");
+        waitByxpath(xpath);
+        getTextbyXpath(xpath);
+        System.out.println(getTextbyXpath(xpath));
 
-        // Generate a random integer between 0 (inclusive) and a specified upper bound (exclusive)
-        double randomNumber = 100.01; // Change 100 to the desired upper bound
-
-        System.out.println("Random number: " + randomNumber);
-    }
+        }
 }
