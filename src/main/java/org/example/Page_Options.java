@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Random;
 
 public class Page_Options extends BrowserUtils {
     public static String id;
@@ -67,6 +68,18 @@ public class Page_Options extends BrowserUtils {
         LocalDate lastMonthDate = today.minusMonths(2);
         String date = dtf.format(lastMonthDate);
         return date;
+    }
+
+    public static String getlastMonthAndTime() {
+        // Get the current date and time
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        LocalDateTime futureDateTime = currentDateTime.minusMonths(1);
+
+        // Format the date and time with AM/PM
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyyyy'T'hh:mm a");
+        String formattedDateTime = futureDateTime.format(formatter);
+        System.out.println(formattedDateTime);
+        return formattedDateTime;
     }
 
     public static void clearById(String id) {
@@ -192,5 +205,15 @@ public class Page_Options extends BrowserUtils {
         inputbyid(id, "savoy123");
         id = "login";
         clickbyId(id);
+    }
+
+    public static String randomTestString(){
+        // Create a Random object
+        Random random = new Random();
+        // Generate a random number
+        int randomNumber = random.nextInt(99999);
+        // Concatenate the random number to the string
+        String result = "TEST" + randomNumber;
+        return result;
     }
 }

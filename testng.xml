@@ -15,6 +15,7 @@
             <class name="org.example.Runner.Complementary_InvoiceTestRunner"></class>
             <class name="org.example.Runner.SalesReturnTestRunner"></class>
             <class name="org.example.Runner.DistributorsTestRunner"></class>
+            <class name="org.example.Runner.GoodsRequisitionTestRunner"></class>
         </classes>
     </test>
 </suite>

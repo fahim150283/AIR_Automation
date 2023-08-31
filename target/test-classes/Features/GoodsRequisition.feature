@@ -1,4 +1,4 @@
-Feature: Goods Requisition Test
+Feature: Full Goods Requisition Test
 
   Scenario: Send a new Goods Requisition
     Given login for creation of a Goods Requisition
