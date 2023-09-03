@@ -134,7 +134,7 @@ public class SalesReturn extends Page_Options {
         //Full or partial return
         Boolean fullReturn = true;
         xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[5]";
-        String s = String.valueOf(getTextbyXpath(xpath));
+        String s = String.valueOf(getText_double_byXpath(xpath));
 
         if (fullReturn == true) {
             xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[9]/input";
@@ -144,7 +144,7 @@ public class SalesReturn extends Page_Options {
             inputbyxpath(xpath, s);
         } else {
             xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[5]";
-            s = String.valueOf(getTextbyXpath(xpath) - 1);
+            s = String.valueOf(getText_double_byXpath(xpath) - 1);
             xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[9]/input";
             waitByxpath(xpath);
             clearByXpath(xpath);

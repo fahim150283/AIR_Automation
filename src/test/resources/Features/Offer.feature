@@ -5,12 +5,10 @@ Feature: Full Offer Test
     And create new offer
     Then close the offer window
 
-  Scenario: check if the offer is created
+  Scenario: check if the offer is created verify in orders
     Given login to check if the offer is created
     And search for the offer
-    Then close the window to search for the offer
+    And Copy required elements
+    When navigate to order and click new order button
+    And populate the fields
 
-  Scenario: check if the order is shown for creating an order
-    Given
-    And
-    Then

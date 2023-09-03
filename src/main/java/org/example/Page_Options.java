@@ -187,13 +187,21 @@ public class Page_Options extends BrowserUtils {
         return Value;
     }
 
-    public static double getTextbyXpath(String s){
+    public static double getText_double_byXpath(String s){
         WebElement inputElement = driver.findElement(By.xpath(s));
 
         // Check if the input has a value
         String value = inputElement.getText();
         double Value = Double.parseDouble(value);
         return Value;
+    }
+
+    public static String getTextbyXpath(String s){
+        WebElement inputElement = driver.findElement(By.xpath(s));
+
+        // Check if the input has a value
+        String value = inputElement.getText();
+        return value;
     }
 
     public static void Login(String username){
@@ -215,5 +223,14 @@ public class Page_Options extends BrowserUtils {
         // Concatenate the random number to the string
         String result = "TEST" + randomNumber;
         return result;
+    }
+
+    public static void row_element_click_By_xpath_and_id(String xpath, String id){
+//        System.out.println(xpath +" , "+id);
+        WebElement element1 = driver.findElement(By.xpath(xpath));
+        WebElement Button = element1.findElement(By.id(id));
+        Button.click();
+
+
     }
 }
