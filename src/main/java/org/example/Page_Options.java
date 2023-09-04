@@ -12,14 +12,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
+import static org.bouncycastle.cms.RecipientId.password;
+
 public class Page_Options extends BrowserUtils {
     public static String id;
     public static String classname;
     public static String name;
     public static String xpath;
     public static String cssSelector;
-    public static String url;
-    public static String username;
     public static String tempName;
 
     public static void navigatetourl(String URL) {
@@ -205,12 +205,12 @@ public class Page_Options extends BrowserUtils {
     }
 
     public static void Login(String username){
-        url = "http://192.168.11.182/air_2/air";
+
         navigatetourl(url);
         id = "username";
         inputbyid(id, username);
         id = "password";
-        inputbyid(id, "savoy123");
+        inputbyid(id, String.valueOf(password));
         id = "login";
         clickbyId(id);
     }
@@ -230,7 +230,7 @@ public class Page_Options extends BrowserUtils {
         WebElement element1 = driver.findElement(By.xpath(xpath));
         WebElement Button = element1.findElement(By.id(id));
         Button.click();
-
-
     }
+
+
 }

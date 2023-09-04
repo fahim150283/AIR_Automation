@@ -9,7 +9,7 @@ import org.example.Page_Options;
 public class CancelInvoice extends Page_Options {
     @Given("Login to Search cancelled Invoice")
     public void login_to_search_cancelled_invoice() {
-        Login("h.abul");
+        Login(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(6) .active";
         waitByCssSelector(cssSelector);
@@ -39,7 +39,7 @@ public class CancelInvoice extends Page_Options {
 
     @Given("login for cancellation of an Invoice")
     public void login_for_cancellation_of_an_invoice() {
-        Login("h.abul");
+        Login(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(6) .active";
         waitByCssSelector(cssSelector);

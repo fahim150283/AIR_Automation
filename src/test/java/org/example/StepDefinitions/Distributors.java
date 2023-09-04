@@ -11,7 +11,7 @@ import java.util.Random;
 public class Distributors extends Page_Options {
     @Given("login for creation of a Distributor")
     public void login_for_creation_of_a_distributor() {
-        Login("h.abul");
+        Login(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(10) .active";
         waitByCssSelector(cssSelector);

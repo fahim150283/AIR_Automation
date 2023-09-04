@@ -28,7 +28,7 @@ public class Offer extends Page_Options {
     */
     @Given("login for creation of an offer")
     public void login_for_creation_of_an_offer() {
-        Login("h.abul");
+        Login(user_Fahim);
         cssSelector = ".menues-bar:nth-child(14) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
@@ -386,7 +386,7 @@ public class Offer extends Page_Options {
     */
     @Given("login to check if the offer is created")
     public void login_to_check_if_the_offer_is_created() {
-        Login("h.abul");
+        Login(user_Fahim);
         cssSelector = ".menues-bar:nth-child(14) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
@@ -419,7 +419,7 @@ public class Offer extends Page_Options {
 
     @When("navigate to order and click new order button")
     public void navigateToOrderAndClickNewOrderButton() {
-        Login("k.polash");
+        Login(user_Polash);
         cssSelector = ".menues-bar:nth-child(17) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
@@ -478,7 +478,5 @@ public class Offer extends Page_Options {
         //important notes
         id = "c_notes";
         inputbyid(id, "Automated Test");
-
-
     }
 }
