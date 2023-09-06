@@ -12,8 +12,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
-import static org.bouncycastle.cms.RecipientId.password;
-
 public class Page_Options extends BrowserUtils {
     public static String id;
     public static String classname;
@@ -232,5 +230,32 @@ public class Page_Options extends BrowserUtils {
         Button.click();
     }
 
+    public static String get_row_text_byXpath(String xpath){
+//        System.out.println(xpath +" , "+id);
+        WebElement element1 = driver.findElement(By.xpath(xpath));
+        String s = element1.getText();
+        return s;
+    }
 
+    public static int getRowCountByNameAndDate(String xpath, String name) {
+        // Find all the rows in the table
+        java.util.List<WebElement> rows = driver.findElements(By.xpath(xpath));
+
+        int cnt = 0;
+
+        // Loop through each row and check the conditions
+        for (WebElement row : rows) {
+            WebElement nameElement = row.findElement(By.xpath(".//td[2]/p"));
+            WebElement dateElement = row.findElement(By.xpath(".//td[4]/p"));
+
+            String rowName = nameElement.getText();
+            String rowDate = dateElement.getText();
+
+            if (rowName.equals(name) && rowDate.isEmpty()) {
+                cnt++;
+            }
+        }
+
+        return cnt;
+    }
 }

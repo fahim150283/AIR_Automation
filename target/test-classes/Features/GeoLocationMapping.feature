@@ -8,6 +8,5 @@ Feature: Geo Location Mapping Test
 
   Scenario: Search a  Geo Location Mapping for AIR
     Given Login to Search  Geo Location Mapping
-    When search for  Geo Location Mapping
-    And description of a  Geo Location Mapping
+    When search for Geo Location Mappings of an user and copy important elements from Geo Location Mapping
     Then close  Geo Location Mapping for search

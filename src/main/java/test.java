@@ -20,9 +20,14 @@ import java.util.Random;
 public class test extends Page_Options {
     @Test
     public void login_for_creating_new_pre_invoice() throws InterruptedException {
-        System.out.println(url);
-        url = "https://www.google.com/";
-        System.out.println(url);
-        Login(user_Siam);
+//        System.out.println(url);
+//        url = "https://www.google.com/";
+//        System.out.println(url);
+//        Login(user_Siam);
+        int i =0;
+        Boolean s = i<3;
+        for (i = 0; s; i++) {
+            System.out.println(i);
+        }
     }
 }
