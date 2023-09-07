@@ -24,10 +24,7 @@ public class test extends Page_Options {
 //        url = "https://www.google.com/";
 //        System.out.println(url);
 //        Login(user_Siam);
-        int i =0;
-        Boolean s = i<3;
-        for (i = 0; s; i++) {
-            System.out.println(i);
-        }
+        int s = 3 % 3;
+        System.out.println(s);
     }
 }
