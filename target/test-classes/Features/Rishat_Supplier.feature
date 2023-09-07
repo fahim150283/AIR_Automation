@@ -9,7 +9,7 @@ Feature: supplier Test
   Scenario: Search a  supplier
     Given Login to Search supplier
     When search for supplier and copy important elements suppliers
-    Then close  supplier for search
+    Then close  supplier for search after verification
 
   Scenario: Edit the supplier
     Given Login to edit supplier

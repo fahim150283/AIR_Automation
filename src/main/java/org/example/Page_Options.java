@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Random;
 
 public class Page_Options extends BrowserUtils {
@@ -237,25 +238,27 @@ public class Page_Options extends BrowserUtils {
         return s;
     }
 
-    public static int getRowCountByNameAndDate(String xpath, String name) {
+    public static void getRowCountByNameAndDate(String xpath, String name) {
         // Find all the rows in the table
-        java.util.List<WebElement> rows = driver.findElements(By.xpath(xpath));
+        WebElement table =  driver.findElement(By.xpath(xpath));
+        int rowCount = table.findElements(By.tagName("tr")).size();
+        System.out.print(rowCount+" row count");
 
-        int cnt = 0;
-
-        // Loop through each row and check the conditions
-        for (WebElement row : rows) {
-            WebElement nameElement = row.findElement(By.xpath(".//td[2]/p"));
-            WebElement dateElement = row.findElement(By.xpath(".//td[4]/p"));
-
-            String rowName = nameElement.getText();
-            String rowDate = dateElement.getText();
-
-            if (rowName.equals(name) && rowDate.isEmpty()) {
-                cnt++;
-            }
-        }
-
-        return cnt;
+//        int cnt = 0;
+//
+//        // Loop through each row and check the conditions
+//        for (int i=0; i<rowCount;i++) {
+//
+//            WebElement nameElement = driver.findElement(By.xpath(xpath+"/tr["+(i+1)+"]/td[2]/p"));
+//            WebElement dateElement = driver.findElement(By.xpath(xpath+"/tr["+(i+1)+"]/td[4]/p"));
+//
+//            String rowName = nameElement.getText();
+//            String rowDate = dateElement.getText();
+//
+//            if (rowName.equals(name) && rowDate.isEmpty()) {
+//                cnt++;
+//            }
+//        }
+//        return cnt;
     }
 }

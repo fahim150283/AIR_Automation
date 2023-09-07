@@ -20,11 +20,31 @@ import java.util.Random;
 public class test extends Page_Options {
     @Test
     public void login_for_creating_new_pre_invoice() throws InterruptedException {
-//        System.out.println(url);
-//        url = "https://www.google.com/";
-//        System.out.println(url);
-//        Login(user_Siam);
-        int s = 3 % 3;
-        System.out.println(s);
+        Login(user_Siam);
+        Thread.sleep(2000);
+        driver.get("http://192.168.11.182/air_2/views/geo_location_mapping/");
+
+        xpath = "//*[@id=\"geo_location_mapping_tableData\"]";
+        WebElement table = driver.findElement(By.xpath(xpath));
+        int rowCount = table.findElements(By.tagName("tr")).size();
+        System.out.println(rowCount);
+
+//        int cnt = 0;
+//
+//        // Loop through each row and check the conditions
+//        for (int i = 0; i < rowCount; i++) {
+//
+//            WebElement nameElement = driver.findElement(By.xpath(xpath + "/tr[" + (i + 1) + "]/td[2]"));
+//            WebElement dateElement = driver.findElement(By.xpath(xpath + "/tr[" + (i + 1) + "]/td[4]"));
+//
+//            String rowName = nameElement.getText();
+//            String rowDate = dateElement.getText();
+//
+//            if (rowName.equals("SPI-00012119") && rowDate.equals("SPC-00012119")) {
+//                cnt++;
+//            }
+//        }
+//        System.out.println(cnt);
+
     }
 }

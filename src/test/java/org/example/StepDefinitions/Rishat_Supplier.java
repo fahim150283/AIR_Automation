@@ -7,8 +7,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
 
+import java.awt.*;
+
 public class Rishat_Supplier extends Page_Options {
-    String[] data_arr = new String[20];
+    String[] inputData_arr = new String[20];
+    String[] savedData_arr = new String[20];
 
 
     /*
@@ -33,27 +36,33 @@ public class Rishat_Supplier extends Page_Options {
         //Supplier name
         id = "supplier_name";
         waitById(id);
-        inputbyid(id, "John Cena");
+        inputData_arr[0]="John Chikna";
+        inputbyid(id, inputData_arr[0]);
         //Registered Address
         id = "reg_add";
         waitById(id);
-        inputbyid(id, "Moscow, Russia");
+        inputData_arr[1]="Moscow, Russia";
+        inputbyid(id, inputData_arr[1]);
         //Billing Address
         id = "bill_add";
         waitById(id);
-        inputbyid(id, "Hiroshima, Japan");
+        inputData_arr[2]="Hiroshima, Japan";
+        inputbyid(id,inputData_arr[2] );
         //Company phone
         id = "coy_phone";
         waitById(id);
-        inputbyid(id, "01333333333");
+        inputData_arr[3]="01333333333";
+        inputbyid(id, inputData_arr[3]);
         //Company email
         id = "coy_email";
         waitById(id);
-        inputbyid(id, "DL@GG.com");
+        inputData_arr[4]="DL@GG.com";
+        inputbyid(id, inputData_arr[4]);
         //Trade Licence
         id = "tl_num";
         waitById(id);
-        inputbyid(id, "2913333222");
+        inputData_arr[17]="2913333222";
+        inputbyid(id,  inputData_arr[17]);
         //TL Image
         id = "tl_img";
         waitById(id);
@@ -61,7 +70,8 @@ public class Rishat_Supplier extends Page_Options {
         //Tax Identification Number (TIN)
         id = "tin_num";
         waitById(id);
-        inputbyid(id, "3256478913");
+        inputData_arr[18]="3256478913";
+        inputbyid(id, inputData_arr[18]);
         //TIN Image
         id = "tin_img";
         waitById(id);
@@ -69,7 +79,8 @@ public class Rishat_Supplier extends Page_Options {
         //Business Identification Number (BIN)
         id = "bin_num";
         waitById(id);
-        inputbyid(id, "5665656565");
+        inputData_arr[19]="5665656565";
+        inputbyid(id, inputData_arr[19]);
         //BIN Image
         id = "bin_img";
         waitById(id);
@@ -77,51 +88,63 @@ public class Rishat_Supplier extends Page_Options {
         //Primary Contact Person
         id = "fp_name";
         waitById(id);
-        inputbyid(id, "Fahim");
+        inputData_arr[5]="Fahim";
+        inputbyid(id, inputData_arr[5]);
         //Designation
         id = "fp_designation";
         waitById(id);
-        inputbyid(id, "Intern");
+        inputData_arr[6]="Intern";
+        inputbyid(id, inputData_arr[6]);
         //Phone
         id = "fp_phone";
         waitById(id);
-        inputbyid(id, "01338888333");
+        inputData_arr[7]="01338888333";
+        inputbyid(id, inputData_arr[7]);
         //Email
         id = "fp_email";
         waitById(id);
-        inputbyid(id, "fahim@dl.com");
+        inputData_arr[8]="fahim@dl.com";
+        inputbyid(id, inputData_arr[8]);
         //Secondary Contact Person:
         id = "sp_name";
         waitById(id);
-        inputbyid(id, "Rishat");
+        inputData_arr[9]="Rishat";
+        inputbyid(id,  inputData_arr[9]);
         //Designation
         id = "sp_designation";
         waitById(id);
-        inputbyid(id, "trainee");
+        inputData_arr[10]="trainee";
+        inputbyid(id, inputData_arr[10]);
         //Phone
         id = "sp_phone";
         waitById(id);
-        inputbyid(id, "01222233311");
+        inputData_arr[11]="01222233311";
+        inputbyid(id, inputData_arr[11]);
         //E-mail
         id = "sp_email";
         waitById(id);
-        inputbyid(id, "rishat@sp.com");
+        inputData_arr[12]="rishat@sp.com";
+        inputbyid(id, inputData_arr[12]);
         //Emergency Contact Person
         id = "ep_name";
         waitById(id);
-        inputbyid(id, "Humpty Dumpty");
+        inputData_arr[13]="Humpty Dumpty";
+        inputbyid(id, inputData_arr[13]);
         //Designation
         id = "ep_designation";
         waitById(id);
-        inputbyid(id, "President");
+        inputData_arr[14]="President";
+        inputbyid(id, inputData_arr[14]);
         //Phone
         id = "ep_phone";
         waitById(id);
-        inputbyid(id, "01888888888");
+        inputData_arr[15]="01888888888";
+        inputbyid(id, inputData_arr[15]);
         //Email
         id = "ep_email";
         waitById(id);
-        inputbyid(id, "HD@DL.com");
+        inputData_arr[16]="HD@DL.com";
+        inputbyid(id, inputData_arr[16]);
         //Status
         Boolean active = true;
         if (active == false) {
@@ -135,6 +158,10 @@ public class Rishat_Supplier extends Page_Options {
         xpath = "//*[@id=\"add_supplier_form\"]/div/div[15]/div/button";
         waitByxpath(xpath);
         clickbyxpath(xpath);
+
+        for(int i=0;i< inputData_arr.length;i++){
+            System.out.print(inputData_arr[i]+" , ");
+        }
     }
 
     @Then("print the supplier list and close the supplier window")
@@ -180,32 +207,31 @@ public class Rishat_Supplier extends Page_Options {
             if (i < 5) {
                 xpath = "//tbody[@id='part1_body']/tr[" + (gononakorun1 + 2) + "]/td[3]";
                 String s = get_row_text_byXpath(xpath);
-                data_arr[i] = s.substring(2);
+                savedData_arr[i] = s.substring(2);
                 gononakorun1++;
             } else if (4 < i && i <= 16) {
                 if (gononakorun2 <= 11) {
                     xpath = "//tbody[@id='part2_body']/tr[" + (gononakorun2 + 1) + "]/td[3]";
                     String s = get_row_text_byXpath(xpath);
-                    data_arr[i] = s.substring(2);
+                    savedData_arr[i] = s.substring(2);
                     gononakorun2++;
                 }
             } else if (i > 16) {
                 if ((gononakorun3 == 3) || (gononakorun3 == 5) || (gononakorun3 == 7) ){
                     xpath = "//tbody[@id='part3_body']/tr[1]/td[" + gononakorun3 + "]";
                     String s = get_row_text_byXpath(xpath);
-                    data_arr[i] = s.substring(2);
+                    savedData_arr[i] = s.substring(2);
                     gononakorun3 = gononakorun3 + 2;
                 }
             }
         }
-
-        for (int i=0;i<20;i++){
-            System.out.print(data_arr[i]+" , ");
-        }
     }
 
-    @Then("close  supplier for search")
-    public void close_supplier_for_search() {
+    @Then("close  supplier for search after verification")
+    public void close_supplier_for_search_after_verification() throws InterruptedException {
 
+
+
+        closedriver();
     }
 }
