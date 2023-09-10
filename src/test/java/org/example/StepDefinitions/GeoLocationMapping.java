@@ -9,6 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class GeoLocationMapping extends Page_Options {
+    int matchingRowsCNT;
+    String[][] dataGetArray;
 
     /*
        Create a new  Geo Location Mapping
@@ -37,7 +39,7 @@ public class GeoLocationMapping extends Page_Options {
         //type int the name of the employee and select
         xpath = "/html/body/span/span/span[1]/input";
         clickbyxpath(xpath);
-        inputbyxpath(xpath, "siam");
+        inputbyxpath(xpath, "kazi polash");
         pressEnterbyXpath(xpath);
 
         Thread.sleep(500);
@@ -151,53 +153,16 @@ public class GeoLocationMapping extends Page_Options {
     @When("search for Geo Location Mappings of an user and copy important elements from Geo Location Mapping")
     public void search_for_geo_location_mappings_of_an_user_and_copy_important_elements_from_geo_location_mapping() throws InterruptedException {
         xpath = "//*[@id=\"geo_location_mapping_table\"]";
-        getRowCountByNameAndDate(xpath, "Sheikh Salah Uddin (1085)");
-//        System.out.println(x);
-//        //a 2 dimensional array to store data
-//        String[][] arr = new String[x][5];
-//        int count = 0;
-//
-//        // Find all the rows in the table
-//        java.util.List<WebElement> rows = driver.findElements(By.xpath("//*[@id=\"geo_location_mapping_table\"]/tr"));
-//
-//        // Loop through each row to find the matching criteria
-//        for (WebElement row : rows) {
-//            WebElement nameElement = row.findElement(By.xpath(".//td[2]/p"));
-//            WebElement dateElement = row.findElement(By.xpath(".//td[4]/p"));
-//
-//            String name = nameElement.getText();
-//            String date = dateElement.getText();
-//
-//            // Check if the name matches and date is empty
-//            if (name.equals("Sheikh Salah Uddin (1085)") && date.isEmpty()) {
-//                count++;
-//                // Click the "btn_view" element within this row
-//                id = "btn_view";
-//                WebElement btnView = row.findElement(By.id(id));
-//                btnView.click();
-//                Thread.sleep(1000);
-//
-//                //copy elements
-//                xpath = "//*[@id=\"part1_body\"]/tr[2]/td[2]/p";
-//                arr[count][0] = getTextbyXpath(xpath);
-//                xpath = "//*[@id=\"part1_body\"]/tr[4]/td[2]/p";
-//                arr[count][1] = getTextbyXpath(xpath);
-//                xpath = "//*[@id=\"part1_body\"]/tr[5]/td[2]/p";
-//                arr[count][2] = getTextbyXpath(xpath);
-//                xpath = "//*[@id=\"part1_body\"]/tr[6]/td[2]/p";
-//                arr[count][3] = getTextbyXpath(xpath);
-//                xpath = "//*[@id=\"part1_body\"]/tr[7]/td[2]/p";
-//                arr[count][4] = getTextbyXpath(xpath);
-//
-//
-//                //unnecessary
-//                for (int i = 10; i < 5; i++) {
-//                    System.out.println(arr[count][i]);
-//                }
-//            }
-//        }
+        dataGetArray = viewButtonClickForMatchingRowsByXpathAndName(xpath, "Kazi Polash (1153)");
 
-
+        int rows = dataGetArray.length;
+        int cols = dataGetArray[0].length;
+        for (int j = 0; j < rows; j++) {
+            for (int i = 0; i < cols; i++) {
+                System.out.print(dataGetArray[j][i] +"  ");
+            }
+            System.out.println();
+        }
 
     }
 
