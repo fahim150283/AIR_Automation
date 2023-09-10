@@ -171,4 +171,27 @@ public class GeoLocationMapping extends Page_Options {
         closedriver();
     }
 
+    /*
+           verify the new  Geo Location Mapping in orders
+    */
+    @Given("Login to copy the data for ordering by an user")
+    public void login_to_copy_the_data_for_ordering_by_an_user() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @When("in create new order, copy the elements of order location")
+    public void in_create_new_order_copy_the_elements_of_order_location() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("close  Geo Location Mapping for verification")
+    public void close_geo_location_mapping_for_verification() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @And("assert if the information is correct or not")
+    public void assert_if_the_information_is_correct_or_not() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
 }
