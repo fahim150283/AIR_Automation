@@ -150,7 +150,7 @@ public class GeoLocationMapping extends Page_Options {
 
     @When("search for Geo Location Mappings of an user and copy important elements from Geo Location Mapping")
     public void search_for_geo_location_mappings_of_an_user_and_copy_important_elements_from_geo_location_mapping() throws InterruptedException {
-        xpath = "//*[@id=\"geo_location_mapping_tableData\"]";
+        xpath = "//*[@id=\"geo_location_mapping_table\"]";
         getRowCountByNameAndDate(xpath, "Sheikh Salah Uddin (1085)");
 //        System.out.println(x);
 //        //a 2 dimensional array to store data

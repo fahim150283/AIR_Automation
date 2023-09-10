@@ -238,8 +238,9 @@ public class Page_Options extends BrowserUtils {
         return s;
     }
 
-    public static void getRowCountByNameAndDate(String xpath, String name) {
+    public static void getRowCountByNameAndDate(String xpath, String name) throws InterruptedException {
         // Find all the rows in the table
+        Thread.sleep(2000);
         WebElement table =  driver.findElement(By.xpath(xpath));
         int rowCount = table.findElements(By.tagName("tr")).size();
         System.out.print(rowCount+" row count");

@@ -24,10 +24,9 @@ public class test extends Page_Options {
         Thread.sleep(2000);
         driver.get("http://192.168.11.182/air_2/views/geo_location_mapping/");
 
+//        Thread.sleep(2000);
         xpath = "//*[@id=\"geo_location_mapping_tableData\"]";
-        WebElement table = driver.findElement(By.xpath(xpath));
-        int rowCount = table.findElements(By.tagName("tr")).size();
-        System.out.println(rowCount);
+        getRowCountByNameAndDate(xpath,"nothing");
 
 //        int cnt = 0;
 //
@@ -45,6 +44,6 @@ public class test extends Page_Options {
 //            }
 //        }
 //        System.out.println(cnt);
-
+        closedriver();
     }
 }
