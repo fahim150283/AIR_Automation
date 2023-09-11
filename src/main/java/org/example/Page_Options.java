@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.LocalDate;
@@ -303,5 +304,19 @@ public class Page_Options extends BrowserUtils {
             }
         }
         return dataArray;
+    }
+
+    public static String getSelectedoptionNameByXpath(String xpath) {
+        WebElement selectElement = driver.findElement(By.xpath(xpath));
+
+// Create a Select object
+        Select select = new Select(selectElement);
+
+// Get the selected option
+        WebElement selectedOption = select.getFirstSelectedOption();
+
+// Get the text of the selected option
+        String selectedText = selectedOption.getText();
+        return selectedText;
     }
 }

@@ -17,6 +17,7 @@
             <class name="org.example.Runner.DistributorsTestRunner"></class>
             <class name="org.example.Runner.GoodsRequisitionTestRunner"></class>
             <class name="org.example.Runner.GeoLocationMappingTestRunner"></class>
+            <class name="org.example.Runner.AppsTestRunner"></class>
         </classes>
     </test>
 </suite>

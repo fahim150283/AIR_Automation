@@ -175,9 +175,10 @@ public class GeoLocationMapping extends Page_Options {
            verify the new  Geo Location Mapping in orders
     */
     @Given("Login to copy the data for ordering by an user")
-    public void login_to_copy_the_data_for_ordering_by_an_user() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void login_to_copy_the_data_for_ordering_by_an_user() throws InterruptedException {
+        Login(user_Siam);
+        Thread.sleep(1000);
+        driver.get("http://192.168.11.182/air_2/views/orders/");
     }
     @When("in create new order, copy the elements of order location")
     public void in_create_new_order_copy_the_elements_of_order_location() {
