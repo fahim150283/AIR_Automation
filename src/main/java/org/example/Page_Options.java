@@ -200,7 +200,7 @@ public class Page_Options extends BrowserUtils {
         WebElement inputElement = driver.findElement(By.xpath(s));
 
         // Check if the input has a value
-        String value = inputElement.getText();
+        String value = inputElement.getAttribute("textContent");
         return value;
     }
 
@@ -298,8 +298,6 @@ public class Page_Options extends BrowserUtils {
                 //close modal
                 xpath = "//*[@id=\"modal_view\"]/div/div/div[3]/button";
                 clickbyxpath(xpath);
-
-
                 tempcnt++;
             }
         }
@@ -319,4 +317,6 @@ public class Page_Options extends BrowserUtils {
         String selectedText = selectedOption.getText();
         return selectedText;
     }
+
+
 }

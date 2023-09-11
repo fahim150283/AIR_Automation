@@ -20,12 +20,14 @@ import java.util.Random;
 public class test extends Page_Options {
     @Test
     public void login_for_creating_new_pre_invoice() throws InterruptedException {
-//        Login(user_Siam);
-//        Thread.sleep(2000);
-//        driver.get("http://192.168.11.182/air_2/views/geo_location_mapping/");
-//
-        String x= "";
-        String y=null;
-        if (x==y){System.out.println("ok");}
+        String s ="fight club";
+        boolean found_app = false;
+        System.out.println(s+" actual");
+        name = "fight club";
+        System.out.println(name+" expected");
+        if (name == s) {
+            found_app = true;
+        }
+        System.out.println(found_app);
     }
 }
