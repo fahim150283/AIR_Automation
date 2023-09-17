@@ -236,31 +236,109 @@ public class Apps extends Page_Options {
             }
         }
 
+        Thread.sleep(1000);
+
         for (int i = 1; i <= 3; i++) {
             //click the employees field
-            xpath = "//*[@id=\"select2-add_emp_list_1-container\"]";
-            waitById(id);
-            clickbyId(id);
-//            //search for user
-//            xpath = "//*[@id=\"modal_emp\"]/span/span/span[1]/input";
-//            waitByxpath(xpath);
-//            if (i != 1) {
-//                inputbyxpath(xpath, "2062");
-//            } else {
-//                inputbyxpath(xpath, "1221");
-//            }
-//            pressEnterbyXpath(xpath);
-//            if (i < 2) {
-//                //add another row
-//                id = "add-row";
-//                clickbyId(id);
-//            }
+            xpath = "//*[@id=\"select2-add_emp_list_"+i+"-container\"]";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
+            //search for user
+            xpath = "//*[@id=\"modal_emp\"]/span/span/span[1]/input";
+            waitByxpath(xpath);
+            if (i != 1) {
+                inputbyxpath(xpath, "2062");
+            } else {
+                inputbyxpath(xpath, "1221");
+            }
+            pressEnterbyXpath(xpath);
+            if (i < 3) {
+                //add another row
+                id = "add-row";
+                clickbyId(id);
+            }
         }
+        //delete the last employee
+        xpath = "//*[@id=\"include_emp_func_tbody\"]/tr[3]/td[1]/input";
+        clickbyxpath(xpath);
+        xpath = "//*[@id=\"delete-row\"]";
+        clickbyxpath(xpath);
+
+        //add functions for the employee
+        id = "check_APPR";
+        clickbyId(id);
+        id = "check_CREATE";
+        clickbyId(id);
+        id = "check_EDIT";
+        clickbyId(id);
+        id = "check_LIST";
+        clickbyId(id);
+        id = "check_PRINT";
+        clickbyId(id);
+        id = "check_PRINTL";
+        clickbyId(id);
+        id = "check_VIEW";
+        clickbyId(id);
+
+        //click the save button
+        id = "save";
+        clickbyId(id);
     }
 
     @Then("Close the driver for app permission")
-    public void close_the_driver_for_app_permission() {
+    public void close_the_driver_for_app_permission() throws InterruptedException {
+        closedriver();
+    }
 
+
+    /*
+    verify if the user has access to the app
+    */
+    @Given("login for checking access of first user")
+    public void login_for_checking_access_of_first_user() {
+        Login(user_Siam);
+    }
+    @And("verify from the side panel for the first user")
+    public void verify_from_the_side_panel_for_the_first_user() throws InterruptedException {
+        Thread.sleep(2000);
+        // Specify the XPath to locate the element containing the string
+        String xpathExpression = "//*[contains(text(), 'Fight_Club')]";
+
+        // Find the element using the XPath
+        WebElement element = driver.findElement(By.xpath(xpathExpression));
+
+        Boolean found = false;
+        if(element != null){
+            found = true;
+        }
+        Assert.assertTrue(found);
+    }
+    @And("close driver for verification of app permission for first user")
+    public void close_driver_for_verification_of_app_permission_for_first_user() throws InterruptedException {
+        closedriver();
+    }
+    @Then("login for checking access of 2nd user")
+    public void login_for_checking_access_of_2nd_user() {
+        Login(user_Fahim);
+    }
+    @And("verify from the side panel for the 2nd user")
+    public void verify_from_the_side_panel_for_the_2nd_user() throws InterruptedException {
+        Thread.sleep(2000);
+        // Specify the XPath to locate the element containing the string
+        String xpathExpression = "//*[contains(text(), 'Fight_Club')]";
+
+        // Find the element using the XPath
+        WebElement element = driver.findElement(By.xpath(xpathExpression));
+
+        Boolean found = false;
+        if(element != null){
+            found = true;
+        }
+        Assert.assertTrue(found);
+    }
+    @And("close driver for verification of app permission for 2nd user")
+    public void close_driver_for_verification_of_app_permission_for_2nd_user() throws InterruptedException {
+        closedriver();
     }
 
 }

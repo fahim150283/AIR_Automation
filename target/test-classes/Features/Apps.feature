@@ -19,3 +19,11 @@ Feature: Apps Test
     When search for the app to give access
     And add permission
     Then Close the driver for app permission
+
+  Scenario: verify if the user has access to the app
+    Given login for checking access of first user
+    And verify from the side panel for the first user
+    And close driver for verification of app permission for first user
+    Then login for checking access of 2nd user
+    And verify from the side panel for the 2nd user
+    And close driver for verification of app permission for 2nd user
