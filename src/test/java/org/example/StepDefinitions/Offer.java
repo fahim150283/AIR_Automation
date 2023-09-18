@@ -65,7 +65,7 @@ public class Offer extends Page_Options {
         inputbyid(id, "08/08/002035'T'01:001P");
 
 
-        //Products Included in the Offer
+        //Products.feature Included in the Offer
 
         //Number of categories
         int num_of_category = 3;

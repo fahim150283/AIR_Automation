@@ -11,7 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.Random;
 
 public class Page_Options extends BrowserUtils {
@@ -230,6 +229,15 @@ public class Page_Options extends BrowserUtils {
         return result;
     }
 
+    public static int randomnumber() {
+        // Create a Random object
+        Random random = new Random();
+        // Generate a random number
+        int randomNumber = random.nextInt(99999);
+
+        return randomNumber;
+    }
+
     public static void row_element_click_By_xpath_and_id(String xpath, String id) {
 //        System.out.println(xpath +" , "+id);
         WebElement element1 = driver.findElement(By.xpath(xpath));
@@ -309,7 +317,7 @@ public class Page_Options extends BrowserUtils {
         return dataArray;
     }
 
-    public static String getSelectedoptionNameByXpath(String xpath) {
+    public static String getSelectedOptionNameByXpath(String xpath) {
         WebElement selectElement = driver.findElement(By.xpath(xpath));
 
 // Create a Select object
