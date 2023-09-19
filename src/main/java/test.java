@@ -18,16 +18,19 @@ import java.io.IOException;
 import java.util.Random;
 
 public class test extends Page_Options {
+    String arr[] = new String[2];
+    String s = "valobasha naai re vai";
+
     @Test
     public void login_for_creating_new_pre_invoice() throws InterruptedException {
-        String s ="fight club";
-        boolean found_app = false;
-        System.out.println(s+" actual");
-        name = "fight club";
-        System.out.println(name+" expected");
-        if (name == s) {
-            found_app = true;
-        }
-        System.out.println(found_app);
+        arr[0]="valobasha";
+        arr[1]="vai";
+    }
+    @Test
+    public void test(){
+        boolean t = s.contains(arr[0]);
+        System.out.println(t);
+        boolean at = s.contains(arr[1]);
+        System.out.println(at);
     }
 }

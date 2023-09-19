@@ -8,9 +8,11 @@ import org.example.Page_Options;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class Products extends Page_Options {
-    String arr[] = new String[2];
+    String productname = "TestProduct7";
+    String productcode = "44454";
 
 
     /*
@@ -23,7 +25,6 @@ public class Products extends Page_Options {
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }
-
     @When("create new  Product")
     public void create_new_product() throws InterruptedException {
         Thread.sleep(2000);
@@ -35,14 +36,12 @@ public class Products extends Page_Options {
         //product code
         xpath = "//*[@id=\"product_code\"]";
         waitByxpath(xpath);
-        arr[0] = "" + randomnumber();
-        inputbyxpath(xpath, arr[0]);
+        inputbyxpath(xpath, productcode);
 
         //product name
         xpath = "//*[@id=\"product_name\"]";
         waitByxpath(xpath);
-        arr[1] = randomTestString();
-        inputbyxpath(xpath, arr[1]);
+        inputbyxpath(xpath, productname);
 
         //product category
         xpath = "//*[@id=\"select2-product_category-container\"]";
@@ -101,7 +100,6 @@ public class Products extends Page_Options {
         xpath = "//*[@id=\"product_data\"]/div[2]/button";
         clickbyxpath(xpath);
     }
-
     @And("verify that the Product is created and listed in the Products list")
     public void verify_that_the_product_is_created_and_listed_in_the_products_list() throws InterruptedException {
         Thread.sleep(2000);
@@ -109,7 +107,7 @@ public class Products extends Page_Options {
         //search for the product
         xpath = "//*[@id=\"myInput\"]";
         clickbyxpath(xpath);
-        inputbyxpath(xpath, arr[0]);
+        inputbyxpath(xpath, productcode);
 
         // verify the created product
         WebElement table = driver.findElement(By.id("productData"));
@@ -120,9 +118,10 @@ public class Products extends Page_Options {
             // Check if the row is displayed
             if (!row.getAttribute("style").contains("display: none;")) {
                 // Find and click the "Add App Permissions" button for the visible row
-                for (int k = 1; k <= arr.length; k++) {
-                    Assert.assertEquals(arr[k-1], row.findElement(By.xpath(".//td["+k+"]")).getText());
-                }
+
+                    Assert.assertEquals(productcode, row.findElement(By.xpath(".//td[1]")).getText());
+                Assert.assertEquals(productname, row.findElement(By.xpath(".//td[2]")).getText());
+
             }
         }
     }
@@ -148,7 +147,7 @@ public class Products extends Page_Options {
         //search for product
         id = "myInput";
         waitById(id);
-        inputbyid(id,"test");
+        inputbyid(id,productcode);
 
         // click the edit button of the displayed product
         WebElement table = driver.findElement(By.id("productData"));
@@ -165,18 +164,10 @@ public class Products extends Page_Options {
         }
 
         //product code
-        xpath = "//*[@id=\"edit_product_code\"]";
-        waitByxpath(xpath);
-        clearByXpath(xpath);
-        arr[0] = "" + randomnumber();
-        inputbyxpath(xpath, arr[0]);
+        //not editing
 
         //product name
-        xpath = "//*[@id=\"edit_product_name\"]";
-        waitByxpath(xpath);
-        clearByXpath(xpath);
-        arr[1] = randomTestString();
-        inputbyxpath(xpath, arr[1]);
+        //not editing
 
         //product category
         xpath = "//*[@id=\"select2-edit_product_category-container\"]";
@@ -285,10 +276,23 @@ public class Products extends Page_Options {
         inputbyxpath(xpath,"test");
         pressEnterbyXpath(xpath);
 
-        //
+        //plus button
+        id = "c_add_inv_prod";
+        waitById(id);
+        clickbyId(id);
+
+        Thread.sleep(500);
+
+        //get the text from the item list
+        xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[1]";
+        String iteminfo = getTextbyXpath(xpath);
+
+        Assert.assertTrue(iteminfo.contains(productcode));
+        Assert.assertTrue(iteminfo.contains(productname));
     }
     @Then("Close the driver for checking if the Product is found while ordering")
-    public void close_the_driver_for_checking_if_the_product_is_found_while_ordering() {
-
+    public void close_the_driver_for_checking_if_the_product_is_found_while_ordering() throws InterruptedException {
+        closedriver();
     }
+
 }
