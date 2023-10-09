@@ -53,7 +53,7 @@ public class Page_Options extends BrowserUtils {
         LocalDateTime currentDateTime = LocalDateTime.now();
 
         // Format the date and time with AM/PM
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyyyy'T'hh:mm a");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyyyy'T'hh:mma");
         String formattedDateTime = currentDateTime.format(formatter);
 //        System.out.println(formattedDateTime);
         return formattedDateTime;
@@ -75,7 +75,7 @@ public class Page_Options extends BrowserUtils {
         LocalDateTime futureDateTime = currentDateTime.minusMonths(1);
 
         // Format the date and time with AM/PM
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyyyy'T'hh:mm a");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyyyy'T'hh.mma");
         String formattedDateTime = futureDateTime.format(formatter);
         System.out.println(formattedDateTime);
         return formattedDateTime;

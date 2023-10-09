@@ -11,8 +11,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Products extends Page_Options {
-    String productname = "TestProduct7";
-    String productcode = "44454";
+    String productname = "TestProduct686";
+    String productcode = "63456";
+    String price = "1800.00";
 
 
     /*
@@ -221,7 +222,7 @@ public class Products extends Page_Options {
         //distributor price
         id = "new_dist_price";
         waitById(id);
-        inputbyid(id, "1800");
+        inputbyid(id, price);
 
         //effective from
         id = "new_eff_from";
@@ -250,45 +251,100 @@ public class Products extends Page_Options {
     }
     @When("check if the product is available for order")
     public void check_if_the_product_is_available_for_order() throws InterruptedException {
-        Thread.sleep(2000);
+        boolean correctdate = false;
+        if (correctdate == true){
+            Thread.sleep(2000);
 
-        //click the create new pre invoice
-        xpath = "//*[@id=\"tableData_wrapper\"]/div[1]/button[4]";
-        clickbyxpath(xpath);
-        //pre Invoice date
-        xpath = "//*[@id=\"c_ord_date\"]";
-        clickbyxpath(xpath);
-        inputbyxpath(xpath, getToday());
+            //click the create new pre invoice
+            xpath = "//*[@id=\"tableData_wrapper\"]/div[1]/button[4]";
+            clickbyxpath(xpath);
+            //pre Invoice date
+            xpath = "//*[@id=\"c_ord_date\"]";
+            clickbyxpath(xpath);
+            inputbyxpath(xpath, getToday());
 
-        //wait and click distributors
-        id = "select2-distributor_list-container";
-        waitById(id);
-        clickbyId(id);
-        //search for bhai bhai and hit enter
-        cssSelector = ".select2-search--dropdown > .select2-search__field";
-        inputbycssselector(cssSelector,"bhai bhai");
-        cssSelectorPressEnter(cssSelector);
+            //wait and click distributors
+            id = "select2-distributor_list-container";
+            waitById(id);
+            clickbyId(id);
+            //search for bhai bhai and hit enter
+            cssSelector = ".select2-search--dropdown > .select2-search__field";
+            inputbycssselector(cssSelector,"bhai bhai");
+            cssSelectorPressEnter(cssSelector);
 
-        //add product
-        xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[4]/div[6]/span/span[1]/span";
-        Thread.sleep(0500);
-        waitByxpath(xpath);
-        inputbyxpath(xpath,"test");
-        pressEnterbyXpath(xpath);
+            //add product
+            xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[4]/div[6]/span/span[1]/span";
+            Thread.sleep(0500);
+            waitByxpath(xpath);
+            inputbyxpath(xpath,"test");
+            pressEnterbyXpath(xpath);
 
-        //plus button
-        id = "c_add_inv_prod";
-        waitById(id);
-        clickbyId(id);
+            //plus button
+            id = "c_add_inv_prod";
+            waitById(id);
+            clickbyId(id);
 
-        Thread.sleep(500);
+            Thread.sleep(500);
 
-        //get the text from the item list
-        xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[1]";
-        String iteminfo = getTextbyXpath(xpath);
+            //get the text from the item list
+            xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[1]";
+            String iteminfo = getTextbyXpath(xpath);
 
-        Assert.assertTrue(iteminfo.contains(productcode));
-        Assert.assertTrue(iteminfo.contains(productname));
+            Assert.assertTrue(iteminfo.contains(productcode));
+            Assert.assertTrue(iteminfo.contains(productname));
+
+            //get the price from the item list
+            xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[4]";
+            String itemprice = getTextbyXpath(xpath);
+            Assert.assertEquals(itemprice,price);
+        }else{
+            Thread.sleep(2000);
+
+            //click the create new pre invoice
+            xpath = "//*[@id=\"tableData_wrapper\"]/div[1]/button[4]";
+            clickbyxpath(xpath);
+            //pre Invoice date
+            xpath = "//*[@id=\"c_ord_date\"]";
+            clickbyxpath(xpath);
+            inputbyxpath(xpath, getLastMonth());
+
+            Thread.sleep(6000);
+
+            //wait and click distributors
+            id = "select2-distributor_list-container";
+            waitById(id);
+            clickbyId(id);
+            //search for bhai bhai and hit enter
+            cssSelector = ".select2-search--dropdown > .select2-search__field";
+            inputbycssselector(cssSelector,"bhai bhai");
+            cssSelectorPressEnter(cssSelector);
+
+            //add product
+            xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[4]/div[6]/span/span[1]/span";
+            Thread.sleep(0500);
+            waitByxpath(xpath);
+            inputbyxpath(xpath,productcode);
+            pressEnterbyXpath(xpath);
+
+            //plus button
+            id = "c_add_inv_prod";
+            waitById(id);
+            clickbyId(id);
+
+            Thread.sleep(1000);
+
+            //get the text from the item list
+            xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[1]";
+            String iteminfo = getTextbyXpath(xpath);
+
+            Assert.assertTrue(iteminfo.contains(productcode));
+            Assert.assertTrue(iteminfo.contains(productname));
+
+            //get the price from the item list
+            xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[4]";
+            String itemprice = getTextbyXpath(xpath);
+            Assert.assertEquals(itemprice,price);
+        }
     }
     @Then("Close the driver for checking if the Product is found while ordering")
     public void close_the_driver_for_checking_if_the_product_is_found_while_ordering() throws InterruptedException {
