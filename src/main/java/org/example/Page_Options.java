@@ -77,7 +77,7 @@ public class Page_Options extends BrowserUtils {
         // Format the date and time with AM/PM
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyyyy'T'hh.mma");
         String formattedDateTime = futureDateTime.format(formatter);
-        System.out.println(formattedDateTime);
+//        System.out.println(formattedDateTime);
         return formattedDateTime;
     }
 
@@ -254,7 +254,7 @@ public class Page_Options extends BrowserUtils {
 
     public static int getTotalRowCountByXpath(String xpath) throws InterruptedException {
         // Find all the rows in the table
-        Thread.sleep(2000);
+        Thread.sleep(300);
         WebElement table = driver.findElement(By.xpath(xpath));
         int TotalRowCount = table.findElements(By.tagName("tr")).size();
 //        System.out.println(TotalRowCount+" Total row count");
