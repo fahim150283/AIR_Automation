@@ -22,7 +22,8 @@ public class Page_Options extends BrowserUtils {
     public static String tempName;
 
     public static void navigatetourl(String URL) {
-        setDriver();
+        setDriverChrome();
+//        setDriverFirefox();
         driver.manage().window().maximize();
         driver.get(URL);
     }

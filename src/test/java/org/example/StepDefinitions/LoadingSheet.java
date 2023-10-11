@@ -1,6 +1,5 @@
 package org.example.StepDefinitions;
 
-import com.sun.jndi.cosnaming.ExceptionMapper;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -90,6 +89,7 @@ public class LoadingSheet extends Page_Options {
         xpath = "/html/body/span/span/span[1]/input";
         inputbyxpath(xpath, "siam");
         pressEnterbyXpath(xpath);
+        clickbyId(id);
 
         //driver name
         xpath = "//*[@id=\"driver_name\"]";
@@ -196,7 +196,7 @@ public class LoadingSheet extends Page_Options {
     }
     @Then("close driver for printing Loading sheets")
     public void close_driver_for_printing_loading_sheets() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         closedriver();
     }
 }

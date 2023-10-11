@@ -6,26 +6,35 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-public class BrowserUtils  {
+public class BrowserUtils {
     public static WebDriver driver;
     public static String[] returnedarray = ReadJson.readJsonData();
-    public static String url =returnedarray[0];
-    public static String user_Fahim =returnedarray[1];
-    public static String user_Polash =returnedarray[2];
-    public static String user_Siam =returnedarray[3];
-    public static String password =returnedarray[4];
+    public static String url = returnedarray[0];
+    public static String user_Fahim = returnedarray[1];
+    public static String user_Polash = returnedarray[2];
+    public static String user_Siam = returnedarray[3];
+    public static String password = returnedarray[4];
 
-    public static void setDriver() {
+    public static void setDriverChrome() {
         System.setProperty("webdriver.chrome.driver", "C:/BrowserDriver/chromedriver.exe");
         ChromeOptions co = new ChromeOptions();
         co.setBinary("C:/BrowserDriver/chrome-win64/chrome-win64/chrome.exe");
         driver = new ChromeDriver(co);
+    }
+
+    public static void setDriverFirefox(){
+        // Setup Firefox WebDriver using webdrivermanager
+        System.setProperty("webdriver.gecko.driver", "D:/Software/geckodriver.exe");
+        FirefoxOptions options = new FirefoxOptions();
+        options.setBinary("C:/Users/h.abul/AppData/Local/Mozilla Firefox/firefox.exe");
+        driver = new FirefoxDriver(options);
     }
 
     public static void closedriver() throws InterruptedException {
