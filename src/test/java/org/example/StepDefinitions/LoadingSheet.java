@@ -104,7 +104,7 @@ public class LoadingSheet extends Page_Options {
         dropdown.selectByVisibleText("88086 ~~ ikone - Chocolate -- 121.00ml (REGULAR -- CONE)");
         dropdown.selectByVisibleText("88084 ~~ ikone - Vanilla -- 121.00ml (REGULAR -- CONE)");
 
-        //click the plus button
+        //click the plus(+) button
         xpath = "//*[@id=\"add_goods_table\"]";
         clickbyxpath(xpath);
 
