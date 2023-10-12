@@ -21,11 +21,13 @@ public class ReadJson {
             Object obj = parser.parse(reader);
             JSONObject jsonObject = (JSONObject) obj;
 
-            url = (String) jsonObject.get("url");
-            user_Fahim = (String) jsonObject.get("user_Fahim");
-            user_Polash = (String) jsonObject.get("user_Polash");
-            user_Siam = (String) jsonObject.get("user_Siam");
-            password = (String) jsonObject.get("password");
+            // Read data from the "Login" object
+            JSONObject loginObject = (JSONObject) jsonObject.get("Login");
+            url = (String) loginObject.get("url");
+            user_Fahim = (String) loginObject.get("user_Fahim");
+            user_Polash = (String) loginObject.get("user_Polash");
+            user_Siam = (String) loginObject.get("user_Siam");
+            password = (String) loginObject.get("password");
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();

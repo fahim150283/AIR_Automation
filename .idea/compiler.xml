@@ -9,5 +9,8 @@
         <module name="Cucumber_For_AIR" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Ultimate_Cucumber" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

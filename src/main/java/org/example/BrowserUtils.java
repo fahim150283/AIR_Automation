@@ -1,26 +1,17 @@
 package org.example;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
-
-public class BrowserUtils {
+public class BrowserUtils extends ReadJson {
     public static WebDriver driver;
-    public static String[] returnedarray = ReadJson.readJsonData();
-    public static String url = returnedarray[0];
-    public static String user_Fahim = returnedarray[1];
-    public static String user_Polash = returnedarray[2];
-    public static String user_Siam = returnedarray[3];
-    public static String password = returnedarray[4];
+    public static String[] returnedarray = ReadJson.readJsonData();  //This is just to call the method to read the files
+
 
     public static void setDriverChrome() {
         System.setProperty("webdriver.chrome.driver", "C:/BrowserDriver/chromedriver.exe");
