@@ -5,5 +5,110 @@
     "user_Polash": "k.polash",
     "user_Siam": "mh.siam",
     "password": "savoy123"
+  },
+
+  "Items": {
+    "Item1":"regular kulfi",
+    "Item2":"chocobar mini",
+    "Item3":"Crunchie Bar",
+    "Item4":"Shahi Kulfi",
+    "Item5":"Coffee Cup (N)"
+  },
+
+  "Contacts": {
+    "SearchInfo": "Siam"
+  },
+  
+
+  "PreInvoice": {
+    "SearchInfo": "12012",
+    "DistributorSearch":"bhai bhai",
+    "ItemQuantity":"20"
+  },
+  
+  "PreviousPendingDelivery": {
+    "SearchInfo": "12012",
+    "DistributorSearch":"bhai bhai"
+  },
+  
+  "Apps": {
+    "SearchInfo": "12012",
+    "DistributorSearch":"bhai bhai"
+  },
+  
+  "Order": {
+    "SearchInfo": "12012",
+    "DistributorSearch":"bhai bhai"
+  },
+  
+  "CancelOrder": {
+    "SearchInfo": "12012",
+    "DistributorSearch":"bhai bhai"
+  },
+  
+  "DistributorInvoice": {
+    "SearchInfo": "12012",
+    "DistributorSearch":"bhai bhai"
+  },
+  
+  "Cancel Invoice": {
+    "SearchInfo": "12012",
+    "DistributorSearch":"bhai bhai"
+  },
+  
+  "Complementary Invoice": {
+    "SearchInfo": "12012",
+    "DistributorSearch":"bhai bhai"
+  },
+  
+  "Collection": {
+    "SearchInfo": "12012",
+    "DistributorSearch":"bhai bhai"
+  },
+  
+  "Good Requisition and On Vehicle Store": {
+    "SearchInfo": "12012",
+    "DistributorSearch":"bhai bhai"
+  },
+  
+  "Finish Goods Store": {
+    "SearchInfo": "12012",
+    "DistributorSearch":"bhai bhai"
+  },
+  
+  "Distributors": {
+    "SearchInfo": "12012",
+    "DistributorSearch":"bhai bhai"
+  },
+  
+  "Offer": {
+    "SearchInfo": "12012",
+    "DistributorSearch":"bhai bhai"
+  },
+  
+  "Products Category  ": {
+    "SearchInfo": "12012",
+    "DistributorSearch":"bhai bhai"
+  },
+  
+  "Products": {
+    "SearchInfo": "12012",
+    "DistributorSearch":"bhai bhai"
+  },
+  
+  "Sales Return  ": {
+    "SearchInfo": "12012",
+    "DistributorSearch":"bhai bhai"
+  },
+  
+  "Loading Sheet": {
+    "SearchInfo": "12012",
+    "DistributorSearch":"bhai bhai"
+  },
+
+  "Logout": {
+    "SearchInfo": "12012",
+    "DistributorSearch":"bhai bhai"
   }
+  
 }

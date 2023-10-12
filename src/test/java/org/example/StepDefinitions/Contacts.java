@@ -13,11 +13,11 @@ public class Contacts extends Page_Options {
     }
 
     @When("search for employee")
-    public void search_for_employee() {
+    public void search_for_employee() throws InterruptedException {
         id = "search";
         waitById(id);
-        tempName = "Abul Hossain";
-        inputbyid(id,tempName);
+        Thread.sleep(2000);
+        inputbyid(id,ContactsSearchInfo);
     }
 
     @Then("^close Contacts$")

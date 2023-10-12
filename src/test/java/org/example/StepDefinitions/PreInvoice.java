@@ -24,7 +24,7 @@ public class PreInvoice extends Page_Options {
     public void search_for_pre_invoice() {
         xpath = "//*[@id=\"tableData_filter\"]/label/input";
         waitByxpath(xpath);
-        inputbyxpath(xpath, "12012");
+        inputbyxpath(xpath, PreInvoiceSearchInfo);
     }
 
     @And("description of a preinvoice")
@@ -59,15 +59,14 @@ public class PreInvoice extends Page_Options {
         xpath = "//*[@id=\"c_ord_date\"]";
         //waitByxpath(xpath);
         clickbyxpath(xpath);
-        inputbyxpath(xpath,getToday());
+        inputbyxpath(xpath, getToday());
         //wait and click distributors
         id = "select2-distributor_list-container";
         waitById(id);
         clickbyId(id);
-
         //search for bhai bhai and hit enter
         cssSelector = ".select2-search--dropdown > .select2-search__field";
-        inputbycssselector(cssSelector,"bhai bhai");
+        inputbycssselector(cssSelector, PreInvoiceDistributorSearch);
         cssSelectorPressEnter(cssSelector);
 //        //wait and click routes
 //        xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[2]/div[3]/span";
@@ -89,26 +88,31 @@ public class PreInvoice extends Page_Options {
 //            clickbyxpath(xpath);
 //        }
 
-        //click the items bar
-        xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[4]/div[6]/span/span[1]/span";
-        Thread.sleep(0500);
-        waitByxpath(xpath);
-        inputbyxpath(xpath,"kulfi");
-        pressEnterbyXpath(xpath);
+
+        //notes
+        id = "c_notes";
+        inputbyid(id, "Automated Test");
+
+        //click the items bar and add 5 items
+        for (int i = 0; i < 5; i++) {
+            xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[4]/div[6]/span/span[1]/span";
+            Thread.sleep(0500);
+            waitByxpath(xpath);
+            inputbyxpath(xpath, PreInvoiceItems[i]);
+            pressEnterbyXpath(xpath);
+        }
 
         // press the plus button
         id = "c_add_inv_prod";
         clickbyId(id);
 
         //click the amount buttons for the quantity of the items
-        xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[5]/input";
-        waitByxpath(xpath);
-        clearByXpath(xpath);
-        inputbyxpath(xpath, "10");
-
-        //notes
-        id = "c_notes";
-        inputbyid(id, "Automated Test");
+        for (int i = 0; i < PreInvoiceItems.length; i++) {
+            xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[5]/input";
+            waitByxpath(xpath);
+            clearByXpath(xpath);
+            inputbyxpath(xpath,PreInvoiceItemQuantity);
+        }
 
         //Save
         id = "add_region";

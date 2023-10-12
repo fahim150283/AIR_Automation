@@ -10,7 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BrowserUtils extends ReadJson {
     public static WebDriver driver;
-    public static String[] returnedarray = ReadJson.readJsonData();  //This is just to call the method to read the files
+    public static String[] returnedarray = ReadJson.readJsonData();  //This is just to call the function to read the files.
+    // This is not gonna be used anywhere but the json data will be
 
 
     public static void setDriverChrome() {
