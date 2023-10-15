@@ -8,11 +8,21 @@
   },
 
   "Items": {
-    "Item1":"regular kulfi",
-    "Item2":"chocobar mini",
-    "Item3":"Crunchie Bar",
-    "Item4":"Shahi Kulfi",
-    "Item5":"Coffee Cup (N)"
+    "Item1":"88003",
+    "Item2":"88153",
+    "Item3":"88203",
+    "Item4":"88152",
+    "Item5":"88085",
+    "Item6":"88083",
+    "Item7":"88198",
+    "Item8":"88009",
+    "Item9":"88154",
+    "Item10":"88155",
+    "Item11":"88157",
+    "Item12":"88208",
+    "Item13":"88158",
+    "Item14":"88204",
+    "Item15":"88156"
   },
 
   "Contacts": {

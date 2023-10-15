@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class ReadJson {
     public static String url;
-    public static String ItemsArray [] = new String[5];
+    public static String ItemsArray [] = new String[15];
     public static String user_Fahim;
     public static String user_Polash;
     public static String user_Siam;
@@ -18,7 +18,7 @@ public class ReadJson {
     public static String PreInvoiceSearchInfo;
     public static String PreInvoiceDistributorSearch;
     public static String PreInvoiceItemQuantity;
-    public static String PreInvoiceItems [] = new String[5];;
+    public static String PreInvoiceItems [] = new String[15];;
 
 
     public static String[] readJsonData(){
@@ -42,11 +42,10 @@ public class ReadJson {
 
             // Read data from the "Items" object
             JSONObject ItemsObject = (JSONObject) jsonObject.get("Items");
-            ItemsArray[0] = (String) ItemsObject.get("Item1");
-            ItemsArray[1] = (String) ItemsObject.get("Item2");
-            ItemsArray[2] = (String) ItemsObject.get("Item3");
-            ItemsArray[3] = (String) ItemsObject.get("Item4");
-            ItemsArray[4] = (String) ItemsObject.get("Item5");
+            for (int i = 0; i < ItemsArray.length; i++) {
+                ItemsArray[i] = (String) ItemsObject.get("Item"+(i+1)+"");
+            }
+
 
 
             // Read data from the "PreInvoice" object

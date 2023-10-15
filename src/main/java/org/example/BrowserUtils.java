@@ -73,6 +73,7 @@ public class BrowserUtils extends ReadJson {
 
 
     public static void inputbyxpath(String xpath, String s) {
+        waitByxpath(xpath);
         WebElement element = driver.findElement(By.xpath(xpath));
         //element.click();
         element.sendKeys(s);

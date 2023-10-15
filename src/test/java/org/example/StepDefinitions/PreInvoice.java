@@ -6,6 +6,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 public class PreInvoice extends Page_Options {
@@ -94,24 +96,29 @@ public class PreInvoice extends Page_Options {
         inputbyid(id, "Automated Test");
 
         //click the items bar and add 5 items
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < PreInvoiceItems.length; i++) {
             xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[4]/div[6]/span/span[1]/span";
-            Thread.sleep(0500);
-            waitByxpath(xpath);
+            Thread.sleep(1000);
+            System.out.println(PreInvoiceItems[i]);
             inputbyxpath(xpath, PreInvoiceItems[i]);
+            Thread.sleep(1000);
             pressEnterbyXpath(xpath);
-        }
+            Thread.sleep(1000);
 
-        // press the plus button
-        id = "c_add_inv_prod";
-        clickbyId(id);
+            // press the plus button
+            id = "c_add_inv_prod";
+            clickbyId(id);
+        }
+        System.out.println(PreInvoiceItems.length);
+
+
 
         //click the amount buttons for the quantity of the items
         for (int i = 0; i < PreInvoiceItems.length; i++) {
-            xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[5]/input";
+            xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
             waitByxpath(xpath);
             clearByXpath(xpath);
-            inputbyxpath(xpath,PreInvoiceItemQuantity);
+            inputbyxpath(xpath, PreInvoiceItemQuantity);
         }
 
         //Save
