@@ -98,12 +98,12 @@ public class PreInvoice extends Page_Options {
         //click the items bar and add 5 items
         for (int i = 0; i < PreInvoiceItems.length; i++) {
             xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[4]/div[6]/span/span[1]/span";
-            Thread.sleep(1000);
+            Thread.sleep(300);
             System.out.println(PreInvoiceItems[i]);
             inputbyxpath(xpath, PreInvoiceItems[i]);
-            Thread.sleep(1000);
+            Thread.sleep(300);
             pressEnterbyXpath(xpath);
-            Thread.sleep(1000);
+            Thread.sleep(300);
 
             // press the plus button
             id = "c_add_inv_prod";
@@ -115,10 +115,39 @@ public class PreInvoice extends Page_Options {
 
         //click the amount buttons for the quantity of the items
         for (int i = 0; i < PreInvoiceItems.length; i++) {
+            //ctn(quantity)
             xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
             waitByxpath(xpath);
             clearByXpath(xpath);
             inputbyxpath(xpath, PreInvoiceItemQuantity);
+            //pcs(quantity)
+            xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[6]/input";
+            waitByxpath(xpath);
+            clearByXpath(xpath);
+            inputbyxpath(xpath, PreInvoiceItemQuantity);
+            //ctn(COMP)
+            xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[9]/input";
+            waitByxpath(xpath);
+            clearByXpath(xpath);
+            inputbyxpath(xpath, PreInvoiceItemQuantity);
+            //pcs(COMP)
+            xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[10]/input";
+            waitByxpath(xpath);
+            clearByXpath(xpath);
+            inputbyxpath(xpath, PreInvoiceItemQuantity);
+
+            //remove an item
+            WebElement table = driver.findElement(By.id("c_inv_items_list"));
+            java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr["+(i+1)+"]"));
+            // Iterate through rows
+            for (WebElement row : rows) {
+                // Check if the row is displayed
+                if (i>0 && i%5==0) {
+                    // Find and click the "Add App Permissions" button for the visible row
+                    WebElement delete_Button = row.findElement(By.id("delete_table_row"));
+                    delete_Button.click();
+                }
+            }
         }
 
         //Save
