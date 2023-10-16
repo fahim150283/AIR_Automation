@@ -112,7 +112,6 @@ public class PreInvoice extends Page_Options {
         System.out.println(PreInvoiceItems.length);
 
 
-
         //click the amount buttons for the quantity of the items
         for (int i = 0; i < PreInvoiceItems.length; i++) {
             //ctn(quantity)
@@ -135,18 +134,18 @@ public class PreInvoice extends Page_Options {
             waitByxpath(xpath);
             clearByXpath(xpath);
             inputbyxpath(xpath, PreInvoiceItemQuantity);
+        }
 
-            //remove an item
-            WebElement table = driver.findElement(By.id("c_inv_items_list"));
-            java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr["+(i+1)+"]"));
-            // Iterate through rows
-            for (WebElement row : rows) {
-                // Check if the row is displayed
-                if (i>0 && i%5==0) {
-                    // Find and click the "Add App Permissions" button for the visible row
-                    WebElement delete_Button = row.findElement(By.id("delete_table_row"));
-                    delete_Button.click();
-                }
+        //remove an item
+        WebElement table = driver.findElement(By.id("c_inv_items_list"));
+        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
+        // Iterate through rows
+        for (int i = 0; i < rows.size(); i++) {
+            WebElement row = rows.get(i);
+            if (i% 5 == 0) {
+                // Find and click the "delete" button for the visible row
+                WebElement delete_Button = row.findElement(By.id("delete_table_row"));
+                delete_Button.click();
             }
         }
 
