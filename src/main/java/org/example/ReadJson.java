@@ -24,7 +24,11 @@ public class ReadJson {
     public static String PreviousPendingDeliveryItemQuantity;
     public static String PreviousPendingDeliverySearchInfo;
     public static String PreviousPendingDeliveryStore;
-    
+    public static String AppsSearchInfo;
+    public static String AppsDisplayName;
+    public static String AppsName;
+    public static String AppsLink;
+
 
 
     public static String[] readJsonData(){
@@ -69,6 +73,13 @@ public class ReadJson {
             PreviousPendingDeliveryDistributorSearch = (String) PreviousPendingDeliveryObject.get("DistributorSearch");
             PreviousPendingDeliveryStore = (String) PreviousPendingDeliveryObject.get("Store");
             PreviousPendingDeliveryItems = ItemsArray;
+
+            // Read data from the "Apps" object
+            JSONObject AppsObject = (JSONObject) jsonObject.get("Apps");
+            AppsSearchInfo = (String) AppsObject.get("SearchInfo");
+            AppsName = (String) AppsObject.get("Name");
+            AppsDisplayName = (String) AppsObject.get("Display Name");
+            AppsLink = (String) AppsObject.get("Link");
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();

@@ -36,12 +36,12 @@ public class Apps extends Page_Options {
         //fillup name
         id = "add_name";
         waitById(id);
-        inputbyid(id, "fight club");
+        inputbyid(id, AppsName);
 
         //fillup Display name
         id = "add_d_name";
         waitById(id);
-        inputbyid(id, "fight club");
+        inputbyid(id, AppsDisplayName);
 
         //functions
         xpath = "//*[@id=\"add_apps_form\"]/div/div[3]/div/span/span[1]/span";

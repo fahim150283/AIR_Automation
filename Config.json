@@ -44,8 +44,10 @@
   },
   
   "Apps": {
-    "SearchInfo": "12012",
-    "DistributorSearch":"bhai bhai"
+    "SearchInfo": "create_employee",
+    "Name":"Test App",
+    "Display Name": "Test App display",
+    "Link": "TestAppLink"
   },
   
   "Order": {
