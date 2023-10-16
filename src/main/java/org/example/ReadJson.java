@@ -18,7 +18,13 @@ public class ReadJson {
     public static String PreInvoiceSearchInfo;
     public static String PreInvoiceDistributorSearch;
     public static String PreInvoiceItemQuantity;
-    public static String PreInvoiceItems [] = new String[15];;
+    public static String PreInvoiceItems [] = new String[15];
+    public static String PreviousPendingDeliveryItems [] = new String[15];
+    public static String PreviousPendingDeliveryDistributorSearch;
+    public static String PreviousPendingDeliveryItemQuantity;
+    public static String PreviousPendingDeliverySearchInfo;
+    public static String PreviousPendingDeliveryStore;
+    
 
 
     public static String[] readJsonData(){
@@ -54,6 +60,15 @@ public class ReadJson {
             PreInvoiceItemQuantity = (String) PreInvoiceObject.get("ItemQuantity");
             PreInvoiceDistributorSearch = (String) PreInvoiceObject.get("DistributorSearch");
             PreInvoiceItems = ItemsArray;
+
+
+            // Read data from the "PreviousPendingDelivery" object
+            JSONObject PreviousPendingDeliveryObject = (JSONObject) jsonObject.get("PreviousPendingDelivery");
+            PreviousPendingDeliverySearchInfo = (String) PreviousPendingDeliveryObject.get("SearchInfo");
+            PreviousPendingDeliveryItemQuantity = (String) PreviousPendingDeliveryObject.get("ItemQuantity");
+            PreviousPendingDeliveryDistributorSearch = (String) PreviousPendingDeliveryObject.get("DistributorSearch");
+            PreviousPendingDeliveryStore = (String) PreviousPendingDeliveryObject.get("Store");
+            PreviousPendingDeliveryItems = ItemsArray;
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();
