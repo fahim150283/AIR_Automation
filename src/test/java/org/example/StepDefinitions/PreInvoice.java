@@ -95,7 +95,7 @@ public class PreInvoice extends Page_Options {
         id = "c_notes";
         inputbyid(id, "Automated Test");
 
-        //click the items bar and add 5 items
+        //click the items bar and add 15 items
         for (int i = 0; i < PreInvoiceItems.length; i++) {
             xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[4]/div[6]/span/span[1]/span";
             Thread.sleep(300);
