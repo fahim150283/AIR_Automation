@@ -172,7 +172,7 @@ public class PreviousPendingDelivery extends Page_Options {
     @Then("close the Previous Pending Delivery window")
     public void close_the_previous_pending_delivery_window() throws InterruptedException {
         Thread.sleep(4000);
-//        closedriver();
+        closedriver();
     }
 
 }
