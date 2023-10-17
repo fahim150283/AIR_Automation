@@ -124,6 +124,11 @@ public class BrowserUtils extends ReadJson {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.elementToBeClickable(By.className(name)));
         element.click();
+    }public static void RowCount(String name) {
+        WebElement element = driver.findElement(By.className(name));
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.elementToBeClickable(By.className(name)));
+        element.click();
     }
 }
 

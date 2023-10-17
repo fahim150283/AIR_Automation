@@ -1,5 +1,4 @@
 package org.example;
-
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -38,7 +37,7 @@ public class ReadJson {
     public static String[] readJsonData(){
         JSONParser parser = new JSONParser();
 
-        try (FileReader reader = new FileReader("Config.json")) {
+        try (FileReader reader = new FileReader("Test_Data.json")) {
             Object obj = parser.parse(reader);
             JSONObject jsonObject = (JSONObject) obj;
 
@@ -59,8 +58,6 @@ public class ReadJson {
             for (int i = 0; i < ItemsArray.length; i++) {
                 ItemsArray[i] = (String) ItemsObject.get("Item"+(i+1)+"");
             }
-
-
 
             // Read data from the "PreInvoice" object
             JSONObject PreInvoiceObject = (JSONObject) jsonObject.get("PreInvoice");
