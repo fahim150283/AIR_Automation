@@ -27,7 +27,11 @@ public class ReadJson {
     public static String AppsSearchInfo;
     public static String AppsDisplayName;
     public static String AppsName;
+    public static String AppsEditedDisplayName;
+    public static String AppsEditedName;
     public static String AppsLink;
+    public static String AppsEmployeeInfo1;
+    public static String AppsEmployeeInfo2;
 
 
 
@@ -80,6 +84,10 @@ public class ReadJson {
             AppsName = (String) AppsObject.get("Name");
             AppsDisplayName = (String) AppsObject.get("Display Name");
             AppsLink = (String) AppsObject.get("Link");
+            AppsEditedName = (String) AppsObject.get("Edited Name");
+            AppsEditedDisplayName = (String) AppsObject.get("Edited Display Name");
+            AppsEmployeeInfo1 = (String) AppsObject.get("Employee Info1");
+            AppsEmployeeInfo2 = (String) AppsObject.get("Employee Info2");
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();

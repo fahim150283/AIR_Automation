@@ -46,8 +46,12 @@
   "Apps": {
     "SearchInfo": "create_employee",
     "Name":"Test App",
+    "Edited Name":"Edited App",
     "Display Name": "Test App display",
-    "Link": "TestAppLink"
+    "Edited Display Name": "Edited App display",
+    "Link": "TestAppLink",
+    "Employee info1": "siam",
+    "Employee info2": "2062"
   },
   
   "Order": {
