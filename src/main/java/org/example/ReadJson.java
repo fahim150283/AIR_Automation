@@ -83,8 +83,8 @@ public class ReadJson {
             AppsLink = (String) AppsObject.get("Link");
             AppsEditedName = (String) AppsObject.get("Edited Name");
             AppsEditedDisplayName = (String) AppsObject.get("Edited Display Name");
-            AppsEmployeeInfo1 = (String) AppsObject.get("Employee Info1");
-            AppsEmployeeInfo2 = (String) AppsObject.get("Employee Info2");
+            AppsEmployeeInfo1 = (String) AppsObject.get("Employee info1");
+            AppsEmployeeInfo2 = (String) AppsObject.get("Employee info2");
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();

@@ -238,19 +238,22 @@ public class Apps extends Page_Options {
 
         Thread.sleep(1000);
 
-        for (int i = 1; i <= 3; i++) {
+        for (int i = 0; i < 3; i++) {
             //click the employees field
-            xpath = "//*[@id=\"select2-add_emp_list_"+i+"-container\"]";
+            xpath = "//*[@id=\"select2-add_emp_list_"+(i+1)+"-container\"]";
             waitByxpath(xpath);
             clickbyxpath(xpath);
             //search for user
-            xpath = "//*[@id=\"modal_emp\"]/span/span/span[1]/input";
+            Thread.sleep(900);
+            xpath = "//input[@type='search']";
+            clickbyxpath(xpath);
             waitByxpath(xpath);
             if (i != 1) {
-                inputbyxpath(xpath, AppsEmployeeInfo2);
-            } else {
                 inputbyxpath(xpath, AppsEmployeeInfo1);
+            } else {
+                inputbyxpath(xpath, AppsEmployeeInfo2);
             }
+            Thread.sleep(100);
             pressEnterbyXpath(xpath);
             if (i < 3) {
                 //add another row
