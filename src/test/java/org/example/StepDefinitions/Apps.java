@@ -241,9 +241,9 @@ public class Apps extends Page_Options {
         java.util.List<WebElement> rows1 = emptable.findElements(By.xpath(".//tr"));
 
         for (int i = 0; i < AppsEmployeeInfo.length; i++) {
-            Thread.sleep(500);
+            Thread.sleep(200);
             //click the employees field
-            xpath = "//*[@id=\"select2-add_emp_list_"+(i+1)+"-container\"]";
+            xpath = "//*[@id=\"select2-add_emp_list_" + (i + 1) + "-container\"]";
             waitByxpath(xpath);
             clickbyxpath(xpath);
             //search for user
@@ -254,29 +254,38 @@ public class Apps extends Page_Options {
             inputbyxpath(xpath, AppsEmployeeInfo[i]);
             Thread.sleep(100);
             pressEnterbyXpath(xpath);
-            if (AppsEmployeeInfo.length > rows1.size() && (i+1)< AppsEmployeeInfo.length) {
+            if (AppsEmployeeInfo.length > rows1.size() && (i + 1) < AppsEmployeeInfo.length) {
                 //add another row
                 id = "add-row";
                 clickbyId(id);
-            }else if(AppsEmployeeInfo.length < rows1.size() && (i)> AppsEmployeeInfo.length) {
+            } else if (AppsEmployeeInfo.length < rows1.size() && (i) > AppsEmployeeInfo.length) {
                 //click the selected row
-                xpath = "//*[@id=\"include_emp_func_tbody\"]/tr["+(i+1)+"]/td[1]/input";
+                xpath = "//*[@id=\"include_emp_func_tbody\"]/tr[" + (i + 1) + "]/td[1]/input";
                 clickbyxpath(xpath);
                 //remove a row
                 id = "delete-row";
                 clickbyId(id);
             }
         }
+
+        // Locate all the rows in the table
+        WebElement table1 = driver.findElement(By.id("include_emp_func_tbody"));
+        java.util.List<WebElement> rows2 = table.findElements(By.tagName("tr"));
+
         //delete an employee
-       // Iterate through rows
-//        for (int i=0;i<rows1.size();i++) {
-//            WebElement row1 = rows.get(i);
-//            // Check if the row is displayed
-//            if (row1.getAttribute("").contains(AppsEmployeeInfo[10])) {
-//                // Find and click the "Add App Permissions" button for the visible row
-//
-//            }
-//        }
+        // Iterate through the rows to find the one with "1077" in the dropdown
+        for (int i = 0; i<rows2.size(); i++) {
+            WebElement row2 = rows2.get(i);;
+            WebElement dropdown = row2.findElement(By.id("add_emp_list["+(i+1)+"]"));
+            String selectedValue = dropdown.getAttribute("value");
+
+            if (selectedValue.equals(AppsEmployeeInfo[5])) {
+                // Found the row with "1077," now click the checkbox with id "record"
+                WebElement checkbox = row2.findElement(By.id("record"));
+                checkbox.click();
+                break; // Exit the loop once the row is found
+            }
+        }
 
         //add functions for the employees
         id = "check_APPR";
@@ -312,6 +321,7 @@ public class Apps extends Page_Options {
     public void login_for_checking_access_of_first_user() {
         Login(user_Siam);
     }
+
     @And("verify from the side panel for the first user")
     public void verify_from_the_side_panel_for_the_first_user() throws InterruptedException {
         Thread.sleep(2000);
@@ -322,19 +332,22 @@ public class Apps extends Page_Options {
         WebElement element = driver.findElement(By.xpath(xpathExpression));
 
         Boolean found = false;
-        if(element != null){
+        if (element != null) {
             found = true;
         }
         Assert.assertTrue(found);
     }
+
     @And("close driver for verification of app permission for first user")
     public void close_driver_for_verification_of_app_permission_for_first_user() throws InterruptedException {
         closedriver();
     }
+
     @Then("login for checking access of 2nd user")
     public void login_for_checking_access_of_2nd_user() {
         Login(user_Fahim);
     }
+
     @And("verify from the side panel for the 2nd user")
     public void verify_from_the_side_panel_for_the_2nd_user() throws InterruptedException {
         Thread.sleep(2000);
@@ -345,11 +358,12 @@ public class Apps extends Page_Options {
         WebElement element = driver.findElement(By.xpath(xpathExpression));
 
         Boolean found = false;
-        if(element != null){
+        if (element != null) {
             found = true;
         }
         Assert.assertTrue(found);
     }
+
     @And("close driver for verification of app permission for 2nd user")
     public void close_driver_for_verification_of_app_permission_for_2nd_user() throws InterruptedException {
         closedriver();
