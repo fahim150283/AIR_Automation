@@ -29,8 +29,7 @@ public class ReadJson {
     public static String AppsEditedDisplayName;
     public static String AppsEditedName;
     public static String AppsLink;
-    public static String AppsEmployeeInfo1;
-    public static String AppsEmployeeInfo2;
+    public static String AppsEmployeeInfo[] = new String[10];
 
 
 
@@ -56,7 +55,7 @@ public class ReadJson {
             // Read data from the "Items" object
             JSONObject ItemsObject = (JSONObject) jsonObject.get("Items");
             for (int i = 0; i < ItemsArray.length; i++) {
-                ItemsArray[i] = (String) ItemsObject.get("Item"+(i+1)+"");
+                ItemsArray[i] = (String) ItemsObject.get("Item"+(i+1));
             }
 
             // Read data from the "PreInvoice" object
@@ -83,8 +82,10 @@ public class ReadJson {
             AppsLink = (String) AppsObject.get("Link");
             AppsEditedName = (String) AppsObject.get("Edited Name");
             AppsEditedDisplayName = (String) AppsObject.get("Edited Display Name");
-            AppsEmployeeInfo1 = (String) AppsObject.get("Employee info1");
-            AppsEmployeeInfo2 = (String) AppsObject.get("Employee info2");
+            
+            for (int i = 0; i < AppsEmployeeInfo.length; i++) {
+                AppsEmployeeInfo[i] = (String) AppsObject.get("Employee info"+(i+1));
+            }
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();

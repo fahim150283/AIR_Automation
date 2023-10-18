@@ -236,38 +236,49 @@ public class Apps extends Page_Options {
             }
         }
 
-        Thread.sleep(1000);
+        //info about employee table
+        WebElement emptable = driver.findElement(By.id("include_emp_func_tbody"));
+        java.util.List<WebElement> rows1 = emptable.findElements(By.xpath(".//tr"));
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < AppsEmployeeInfo.length; i++) {
+            Thread.sleep(500);
             //click the employees field
             xpath = "//*[@id=\"select2-add_emp_list_"+(i+1)+"-container\"]";
             waitByxpath(xpath);
             clickbyxpath(xpath);
             //search for user
-            Thread.sleep(900);
-            xpath = "//input[@type='search']";
+            Thread.sleep(100);
+            xpath = "//*[@id=\"modal_emp\"]/span/span/span[1]/input";
             clickbyxpath(xpath);
             waitByxpath(xpath);
-            if (i != 1) {
-                inputbyxpath(xpath, AppsEmployeeInfo1);
-            } else {
-                inputbyxpath(xpath, AppsEmployeeInfo2);
-            }
+            inputbyxpath(xpath, AppsEmployeeInfo[i]);
             Thread.sleep(100);
             pressEnterbyXpath(xpath);
-            if (i < 3) {
+            if (AppsEmployeeInfo.length > rows1.size() && (i+1)< AppsEmployeeInfo.length) {
                 //add another row
                 id = "add-row";
                 clickbyId(id);
+            }else if(AppsEmployeeInfo.length < rows1.size() && (i)> AppsEmployeeInfo.length) {
+                //click the selected row
+                xpath = "//*[@id=\"include_emp_func_tbody\"]/tr["+(i+1)+"]/td[1]/input";
+                clickbyxpath(xpath);
+                //remove a row
+                id = "delete-row";
+                clickbyId(id);
             }
         }
-        //delete the last employee
-        xpath = "//*[@id=\"include_emp_func_tbody\"]/tr[3]/td[1]/input";
-        clickbyxpath(xpath);
-        xpath = "//*[@id=\"delete-row\"]";
-        clickbyxpath(xpath);
+        //delete an employee
+       // Iterate through rows
+//        for (int i=0;i<rows1.size();i++) {
+//            WebElement row1 = rows.get(i);
+//            // Check if the row is displayed
+//            if (row1.getAttribute("").contains(AppsEmployeeInfo[10])) {
+//                // Find and click the "Add App Permissions" button for the visible row
+//
+//            }
+//        }
 
-        //add functions for the employee
+        //add functions for the employees
         id = "check_APPR";
         clickbyId(id);
         id = "check_CREATE";
