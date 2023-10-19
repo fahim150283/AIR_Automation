@@ -274,16 +274,20 @@ public class Apps extends Page_Options {
 
         //delete an employee
         // Iterate through the rows to find the one with "1077" in the dropdown
-        for (int i = 0; i<rows2.size(); i++) {
-            WebElement row2 = rows2.get(i);;
-            WebElement dropdown = row2.findElement(By.id("add_emp_list["+(i+1)+"]"));
-            String selectedValue = dropdown.getAttribute("value");
+        for (int i = 0; i<AppsEmployeeInfo.length; i++) {
+            xpath = "//*[@id=\"select2-add_emp_list_"+(i+1)+"-container\"]";
+            String s = getTextbyXpath(xpath);
+            System.out.println(s);
 
-            if (selectedValue.equals(AppsEmployeeInfo[5])) {
-                // Found the row with "1077," now click the checkbox with id "record"
-                WebElement checkbox = row2.findElement(By.id("record"));
-                checkbox.click();
-                break; // Exit the loop once the row is found
+            if (s.contains(AppsEmployeeInfo[9])) {
+                //select the row
+                xpath = "//*[@id=\"include_emp_func_tbody\"]/tr["+(i+1)+"]/td[1]/input";
+                clickbyxpath(xpath);
+
+                Thread.sleep(200);
+                //click the delete button
+                id = "delete-row";
+                clickbyId(id);
             }
         }
 

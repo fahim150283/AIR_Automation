@@ -19,18 +19,15 @@ import java.util.Random;
 
 public class test extends Page_Options {
     String arr[] = new String[2];
-    String s = "valobasha naai re vai";
+    String s = "0 - Kazi Polash (Officer)";
 
     @Test
     public void login_for_creating_new_pre_invoice() throws InterruptedException {
-        arr[0]="valobasha";
-        arr[1]="vai";
-    }
-    @Test
-    public void test(){
-        boolean t = s.contains(arr[0]);
-        System.out.println(t);
-        boolean at = s.contains(arr[1]);
-        System.out.println(at);
+        boolean x= s.contains("Polash");
+        if (x){
+            System.out.print("yes");
+        }
+        else
+            System.out.print("no");
     }
 }
