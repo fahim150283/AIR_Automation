@@ -77,8 +77,11 @@
   },
   
   "DistributorInvoice": {
-    "SearchInfo": "12012",
-    "DistributorSearch":"bhai bhai"
+    "SearchInfo": "SO-00000011",
+    "DistributorSearch":"bhai bhai",
+    "Store": "depot",
+    "Note": "Automated Test",
+    "ItemQuantity":"5"
   },
   
   "Cancel Invoice": {
