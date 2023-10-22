@@ -35,6 +35,10 @@ public class ReadJson {
     public static String OrderItemQuantity;
     public static String OrderDistributorSearch;
     public static String OrderNote;
+    public static String CancelOrderSearchInfo;
+    public static String CancelOrderDistributorSearch;
+    public static String CancelOrderNote;
+    public static String CancelOrderItemQuantity;
 
 
 
@@ -98,6 +102,13 @@ public class ReadJson {
             OrderDistributorSearch = (String) OrderObject.get("DistributorSearch");
             OrderNote = (String) OrderObject.get("Note");
             OrderItems = ItemsArray;
+
+            // Read data from the "CancelOrder" object
+            JSONObject CancelOrderObject = (JSONObject) jsonObject.get("CancelOrder");
+            CancelOrderSearchInfo = (String) CancelOrderObject.get("SearchInfo");
+           CancelOrderItemQuantity = (String) CancelOrderObject.get("ItemQuantity");
+           CancelOrderDistributorSearch = (String) CancelOrderObject.get("DistributorSearch");
+           CancelOrderNote = (String) CancelOrderObject.get("Note");
 
 
 

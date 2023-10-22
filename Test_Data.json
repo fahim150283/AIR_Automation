@@ -70,8 +70,10 @@
   },
   
   "CancelOrder": {
-    "SearchInfo": "12012",
-    "DistributorSearch":"bhai bhai"
+    "SearchInfo": "SO-00000010",
+    "DistributorSearch":"bhai bhai",
+    "ItemQuantity":"5",
+    "Note": "Automated Test"
   },
   
   "DistributorInvoice": {

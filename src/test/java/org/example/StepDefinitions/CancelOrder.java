@@ -12,7 +12,7 @@ public class CancelOrder extends Page_Options {
     public void login_to_search_cancel_order() {
         Login(user_Fahim);
 
-        cssSelector = ".menues-bar:nth-child(7) .active";
+        cssSelector = ".menues-bar:nth-child(8) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }
@@ -21,7 +21,7 @@ public class CancelOrder extends Page_Options {
     public void search_for_cancel_order() {
         xpath = "//*[@id=\"tableData_filter\"]/label/input";
         waitByxpath(xpath);
-        inputbyxpath(xpath, "SO-00000010");
+        inputbyxpath(xpath, CancelOrderSearchInfo);
     }
 
     @And("description of a cancelled Order")
@@ -41,13 +41,13 @@ public class CancelOrder extends Page_Options {
     public void login_for_creating_new_order_to_cancel() {
         Login(user_Fahim);
 
-        cssSelector = ".menues-bar:nth-child(7) .active";
+        cssSelector = ".menues-bar:nth-child(8) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }
 
     @And("create new Cancel Order")
-    public void create_new_order_to_cancel() {
+    public void create_new_order_to_cancel() throws InterruptedException {
         //click the create new cancel order button
         xpath = "//*[@id=\"tableData_wrapper\"]/div[1]/button[4]";
         waitByxpath(xpath);
@@ -65,21 +65,32 @@ public class CancelOrder extends Page_Options {
         //search for bhai bhai and hit enter
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, "bhai bhai");
+        inputbycssselector(cssSelector, CancelOrderDistributorSearch);
         cssSelectorPressEnter(cssSelector);
 
         //important notes
         id = "c_notes";
-        inputbyid(id, "Automated Test");
+        inputbyid(id, CancelOrderNote);
 
         //partial cancel or full cancel
         Boolean fullCancel = false; //Default is Full Cancel
-        if (fullCancel == false) {
-            xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[5]/input";
-            waitByxpath(xpath);
-            clearByXpath(xpath);
-            waitByxpath(xpath);
-            inputbyxpath(xpath, "5"); //here the number is the quantity that will be deleted
+
+            for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"c_inv_items_list\"]"); i++) {
+                if (fullCancel == false && i%2 ==0 ) {
+                //CTN
+                Thread.sleep(200);
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[5]/input";
+                waitByxpath(xpath);
+                clearByXpath(xpath);
+                inputbyxpath(xpath, CancelOrderItemQuantity); //here the number is the quantity that will be deleted
+
+                //PCS
+                Thread.sleep(200);
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[6]/input";
+                waitByxpath(xpath);
+                clearByXpath(xpath);
+                inputbyxpath(xpath, CancelOrderItemQuantity); //here the number is the quantity that will be deleted
+            }
         }
 
         //save
