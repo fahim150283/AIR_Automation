@@ -63,8 +63,10 @@
   },
   
   "Order": {
-    "SearchInfo": "12012",
-    "DistributorSearch":"bhai bhai"
+    "SearchInfo": "SO-00000012",
+    "DistributorSearch":"bhai bhai",
+    "ItemQuantity":"20",
+    "Note": "Automated Test"
   },
   
   "CancelOrder": {

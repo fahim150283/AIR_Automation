@@ -1,7 +1,7 @@
 Feature: Order Test
 
 
-  Scenario: Search an Order for AIR
+  Scenario: Description of an Order for AIR
     Given Login to Search Order
     When search for Order
     And description of a Order

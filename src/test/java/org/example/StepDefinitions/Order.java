@@ -5,35 +5,30 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class Order extends Page_Options {
 
     @Given("Login to Search Order")
     public void login_to_search_order() {
-        url = "http://192.168.11.182/air_2/air";
-        navigatetourl(url);
-        id = "username";
-        inputbyid(id, "h.abul");
-        id = "password";
-        inputbyid(id, "savoy123");
-        id = "login";
-        clickbyId(id);
+       Login(user_Fahim);
 
-        cssSelector = ".menues-bar:nth-child(16) .active";
+        cssSelector = ".menues-bar:nth-child(23) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }
 
     @When("search for Order")
-    public void search_for_order() throws InterruptedException {
+    public void search_for_order() {
         xpath = "//*[@id=\"tableData_filter\"]/label/input";
         waitByxpath(xpath);
-        inputbyxpath(xpath, "SO-00000012");
-        Thread.sleep(2000);
+        inputbyxpath(xpath, OrderSearchInfo);
     }
 
     @And("description of a Order")
-    public void description_of_a_order() {
+    public void description_of_a_order() throws InterruptedException {
+        Thread.sleep(2000);
         xpath = "//*[@id=\"btn_view\"]/i";
         clickbyxpath(xpath);
     }
@@ -46,16 +41,9 @@ public class Order extends Page_Options {
 
     @Given("login for creating new Order")
     public void login_for_creating_new_order() throws InterruptedException {
-        url = "http://192.168.11.182/air_2/air";
-        navigatetourl(url);
-        id = "username";
-        inputbyid(id, "h.abul");
-        id = "password";
-        inputbyid(id, "savoy123");
-        id = "login";
-        clickbyId(id);
+        Login(user_Fahim);
 
-        cssSelector = ".menues-bar:nth-child(16) .active";
+        cssSelector = ".menues-bar:nth-child(23) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }
@@ -76,7 +64,6 @@ public class Order extends Page_Options {
         xpath = "//*[@id=\"select2-distributor_list-container\"]";
         waitByxpath(xpath);
         clickbyxpath(xpath);
-
         //search for bhai bhai and hit enter
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
@@ -103,31 +90,52 @@ public class Order extends Page_Options {
 //            waitByxpath(xpath);
 //            clickbyxpath(xpath);
 
-        //
-        scrollToTheBottom();
 
         //important notes
         id = "c_notes";
-        inputbyid(id, "Automated Test");
+        inputbyid(id, OrderNote);
 
-        //click the items bar
-        cssSelector = "#add_invoice_form > div > div.row.mt-3 > div.col-md-11 > span > span.selection > span";
-        Thread.sleep(0500);
-        clickbycssselector(cssSelector);
-        Thread.sleep(0500);
-        pressDownbyCssSelector(cssSelector);
-        cssSelectorPressEnter(cssSelector);
+        //click the items bar and add items
+        for (int i = 0; i < OrderItems.length; i++) {
+            xpath = "//*[@id=\"add_invoice_form\"]/div/div[3]/div[4]/span/span[1]/span";
+            Thread.sleep(300);
+            System.out.println(OrderItems[i]);
+            inputbyxpath(xpath, OrderItems[i]);
+            Thread.sleep(300);
+            pressEnterbyXpath(xpath);
+            Thread.sleep(300);
 
-        //click the plus button
-        id = "c_add_inv_prod";
-        clickbyId(id);
+            // press the plus button
+            id = "c_add_inv_prod";
+            clickbyId(id);
+        }
 
-        //product quantity
-        xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[5]/input";
-        waitByxpath(xpath);
-        clearByXpath(xpath);
-        waitByxpath(xpath);
-        inputbyxpath(xpath, "10");
+        //click the amount buttons for the quantity of the items
+        for (int i = 0; i < OrderItems.length; i++) {
+            //ctn(quantity)
+            xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[5]/input";
+            waitByxpath(xpath);
+            clearByXpath(xpath);
+            inputbyxpath(xpath, OrderItemQuantity);
+            //pcs(quantity)
+            xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[6]/input";
+            waitByxpath(xpath);
+            clearByXpath(xpath);
+            inputbyxpath(xpath, OrderItemQuantity);
+        }
+
+        //remove an item
+        WebElement table = driver.findElement(By.id("c_inv_items_list"));
+        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
+        // Iterate through rows
+        for (int i = 0; i < rows.size(); i++) {
+            WebElement row = rows.get(i);
+            if (i% 5 == 0) {
+                // Find and click the "delete" button for the visible row
+                WebElement delete_Button = row.findElement(By.xpath("//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[12]/button"));
+                delete_Button.click();
+            }
+        }
 
         //save
         xpath = "//*[@id=\"add_region\"]";
