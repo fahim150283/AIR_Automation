@@ -11,7 +11,7 @@ public class Complementary_Invoice extends Page_Options {
     public void login_to_search_complementary_invoice() {
         Login(user_Fahim);
 
-        cssSelector = ".menues-bar:nth-child(9) .active";
+        cssSelector = ".menues-bar:nth-child(10) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }
@@ -39,7 +39,7 @@ public class Complementary_Invoice extends Page_Options {
     public void login_for_creation_of_an_complementary_invoice() {
         Login(user_Fahim);
 
-        cssSelector = ".menues-bar:nth-child(9) .active";
+        cssSelector = ".menues-bar:nth-child(10) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }

@@ -92,8 +92,11 @@
   },
   
   "Complementary Invoice": {
-    "SearchInfo": "12012",
-    "DistributorSearch":"bhai bhai"
+    "SearchInfo": "CI-23-000069",
+    "DistributorSearch":"bhai bhai",
+    "Store": "depot",
+    "Note": "Automated Test",
+    "ItemQuantity":"5"
   },
   
   "Collection": {

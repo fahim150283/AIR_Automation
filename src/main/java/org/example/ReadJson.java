@@ -50,6 +50,11 @@ public class ReadJson {
     public static String CancelInvoiceStore;
     public static String CancelInvoiceNote;
     public static String CancelInvoiceItemQuantity;
+    // public static String ComplementaryInvoiceSearchInfo;
+    // public static String ComplementaryInvoiceSearchInfo;
+    // public static String ComplementaryInvoiceSearchInfo;
+    // public static String ComplementaryInvoiceSearchInfo;
+    // public static String ComplementaryInvoiceSearchInfo;
 
 
     public static String[] readJsonData() {
@@ -59,87 +64,92 @@ public class ReadJson {
             Object obj = parser.parse(reader);
             JSONObject jsonObject = (JSONObject) obj;
 
-            // Read data from the "Login" object
-            JSONObject loginObject = (JSONObject) jsonObject.get("Login");
-            url = (String) loginObject.get("url");
-            user_Fahim = (String) loginObject.get("user_Fahim");
-            user_Polash = (String) loginObject.get("user_Polash");
-            user_Siam = (String) loginObject.get("user_Siam");
-            password = (String) loginObject.get("password");
-
-            // Read data from the "Contacts" object
-            JSONObject ContactsObject = (JSONObject) jsonObject.get("Contacts");
-            ContactsSearchInfo = (String) ContactsObject.get("SearchInfo");
-
-            // Read data from the "Items" object
-            JSONObject ItemsObject = (JSONObject) jsonObject.get("Items");
-            for (int i = 0; i < ItemsArray.length; i++) {
-                ItemsArray[i] = (String) ItemsObject.get("Item" + (i + 1));
+            {  // Read data from the "Login" object
+                JSONObject loginObject = (JSONObject) jsonObject.get("Login");
+                url = (String) loginObject.get("url");
+                user_Fahim = (String) loginObject.get("user_Fahim");
+                user_Polash = (String) loginObject.get("user_Polash");
+                user_Siam = (String) loginObject.get("user_Siam");
+                password = (String) loginObject.get("password");
             }
 
-            // Read data from the "PreInvoice" object
-            JSONObject PreInvoiceObject = (JSONObject) jsonObject.get("PreInvoice");
-            PreInvoiceSearchInfo = (String) PreInvoiceObject.get("SearchInfo");
-            PreInvoiceItemQuantity = (String) PreInvoiceObject.get("ItemQuantity");
-            PreInvoiceDistributorSearch = (String) PreInvoiceObject.get("DistributorSearch");
-            PreInvoiceItems = ItemsArray;
-
-
-            // Read data from the "PreviousPendingDelivery" object
-            JSONObject PreviousPendingDeliveryObject = (JSONObject) jsonObject.get("PreviousPendingDelivery");
-            PreviousPendingDeliverySearchInfo = (String) PreviousPendingDeliveryObject.get("SearchInfo");
-            PreviousPendingDeliveryItemQuantity = (String) PreviousPendingDeliveryObject.get("ItemQuantity");
-            PreviousPendingDeliveryDistributorSearch = (String) PreviousPendingDeliveryObject.get("DistributorSearch");
-            PreviousPendingDeliveryStore = (String) PreviousPendingDeliveryObject.get("Store");
-            PreviousPendingDeliveryItems = ItemsArray;
-
-            // Read data from the "Apps" object
-            JSONObject AppsObject = (JSONObject) jsonObject.get("Apps");
-            AppsSearchInfo = (String) AppsObject.get("SearchInfo");
-            AppsName = (String) AppsObject.get("Name");
-            AppsDisplayName = (String) AppsObject.get("Display Name");
-            AppsLink = (String) AppsObject.get("Link");
-            AppsEditedName = (String) AppsObject.get("Edited Name");
-            AppsEditedDisplayName = (String) AppsObject.get("Edited Display Name");
-            for (int i = 0; i < AppsEmployeeInfo.length; i++) {
-                AppsEmployeeInfo[i] = (String) AppsObject.get("Employee info" + (i + 1));
+            {// Read data from the "Contacts" object
+                JSONObject ContactsObject = (JSONObject) jsonObject.get("Contacts");
+                ContactsSearchInfo = (String) ContactsObject.get("SearchInfo");
+            }
+            {   // Read data from the "Items" object
+                JSONObject ItemsObject = (JSONObject) jsonObject.get("Items");
+                for (int i = 0; i < ItemsArray.length; i++) {
+                    ItemsArray[i] = (String) ItemsObject.get("Item" + (i + 1));
+                }
+            }
+            {   // Read data from the "PreInvoice" object
+                JSONObject PreInvoiceObject = (JSONObject) jsonObject.get("PreInvoice");
+                PreInvoiceSearchInfo = (String) PreInvoiceObject.get("SearchInfo");
+                PreInvoiceItemQuantity = (String) PreInvoiceObject.get("ItemQuantity");
+                PreInvoiceDistributorSearch = (String) PreInvoiceObject.get("DistributorSearch");
+                PreInvoiceItems = ItemsArray;
             }
 
-            // Read data from the "Order" object
-            JSONObject OrderObject = (JSONObject) jsonObject.get("Order");
-            OrderSearchInfo = (String) OrderObject.get("SearchInfo");
-            OrderItemQuantity = (String) OrderObject.get("ItemQuantity");
-            OrderDistributorSearch = (String) OrderObject.get("DistributorSearch");
-            OrderNote = (String) OrderObject.get("Note");
-            OrderItems = ItemsArray;
-
-            // Read data from the "CancelOrder" object
-            JSONObject CancelOrderObject = (JSONObject) jsonObject.get("CancelOrder");
-            CancelOrderSearchInfo = (String) CancelOrderObject.get("SearchInfo");
-            CancelOrderItemQuantity = (String) CancelOrderObject.get("ItemQuantity");
-            CancelOrderDistributorSearch = (String) CancelOrderObject.get("DistributorSearch");
-            CancelOrderNote = (String) CancelOrderObject.get("Note");
-
-            // Read data from the "DistributorInvoice" object
-            JSONObject DistributorInvoiceObject = (JSONObject) jsonObject.get("DistributorInvoice");
-            DistributorInvoiceSearchInfo = (String) DistributorInvoiceObject.get("SearchInfo");
-            DistributorInvoiceItemQuantity = (String) DistributorInvoiceObject.get("ItemQuantity");
-            DistributorInvoiceDistributorSearch = (String) DistributorInvoiceObject.get("DistributorSearch");
-            DistributorInvoiceStore = (String) DistributorInvoiceObject.get("Store");
-            DistributorInvoiceNote = (String) DistributorInvoiceObject.get("Note");
-
-            // Read data from the "CancelInvoice" object
-            JSONObject CancelInvoiceObject = (JSONObject) jsonObject.get("Cancel Invoice");
-            CancelInvoiceSearchInfo = (String) CancelInvoiceObject.get("SearchInfo");
-            CancelInvoiceItemQuantity = (String) CancelInvoiceObject.get("ItemQuantity");
-            CancelInvoiceDistributorSearch = (String) CancelInvoiceObject.get("DistributorSearch");
-            CancelInvoiceStore = (String) CancelInvoiceObject.get("Store");
-            CancelInvoiceNote = (String) CancelInvoiceObject.get("Note");
-
-
-
-
-
+            {       // Read data from the "PreviousPendingDelivery" object
+                JSONObject PreviousPendingDeliveryObject = (JSONObject) jsonObject.get("PreviousPendingDelivery");
+                PreviousPendingDeliverySearchInfo = (String) PreviousPendingDeliveryObject.get("SearchInfo");
+                PreviousPendingDeliveryItemQuantity = (String) PreviousPendingDeliveryObject.get("ItemQuantity");
+                PreviousPendingDeliveryDistributorSearch = (String) PreviousPendingDeliveryObject.get("DistributorSearch");
+                PreviousPendingDeliveryStore = (String) PreviousPendingDeliveryObject.get("Store");
+                PreviousPendingDeliveryItems = ItemsArray;
+            }
+            {      // Read data from the "Apps" object
+                JSONObject AppsObject = (JSONObject) jsonObject.get("Apps");
+                AppsSearchInfo = (String) AppsObject.get("SearchInfo");
+                AppsName = (String) AppsObject.get("Name");
+                AppsDisplayName = (String) AppsObject.get("Display Name");
+                AppsLink = (String) AppsObject.get("Link");
+                AppsEditedName = (String) AppsObject.get("Edited Name");
+                AppsEditedDisplayName = (String) AppsObject.get("Edited Display Name");
+                for (int i = 0; i < AppsEmployeeInfo.length; i++) {
+                    AppsEmployeeInfo[i] = (String) AppsObject.get("Employee info" + (i + 1));
+                }
+            }
+            {   // Read data from the "Order" object
+                JSONObject OrderObject = (JSONObject) jsonObject.get("Order");
+                OrderSearchInfo = (String) OrderObject.get("SearchInfo");
+                OrderItemQuantity = (String) OrderObject.get("ItemQuantity");
+                OrderDistributorSearch = (String) OrderObject.get("DistributorSearch");
+                OrderNote = (String) OrderObject.get("Note");
+                OrderItems = ItemsArray;
+            }
+            {       // Read data from the "CancelOrder" object
+                JSONObject CancelOrderObject = (JSONObject) jsonObject.get("CancelOrder");
+                CancelOrderSearchInfo = (String) CancelOrderObject.get("SearchInfo");
+                CancelOrderItemQuantity = (String) CancelOrderObject.get("ItemQuantity");
+                CancelOrderDistributorSearch = (String) CancelOrderObject.get("DistributorSearch");
+                CancelOrderNote = (String) CancelOrderObject.get("Note");
+            }
+            {      // Read data from the "DistributorInvoice" object
+                JSONObject DistributorInvoiceObject = (JSONObject) jsonObject.get("DistributorInvoice");
+                DistributorInvoiceSearchInfo = (String) DistributorInvoiceObject.get("SearchInfo");
+                DistributorInvoiceItemQuantity = (String) DistributorInvoiceObject.get("ItemQuantity");
+                DistributorInvoiceDistributorSearch = (String) DistributorInvoiceObject.get("DistributorSearch");
+                DistributorInvoiceStore = (String) DistributorInvoiceObject.get("Store");
+                DistributorInvoiceNote = (String) DistributorInvoiceObject.get("Note");
+            }
+            {   // Read data from the "CancelInvoice" object
+                JSONObject CancelInvoiceObject = (JSONObject) jsonObject.get("Cancel Invoice");
+                CancelInvoiceSearchInfo = (String) CancelInvoiceObject.get("SearchInfo");
+                CancelInvoiceItemQuantity = (String) CancelInvoiceObject.get("ItemQuantity");
+                CancelInvoiceDistributorSearch = (String) CancelInvoiceObject.get("DistributorSearch");
+                CancelInvoiceStore = (String) CancelInvoiceObject.get("Store");
+                CancelInvoiceNote = (String) CancelInvoiceObject.get("Note");
+            }
+            { // Read data from the "Complementary Invoice" object
+                JSONObject ComplementaryInvoiceObject = (JSONObject) jsonObject.get("Complementary Invoice");
+                ComplementaryInvoiceSearchInfo = (String) ComplementaryInvoiceObject.get("SearchInfo");
+                ComplementaryInvoiceItemQuantity = (String) ComplementaryInvoiceObject.get("ItemQuantity");
+                ComplementaryInvoiceDistributorSearch = (String) ComplementaryInvoiceObject.get("DistributorSearch");
+                ComplementaryInvoiceStore = (String) ComplementaryInvoiceObject.get("Store");
+                ComplementaryInvoiceNote = (String) ComplementaryInvoiceObject.get("Note");
+            }
 
 
         } catch (IOException | ParseException e) {
