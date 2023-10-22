@@ -1,4 +1,5 @@
 package org.example;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -8,7 +9,7 @@ import java.io.IOException;
 
 public class ReadJson {
     public static String url;
-    public static String ItemsArray [] = new String[15];
+    public static String ItemsArray[] = new String[15];
     public static String user_Fahim;
     public static String user_Polash;
     public static String user_Siam;
@@ -17,8 +18,8 @@ public class ReadJson {
     public static String PreInvoiceSearchInfo;
     public static String PreInvoiceDistributorSearch;
     public static String PreInvoiceItemQuantity;
-    public static String PreInvoiceItems [] = new String[15];
-    public static String PreviousPendingDeliveryItems [] = new String[15];
+    public static String PreInvoiceItems[] = new String[15];
+    public static String PreviousPendingDeliveryItems[] = new String[15];
     public static String PreviousPendingDeliveryDistributorSearch;
     public static String PreviousPendingDeliveryItemQuantity;
     public static String PreviousPendingDeliverySearchInfo;
@@ -29,8 +30,8 @@ public class ReadJson {
     public static String AppsEditedDisplayName;
     public static String AppsEditedName;
     public static String AppsLink;
-    public static String AppsEmployeeInfo [] = new String[10];
-    public static String OrderItems [] = new String[15];
+    public static String AppsEmployeeInfo[] = new String[10];
+    public static String OrderItems[] = new String[15];
     public static String OrderSearchInfo;
     public static String OrderItemQuantity;
     public static String OrderDistributorSearch;
@@ -44,10 +45,14 @@ public class ReadJson {
     public static String DistributorInvoiceStore;
     public static String DistributorInvoiceNote;
     public static String DistributorInvoiceItemQuantity;
+    public static String CancelInvoiceSearchInfo;
+    public static String CancelInvoiceDistributorSearch;
+    public static String CancelInvoiceStore;
+    public static String CancelInvoiceNote;
+    public static String CancelInvoiceItemQuantity;
 
 
-
-    public static String[] readJsonData(){
+    public static String[] readJsonData() {
         JSONParser parser = new JSONParser();
 
         try (FileReader reader = new FileReader("Test_Data.json")) {
@@ -69,7 +74,7 @@ public class ReadJson {
             // Read data from the "Items" object
             JSONObject ItemsObject = (JSONObject) jsonObject.get("Items");
             for (int i = 0; i < ItemsArray.length; i++) {
-                ItemsArray[i] = (String) ItemsObject.get("Item"+(i+1));
+                ItemsArray[i] = (String) ItemsObject.get("Item" + (i + 1));
             }
 
             // Read data from the "PreInvoice" object
@@ -97,7 +102,7 @@ public class ReadJson {
             AppsEditedName = (String) AppsObject.get("Edited Name");
             AppsEditedDisplayName = (String) AppsObject.get("Edited Display Name");
             for (int i = 0; i < AppsEmployeeInfo.length; i++) {
-                AppsEmployeeInfo[i] = (String) AppsObject.get("Employee info"+(i+1));
+                AppsEmployeeInfo[i] = (String) AppsObject.get("Employee info" + (i + 1));
             }
 
             // Read data from the "Order" object
@@ -111,17 +116,27 @@ public class ReadJson {
             // Read data from the "CancelOrder" object
             JSONObject CancelOrderObject = (JSONObject) jsonObject.get("CancelOrder");
             CancelOrderSearchInfo = (String) CancelOrderObject.get("SearchInfo");
-           CancelOrderItemQuantity = (String) CancelOrderObject.get("ItemQuantity");
-           CancelOrderDistributorSearch = (String) CancelOrderObject.get("DistributorSearch");
-           CancelOrderNote = (String) CancelOrderObject.get("Note");
+            CancelOrderItemQuantity = (String) CancelOrderObject.get("ItemQuantity");
+            CancelOrderDistributorSearch = (String) CancelOrderObject.get("DistributorSearch");
+            CancelOrderNote = (String) CancelOrderObject.get("Note");
 
-           // Read data from the "DistributorInvoice" object
+            // Read data from the "DistributorInvoice" object
             JSONObject DistributorInvoiceObject = (JSONObject) jsonObject.get("DistributorInvoice");
             DistributorInvoiceSearchInfo = (String) DistributorInvoiceObject.get("SearchInfo");
-           DistributorInvoiceItemQuantity = (String) DistributorInvoiceObject.get("ItemQuantity");
-           DistributorInvoiceDistributorSearch = (String) DistributorInvoiceObject.get("DistributorSearch");
-           DistributorInvoiceStore = (String) DistributorInvoiceObject.get("Store");
-           DistributorInvoiceNote = (String) DistributorInvoiceObject.get("Note");
+            DistributorInvoiceItemQuantity = (String) DistributorInvoiceObject.get("ItemQuantity");
+            DistributorInvoiceDistributorSearch = (String) DistributorInvoiceObject.get("DistributorSearch");
+            DistributorInvoiceStore = (String) DistributorInvoiceObject.get("Store");
+            DistributorInvoiceNote = (String) DistributorInvoiceObject.get("Note");
+
+            // Read data from the "CancelInvoice" object
+            JSONObject CancelInvoiceObject = (JSONObject) jsonObject.get("Cancel Invoice");
+            CancelInvoiceSearchInfo = (String) CancelInvoiceObject.get("SearchInfo");
+            CancelInvoiceItemQuantity = (String) CancelInvoiceObject.get("ItemQuantity");
+            CancelInvoiceDistributorSearch = (String) CancelInvoiceObject.get("DistributorSearch");
+            CancelInvoiceStore = (String) CancelInvoiceObject.get("Store");
+            CancelInvoiceNote = (String) CancelInvoiceObject.get("Note");
+
+
 
 
 
@@ -131,7 +146,7 @@ public class ReadJson {
             e.printStackTrace();
         }
 
-        String[] array= {};
+        String[] array = {};
         return array;
     }
 }

@@ -85,8 +85,10 @@
   },
   
   "Cancel Invoice": {
-    "SearchInfo": "12012",
-    "DistributorSearch":"bhai bhai"
+    "SearchInfo": "SI-00000048",
+    "DistributorSearch":"bhai bhai",
+    "Store": "depot",
+    "Note": "Automated Test"
   },
   
   "Complementary Invoice": {
