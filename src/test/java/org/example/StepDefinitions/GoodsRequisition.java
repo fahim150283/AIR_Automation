@@ -11,7 +11,7 @@ public class GoodsRequisition extends Page_Options {
     @Given("login for creation of a Goods Requisition")
     public void login_for_creation_of_a_goods_requisition() {
         Login(user_Polash);
-        cssSelector = ".menues-bar:nth-child(12) .active";
+        cssSelector = ".menues-bar:nth-child(18) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }
@@ -36,7 +36,7 @@ public class GoodsRequisition extends Page_Options {
         //search for noakhali and hit enter
         cssSelector = ".select2-search--dropdown > .select2-search__field";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, "cumilla");
+        inputbycssselector(cssSelector, GROVS_RequestFrom);
         cssSelectorPressEnter(cssSelector);
 
         //send request to
@@ -46,7 +46,7 @@ public class GoodsRequisition extends Page_Options {
         //search for factory
         cssSelector = ".select2-search--dropdown > .select2-search__field";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, "factory");
+        inputbycssselector(cssSelector, GROVS_RequestTo);
         cssSelectorPressEnter(cssSelector);
 
 
@@ -68,7 +68,7 @@ public class GoodsRequisition extends Page_Options {
         cssSelector = "#fg_store_goods_table > tr > td:nth-child(5) > input.p_qty";
         waitByCssSelector(cssSelector);
         clearByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, "20");
+        inputbycssselector(cssSelector, GROVS_ItemQuantity);
 
         //save
         xpath = "//button[@id='send_req_fg_store']";
@@ -84,7 +84,7 @@ public class GoodsRequisition extends Page_Options {
     @Given("login for cancellation of a requested Goods Requisition")
     public void login_for_cancellation_of_a_requested_goods_requisition() throws InterruptedException {
         Login(user_Fahim);
-        cssSelector = ".menues-bar:nth-child(12) .active";
+        cssSelector = ".menues-bar:nth-child(18) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }

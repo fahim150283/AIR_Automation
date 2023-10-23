@@ -109,8 +109,11 @@
   },
   
   "Good Requisition and On Vehicle Store": {
-    "SearchInfo": "12012",
-    "DistributorSearch":"bhai bhai"
+    "SearchInfo": "FSR-23-000036",
+    "RequestFrom":"Cumilla",
+    "RequestTo":"Factory",
+    "ItemQuantity":"20",
+    "AcceptedQuantity": "5"
   },
   
   "Finish Goods Store": {
