@@ -101,8 +101,11 @@
   },
   
   "Collection": {
-    "SearchInfo": "12012",
-    "DistributorSearch":"bhai bhai"
+    "SearchInfo": "SO-00000013",
+    "DistributorSearch":"bhai bhai",
+    "CollectedBy":"Automatically Collected",
+    "CollectionAmount":"100000",
+    "MoneyReceipt": "Test MoneyReceipt 007"
   },
   
   "Good Requisition and On Vehicle Store": {

@@ -13,7 +13,7 @@ public class Collections extends Page_Options {
     public void login_to_search_collection() {
         Login(user_Fahim);
 
-        cssSelector = ".menues-bar:nth-child(8) .active";
+        cssSelector = ".menues-bar:nth-child(9) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }
@@ -21,8 +21,8 @@ public class Collections extends Page_Options {
     @When("search for Collection")
     public void search_for_collection() throws InterruptedException {
         xpath = "//*[@id=\"tableData_filter\"]/label/input";
-        Thread.sleep(4500);
-        inputbyxpath(xpath, "Bhai Bhai Confectionary");
+        Thread.sleep(1000);
+        inputbyxpath(xpath, CollectionSearchInfo);
     }
 
     @And("description of a Collection")
@@ -41,7 +41,7 @@ public class Collections extends Page_Options {
     public void login_for_creating_collection() {
         Login(user_Fahim);
 
-        cssSelector = ".menues-bar:nth-child(8) .active";
+        cssSelector = ".menues-bar:nth-child(9) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }
@@ -64,12 +64,12 @@ public class Collections extends Page_Options {
         //search for bhai bhai and hit enter
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, "bhai bhai");
+        inputbycssselector(cssSelector, CollectionDistributorSearch);
         cssSelectorPressEnter(cssSelector);
 
         //collected by
         id = "col_by";
-        inputbyid(id, "The Automated Process");
+        inputbyid(id, CollectionCollectedBy);
 
         //Advance Collection or Collection for order
         Boolean advanceCollection = false;
@@ -78,13 +78,13 @@ public class Collections extends Page_Options {
             id = "pay_amount";
             waitById(id);
             clearById(id);
-            inputbyid(id, "100000");
+            inputbyid(id, CollectionCollectionAmount);
 
             //money receipt number
             Random random = new Random();
             id = "mny_rcpt_num";
             waitById(id);
-            inputbyid(id, String.valueOf(random.nextInt(10000000)));
+            inputbyid(id,CollectionMoneyReceipt);
         } else {
             //Adjust from Advance or regular collection
             Boolean adjustFromAdvance = false;
@@ -107,7 +107,7 @@ public class Collections extends Page_Options {
                 Random random = new Random();
                 id = "mny_rcpt_num";
                 waitById(id);
-                inputbyid(id, String.valueOf(random.nextInt(10000000)));
+                inputbyid(id, CollectionMoneyReceipt);
             }
 
             //click the order

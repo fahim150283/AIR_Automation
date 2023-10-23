@@ -57,6 +57,11 @@ public class ReadJson {
     public static String ComplementaryInvoiceNote;
     public static String ComplementaryInvoiceInvoiceReferenceNo;
     public static String ComplementaryInvoiceItems [] = new String[15];
+    public static String CollectionSearchInfo;
+    public static String CollectionDistributorSearch;
+    public static String CollectionCollectedBy;
+    public static String CollectionCollectionAmount;
+    public static String CollectionMoneyReceipt;
 
 
     public static String[] readJsonData() {
@@ -66,7 +71,7 @@ public class ReadJson {
             Object obj = parser.parse(reader);
             JSONObject jsonObject = (JSONObject) obj;
 
-            {  // Read data from the "Login" object
+            {// Read data from the "Login" object
                 JSONObject loginObject = (JSONObject) jsonObject.get("Login");
                 url = (String) loginObject.get("url");
                 user_Fahim = (String) loginObject.get("user_Fahim");
@@ -74,26 +79,24 @@ public class ReadJson {
                 user_Siam = (String) loginObject.get("user_Siam");
                 password = (String) loginObject.get("password");
             }
-
             {// Read data from the "Contacts" object
                 JSONObject ContactsObject = (JSONObject) jsonObject.get("Contacts");
                 ContactsSearchInfo = (String) ContactsObject.get("SearchInfo");
             }
-            {   // Read data from the "Items" object
+            {// Read data from the "Items" object
                 JSONObject ItemsObject = (JSONObject) jsonObject.get("Items");
                 for (int i = 0; i < ItemsArray.length; i++) {
                     ItemsArray[i] = (String) ItemsObject.get("Item" + (i + 1));
                 }
             }
-            {   // Read data from the "PreInvoice" object
+            {// Read data from the "PreInvoice" object
                 JSONObject PreInvoiceObject = (JSONObject) jsonObject.get("PreInvoice");
                 PreInvoiceSearchInfo = (String) PreInvoiceObject.get("SearchInfo");
                 PreInvoiceItemQuantity = (String) PreInvoiceObject.get("ItemQuantity");
                 PreInvoiceDistributorSearch = (String) PreInvoiceObject.get("DistributorSearch");
                 PreInvoiceItems = ItemsArray;
             }
-
-            {       // Read data from the "PreviousPendingDelivery" object
+            {// Read data from the "PreviousPendingDelivery" object
                 JSONObject PreviousPendingDeliveryObject = (JSONObject) jsonObject.get("PreviousPendingDelivery");
                 PreviousPendingDeliverySearchInfo = (String) PreviousPendingDeliveryObject.get("SearchInfo");
                 PreviousPendingDeliveryItemQuantity = (String) PreviousPendingDeliveryObject.get("ItemQuantity");
@@ -101,7 +104,7 @@ public class ReadJson {
                 PreviousPendingDeliveryStore = (String) PreviousPendingDeliveryObject.get("Store");
                 PreviousPendingDeliveryItems = ItemsArray;
             }
-            {      // Read data from the "Apps" object
+            {// Read data from the "Apps" object
                 JSONObject AppsObject = (JSONObject) jsonObject.get("Apps");
                 AppsSearchInfo = (String) AppsObject.get("SearchInfo");
                 AppsName = (String) AppsObject.get("Name");
@@ -113,7 +116,7 @@ public class ReadJson {
                     AppsEmployeeInfo[i] = (String) AppsObject.get("Employee info" + (i + 1));
                 }
             }
-            {   // Read data from the "Order" object
+            {// Read data from the "Order" object
                 JSONObject OrderObject = (JSONObject) jsonObject.get("Order");
                 OrderSearchInfo = (String) OrderObject.get("SearchInfo");
                 OrderItemQuantity = (String) OrderObject.get("ItemQuantity");
@@ -121,14 +124,14 @@ public class ReadJson {
                 OrderNote = (String) OrderObject.get("Note");
                 OrderItems = ItemsArray;
             }
-            {       // Read data from the "CancelOrder" object
+            {// Read data from the "CancelOrder" object
                 JSONObject CancelOrderObject = (JSONObject) jsonObject.get("CancelOrder");
                 CancelOrderSearchInfo = (String) CancelOrderObject.get("SearchInfo");
                 CancelOrderItemQuantity = (String) CancelOrderObject.get("ItemQuantity");
                 CancelOrderDistributorSearch = (String) CancelOrderObject.get("DistributorSearch");
                 CancelOrderNote = (String) CancelOrderObject.get("Note");
             }
-            {      // Read data from the "DistributorInvoice" object
+            {// Read data from the "DistributorInvoice" object
                 JSONObject DistributorInvoiceObject = (JSONObject) jsonObject.get("DistributorInvoice");
                 DistributorInvoiceSearchInfo = (String) DistributorInvoiceObject.get("SearchInfo");
                 DistributorInvoiceItemQuantity = (String) DistributorInvoiceObject.get("ItemQuantity");
@@ -136,7 +139,7 @@ public class ReadJson {
                 DistributorInvoiceStore = (String) DistributorInvoiceObject.get("Store");
                 DistributorInvoiceNote = (String) DistributorInvoiceObject.get("Note");
             }
-            {   // Read data from the "CancelInvoice" object
+            {// Read data from the "CancelInvoice" object
                 JSONObject CancelInvoiceObject = (JSONObject) jsonObject.get("Cancel Invoice");
                 CancelInvoiceSearchInfo = (String) CancelInvoiceObject.get("SearchInfo");
                 CancelInvoiceItemQuantity = (String) CancelInvoiceObject.get("ItemQuantity");
@@ -144,7 +147,7 @@ public class ReadJson {
                 CancelInvoiceStore = (String) CancelInvoiceObject.get("Store");
                 CancelInvoiceNote = (String) CancelInvoiceObject.get("Note");
             }
-            { // Read data from the "Complementary Invoice" object
+            {// Read data from the "Complementary Invoice" object
                 JSONObject ComplementaryInvoiceObject = (JSONObject) jsonObject.get("Complementary Invoice");
                 ComplementaryInvoiceSearchInfo = (String) ComplementaryInvoiceObject.get("SearchInfo");
                 ComplementaryInvoiceItemQuantity = (String) ComplementaryInvoiceObject.get("ItemQuantity");
@@ -153,6 +156,14 @@ public class ReadJson {
                 ComplementaryInvoiceNote = (String) ComplementaryInvoiceObject.get("Note");
                 ComplementaryInvoiceInvoiceReferenceNo = (String) ComplementaryInvoiceObject.get("InvoiceReferenceNo");
                 ComplementaryInvoiceItems = ItemsArray;
+            }
+            {// Read data from the "Collection" object
+                JSONObject CollectionObject = (JSONObject) jsonObject.get("Collection");
+                CollectionSearchInfo = (String) CollectionObject.get("SearchInfo");
+                CollectionDistributorSearch = (String) CollectionObject.get("DistributorSearch");
+                CollectionCollectedBy = (String) CollectionObject.get("CollectedBy");
+                CollectionCollectionAmount = (String) CollectionObject.get("CollectionAmount");
+                CollectionMoneyReceipt = (String) CollectionObject.get("MoneyReceipt");
             }
 
 
