@@ -96,7 +96,8 @@
     "DistributorSearch":"bhai bhai",
     "Store": "depot",
     "Note": "Automated Test",
-    "ItemQuantity":"5"
+    "ItemQuantity":"20",
+    "InvoiceReferenceNo":"Test Reference"
   },
   
   "Collection": {

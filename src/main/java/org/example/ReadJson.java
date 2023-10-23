@@ -50,11 +50,13 @@ public class ReadJson {
     public static String CancelInvoiceStore;
     public static String CancelInvoiceNote;
     public static String CancelInvoiceItemQuantity;
-    // public static String ComplementaryInvoiceSearchInfo;
-    // public static String ComplementaryInvoiceSearchInfo;
-    // public static String ComplementaryInvoiceSearchInfo;
-    // public static String ComplementaryInvoiceSearchInfo;
-    // public static String ComplementaryInvoiceSearchInfo;
+    public static String ComplementaryInvoiceSearchInfo;
+    public static String ComplementaryInvoiceItemQuantity;
+    public static String ComplementaryInvoiceDistributorSearch;
+    public static String ComplementaryInvoiceStore;
+    public static String ComplementaryInvoiceNote;
+    public static String ComplementaryInvoiceInvoiceReferenceNo;
+    public static String ComplementaryInvoiceItems [] = new String[15];
 
 
     public static String[] readJsonData() {
@@ -149,6 +151,8 @@ public class ReadJson {
                 ComplementaryInvoiceDistributorSearch = (String) ComplementaryInvoiceObject.get("DistributorSearch");
                 ComplementaryInvoiceStore = (String) ComplementaryInvoiceObject.get("Store");
                 ComplementaryInvoiceNote = (String) ComplementaryInvoiceObject.get("Note");
+                ComplementaryInvoiceInvoiceReferenceNo = (String) ComplementaryInvoiceObject.get("InvoiceReferenceNo");
+                ComplementaryInvoiceItems = ItemsArray;
             }
 
 
