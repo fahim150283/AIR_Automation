@@ -1,13 +1,14 @@
 Feature: Finish Goods Store Test
 
 
-  Scenario: Search a Store for AIR
-    Given Login to Search Store
-    When search for store
-    And description of a store
-    Then close Sales Return
+  Scenario: Description of a FG Store and print details
+    Given Login to Search a FG Store
+    When search for FG Store
+    And description of a store and print
+    Then close window for searching a FG Store
 
-  Scenario: Create a new Sales Return
-    Given login for creating Sales Return
-    And create new Sales Return
-    Then close the Sales Return window
+  Scenario: Edit a FG Store
+    Given Login to edit a FG Store
+    When search for a FG Store
+    And edit a store
+    Then close window for editing a FG Store

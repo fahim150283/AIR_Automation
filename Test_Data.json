@@ -117,9 +117,10 @@
     "Vehicle":"factory"
   },
   
-  "Finish Goods Store": {
-    "SearchInfo": "12012",
-    "DistributorSearch":"bhai bhai"
+  "FG Store": {
+    "SearchInfo": "DM- Tha-15-1844",
+    "EditedCode":"CMV",
+    "EditedName": "Edited Name"
   },
   
   "Distributors": {

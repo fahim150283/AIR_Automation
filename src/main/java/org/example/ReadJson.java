@@ -69,6 +69,9 @@ public class ReadJson {
     public static String GROVS_Vehicle;
     public static String GROVS_AcceptedQuantity;
     public static String GROVS_ItemQuantity;
+    public static String FGS_SearchInfo;
+    public static String FGS_EditedCode;
+    public static String FGS_EditedName;
 
 
     public static String[] readJsonData() {
@@ -181,6 +184,17 @@ public class ReadJson {
                 GROVS_ItemQuantity = (String) GROVS_Object.get("ItemQuantity");
                 GROVS_AcceptedQuantity = (String) GROVS_Object.get("AcceptedQuantity");
                 GROVS_InvoiceItems = ItemsArray;
+            }
+            {// Read data from the "FG Store" object
+                JSONObject FGS_Object = (JSONObject) jsonObject.get("FG Store");
+                FGS_SearchInfo = (String) FGS_Object.get("SearchInfo");
+                FGS_EditedCode = (String) FGS_Object.get("EditedCode");
+                FGS_EditedName = (String) FGS_Object.get("EditedName");
+                // GROVS_RequestFrom = (String) FGS_Object.get("RequestFrom");
+                // GROVS_RequestTo = (String) FGS_Object.get("RequestTo");
+                // GROVS_ItemQuantity = (String) FGS_Object.get("ItemQuantity");
+                // GROVS_AcceptedQuantity = (String) FGS_Object.get("AcceptedQuantity");
+                // GROVS_InvoiceItems = ItemsArray;
             }
 
 
