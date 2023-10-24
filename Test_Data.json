@@ -8,21 +8,21 @@
   },
 
   "Items": {
-    "Item1":"88003",
-    "Item2":"88153",
-    "Item3":"88203",
-    "Item4":"88152",
-    "Item5":"88085",
-    "Item6":"88083",
-    "Item7":"88198",
-    "Item8":"88009",
-    "Item9":"88154",
-    "Item10":"88155",
-    "Item11":"88157",
-    "Item12":"88208",
-    "Item13":"88158",
-    "Item14":"88204",
-    "Item15":"88156"
+    "Item1":"88003 ~~ Regular Kulfi -- 39.00ml (MINI -- STICK)",
+    "Item2":"88151 ~~ Chocobar - Mini -- 46.00ml (MINI -- STICK)",
+    "Item3":"88162 ~~ Crunchie Bar - Mini -- 52.00ml (MINI -- STICK)",
+    "Item4":"88204 ~~ Lolly - 2 in 1 -- 62.00ml (REGULAR -- STICK)",
+    "Item5":"88197 ~~ Dudh Malai -- 55.00ml (REGULAR -- STICK)",
+    "Item6":"88206 ~~ Single Sundae - Vanilla with Coffee Ripple -- 100.00ml (REGULAR -- SUNDAE)",
+    "Item7":"88191 ~~ Caramel Choco Crunch Cup -- 120.00ml (PREMIUM -- CUP)",
+    "Item8":"88192 ~~ Mawa Kulfi Cup -- 120.00ml (PREMIUM -- CUP)",
+    "Item9":"88200 ~~ Butterscotch with Cashew Crackles Cup -- 120.00ml (PREMIUM -- CUP)",
+    "Item10":"88212 ~~ Chocolate -- 500.00ml (REGULAR -- LTR CONTAINER)",
+    "Item11":"88251 ~~ Crunchie Bar (N) -- 82.00ml (REGULAR -- STICK)",
+    "Item12":"88257 ~~ Doi Cup (N) -- 120.00ml (PREMIUM -- CUP)",
+    "Item13":"88280 ~~ Mawa Kulfi - 1 Liter (N) -- 1000.00ml (PREMIUM -- LTR CONTAINER)",
+    "Item14":"88136 ~~ CAKE (CHOCOLATE) 1000ML 1P -- 1000.00ml ( -- Cake)",
+    "Item15":"99998 ~~ Cone Biscuit (500pc) -- 12.00ml (Cone Biscuit -- Cone Biscuit)"
   },
 
   "Contacts": {
@@ -113,7 +113,8 @@
     "RequestFrom":"Cumilla",
     "RequestTo":"Factory",
     "ItemQuantity":"20",
-    "AcceptedQuantity": "5"
+    "AcceptedQuantity": "5",
+    "Vehicle":"factory"
   },
   
   "Finish Goods Store": {

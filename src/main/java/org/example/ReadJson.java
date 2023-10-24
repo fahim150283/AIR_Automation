@@ -66,6 +66,7 @@ public class ReadJson {
     public static String GROVS_SearchInfo;
     public static String GROVS_RequestFrom;
     public static String GROVS_RequestTo;
+    public static String GROVS_Vehicle;
     public static String GROVS_AcceptedQuantity;
     public static String GROVS_ItemQuantity;
 
@@ -174,10 +175,12 @@ public class ReadJson {
             {// Read data from the "Good Requisition and On Vehicle Store" object
                 JSONObject GROVS_Object = (JSONObject) jsonObject.get("Good Requisition and On Vehicle Store");
                 GROVS_SearchInfo = (String) GROVS_Object.get("SearchInfo");
+                GROVS_Vehicle = (String) GROVS_Object.get("Vehicle");
                 GROVS_RequestFrom = (String) GROVS_Object.get("RequestFrom");
                 GROVS_RequestTo = (String) GROVS_Object.get("RequestTo");
                 GROVS_ItemQuantity = (String) GROVS_Object.get("ItemQuantity");
                 GROVS_AcceptedQuantity = (String) GROVS_Object.get("AcceptedQuantity");
+                GROVS_InvoiceItems = ItemsArray;
             }
 
 

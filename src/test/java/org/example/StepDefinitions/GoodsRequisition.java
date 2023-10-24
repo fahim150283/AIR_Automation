@@ -5,13 +5,15 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class GoodsRequisition extends Page_Options {
-    //new good requisition
     @Given("login for creation of a Goods Requisition")
     public void login_for_creation_of_a_goods_requisition() {
         Login(user_Polash);
-        cssSelector = ".menues-bar:nth-child(18) .active";
+        cssSelector = ".menues-bar:nth-child(12) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }
@@ -44,31 +46,49 @@ public class GoodsRequisition extends Page_Options {
         waitById(id);
         clickbyId(id);
         //search for factory
-        cssSelector = ".select2-search--dropdown > .select2-search__field";
-        waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, GROVS_RequestTo);
-        cssSelectorPressEnter(cssSelector);
-
-
-        //Goods
-        xpath = "//*[@id=\"send_req_fg_store\"]/div/div[2]/div[1]/span/span[1]/span";
-        Thread.sleep(0500);
-        clickbyxpath(xpath);
-        Thread.sleep(0500);
-        pressDownbyXpath(xpath);
+        xpath = "/html/body/span/span/span[1]/input";
+        waitByxpath(xpath);
+        inputbyxpath(xpath, GROVS_RequestTo);
         pressEnterbyXpath(xpath);
-
-
-        //click the plus button
-        id = "add_goods_table";
-        waitById(id);
         clickbyId(id);
 
-        //quantity
-        cssSelector = "#fg_store_goods_table > tr > td:nth-child(5) > input.p_qty";
-        waitByCssSelector(cssSelector);
-        clearByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, GROVS_ItemQuantity);
+        //click the items bar and add items
+        for (int i = 0; i < GROVS_InvoiceItems.length; i++) {
+            Thread.sleep(100);
+            WebElement multiSelectDropdown = driver.findElement(By.id("goods_list"));
+            Select dropdown = new Select(multiSelectDropdown);
+            dropdown.selectByVisibleText(GROVS_InvoiceItems[i]);
+        }
+        xpath = "//*[@id=\"add_goods_table\"]";
+        clickbyxpath(xpath);
+
+
+        //click the amount buttons for the quantity of the items
+        for (int i = 0; i < GROVS_InvoiceItems.length; i++) {
+            //ctn(quantity)
+            xpath = "//*[@id=\"fg_store_goods_table\"]/tr["+(i+1)+"]/td[5]/input[1]";
+            waitByxpath(xpath);
+            clearByXpath(xpath);
+            inputbyxpath(xpath, GROVS_ItemQuantity);
+            //pcs(quantity)
+            xpath = "//*[@id=\"fg_store_goods_table\"]/tr["+(i+1)+"]/td[6]/input";
+            waitByxpath(xpath);
+            clearByXpath(xpath);
+            inputbyxpath(xpath, GROVS_ItemQuantity);
+        }
+
+        //remove an item
+        WebElement table = driver.findElement(By.id("fg_store_goods_table"));
+        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
+        // Iterate through rows
+        for (int i = 0; i < rows.size(); i++) {
+            WebElement row = rows.get(i);
+            if (i% 5 == 0) {
+                // Find and click the "delete" button for the visible row
+                WebElement delete_Button = row.findElement(By.xpath("//*[@id=\"fg_store_goods_table\"]/tr["+(i+1)+"]/td[7]/button"));
+                delete_Button.click();
+            }
+        }
 
         //save
         xpath = "//button[@id='send_req_fg_store']";
@@ -92,8 +112,8 @@ public class GoodsRequisition extends Page_Options {
     @And("cancel the good requisition")
     public void cancel_the_good_requisition() throws InterruptedException {
         //click the eye button
-        Thread.sleep(500);
-        xpath = "(//a[@id='sent_view1']/i)[2]";
+        Thread.sleep(2000);
+        xpath = "//*[@id=\"received_table\"]/tr[1]/td[2]/a";
         scrollTo_ByXpath(xpath);
         Thread.sleep(500);
         waitByxpath(xpath);
@@ -113,29 +133,28 @@ public class GoodsRequisition extends Page_Options {
     @Given("login for accepting of a requested Goods Requisition")
     public void login_for_accepting_of_a_requested_goods_requisition() throws InterruptedException {
         Login(user_Fahim);
-        cssSelector = ".menues-bar:nth-child(12) .active";
+        cssSelector = ".menues-bar:nth-child(18) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
         Thread.sleep(2500);
-        scrollToTheBottom();
     }
 
     @And("Accept the good requisition")
     public void accept_the_good_requisition() throws InterruptedException {
         //click the eye button
-        Thread.sleep(1000);
-        xpath = "(//a[@id='sent_view1']/i)[2]";
+        Thread.sleep(2000);
+        xpath = "//*[@id=\"received_table\"]/tr[1]/td[2]/a";
         waitByxpath(xpath);
         clickbyxpath(xpath);
 
         //accepted quantity
-        Boolean acceptfullRequest = false;
-        if (acceptfullRequest == false) {
+        Boolean acceptfull = false;
+        if (acceptfull == false) {
             id = "adj_ctn_qty";
             waitById(id);
             clearByid(id);
             waitById(id);
-            inputbyid(id, "5");
+            inputbyid(id, GROVS_AcceptedQuantity);
 
             //Select a vehicle
             id = "select2-select_vehicle-container";
@@ -144,7 +163,7 @@ public class GoodsRequisition extends Page_Options {
             //search for factory vehicle
             cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
             waitByCssSelector(cssSelector);
-            inputbycssselector(cssSelector, "factory vehicle");
+            inputbycssselector(cssSelector, GROVS_Vehicle);
             cssSelectorPressEnter(cssSelector);
             cssSelectorPressEnter(cssSelector);
 

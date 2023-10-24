@@ -10,11 +10,6 @@ Feature: Full Goods Requisition Test
     And cancel the good requisition
     Then close the Goods Requisition window for the cancellation of the request
 
-  Scenario: Send a new Goods Requisition
-    Given login for creation of a Goods Requisition
-    And create new Goods Requisition
-    Then close the Goods Requisition window
-
   Scenario: Accept a requested Goods Requisition
     Given login for accepting of a requested Goods Requisition
     And Accept the good requisition
