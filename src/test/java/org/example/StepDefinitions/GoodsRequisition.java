@@ -136,7 +136,6 @@ public class GoodsRequisition extends Page_Options {
         cssSelector = ".menues-bar:nth-child(18) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
-        Thread.sleep(2500);
     }
 
     @And("Accept the good requisition")
@@ -144,39 +143,50 @@ public class GoodsRequisition extends Page_Options {
         //click the eye button
         Thread.sleep(2000);
         xpath = "//*[@id=\"received_table\"]/tr[1]/td[2]/a";
+        scrollTo_ByXpath(xpath);
+        Thread.sleep(2000);
         waitByxpath(xpath);
         clickbyxpath(xpath);
+
 
         //accepted quantity
         Boolean acceptfull = false;
         if (acceptfull == false) {
-            id = "adj_ctn_qty";
-            waitById(id);
-            clearByid(id);
-            waitById(id);
-            inputbyid(id, GROVS_AcceptedQuantity);
+            //click the amount buttons for the quantity of the items
+            for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"rcv_pro_data\"]") -2; i++) {
+                //ctn(quantity)
+                xpath = "//*[@id=\"rcv_pro_data\"]/tr["+(i+1)+"]/td[7]/p/input";
+                waitByxpath(xpath);
+                clearByXpath(xpath);
+                inputbyxpath(xpath, GROVS_AcceptedQuantity);
+                //pcs(quantity)
+                xpath = "//*[@id=\"rcv_pro_data\"]/tr["+(i+1)+"]/td[8]/p/input";
+                waitByxpath(xpath);
+                clearByXpath(xpath);
+                inputbyxpath(xpath, GROVS_AcceptedQuantity);
+            }
 
             //Select a vehicle
             id = "select2-select_vehicle-container";
             waitById(id);
             clickbyId(id);
             //search for factory vehicle
-            cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
-            waitByCssSelector(cssSelector);
-            inputbycssselector(cssSelector, GROVS_Vehicle);
-            cssSelectorPressEnter(cssSelector);
-            cssSelectorPressEnter(cssSelector);
+            xpath = "/html/body/span/span/span[1]/input";
+            waitByxpath(xpath);
+            inputbyxpath(xpath, GROVS_Vehicle);
+            pressEnterbyXpath(xpath);
+
 
             //accepted on date and time
             id = "approved_on";
             waitById(id);
             clickbyId(id);
-            inputbyid(id, "Anything Literally");
+            inputbyid(id, getTodaynTime());
             pressEnterById(id);
+
             //Click accept
+            id="accept_permission_btn";
             pressEnterById(id);
-
-
         }
     }
 
@@ -190,7 +200,7 @@ public class GoodsRequisition extends Page_Options {
     @Given("login for vehicle load for a requested Goods Requisition")
     public void login_for_vehicle_load_for_a_requested_goods_requisition() {
         Login(user_Fahim);
-        cssSelector = ".menues-bar:nth-child(15) .active";
+        cssSelector = ".menues-bar:nth-child(22) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }
@@ -229,7 +239,7 @@ public class GoodsRequisition extends Page_Options {
     @Given("login for vehicle unload for a requested Goods Requisition")
     public void login_for_vehicle_unload_for_a_requested_goods_requisition() {
         Login(user_Fahim);
-        cssSelector = ".menues-bar:nth-child(15) .active";
+        cssSelector = ".menues-bar:nth-child(22) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }
