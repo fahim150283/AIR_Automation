@@ -14,7 +14,7 @@ public class Apps extends Page_Options {
     /*
     create a new app
     */
-    @Given("login for creating new  app")
+    @Given("login for creating new app")
     public void login_for_creating_new_app() {
         Login(user_Fahim);
 
