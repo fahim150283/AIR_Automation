@@ -118,9 +118,17 @@
   },
   
   "FG Store": {
-    "SearchInfo": "DM- Tha-15-1844",
+    "SearchInfo": "DM-SHA-15-1844",
+    "Name": "Test FG Store",
+    "Code": "CMV",
+    "Definition": "Test Definition",
+    "EditedDefinition": "Edited Test Definition",
+    "Address": "Test Address",
+    "EditedAddress": "Edited Test Address",
     "EditedCode":"CMV",
-    "EditedName": "Edited Name"
+    "EditedName": "Edited Name",
+    "Region": "Cumilla",
+    "Depots": "Cumilla"
   },
   
   "Distributors": {

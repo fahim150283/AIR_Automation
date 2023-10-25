@@ -72,6 +72,14 @@ public class ReadJson {
     public static String FGS_SearchInfo;
     public static String FGS_EditedCode;
     public static String FGS_EditedName;
+    public static String FGS_Name;
+    public static String FGS_Code;
+    public static String FGS_Definition;
+    public static String FGS_EditedDefinition;
+    public static String FGS_EditedAddress;
+    public static String FGS_Region;
+    public static String FGS_Depots;
+    public static String FGS_Address;
 
 
     public static String[] readJsonData() {
@@ -189,12 +197,15 @@ public class ReadJson {
                 JSONObject FGS_Object = (JSONObject) jsonObject.get("FG Store");
                 FGS_SearchInfo = (String) FGS_Object.get("SearchInfo");
                 FGS_EditedCode = (String) FGS_Object.get("EditedCode");
+                FGS_Name = (String) FGS_Object.get("Name");
+                FGS_Code = (String) FGS_Object.get("Code");
+                FGS_Definition = (String) FGS_Object.get("Definition");
+                FGS_EditedDefinition = (String) FGS_Object.get("EditedDefinition");
+                FGS_EditedAddress = (String) FGS_Object.get("EditedAddress");
+                FGS_Region = (String) FGS_Object.get("Region");
+                FGS_Depots = (String) FGS_Object.get("Depots");
+                FGS_Address = (String) FGS_Object.get("Address");
                 FGS_EditedName = (String) FGS_Object.get("EditedName");
-                // GROVS_RequestFrom = (String) FGS_Object.get("RequestFrom");
-                // GROVS_RequestTo = (String) FGS_Object.get("RequestTo");
-                // GROVS_ItemQuantity = (String) FGS_Object.get("ItemQuantity");
-                // GROVS_AcceptedQuantity = (String) FGS_Object.get("AcceptedQuantity");
-                // GROVS_InvoiceItems = ItemsArray;
             }
 
 

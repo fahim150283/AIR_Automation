@@ -105,9 +105,52 @@ public class FinishGoodsStore extends Page_Options {
             dropdown.selectByValue("Vehicle");
         }
 
+        //definition
+        id = "edit_defination";
+        clearById(id);
+        inputbyid(id,FGS_EditedDefinition);
+
+        //address
+        id = "edit_address";
+        clearById(id);
+        inputbyid(id,FGS_EditedAddress);
+
+        //Region
+        id = "select2-edit_region-container";
+        clickbyId(id);
+        xpath = "/html/body/span/span/span[1]/input";
+        waitByxpath(xpath);
+        inputbyxpath(xpath, FGS_Region);
+        pressEnterbyXpath(xpath);
+
+        //Depots
+        id = "select2-edit_depot-container";
+        clickbyId(id);
+        xpath = "/html/body/span/span/span[1]/input";
+        waitByxpath(xpath);
+        inputbyxpath(xpath, FGS_Region);
+        pressEnterbyXpath(xpath);
+
+        boolean active= false;
+        System.out.println(active);
+
+        if (active == true){
+            WebElement dropdownElement = driver.findElement(By.id("edit_status"));
+            Select dropdown = new Select(dropdownElement);
+            dropdown.selectByValue("Active");
+        }else {
+            WebElement dropdownElement = driver.findElement(By.id("edit_status"));
+            Select dropdown = new Select(dropdownElement);
+            dropdown.selectByValue("Inactive");
+        }
+
+        //save
+        id = "edit_region";
+        clickbyId(id);
     }
     @Then("close window for editing a FG Store")
     public void close_window_for_editing_a_fg_store() throws InterruptedException {
+        Thread.sleep(2000);
         closedriver();
     }
 }

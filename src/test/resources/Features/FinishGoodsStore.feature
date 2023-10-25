@@ -12,3 +12,8 @@ Feature: Finish Goods Store Test
     When search for a FG Store
     And edit a store
     Then close window for editing a FG Store
+
+  Scenario: Create a FG Store
+    Given Login to Create a FG Store
+    And create a store new FG Store
+    Then close window for creating a FG Store
