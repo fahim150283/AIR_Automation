@@ -92,7 +92,9 @@ public class FinishGoodsStore extends Page_Options {
         clearById(id);
         inputbyid(id,FGS_EditedName);
 
-        boolean store = true;
+        boolean store= true;
+        System.out.println(store);
+
         if (store == true){
             WebElement dropdownElement = driver.findElement(By.id("edit_type"));
             Select dropdown = new Select(dropdownElement);
@@ -105,8 +107,7 @@ public class FinishGoodsStore extends Page_Options {
 
     }
     @Then("close window for editing a FG Store")
-    public void close_window_for_editing_a_fg_store() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void close_window_for_editing_a_fg_store() throws InterruptedException {
+        closedriver();
     }
 }
