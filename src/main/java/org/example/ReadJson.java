@@ -80,6 +80,9 @@ public class ReadJson {
     public static String FGS_Region;
     public static String FGS_Depots;
     public static String FGS_Address;
+    public static String FGS_Store;
+    public static String FGS_ItemQuantity;
+    public static String[] FGS_Items = new String[15];
 
 
     public static String[] readJsonData() {
@@ -206,6 +209,9 @@ public class ReadJson {
                 FGS_Depots = (String) FGS_Object.get("Depots");
                 FGS_Address = (String) FGS_Object.get("Address");
                 FGS_EditedName = (String) FGS_Object.get("EditedName");
+                FGS_Store = (String) FGS_Object.get("Store");
+                FGS_Items = ItemsArray;
+                FGS_ItemQuantity = (String) FGS_Object.get("Quantity");
             }
 
 

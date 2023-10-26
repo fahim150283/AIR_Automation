@@ -17,3 +17,8 @@ Feature: Finish Goods Store Test
     Given Login to Create a FG Store
     And create a store new FG Store
     Then close window for creating a FG Store
+
+  Scenario: Add goods to store
+    Given Login to add products in a  FG Store
+    And Add goods to FG Store
+    Then Close driver for adding goods to FG Store

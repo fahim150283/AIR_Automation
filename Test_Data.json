@@ -21,7 +21,7 @@
     "Item11":"88251 ~~ Crunchie Bar (N) -- 82.00ml (REGULAR -- STICK)",
     "Item12":"88257 ~~ Doi Cup (N) -- 120.00ml (PREMIUM -- CUP)",
     "Item13":"88280 ~~ Mawa Kulfi - 1 Liter (N) -- 1000.00ml (PREMIUM -- LTR CONTAINER)",
-    "Item14":"88136 ~~ CAKE (CHOCOLATE) 1000ML 1P -- 1000.00ml ( -- Cake)",
+    "Item14":"88153 ~~ Shell & Core -- 62.00ml (REGULAR -- STICK)",
     "Item15":"99998 ~~ Cone Biscuit (500pc) -- 12.00ml (Cone Biscuit -- Cone Biscuit)"
   },
 
@@ -128,7 +128,9 @@
     "EditedCode":"CMV",
     "EditedName": "Edited Name",
     "Region": "Cumilla",
-    "Depots": "Cumilla"
+    "Depots": "Cumilla",
+    "Store":"Depot Store",
+    "Quantity": "20"
   },
   
   "Distributors": {
