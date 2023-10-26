@@ -83,17 +83,12 @@ public class Distributors extends Page_Options {
         cssSelectorPressEnter(cssSelector);
 
 
-        // Create a Random object
-        Random random = new Random();
-        // Generate a random number
-        int randomNumber = random.nextInt(99999);
-        // Concatenate the random number to the string
-        String result = "TEST" + randomNumber;
+
 
         //B P code
         id = "add_code";
         waitById(id);
-        inputbyid(id,result);
+        inputbyid(id,"result");
 
         //RSM
         Thread.sleep(1500);
