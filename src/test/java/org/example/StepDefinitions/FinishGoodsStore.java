@@ -131,22 +131,25 @@ public class FinishGoodsStore extends Page_Options {
         inputbyxpath(xpath, FGS_Region);
         pressEnterbyXpath(xpath);
 
-        boolean active= false;
+        //status
+        boolean active= true;
         System.out.println(active);
-
+        Thread.sleep(200);
         if (active == true){
-            WebElement dropdownElement = driver.findElement(By.id("edit_status"));
-            Select dropdown = new Select(dropdownElement);
-            dropdown.selectByValue("Active");
+            WebElement dropdownElement1 = driver.findElement(By.id("edit_status"));
+            Select dropdown1 = new Select(dropdownElement1);
+            dropdown1.selectByVisibleText("Active");
         }else {
-            WebElement dropdownElement = driver.findElement(By.id("edit_status"));
-            Select dropdown = new Select(dropdownElement);
-            dropdown.selectByValue("Inactive");
+            WebElement dropdownElement1 = driver.findElement(By.id("edit_status"));
+            Select dropdown1 = new Select(dropdownElement1);
+            dropdown1.selectByVisibleText("Inactive");
         }
 
         //save
-        id = "edit_region";
-        clickbyId(id);
+        Thread.sleep(200);
+        xpath = "//*[@id=\"edit_fg_store_form\"]/div/div[2]/div[6]/button";
+        waitByxpath(xpath);
+        clickbyxpath(xpath);
     }
     @Then("close window for editing a FG Store")
     public void close_window_for_editing_a_fg_store() throws InterruptedException {
