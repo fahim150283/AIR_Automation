@@ -170,7 +170,7 @@ public class ReadJson {
     public static String[] readJsonData() {
         JSONParser parser = new JSONParser();
 
-        try (FileReader reader = new FileReader("Test_Data.json")) {
+        try (FileReader reader = new FileReader("src/main/Test_Data.json")) {
             Object obj = parser.parse(reader);
             JSONObject jsonObject = (JSONObject) obj;
 
