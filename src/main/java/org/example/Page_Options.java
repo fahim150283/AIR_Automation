@@ -49,6 +49,16 @@ public class Page_Options extends BrowserUtils {
         return todayDate;
     }
 
+    public static String getFutureDate() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        LocalDateTime now = LocalDateTime.now();
+
+        LocalDate today = LocalDate.now();
+        LocalDate lastMonthDate = today.plusYears(5);
+        String date = dtf.format(lastMonthDate);
+        return date;
+    }
+
     public static String getTodaynTime() {
         // Get the current date and time
         LocalDateTime currentDateTime = LocalDateTime.now();
