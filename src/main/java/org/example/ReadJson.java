@@ -165,6 +165,7 @@ public class ReadJson {
     public static String Distributors_Type_Of_Transaction;
     public static String Distributors_RSMs_or_ASM_in_absence_of_RSM_Recommendation;
     public static String Distributors_GM_DGM_AGMs_Recommendation;
+    public static String Distributors_SearchInfo;
 
 
     public static String[] readJsonData() {
@@ -379,6 +380,7 @@ public class ReadJson {
                 Distributors_Type_Of_Transaction = (String) distributorsObject.get("Type Of Transaction");
                 Distributors_RSMs_or_ASM_in_absence_of_RSM_Recommendation = (String) distributorsObject.get("RSM's (or ASM in absence of RSM) Recommendation");
                 Distributors_GM_DGM_AGMs_Recommendation = (String) distributorsObject.get("GM/DGM/AGM's Recommendation");
+                Distributors_SearchInfo = (String) distributorsObject.get("SearchInfo");
             }
 
 

@@ -5,11 +5,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import java.util.Random;
 
 public class Distributors extends Page_Options {
-    @Given("login for creation of a Distributor")
+    @Given("login for Distributor")
     public void login_for_creation_of_a_distributor() {
         Login(user_Fahim);
 
@@ -30,7 +32,7 @@ public class Distributors extends Page_Options {
         //Add photo or image
         id = "add_o_image";
         waitById(id);
-        inputbyid(id, "G:\\Abul Hossain Chowdhury\\Projects\\Cucumber_For_AIR\\src\\main\\testing.jpg");
+        inputbyid(id, "G:\\Abul Hossain Chowdhury\\Projects\\Ultimate_Cucumber_learning\\src\\main\\testing.png");
         Thread.sleep(1000);
 
         //Reference
@@ -492,21 +494,21 @@ public class Distributors extends Page_Options {
         //Add photo or image
         id = "add_agree_image";
         waitById(id);
-        inputbyid(id, "G:\\Abul Hossain Chowdhury\\Projects\\Cucumber_For_AIR\\src\\main\\agreement.jpg");
+        inputbyid(id, "G:\\Abul Hossain Chowdhury\\Projects\\Ultimate_Cucumber_learning\\src\\main\\agreement.jpg");
         Thread.sleep(500);
 
         //Approval Image
         //Add photo or image
         id = "add_approval_image";
         waitById(id);
-        inputbyid(id, "G:\\Abul Hossain Chowdhury\\Projects\\Cucumber_For_AIR\\src\\main\\approved.jpg");
+        inputbyid(id, "G:\\Abul Hossain Chowdhury\\Projects\\Ultimate_Cucumber_learning\\src\\main\\approved.jpg");
         Thread.sleep(500);
 
         //Trade License Image
         //Add photo or image
         id = "add_tl_image";
         waitById(id);
-        inputbyid(id, "G:\\Abul Hossain Chowdhury\\Projects\\Cucumber_For_AIR\\src\\main\\trade licence.png");
+        inputbyid(id, "G:\\Abul Hossain Chowdhury\\Projects\\Ultimate_Cucumber_learning\\src\\main\\trade licence.png");
         Thread.sleep(500);
 
 
@@ -567,62 +569,64 @@ public class Distributors extends Page_Options {
     }
 
 
-//    @Given("Login to Search Distributor")
-//    public void login_to_search_distributor() {
-//        url = "http://192.168.11.182/air_2/air";
-//        navigatetourl(url);
-//        id = "username";
-//        inputbyid(id, "h.abul");
-//        id = "password";
-//        inputbyid(id, "savoy123");
-//        id = "login";
-//        clickbyId(id);
-//
-//        cssSelector = ".menues-bar:nth-child(10) .active";
-//        waitByCssSelector(cssSelector);
-//        clickbycssselector(cssSelector);
-//    }
-//    @When("search for Distributor")
-//    public void search_for_distributor() throws InterruptedException {
-//        Thread.sleep(2000);
-//        id = "search_input1";
-//        waitById(id);
-//        inputbyid(id, "TEST123");
-//    }
-//
-//    @And("description of a Distributor")
-//    public void descriptionOfADistributor() throws InterruptedException {
-//        Thread.sleep(2000);
-//        cssSelector = "#btn_view";
-//        waitByCssSelector(cssSelector);
-//        clickbycssselector(cssSelector);
-//    }
-//
-//    @Then("close Distributor for search")
-//    public void close_distributor_for_search() throws InterruptedException {
-//        Thread.sleep(2000);
-//        closedriver();
-//    }
-//
-//
-//    @Given("Login to edit a Distributor")
-//    public void login_to_edit_a_distributor() {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-//    }
-//    @When("search for a Distributor to edit")
-//    public void search_for_a_distributor_to_edit() {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-//    }
-//    @And("edit")
-//    public void edit() {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-//    }
-//    @Then("close Distributor for editing")
-//    public void close_distributor_for_editing() {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new io.cucumber.java.PendingException();
-//    }
+    @When("search for Distributor")
+    public void search_for_distributor() throws InterruptedException {
+        Thread.sleep(2000);
+
+        //search
+        xpath = "//*[@id=\"search_input1\"]";
+        waitByxpath(xpath);
+        inputbyxpath(xpath, Distributors_SearchInfo);
+    }
+    @When("description of a Distributor")
+    public void description_of_a_distributor() throws InterruptedException {
+        //click the eye button
+        Thread.sleep(500);
+        WebElement table = driver.findElement(By.id("distribution_table"));
+        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
+        // Iterate through rows
+        for (WebElement row : rows) {
+            // Check if the row is displayed
+            if (!row.getAttribute("style").contains("display: none;")) {
+                // Find and click the "Add App Permissions" button for the visible row
+                WebElement view_Button = row.findElement(By.id("btn_view"));
+                view_Button.click();
+            }
+        }
+    }
+    @Then("print the distributor info")
+    public void print_the_distributor_info() throws InterruptedException {
+        //print the diistributor info
+        Thread.sleep(200);
+        xpath = "//*[@id=\"print_div\"]/a";
+        clickbyxpath(xpath);
+    }
+    @Then("close Distributor for search")
+    public void close_distributor_for_search() throws InterruptedException {
+        Thread.sleep(2000);
+        closedriver();
+    }
+
+
+    @And("edit distributor")
+    public void editDistributor() throws InterruptedException {
+        //click the edit button
+        Thread.sleep(500);
+        WebElement table = driver.findElement(By.id("distribution_table"));
+        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
+        // Iterate through rows
+        for (WebElement row : rows) {
+            // Check if the row is displayed
+            if (!row.getAttribute("style").contains("display: none;")) {
+                // Find and click the "Add App Permissions" button for the visible row
+                WebElement btn_edit = row.findElement(By.id("btn_edit"));
+                btn_edit.click();
+            }
+        }
+
+
+        //
+
+
+    }
 }
