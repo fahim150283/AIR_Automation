@@ -272,6 +272,15 @@ public class Page_Options extends BrowserUtils {
         return TotalRowCount;
     }
 
+    public static int getTotalLiCountByXpath(String xpath) throws InterruptedException {
+        // Find all the rows in the table
+        Thread.sleep(300);
+        WebElement table = driver.findElement(By.xpath(xpath));
+        int TotalRowCount = table.findElements(By.tagName("li")).size();
+        System.out.println(TotalRowCount+" Total Line count");
+        return TotalRowCount;
+    }
+
     public static String[][] viewButtonClickForMatchingRowsByXpathAndName(String Xpath, String name) throws InterruptedException {
         int totalrowCount = getTotalRowCountByXpath(Xpath);
         int matchedrows = 0;
