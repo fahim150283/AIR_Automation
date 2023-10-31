@@ -70,10 +70,17 @@ public class Page_Options extends BrowserUtils {
         return formattedDateTime;
     }
 
+    public static String getFutureDatenTime() {
+        // Format the date and time with AM/PM
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyyyy'T'hh:mma");
+        LocalDateTime today = LocalDateTime.now();
+        LocalDateTime lastMonthDate = today.plusYears(10);
+        String date = dtf.format(lastMonthDate);
+        return date;
+    }
+
     public static String getLastMonth() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        LocalDateTime now = LocalDateTime.now();
-
         LocalDate today = LocalDate.now();
         LocalDate lastMonthDate = today.minusMonths(2);
         String date = dtf.format(lastMonthDate);

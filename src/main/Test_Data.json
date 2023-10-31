@@ -306,8 +306,8 @@
   },
   
   "Offer": {
-    "SearchInfo": "12012",
-    "DistributorSearch":"bhai bhai"
+    "OfrType": "Product",
+    "NumOfCategory": "5"
   },
   
   "Products Category  ": {

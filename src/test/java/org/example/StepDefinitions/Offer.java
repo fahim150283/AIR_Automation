@@ -6,6 +6,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 public class Offer extends Page_Options {
@@ -55,14 +58,14 @@ public class Offer extends Page_Options {
         id = "valid_from";
         waitById(id);
         clickbyId(id);
-        inputbyid(id, "08/25/002023'T'01:001P");
+        inputbyid(id, getTodaynTime());
         pressEnterById(id);
 
         //valid to
         id = "valid_to";
         waitById(id);
         clickbyId(id);
-        inputbyid(id, "08/08/002035'T'01:001P");
+        inputbyid(id, getFutureDatenTime());
 
 
         //Products.feature Included in the Offer
@@ -71,13 +74,10 @@ public class Offer extends Page_Options {
         int num_of_category = 3;
         for (int k = 0; k < num_of_category; k++) {
             //category
-            id = "inc_prod_cat" + (k + 1);
-            waitById(id);
-            clickbyId(id);
-            for (int i = 0; i < 5; i++) {
-                pressDownbyid(id);
-            }
-            pressEnterById(id);
+            WebElement firstRowDropdown = driver.findElement(By.id("inc_prod_cat"+(k+1)));
+            // Use the Select class to interact with the dropdowns
+            Select firstRowSelect = new Select(firstRowDropdown);
+
 
             //sub category
             id = "inc_prod_sub_cat" + (k + 1);
