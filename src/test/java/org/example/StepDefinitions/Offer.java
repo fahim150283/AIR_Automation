@@ -32,7 +32,7 @@ public class Offer extends Page_Options {
     @Given("login for creation of an offer")
     public void login_for_creation_of_an_offer() {
         Login(user_Fahim);
-        cssSelector = ".menues-bar:nth-child(14) .active";
+        cssSelector = ".menues-bar:nth-child(21) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
         System.out.println(offerName);
@@ -74,9 +74,10 @@ public class Offer extends Page_Options {
         int num_of_category = 3;
         for (int k = 0; k < num_of_category; k++) {
             //category
-            WebElement firstRowDropdown = driver.findElement(By.id("inc_prod_cat"+(k+1)));
+            WebElement CatgDropdown = driver.findElement(By.id("inc_prod_cat"+(k+1)));
             // Use the Select class to interact with the dropdowns
-            Select firstRowSelect = new Select(firstRowDropdown);
+            Select CatgSelect = new Select(CatgDropdown);
+            CatgSelect.selectByVisibleText("Regular");
 
 
             //sub category
