@@ -247,7 +247,35 @@ public class ReadJson {
     public static String Distributors_E_Type_Of_Transaction;
     public static String Distributors_E_RSMs_or_ASM_in_absence_of_RSM_Recommendation;
     public static String Distributors_E_GM_DGM_AGMs_Recommendation;
-    public static String Distributors_E_SearchInfo;
+    public static String Ofr_Type;
+    public static String Ofr_NumOfCategory;
+    public static String [] Ofr_ItemCatg = new String[5];
+    public static String [] Ofr_ItemSubCatg = new String[5];
+
+    //from here
+    public static String Ofr_ItemProd1;
+    public static String Ofr_ItemProd2;
+    public static String Ofr_ItemProd3;
+    public static String Ofr_ItemProd4;
+    public static String Ofr_ItemProd5;
+    public static String EItemSubCatg1;
+    public static String EItemSubCatg2;
+    public static String EItemSubCatg3;
+    public static String EItemSubCatg4;
+    public static String EItemSubCatg5;
+    public static String EItemProd1;
+    public static String EItemProd2;
+    public static String EItemProd3;
+    public static String EItemPro4;
+    public static String EItemProd5;
+    public static String Ofr_Region;
+    public static String Ofr_Depot;
+    public static String Ofr_Area;
+    public static String Ofr_Territory;
+    public static String Ofr_Distributor;
+    public static String Ofr_ExDistributor;
+    public static String Ofr_Active;
+    public static String Ofr_CreditAllowed;
 
 
     public static String[] readJsonData() {
@@ -550,6 +578,26 @@ public class ReadJson {
                 Distributors_E_Type_Of_Transaction = (String) DistributorEditingObject.get("Type Of Transaction");
                 Distributors_E_RSMs_or_ASM_in_absence_of_RSM_Recommendation = (String) DistributorEditingObject.get("RSM's (or ASM in absence of RSM) Recommendation");
                 Distributors_E_GM_DGM_AGMs_Recommendation = (String) DistributorEditingObject.get("GM/DGM/AGM's Recommendation");
+            }
+            {// Read data from the "Offer" object
+                JSONObject Offer_Object = (JSONObject) jsonObject.get("Offer");
+                Ofr_Type = (String) Offer_Object.get("SearchInfo");
+                Ofr_NumOfCategory = (String) Offer_Object.get("EditedCode");
+                for (int i = 0; i<Integer.parseInt(Ofr_NumOfCategory); i++){
+                    Ofr_ItemCatg[i] = (String) Offer_Object.get("ItemCatg"+i);
+                }
+
+                Ofr_ = (String) Offer_Object.get("Code");
+                Ofr_ = (String) Offer_Object.get("Definition");
+                Ofr_ = (String) Offer_Object.get("EditedDefinition");
+                Ofr_ = (String) Offer_Object.get("EditedAddress");
+                Ofr_ = (String) Offer_Object.get("Region");
+                Ofr_ = (String) Offer_Object.get("Depots");
+                Ofr_ = (String) Offer_Object.get("Address");
+                Ofr_ = (String) Offer_Object.get("EditedName");
+                Ofr_ = (String) Offer_Object.get("Store");
+                Ofr_ = ItemsArray;
+                Ofr_ = (String) Offer_Object.get("Quantity");
             }
 
 

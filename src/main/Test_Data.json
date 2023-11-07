@@ -338,7 +338,9 @@
     "Area" : "Cumilla",
     "Territory" : "Cumilla",
     "Distributor" : "bhai bhai",
-    "ExDistributor" : "Amin Store"
+    "ExDistributor" : "Amin Store",
+    "Active": "YES",
+    "CreditAllowed": "YES"
   },
   
   "Products Category  ": {
