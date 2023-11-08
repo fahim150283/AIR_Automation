@@ -570,19 +570,19 @@ public class ReadJson {
                 Ofr_Type = (String) Offer_Object.get("OfrType");
                 Ofr_NumOfCategory = (String) Offer_Object.get("NumOfCategory");
                 for (int i = 0; i<Integer.parseInt(Ofr_NumOfCategory); i++){
-                    Ofr_ItemCatg[i] = (String) Offer_Object.get("ItemCatg"+i);
+                    Ofr_ItemCatg[i] = (String) Offer_Object.get("ItemCatg"+(i+1));
                 }
                 for (int i = 0; i<Integer.parseInt(Ofr_NumOfCategory); i++){
-                    Ofr_ItemSubCatg[i] = (String) Offer_Object.get("ItemSubCatg"+i);
+                    Ofr_ItemSubCatg[i] = (String) Offer_Object.get("ItemSubCatg"+(i+1));
                 }
                 for (int i = 0; i<Integer.parseInt(Ofr_NumOfCategory); i++){
-                    Ofr_ItemProd[i] = (String) Offer_Object.get("ItemProd"+i);
+                    Ofr_ItemProd[i] = (String) Offer_Object.get("ItemProd"+(i+1));
                 }
                 for (int i = 0; i<Integer.parseInt(Ofr_NumOfCategory); i++){
-                    Ofr_EItemSubCatg[i] = (String) Offer_Object.get("EItemSubCatg"+i);
+                    Ofr_EItemSubCatg[i] = (String) Offer_Object.get("EItemSubCatg"+(i+1));
                 }
                 for (int i = 0; i<Integer.parseInt(Ofr_NumOfCategory); i++){
-                    Ofr_EItemProd[i] = (String) Offer_Object.get("EItemProd"+i);
+                    Ofr_EItemProd[i] = (String) Offer_Object.get("EItemProd"+(i+1));
                 }
 
                 Ofr_Region = (String) Offer_Object.get("Region");

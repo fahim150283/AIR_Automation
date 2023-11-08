@@ -32,6 +32,10 @@ public class Page_Options extends BrowserUtils {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight * 0.9)");
     }
 
+    public static void PrintPageTitle() {
+        System.out.println("The found Page is : " + driver.getTitle());
+    }
+
     public static void scrollTo_ByXpath(String s) {
         WebElement element = driver.findElement(By.xpath(s));
 

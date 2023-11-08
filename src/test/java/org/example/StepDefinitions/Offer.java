@@ -12,11 +12,10 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 public class Offer extends Page_Options {
-//    String offer_type = "Gift"; //set as offer type
-//    String offer_type = "Cash"; //set as offer type
-    String offer_type = "Product"; //set as offer type
-    String offerName = offer_type+"_" + randomTestString();
 
+    String offer_type = Ofr_Type;
+    String offerName = offer_type+"_" + randomTestString();
+    int Num_Cat = Integer.parseInt(Ofr_NumOfCategory);
     String temporary_Offer_Name;
     String temporary_Offer_Type1;
     String temporary_Offer_Type2;
@@ -35,7 +34,8 @@ public class Offer extends Page_Options {
         cssSelector = ".menues-bar:nth-child(21) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
-        System.out.println(offerName);
+        System.out.println("The Expected page is : AIR - Offer");
+        PrintPageTitle();
     }
 
     @And("create new offer")
@@ -68,310 +68,299 @@ public class Offer extends Page_Options {
         inputbyid(id, getFutureDatenTime());
 
 
-        //Products.feature Included in the Offer
-
         //Number of categories
-        int num_of_category = 3;
-        for (int k = 0; k < num_of_category; k++) {
+        for (int k = 0; k < Num_Cat; k++) {
             //category
-            WebElement CatgDropdown = driver.findElement(By.id("inc_prod_cat"+(k+1)));
-            // Use the Select class to interact with the dropdowns
+            Thread.sleep(200);
+            xpath = "//*[@id=\"inc_prod_cat"+(k+1)+"\"]";
+//            clickbyxpath(xpath);
+            WebElement CatgDropdown = driver.findElement(By.xpath(xpath));
             Select CatgSelect = new Select(CatgDropdown);
-            CatgSelect.selectByVisibleText("Regular");
+            CatgSelect.selectByVisibleText(Ofr_ItemCatg[k]);
 
 
             //sub category
+            Thread.sleep(200);
             id = "inc_prod_sub_cat" + (k + 1);
-            waitById(id);
-            clickbyId(id);
-            for (int i = 0; i < 2; i++) {
-                pressDownbyid(id);
-            }
-            pressEnterById(id);
+            WebElement SubCatgDropdown = driver.findElement(By.id(id));
+            CatgSelect = new Select(SubCatgDropdown);
+            CatgSelect.selectByVisibleText(Ofr_ItemSubCatg[k]);
 
             //product
+            Thread.sleep(200);
             id = "inc_prod" + (k + 1);
-            waitById(id);
-            clickbyId(id);
-            for (int i = 0; i < 9 - k; i++) {
-                pressDownbyid(id);
-            }
-            waitById(id);
-            pressEnterById(id);
+            WebElement ProdDropdown = driver.findElement(By.id(id));
+            CatgSelect = new Select(ProdDropdown);
+            CatgSelect.selectByVisibleText(Ofr_ItemProd[k]);
 
             //Excluded items
 
             //sub category
-            xpath = "//*[@id=\"raw-row-id" + (21 + k) + "\"]/td[5]/span/span[1]/span";
-            waitByxpath(xpath);
-            inputbyxpath(xpath, "cup");
-            pressEnterbyXpath(xpath);
-            pressEnterbyXpath(xpath);
-            //products
-            xpath = "//*[@id=\"raw-row-id" + (21 + k) + "\"]/td[6]/span/span[1]/span";
-            waitByxpath(xpath);
-            Thread.sleep(1000);
-            clickbyxpath(xpath);
-            for (int i = 0; i < 4 - k; i++) {
-                pressDownbyXpath(xpath);
-            }
-            pressEnterbyXpath(xpath);
-            pressESCbyXpath(xpath);
+            Thread.sleep(200);
+            id = "ex_sub_cat"+(k+1);
+            WebElement Dropdown = driver.findElement(By.id(id));
+            CatgSelect = new Select(Dropdown);
+            CatgSelect.selectByVisibleText(Ofr_EItemSubCatg[k]);
 
-            if (k < num_of_category - 1) {
-                Thread.sleep(1000);
+            //products
+            Thread.sleep(2000);
+            id = "ex_prod"+(k+1);
+            Dropdown = driver.findElement(By.id(id));
+            CatgSelect = new Select(Dropdown);
+            CatgSelect.selectByVisibleText(Ofr_EItemProd[k]);
+
+            //click the plus button to add another row
+            if (k < Num_Cat - 1) {
+                Thread.sleep(200);
                 xpath = "//*[@id=\"prod_table\"]/tfoot/tr/td/span[1]";
                 waitByxpath(xpath);
                 clickbyxpath(xpath);
-                Thread.sleep(500);
+                Thread.sleep(200);
             }
         }
 
-        //remove last category
-        //click the checkbox
-        Thread.sleep(500);
-        xpath = "//tr[@id=\'raw-row-id23\']/td/label/span";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
-        //click the delete button
-        xpath = "//table[@id=\'prod_table\']/tfoot/tr/td/span[2]/i";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
-
-
-        //offer type
-        id = "offer_type";
-        waitById(id);
-        clickbyId(id);
-
-
-        if (offer_type == "Cash") {
-
-            //choose the cash option
-            id = "offer_type";
-            pressDownbyid(id);
-            pressEnterById(id);
-
-
-            //Number of categories
-            num_of_category = 3;
-            for (int k = 0; k < num_of_category; k++) {
-
-                //BDT or Precentage
-                if (k % 2 == 0) {
-                    //select percentage
-                    id = "amount_type" + (k + 1);
-                    clickbyId(id);
-                    pressDownbyid(id);
-                    pressEnterById(id);
-
-                    //min amount
-                    id = "c_min_amnt" + (k + 1);
-                    waitById(id);
-                    inputbyid(id, "" + (1000 * (k + 1)));
-
-                    //Discount amount
-                    id = "discount_amount" + (k + 1);
-                    waitById(id);
-                    inputbyid(id, "" + ((k + 1) * 10));
-
-                } else {
-                    //min amount
-                    id = "c_min_amnt" + (k + 1);
-                    waitById(id);
-                    inputbyid(id, "" + (1000 * (k + 1)));
-
-                    //Discount amount
-                    id = "discount_amount" + (k + 1);
-                    waitById(id);
-                    inputbyid(id, "" + (100 * (k + 1)));
-                }
-
-                //click plus button
-                if (k < num_of_category - 1) {
-                    Thread.sleep(1000);
-                    xpath = "//*[@id=\"amount_group\"]/div/table/tfoot/tr/td/span[1]";
-                    waitByxpath(xpath);
-                    clickbyxpath(xpath);
-                    Thread.sleep(500);
-                }
-            }
-            //delete the last category
-            //click the checkbox
-            xpath = "//tr[@id=\'raw-row-id33\']/td/label/span";
-            waitByxpath(xpath);
-            clickbyxpath(xpath);
-            //click delete button
-            xpath = "//div[2]/div/table/tfoot/tr/td/span[2]/i";
-            waitByxpath(xpath);
-            clickbyxpath(xpath);
-
-
-        }
-        else if (offer_type == "Product") {
-
-            //select product as gift type
-            id = "offer_type";
-            pressDownbyid(id);
-            pressDownbyid(id);
-            pressEnterById(id);
-
-            //category
-            num_of_category = 3;
-            for (int k = 0; k < num_of_category; k++) {
-                //min inv amount
-                id = "min_amnt" + (k + 1);
-                waitById(id);
-                inputbyid(id, "1000");
-
-                //min prod qty
-                id = "min_prod_qty" + (k + 1);
-                waitById(id);
-                inputbyid(id, "5");
-
-                //prod type
-                id = "min_prod_type" + (k + 1);
-                clickbyId(id);
-                pressDownbyid(id);
-                pressEnterById(id);
-
-                //product category
-                id = "prod_cat" + (k + 1);
-                clickbyId(id);
-                for (int i = 0; i < 4 - k; i++) {
-                    pressDownbyid(id);
-                }
-                pressEnterById(id);
-
-                //ctn
-                id = "ctn" + (k + 1);
-                clearById(id);
-                inputbyid(id, "3");
-
-
-                //click the plus button to add a category
-                if (k < num_of_category - 1) {
-                    Thread.sleep(1000);
-                    xpath = "//*[@id=\"prod_cat_group\"]/div/table/tfoot/tr/td/span[1]";
-                    waitByxpath(xpath);
-                    clickbyxpath(xpath);
-                    Thread.sleep(500);
-                }
-
-            }
-
-            //click the checkbox
-            xpath = "//tr[@id='raw-row-id3']/td/label/span";
-            waitByxpath(xpath);
-            clickbyxpath(xpath);
-
-            //click the delete button
-            xpath = "//div[@id='prod_cat_group']/div/table/tfoot/tr/td/span[2]/i";
-            waitByxpath(xpath);
-            clickbyxpath(xpath);
-
-        }
-        else if (offer_type == "Gift") {
-
-            //choose gift
-            id = "offer_type";
-            pressDownbyid(id);
-            pressDownbyid(id);
-            pressDownbyid(id);
-            pressEnterById(id);
-
-            num_of_category = 3;
-            for (int k = 0; k < num_of_category; k++) {
-                //min amount
-                id = "g_min_amnt"+(k+1);
-                waitById(id);
-                inputbyid(id, "1000");
-
-                //gift name
-                id = "gift_name"+(k+1);
-                clickbyId(id);
-                pressDownbyid(id);
-                pressEnterById(id);
-
-                //quantity
-                id = "quantity"+(k+1);
-                waitById(id);
-                inputbyid(id, "8");
-
-                //click plus button
-                if (k < num_of_category - 1) {
-                    Thread.sleep(1000);
-                    xpath = "//*[@id=\"gift_grp\"]/div/table/tfoot/tr/td/span[1]";
-                    waitByxpath(xpath);
-                    clickbyxpath(xpath);
-                    Thread.sleep(500);
-                }
-            }
-            //delete the last category
-            //click the checkbox
-            xpath = "//*[@id=\"raw-row-id43\"]/td[1]/label/span";
-            waitByxpath(xpath);
-            clickbyxpath(xpath);
-            //click delete button
-            xpath = "//*[@id=\"gift_grp\"]/div/table/tfoot/tr/td/span[2]";
-            waitByxpath(xpath);
-            clickbyxpath(xpath);
-        }
-
-        //choose the region
-        xpath = "//*[@id=\"add_offer_form\"]/div/div[4]/div[1]/span/span[1]/span/span/textarea";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
-        for (int i=0; i<3; i++) {
-            pressDownbyXpath(xpath);
-        }
-        pressEnterbyXpath(xpath);
-        pressESCbyXpath(xpath);
-
-        //choose the depot
-        xpath = "//*[@id=\"depot_grp\"]/span/span[1]/span/span/textarea";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
-        pressDownbyXpath(xpath);
-        pressEnterbyXpath(xpath);
-        pressESCbyXpath(xpath);
-
-        //choose the area
-        xpath = "//*[@id=\"area_grp\"]/span/span[1]/span/span/textarea";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
-        pressDownbyXpath(xpath);
-        pressEnterbyXpath(xpath);
-        pressESCbyXpath(xpath);
-
-        //choose the territory
-        xpath = "//*[@id=\"territory_grp\"]/span/span[1]/span/span/textarea";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
-        for (int i = 0; i < 3; i++) {
-            pressDownbyXpath(xpath);
-        }
-        pressEnterbyXpath(xpath);
-        pressESCbyXpath(xpath);
-
-        //choose the Distributor
-        xpath = "//*[@id=\"distributor_grp\"]/span/span[1]/span/span/textarea";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
-        pressEnterbyXpath(xpath);
-        pressESCbyXpath(xpath);
-
-        //choose the Excluded Distributors
-        xpath = "//*[@id=\"ex_distributor_grp\"]/span/span[1]/span/span/textarea";
-        waitByxpath(xpath);
-        inputbyxpath(xpath,"liton");
-        pressEnterbyXpath(xpath);
-        pressESCbyXpath(xpath);
-
-        //save and send for approval
-        xpath = "//*[@id=\"submit_offer_add_sent\"]";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
+//        //remove last category
+//        //click the checkbox
+//        Thread.sleep(200);
+//        xpath = "//tr[@id=\'raw-row-id23\']/td/label/span";
+//        waitByxpath(xpath);
+//        clickbyxpath(xpath);
+//        //click the delete button
+//        xpath = "//table[@id=\'prod_table\']/tfoot/tr/td/span[2]/i";
+//        waitByxpath(xpath);
+//        clickbyxpath(xpath);
+//
+//
+//        //offer type
+//        id = "offer_type";
+//        waitById(id);
+//        clickbyId(id);
+//
+//
+//        if (offer_type == "Cash") {
+//
+//            //choose the cash option
+//            id = "offer_type";
+//            pressDownbyid(id);
+//            pressEnterById(id);
+//
+//
+//            //Number of categories
+//            for (int k = 0; k < Num_Cat; k++) {
+//
+//                //BDT or Precentage
+//                if (k % 2 == 0) {
+//                    //select percentage
+//                    id = "amount_type" + (k + 1);
+//                    clickbyId(id);
+//                    pressDownbyid(id);
+//                    pressEnterById(id);
+//
+//                    //min amount
+//                    id = "c_min_amnt" + (k + 1);
+//                    waitById(id);
+//                    inputbyid(id, "" + (1000 * (k + 1)));
+//
+//                    //Discount amount
+//                    id = "discount_amount" + (k + 1);
+//                    waitById(id);
+//                    inputbyid(id, "" + ((k + 1) * 10));
+//
+//                } else {
+//                    //min amount
+//                    id = "c_min_amnt" + (k + 1);
+//                    waitById(id);
+//                    inputbyid(id, "" + (1000 * (k + 1)));
+//
+//                    //Discount amount
+//                    id = "discount_amount" + (k + 1);
+//                    waitById(id);
+//                    inputbyid(id, "" + (100 * (k + 1)));
+//                }
+//
+//                //click plus button
+//                if (k < Num_Cat - 1) {
+//                    Thread.sleep(1000);
+//                    xpath = "//*[@id=\"amount_group\"]/div/table/tfoot/tr/td/span[1]";
+//                    waitByxpath(xpath);
+//                    clickbyxpath(xpath);
+//                    Thread.sleep(500);
+//                }
+//            }
+//            //delete the last category
+//            //click the checkbox
+//            xpath = "//tr[@id=\'raw-row-id33\']/td/label/span";
+//            waitByxpath(xpath);
+//            clickbyxpath(xpath);
+//            //click delete button
+//            xpath = "//div[2]/div/table/tfoot/tr/td/span[2]/i";
+//            waitByxpath(xpath);
+//            clickbyxpath(xpath);
+//
+//
+//        }
+//        else if (offer_type == "Product") {
+//
+//            //select product as gift type
+//            id = "offer_type";
+//            pressDownbyid(id);
+//            pressDownbyid(id);
+//            pressEnterById(id);
+//
+//            //category
+//            for (int k = 0; k < Num_Cat; k++) {
+//                //min inv amount
+//                id = "min_amnt" + (k + 1);
+//                waitById(id);
+//                inputbyid(id, "1000");
+//
+//                //min prod qty
+//                id = "min_prod_qty" + (k + 1);
+//                waitById(id);
+//                inputbyid(id, "5");
+//
+//                //prod type
+//                id = "min_prod_type" + (k + 1);
+//                clickbyId(id);
+//                pressDownbyid(id);
+//                pressEnterById(id);
+//
+//                //product category
+//                id = "prod_cat" + (k + 1);
+//                clickbyId(id);
+//                for (int i = 0; i < 4 - k; i++) {
+//                    pressDownbyid(id);
+//                }
+//                pressEnterById(id);
+//
+//                //ctn
+//                id = "ctn" + (k + 1);
+//                clearById(id);
+//                inputbyid(id, "3");
+//
+//
+//                //click the plus button to add a category
+//                if (k < Num_Cat - 1) {
+//                    Thread.sleep(1000);
+//                    xpath = "//*[@id=\"prod_cat_group\"]/div/table/tfoot/tr/td/span[1]";
+//                    waitByxpath(xpath);
+//                    clickbyxpath(xpath);
+//                    Thread.sleep(500);
+//                }
+//
+//            }
+//
+//            //click the checkbox
+//            xpath = "//tr[@id='raw-row-id3']/td/label/span";
+//            waitByxpath(xpath);
+//            clickbyxpath(xpath);
+//
+//            //click the delete button
+//            xpath = "//div[@id='prod_cat_group']/div/table/tfoot/tr/td/span[2]/i";
+//            waitByxpath(xpath);
+//            clickbyxpath(xpath);
+//
+//        }
+//        else if (offer_type == "Gift") {
+//
+//            //choose gift
+//            id = "offer_type";
+//            pressDownbyid(id);
+//            pressDownbyid(id);
+//            pressDownbyid(id);
+//            pressEnterById(id);
+//
+//            for (int k = 0; k < Num_Cat; k++) {
+//                //min amount
+//                id = "g_min_amnt"+(k+1);
+//                waitById(id);
+//                inputbyid(id, "1000");
+//
+//                //gift name
+//                id = "gift_name"+(k+1);
+//                clickbyId(id);
+//                pressDownbyid(id);
+//                pressEnterById(id);
+//
+//                //quantity
+//                id = "quantity"+(k+1);
+//                waitById(id);
+//                inputbyid(id, "8");
+//
+//                //click plus button
+//                if (k < Num_Cat - 1) {
+//                    Thread.sleep(1000);
+//                    xpath = "//*[@id=\"gift_grp\"]/div/table/tfoot/tr/td/span[1]";
+//                    waitByxpath(xpath);
+//                    clickbyxpath(xpath);
+//                    Thread.sleep(500);
+//                }
+//            }
+//            //delete the last category
+//            //click the checkbox
+//            xpath = "//*[@id=\"raw-row-id43\"]/td[1]/label/span";
+//            waitByxpath(xpath);
+//            clickbyxpath(xpath);
+//            //click delete button
+//            xpath = "//*[@id=\"gift_grp\"]/div/table/tfoot/tr/td/span[2]";
+//            waitByxpath(xpath);
+//            clickbyxpath(xpath);
+//        }
+//
+//        //choose the region
+//        xpath = "//*[@id=\"add_offer_form\"]/div/div[4]/div[1]/span/span[1]/span/span/textarea";
+//        waitByxpath(xpath);
+//        clickbyxpath(xpath);
+//        for (int i=0; i<3; i++) {
+//            pressDownbyXpath(xpath);
+//        }
+//        pressEnterbyXpath(xpath);
+//        pressESCbyXpath(xpath);
+//
+//        //choose the depot
+//        xpath = "//*[@id=\"depot_grp\"]/span/span[1]/span/span/textarea";
+//        waitByxpath(xpath);
+//        clickbyxpath(xpath);
+//        pressDownbyXpath(xpath);
+//        pressEnterbyXpath(xpath);
+//        pressESCbyXpath(xpath);
+//
+//        //choose the area
+//        xpath = "//*[@id=\"area_grp\"]/span/span[1]/span/span/textarea";
+//        waitByxpath(xpath);
+//        clickbyxpath(xpath);
+//        pressDownbyXpath(xpath);
+//        pressEnterbyXpath(xpath);
+//        pressESCbyXpath(xpath);
+//
+//        //choose the territory
+//        xpath = "//*[@id=\"territory_grp\"]/span/span[1]/span/span/textarea";
+//        waitByxpath(xpath);
+//        clickbyxpath(xpath);
+//        for (int i = 0; i < 3; i++) {
+//            pressDownbyXpath(xpath);
+//        }
+//        pressEnterbyXpath(xpath);
+//        pressESCbyXpath(xpath);
+//
+//        //choose the Distributor
+//        xpath = "//*[@id=\"distributor_grp\"]/span/span[1]/span/span/textarea";
+//        waitByxpath(xpath);
+//        clickbyxpath(xpath);
+//        pressEnterbyXpath(xpath);
+//        pressESCbyXpath(xpath);
+//
+//        //choose the Excluded Distributors
+//        xpath = "//*[@id=\"ex_distributor_grp\"]/span/span[1]/span/span/textarea";
+//        waitByxpath(xpath);
+//        inputbyxpath(xpath,"liton");
+//        pressEnterbyXpath(xpath);
+//        pressESCbyXpath(xpath);
+//
+//        //save and send for approval
+//        xpath = "//*[@id=\"submit_offer_add_sent\"]";
+//        waitByxpath(xpath);
+//        clickbyxpath(xpath);
 
     }
 
