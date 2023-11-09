@@ -28,21 +28,21 @@
   "Contacts": {
     "SearchInfo": "Siam"
   },
-  
+
 
   "PreInvoice": {
     "SearchInfo": "12012",
     "DistributorSearch":"bhai bhai",
     "ItemQuantity":"20"
   },
-  
+
   "PreviousPendingDelivery": {
     "SearchInfo": "CH-23-001504",
     "DistributorSearch":"bhai bhai",
     "ItemQuantity":"20",
     "Store": "Depot"
   },
-  
+
   "Apps": {
     "SearchInfo": "create_employee",
     "Name":"Test App",
@@ -61,21 +61,21 @@
     "Employee info9": "jewel",
     "Employee info10": "Polash"
   },
-  
+
   "Order": {
     "SearchInfo": "SO-00000012",
     "DistributorSearch":"bhai bhai",
     "ItemQuantity":"20",
     "Note": "Automated Test"
   },
-  
+
   "CancelOrder": {
     "SearchInfo": "SO-00000010",
     "DistributorSearch":"bhai bhai",
     "ItemQuantity":"5",
     "Note": "Automated Test"
   },
-  
+
   "DistributorInvoice": {
     "SearchInfo": "SO-00000011",
     "DistributorSearch":"bhai bhai",
@@ -83,14 +83,14 @@
     "Note": "Automated Test",
     "ItemQuantity":"5"
   },
-  
+
   "Cancel Invoice": {
     "SearchInfo": "SI-00000048",
     "DistributorSearch":"bhai bhai",
     "Store": "depot",
     "Note": "Automated Test"
   },
-  
+
   "Complementary Invoice": {
     "SearchInfo": "CI-23-000069",
     "DistributorSearch":"bhai bhai",
@@ -99,7 +99,7 @@
     "ItemQuantity":"20",
     "InvoiceReferenceNo":"Test Reference"
   },
-  
+
   "Collection": {
     "SearchInfo": "SO-00000013",
     "DistributorSearch":"bhai bhai",
@@ -107,7 +107,7 @@
     "CollectionAmount":"100000",
     "MoneyReceipt": "Test MoneyReceipt 007"
   },
-  
+
   "Good Requisition and On Vehicle Store": {
     "SearchInfo": "FSR-23-000036",
     "RequestFrom":"Cumilla",
@@ -116,7 +116,7 @@
     "AcceptedQuantity": "5",
     "Vehicle":"factory"
   },
-  
+
   "FG Store": {
     "SearchInfo": "DM-SHA-15-1844",
     "Name": "Test FG Store",
@@ -304,15 +304,15 @@
       "GM/DGM/AGM's Recommendation":"Recommended strongly"
     }
   },
-  
+
   "Offer": {
-    "OfrType": "Product",
+    "OfrType": "Cash",
     "NumOfCategory": "5",
     "ItemCatg1": "PREMIUM",
     "ItemCatg2": "REGULAR",
     "ItemCatg3": "Cone Biscuit",
     "ItemCatg4": "All",
-    "ItemCatg5": "MINI                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ",
+    "ItemCatg5": "MINI",
     "ItemSubCatg1": "CUP",
     "ItemSubCatg2": "STICK",
     "ItemSubCatg3": "All",
@@ -320,9 +320,9 @@
     "ItemSubCatg5": "CONE",
     "ItemProd1": "Butterscotch with Cashew Crackles Cup",
     "ItemProd2": "Shell & Core",
-    "ItemProd3": "Cone Biscuit (500pc)",
+    "ItemProd3": "All",
     "ItemProd4": "Double Sundae - Vanilla & Chocolate",
-    "ItemProd5": "ikone - Chocolate",
+    "ItemProd5": "Mini ikone - Vanilla",
     "EItemSubCatg1": "CUP",
     "EItemSubCatg2": "STICK",
     "EItemSubCatg3": "Cone Biscuit",
@@ -342,22 +342,22 @@
     "Active": "YES",
     "CreditAllowed": "YES"
   },
-  
+
   "Products Category  ": {
     "SearchInfo": "12012",
     "DistributorSearch":"bhai bhai"
   },
-  
+
   "Products": {
     "SearchInfo": "12012",
     "DistributorSearch":"bhai bhai"
   },
-  
+
   "Sales Return  ": {
     "SearchInfo": "12012",
     "DistributorSearch":"bhai bhai"
   },
-  
+
   "Loading Sheet": {
     "SearchInfo": "12012",
     "DistributorSearch":"bhai bhai"
@@ -367,5 +367,5 @@
     "SearchInfo": "12012",
     "DistributorSearch":"bhai bhai"
   }
-  
+
 }
