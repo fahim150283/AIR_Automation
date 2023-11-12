@@ -39,7 +39,7 @@ public class Offer extends Page_Options {
         PrintPageTitle();
     }
 
-    @And("create new offer")
+    @When("create new offer")
     public void create_new_offer() throws InterruptedException {
         //click create new button
         xpath = "/html/body/div[2]/div[2]/div/div[1]/div/div/div/div[3]/a";
@@ -402,31 +402,19 @@ public class Offer extends Page_Options {
         clickbyxpath(xpath);
     }
 
-    @Then("close the offer window")
-    public void close_the_offer_window() throws InterruptedException {
-        closedriver();
-    }
-
 
     /*
     check the created offer
     */
-    @Given("login to check if the offer is created")
-    public void login_to_check_if_the_offer_is_created() {
-        Login(user_Fahim);
-        cssSelector = ".menues-bar:nth-child(14) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
-    }
 
     @And("search for the offer")
     public void search_for_the_offer() throws InterruptedException {
-        Thread.sleep(700);
+        Thread.sleep(4000);
         id = "search";
         waitById(id);
-        inputbyid(id, "CashTEST88481");
+        inputbyid(id,offerName);
 
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         row_element_click_By_xpath_and_id("//tbody[@id='offer_table']//tr[./td[contains(text(),'CashTEST88481')]]", "btn_view");
     }
 
@@ -507,5 +495,10 @@ public class Offer extends Page_Options {
         //important notes
         id = "c_notes";
         inputbyid(id, "Automated Test");
+    }
+
+    @Then("close the offer window")
+    public void close_the_offer_window() throws InterruptedException {
+        closedriver();
     }
 }
