@@ -29,7 +29,6 @@
     "SearchInfo": "Siam"
   },
 
-
   "PreInvoice": {
     "SearchInfo": "12012",
     "DistributorSearch":"bhai bhai",
@@ -311,28 +310,28 @@
     "NumOfOffers": "5",
     "ItemCatg1": "PREMIUM",
     "ItemCatg2": "REGULAR",
-    "ItemCatg3": "Cone Biscuit",
-    "ItemCatg4": "All",
+    "ItemCatg3": "Elite",
+    "ItemCatg4": "BIG",
     "ItemCatg5": "MINI",
     "ItemSubCatg1": "CUP",
     "ItemSubCatg2": "STICK",
-    "ItemSubCatg3": "All",
-    "ItemSubCatg4": "SUNDAE (REGULAR)",
+    "ItemSubCatg3": "Bulk Pack",
+    "ItemSubCatg4": "GIFT-PACK",
     "ItemSubCatg5": "CONE",
     "ItemProd1": "Butterscotch with Cashew Crackles Cup",
     "ItemProd2": "Shell & Core",
-    "ItemProd3": "All",
-    "ItemProd4": "Double Sundae - Vanilla & Chocolate",
+    "ItemProd3": "Cookies & Cream - 5 Liter",
+    "ItemProd4": "HAPPINESS BOX",
     "ItemProd5": "Mini ikone - Vanilla",
     "EItemSubCatg1": "CUP",
     "EItemSubCatg2": "STICK",
-    "EItemSubCatg3": "Cone Biscuit",
-    "EItemSubCatg4": "Bulk Pack (Elite)",
+    "EItemSubCatg3": "Bulk Pack",
+    "EItemSubCatg4": "GIFT-PACK",
     "EItemSubCatg5": "CONE",
     "EItemProd1": "Caramel Choco Crunch Cup ",
     "EItemProd2": "Dudh Malai",
-    "EItemProd3": "Cone Biscuit (Master Carton)",
-    "EItemProd4": "Hajmi 5 Liter",
+    "EItemProd3": "Cookies & Cream - 5 Liter",
+    "EItemProd4": "GIFT BOX BIG",
     "EItemProd5": "Mini ikone - Chocolate",
     "Region" : "Cumilla",
     "Depot" : "Cumilla",
@@ -340,8 +339,8 @@
     "Territory" : "Cumilla",
     "Distributor" : "bhai bhai",
     "ExDistributor" : "Amin Store",
-    "Active": "YES",
-    "CreditAllowed": "YES"
+    "Active": "NO",
+    "CreditAllowed": "NO"
   },
 
   "Products Category  ": {

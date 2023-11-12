@@ -68,7 +68,7 @@ public class Offer extends Page_Options {
         clickbyId(id);
         inputbyid(id, getFutureDatenTime());
 
-        //Number of categories
+        //Products Included in the Offer
         for (int k = 0; k < Num_Cat; k++) {
             //category
             Thread.sleep(20);
@@ -104,12 +104,9 @@ public class Offer extends Page_Options {
 
             //products
             Thread.sleep(20);
-//            xpath = "//*[@id=\"select2-ex_prod"+(k+1)+"-container\"]/li[1]/button";
-//            clickbyxpath(xpath);
-//            Thread.sleep(200);
             xpath = "//*[@id=\"raw-row-id" + (21 + k) + "\"]/td[6]/span/span[1]/span";
             inputbyxpath(xpath, Ofr_EItemProd[k]);
-            Thread.sleep(100);
+            Thread.sleep(10);
             pressEnterbyXpath(xpath);
 
             //click the plus button to add another row
@@ -230,13 +227,13 @@ public class Offer extends Page_Options {
                     Dropdown = driver.findElement(By.id(id));
                     CatgSelect = new Select(Dropdown);
                     CatgSelect.selectByVisibleText("BDT");
-                    Thread.sleep(10);
+                    Thread.sleep(90);
                 }
                 else {
                     Dropdown = driver.findElement(By.id(id));
                     CatgSelect = new Select(Dropdown);
-                    CatgSelect.selectByVisibleText("BDT");
-                    Thread.sleep(10);
+                    CatgSelect.selectByVisibleText("Ctn");
+                    Thread.sleep(90);
                 }
 
                 //product category
@@ -244,22 +241,24 @@ public class Offer extends Page_Options {
                 Dropdown = driver.findElement(By.id(id));
                 CatgSelect = new Select(Dropdown);
                 CatgSelect.selectByVisibleText(Ofr_ItemCatg[k]);
-                Thread.sleep(20);
+                Thread.sleep(90);
 
                 //product
                 id = "product" + (k + 1);
                 Dropdown = driver.findElement(By.id(id));
                 CatgSelect = new Select(Dropdown);
-                CatgSelect.selectByVisibleText(Ofr_ItemCatg[k]);
-                Thread.sleep(20);
+                CatgSelect.selectByVisibleText(Ofr_ItemProd[k]);
+                Thread.sleep(90);
 
                 //ctn
                 id = "ctn" + (k + 1);
-                Dropdown = driver.findElement(By.id(id));
-                CatgSelect = new Select(Dropdown);
-                CatgSelect.selectByVisibleText(Ofr_ItemCatg[k]);
-                Thread.sleep(20);
+                clearByid(id);
+                inputbyid(id, ""+(k+1));
 
+                //pcs
+                id = "pcs" + (k + 1);
+                clearByid(id);
+                inputbyid(id, ""+(k+1));
 
                 //click the plus button to add a category
                 if (k < Num_Cat - 1) {
@@ -267,7 +266,7 @@ public class Offer extends Page_Options {
                     xpath = "//*[@id=\"prod_cat_group\"]/div/table/tfoot/tr/td/span[1]";
                     waitByxpath(xpath);
                     clickbyxpath(xpath);
-                    Thread.sleep(500);
+                    Thread.sleep(100);
                 }
 
             }
@@ -375,10 +374,38 @@ public class Offer extends Page_Options {
             pressESCbyXpath(xpath);
         }
 
-//        //save and send for approval
-//        xpath = "//*[@id=\"submit_offer_add_sent\"]";
-//        waitByxpath(xpath);
-//        clickbyxpath(xpath);
+        //Active or inactive
+        id = "is_active";
+        WebElement checkbox = driver.findElement(By.id(id));
+        if (Objects.equals(Ofr_Active, "YES")){
+            if (!checkbox.isSelected()) {
+                checkbox.click();
+            }
+        }
+        else if(Objects.equals(Ofr_Active, "NO")){
+            if (checkbox.isSelected()) {
+                checkbox.click();
+            }
+        }
+
+        //credit allowed
+        id = "credit_allowed";
+        checkbox = driver.findElement(By.id(id));
+        if (Objects.equals(Ofr_CreditAllowed, "YES")){
+            if (!checkbox.isSelected()) {
+                checkbox.click();
+            }
+        }
+        else if(Objects.equals(Ofr_CreditAllowed, "NO")){
+            if (checkbox.isSelected()) {
+                checkbox.click();
+            }
+        }
+
+        //save and send for approval
+        xpath = "//*[@id=\"submit_offer_add_sent\"]";
+        waitByxpath(xpath);
+        clickbyxpath(xpath);
     }
 
     @Then("close the offer window")

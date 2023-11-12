@@ -30,7 +30,7 @@ public class BrowserUtils extends ReadJson {
     }
 
     public static void closedriver() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(4000);
         driver.quit();
     }
 
