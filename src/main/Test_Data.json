@@ -305,7 +305,7 @@
   },
 
   "Offer": {
-    "OfrType": "Product",
+    "OfrType": "Gift",
     "NumOfCategory": "5",
     "NumOfOffers": "5",
     "ItemCatg1": "PREMIUM",
@@ -333,13 +333,18 @@
     "EItemProd3": "Cookies & Cream - 5 Liter",
     "EItemProd4": "GIFT BOX BIG",
     "EItemProd5": "Mini ikone - Chocolate",
+    "GiftItem1": "Savoy Diary - 2023",
+    "GiftItem2": "Savoy Calendar - 2023",
+    "GiftItem3": "Savoy Mug - 2023",
+    "GiftItem4": "Savoy Diary - 2023",
+    "GiftItem5": "Savoy Mug - 2023",
     "Region" : "Cumilla",
     "Depot" : "Cumilla",
     "Area" : "Cumilla",
     "Territory" : "Cumilla",
     "Distributor" : "bhai bhai",
     "ExDistributor" : "Amin Store",
-    "Active": "NO",
+    "Active": "YES",
     "CreditAllowed": "NO"
   },
 

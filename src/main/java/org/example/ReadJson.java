@@ -255,6 +255,7 @@ public class ReadJson {
     public static String [] Ofr_ItemProd = new String[5];
     public static String [] Ofr_EItemSubCatg = new String[5];
     public static String [] Ofr_EItemProd = new String[5];
+    public static String [] Ofr_GiftItem = new String[5];
     public static String Ofr_Region;
     public static String Ofr_Depot;
     public static String Ofr_Area;
@@ -585,6 +586,9 @@ public class ReadJson {
                 }
                 for (int i = 0; i<Integer.parseInt(Ofr_NumOfCategory); i++){
                     Ofr_EItemProd[i] = (String) Offer_Object.get("EItemProd"+(i+1));
+                }
+                for (int i = 0; i<Integer.parseInt(Ofr_NumOfCategory); i++){
+                    Ofr_GiftItem[i] = (String) Offer_Object.get("GiftItem"+(i+1));
                 }
 
                 Ofr_Region = (String) Offer_Object.get("Region");

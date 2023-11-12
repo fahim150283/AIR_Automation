@@ -285,29 +285,23 @@ public class Offer extends Page_Options {
         //if Gift
         else if (Objects.equals(offer_type, "Gift")) {
 
-            //choose gift
-            id = "offer_type";
-            pressDownbyid(id);
-            pressDownbyid(id);
-            pressDownbyid(id);
-            pressEnterById(id);
-
-            for (int k = 0; k < Num_Cat; k++) {
+            for (int k = 0; k < numOfOffers; k++) {
                 //min amount
                 id = "g_min_amnt" + (k + 1);
                 waitById(id);
-                inputbyid(id, "1000");
+                inputbyid(id, "" + (1000 * (k + 1)));
 
                 //gift name
                 id = "gift_name" + (k + 1);
-                clickbyId(id);
-                pressDownbyid(id);
-                pressEnterById(id);
+                Dropdown = driver.findElement(By.id(id));
+                CatgSelect = new Select(Dropdown);
+                CatgSelect.selectByVisibleText(Ofr_GiftItem[k]);
+                Thread.sleep(90);
 
                 //quantity
                 id = "quantity" + (k + 1);
                 waitById(id);
-                inputbyid(id, "8");
+                inputbyid(id, ""+(k+1));
 
                 //click plus button
                 if (k < Num_Cat - 1) {
@@ -315,7 +309,7 @@ public class Offer extends Page_Options {
                     xpath = "//*[@id=\"gift_grp\"]/div/table/tfoot/tr/td/span[1]";
                     waitByxpath(xpath);
                     clickbyxpath(xpath);
-                    Thread.sleep(500);
+                    Thread.sleep(200);
                 }
             }
             //delete the last category
