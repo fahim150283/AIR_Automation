@@ -306,8 +306,9 @@
   },
 
   "Offer": {
-    "OfrType": "Cash",
+    "OfrType": "Product",
     "NumOfCategory": "5",
+    "NumOfOffers": "5",
     "ItemCatg1": "PREMIUM",
     "ItemCatg2": "REGULAR",
     "ItemCatg3": "Cone Biscuit",

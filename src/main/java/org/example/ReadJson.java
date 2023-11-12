@@ -249,6 +249,7 @@ public class ReadJson {
     public static String Distributors_E_GM_DGM_AGMs_Recommendation;
     public static String Ofr_Type;
     public static String Ofr_NumOfCategory;
+    public static String Ofr_NumOfOffers;
     public static String [] Ofr_ItemCatg = new String[5];
     public static String [] Ofr_ItemSubCatg = new String[5];
     public static String [] Ofr_ItemProd = new String[5];
@@ -569,6 +570,7 @@ public class ReadJson {
                 JSONObject Offer_Object = (JSONObject) jsonObject.get("Offer");
                 Ofr_Type = (String) Offer_Object.get("OfrType");
                 Ofr_NumOfCategory = (String) Offer_Object.get("NumOfCategory");
+                Ofr_NumOfOffers = (String) Offer_Object.get("NumOfOffers");
                 for (int i = 0; i<Integer.parseInt(Ofr_NumOfCategory); i++){
                     Ofr_ItemCatg[i] = (String) Offer_Object.get("ItemCatg"+(i+1));
                 }

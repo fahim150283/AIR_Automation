@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Random;
 
 public class test extends Page_Options {
@@ -23,11 +24,12 @@ public class test extends Page_Options {
 
     @Test
     public void login_for_creating_new_pre_invoice() throws InterruptedException {
-        boolean x= s.contains("Polash");
-        if (x){
-            System.out.print("yes");
+//        String s = "love";
+        String s = Ofr_Type;
+        if (Objects.equals(s, "Cash")){
+            System.out.println("lalalalala");
+        }else {
+            System.out.println("855555555");
         }
-        else
-            System.out.print("no");
     }
 }
