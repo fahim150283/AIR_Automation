@@ -406,7 +406,6 @@ public class Offer extends Page_Options {
     /*
     check the created offer
     */
-
     @And("search for the offer")
     public void search_for_the_offer() throws InterruptedException {
         Thread.sleep(4000);
