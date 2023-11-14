@@ -16,7 +16,7 @@ import java.util.Objects;
 public class Offer extends Page_Options {
 
     String offer_type = Ofr_Type;
-    String offerName = offer_type + "_" + randomTestString();
+    String offerName = offer_type + "" + randomTestString();
     int Num_Cat = Integer.parseInt(Ofr_NumOfCategory);
     String temporary_Offer_Name;
     String temporary_Offer_Type1;
@@ -414,7 +414,7 @@ public class Offer extends Page_Options {
         inputbyid(id,offerName);
 
         Thread.sleep(2000);
-        row_element_click_By_xpath_and_id("//tbody[@id='offer_table']//tr[./td[contains(text(),'CashTEST88481')]]", "btn_view");
+        row_element_click_By_xpath_and_id("//tbody[@id='offer_table']//tr[./td[contains(text(),'"+(offerName)+"')]]", "btn_view");
     }
 
     @And("Copy required elements")
