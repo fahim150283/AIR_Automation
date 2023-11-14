@@ -264,6 +264,11 @@ public class ReadJson {
     public static String Ofr_ExDistributor;
     public static String Ofr_Active;
     public static String Ofr_CreditAllowed;
+    public static String PRODCAT_SearchInfo;
+    public static String PRODCAT_Name;
+    public static String PRODCAT_MainCategory;
+    public static String PRODCAT_Status;
+    public static String PRODCAT_E_Name;
 
 
     public static String[] readJsonData() {
@@ -600,13 +605,20 @@ public class ReadJson {
                 Ofr_Active = (String) Offer_Object.get("Active");
                 Ofr_CreditAllowed = (String) Offer_Object.get("CreditAllowed");
             }
+            {// Read data from the "Offer" object
+                JSONObject PRODCAT_Object = (JSONObject) jsonObject.get("Products Category");
+                PRODCAT_SearchInfo = (String) PRODCAT_Object.get("SearchInfo");
+                PRODCAT_Name = (String) PRODCAT_Object.get("name");
+                PRODCAT_MainCategory = (String) PRODCAT_Object.get("maincategory");
+                PRODCAT_Status = (String) PRODCAT_Object.get("status");
+                PRODCAT_E_Name = (String) PRODCAT_Object.get("E_Name");
+            }
 
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
 
-        String[] array = {};
-        return array;
+        return new String[]{};
     }
 }
