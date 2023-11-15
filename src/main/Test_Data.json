@@ -357,8 +357,26 @@
   },
 
   "Products": {
-    "SearchInfo": "12012",
-    "DistributorSearch":"bhai bhai"
+    "SearchInfo": "88009",
+    "Code":"TestCode",
+    "Name":"TestName",
+    "Category":"Cup",
+    "flavor":"Doi",
+    "sizeML":"50",
+    "CtnPCS":"40",
+    "RetailPrice":"1000",
+    "TradePrice":"900",
+    "DistributorPrice":"800",
+    "E_Code":"EditedCode",
+    "E_Name":"EditedName",
+    "E_Category":"STICK",
+    "E_flavor":"Kulfi",
+    "E_sizeML":"55",
+    "E_CtnPCS":"45",
+    "E_RetailPrice":"1100",
+    "E_TradePrice":"910",
+    "E_DistributorPrice":"810"
+
   },
 
   "Sales Return  ": {

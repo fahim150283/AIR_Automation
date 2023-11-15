@@ -269,6 +269,25 @@ public class ReadJson {
     public static String PRODCAT_MainCategory;
     public static String PRODCAT_Status;
     public static String PRODCAT_E_Name;
+    public static String PROD_SearchInfo;
+    public static String PROD_Code;
+    public static String PROD_Name;
+    public static String PROD_Category;
+    public static String PROD_flavor;
+    public static String PROD_sizeML;
+    public static String PROD_CtnPCS;
+    public static String PROD_RetailPrice;
+    public static String PROD_TradePrice;
+    public static String PROD_DistributorPrice;
+    public static String E_PROD_Code;
+    public static String E_PROD_Name;
+    public static String E_PROD_Category;
+    public static String E_PROD_flavor;
+    public static String E_PROD_sizeML;
+    public static String E_PROD_CtnPCS;
+    public static String E_PROD_RetailPrice;
+    public static String E_PROD_TradePrice;
+    public static String E_PROD_DistributorPrice;
 
 
     public static String[] readJsonData() {
@@ -612,6 +631,28 @@ public class ReadJson {
                 PRODCAT_MainCategory = (String) PRODCAT_Object.get("maincategory");
                 PRODCAT_Status = (String) PRODCAT_Object.get("status");
                 PRODCAT_E_Name = (String) PRODCAT_Object.get("E_Name");
+            }
+            {// Read data from the "Offer" object
+                JSONObject PROD_Object = (JSONObject) jsonObject.get("Products");
+                PROD_SearchInfo = (String) PROD_Object.get("SearchInfo");
+                PROD_Code = (String) PROD_Object.get("Code");
+                PROD_Name = (String) PROD_Object.get("Name");
+                PROD_Category = (String) PROD_Object.get("Category");
+                PROD_flavor = (String) PROD_Object.get("flavor");
+                PROD_sizeML = (String) PROD_Object.get("sizeML");
+                PROD_CtnPCS = (String) PROD_Object.get("CtnPCS");
+                PROD_RetailPrice = (String) PROD_Object.get("RetailPrice");
+                PROD_TradePrice = (String) PROD_Object.get("TradePrice");
+                PROD_DistributorPrice = (String) PROD_Object.get("DistributorPrice");
+                E_PROD_Code = (String) PROD_Object.get("E_Code");
+                E_PROD_Name = (String) PROD_Object.get("E_Name");
+                E_PROD_Category = (String) PROD_Object.get("E_Category");
+                E_PROD_flavor = (String) PROD_Object.get("E_flavor");
+                E_PROD_sizeML = (String) PROD_Object.get("E_sizeML");
+                E_PROD_CtnPCS = (String) PROD_Object.get("E_CtnPCS");
+                E_PROD_RetailPrice = (String) PROD_Object.get("E_RetailPrice");
+                E_PROD_TradePrice = (String) PROD_Object.get("E_TradePrice");
+                E_PROD_DistributorPrice = (String) PROD_Object.get("E_DistributorPrice");
             }
 
 
