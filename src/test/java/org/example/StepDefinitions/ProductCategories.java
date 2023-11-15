@@ -15,6 +15,8 @@ import java.util.Objects;
 
 public class ProductCategories extends Page_Options {
     String name = PRODCAT_Name + randomnumber();
+    String E_name = PRODCAT_E_Name + randomnumber();
+
     String MainCategory = PRODCAT_MainCategory;
 
 
@@ -119,7 +121,7 @@ public class ProductCategories extends Page_Options {
         //search for the category
         id = "search_input";
         clickbyId(id);
-        inputbyid(id, PRODCAT_SearchInfo);
+        inputbyid(id, name);
 
         Thread.sleep(100);
 
@@ -136,13 +138,13 @@ public class ProductCategories extends Page_Options {
             }
         }
 
-        Thread.sleep(100);
+        Thread.sleep(1000);
 
         //name
         id = "edit_name";
         waitById(id);
         clearById(id);
-        inputbyid(id, PRODCAT_E_Name);
+        inputbyid(id, E_name);
 
         //main category
         id = "select2-edit_sub_of_list-container";
@@ -155,9 +157,11 @@ public class ProductCategories extends Page_Options {
         pressEnterbyXpath(xpath);
 
         //status
-        xpath = "//*[@id=\"edit_status\"]";
-        clickbyxpath(xpath);
-        pressUPbyXpath(xpath);
+        id = "edit_status";
+        WebElement Dropdown = driver.findElement(By.id(id));
+        Select CatgSelect = new Select(Dropdown);
+        CatgSelect.selectByVisibleText(PRODCAT_Status);
+        Thread.sleep(20);
 
         //save
         xpath = "//*[@id=\"edit_product_categories_form\"]/div/div/div[3]/div/button";
@@ -171,7 +175,8 @@ public class ProductCategories extends Page_Options {
         //search for the category
         id = "search_input";
         clickbyId(id);
-        inputbyid(id, name);
+        clearById(id);
+        inputbyid(id, E_name);
 
         Thread.sleep(1000);
 
@@ -184,7 +189,7 @@ public class ProductCategories extends Page_Options {
             // Check if the row is displayed
             if (!row.getAttribute("style").contains("display: none;")) {
                 // Find and click the "Add App Permissions" button for the visible row
-                Assert.assertEquals(name, row.findElement(By.xpath(".//td[2]")).getText());
+                Assert.assertEquals(E_name, row.findElement(By.xpath(".//td[2]")).getText());
                 Assert.assertEquals(MainCategory, row.findElement(By.xpath(".//td[3]")).getText());
             }
         }
@@ -202,7 +207,7 @@ public class ProductCategories extends Page_Options {
     @Given("login for Verifying functionality of a Product Category")
     public void login_for_verifying_functionality_of_a_product_category() {
         Login(user_Fahim);
-        cssSelector = ".menues-bar:nth-child(19) .active";
+        cssSelector = ".menues-bar:nth-child(25) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }
@@ -210,6 +215,12 @@ public class ProductCategories extends Page_Options {
     @When("create a product")
     public void create_a_product() throws InterruptedException {
         Thread.sleep(2000);
+
+        //navigate to the products page
+        cssSelector = ".menues-bar:nth-child(24) .active";
+        waitByCssSelector(cssSelector);
+        clickbycssselector(cssSelector);
+
         //click the create new button
         xpath = "/html/body/div[2]/div[2]/a";
         waitByxpath(xpath);
@@ -231,18 +242,17 @@ public class ProductCategories extends Page_Options {
         clickbyxpath(xpath);
         xpath = "/html/body/span/span/span[1]/input";
         clickbyxpath(xpath);
-        inputbyxpath(xpath, name);
+        inputbyxpath(xpath, E_name);
         pressEnterbyXpath(xpath);
     }
 
     @When("verify that the Product Category is there for product creation")
     public void verify_that_the_product_category_is_there_for_product_creation() throws InterruptedException {
-        Thread.sleep(1000);
-
+        Thread.sleep(2000);
         xpath = "//*[@id=\"select2-product_category-container\"]";
         waitByxpath(xpath);
         String s = getTextbyXpath(xpath);
-        Assert.assertTrue(s.contains(name));
+        Assert.assertTrue(s.contains(E_name));
     }
 
     @Then("close driver for verifying Product Category")
