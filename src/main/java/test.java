@@ -29,7 +29,7 @@ public class test extends Page_Options {
         if (Objects.equals(s, "Cash")){
             System.out.println("lalalalala");
         }else {
-            System.out.println("855555555");
+            System.out.println("okay");
         }
     }
 }
