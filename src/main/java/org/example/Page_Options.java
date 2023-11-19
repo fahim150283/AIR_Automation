@@ -91,6 +91,16 @@ public class Page_Options extends BrowserUtils {
         return date;
     }
 
+
+    public static String getLastYear() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        LocalDate today = LocalDate.now();
+        LocalDate lastMonthDate = today.minusYears(1);
+        String date = dtf.format(lastMonthDate);
+        return date;
+    }
+
+
     public static String getlastMonthAndTime() {
         // Get the current date and time
         LocalDateTime currentDateTime = LocalDateTime.now();

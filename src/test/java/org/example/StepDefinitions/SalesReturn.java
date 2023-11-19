@@ -18,14 +18,7 @@ public class SalesReturn extends Page_Options {
     @Given("Login to Search Sales Return")
     public void login_to_search_sales_return() {
         Login_AIR2_AIR(user_Fahim);
-
-        id = "menu-search";
-        waitById(id);
-        List<WebElement> searchResults = driver.findElements(By.xpath("//ul[@id='menu']//span[text()='Sales Return']"));
-
-        // Click on the first search result found
-            WebElement firstResult = searchResults.get(0);
-            firstResult.click();
+        Click_from_leftSideBar("Sales Return");
     }
 
     @When("search for Sales Return")
@@ -33,14 +26,24 @@ public class SalesReturn extends Page_Options {
         Thread.sleep(1000);
         xpath = "//*[@id=\"search_input\"]";
         waitByxpath(xpath);
-        inputbyxpath(xpath, "SI-00000025");
+        inputbyxpath(xpath, SR_SearchInfo);
     }
 
     @And("description of a Sales Return")
     public void description_of_a_sales_return() throws InterruptedException {
-        xpath = "(//a[@id='btn_view']/i)[10]";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
+        Thread.sleep(1000);
+        WebElement table = driver.findElement(By.xpath("//*[@id=\"invoice_table\"]"));
+        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
+
+        // Iterate through rows
+        for (WebElement row : rows) {
+            // Check if the row is displayed
+            if (!row.getAttribute("style").contains("display: none;")) {
+                //verify name
+                WebElement element1 = row.findElement(By.id("btn_view"));
+                element1.click();
+            }
+        }
     }
 
     @Then("close Sales Return")
@@ -53,14 +56,7 @@ public class SalesReturn extends Page_Options {
     @Given("login for creating Sales Return")
     public void login_for_creating_sales_return() {
         Login_AIR2_AIR(user_Fahim);
-
-        id = "menu-search";
-        waitById(id);
-        List<WebElement> searchResults = driver.findElements(By.xpath("//ul[@id='menu']//span[text()='Sales Return']"));
-
-        // Click on the first search result found
-        WebElement firstResult = searchResults.get(0);
-        firstResult.click();
+        Click_from_leftSideBar("Sales Return");
     }
 
     @And("create new Sales Return")
@@ -71,21 +67,20 @@ public class SalesReturn extends Page_Options {
         clickbyxpath(xpath);
         Thread.sleep(1000);
 
-        //Invoice date from
-//        id = "invoice_date_from";
-//        waitById(id);
-//        clickbyId(id);
-//        inputbyid(id, getLastMonth() );
-//        Thread.sleep(500);
+        // Invoice date from
+        id = "invoice_date_from";
+        waitById(id);
+        clickbyId(id);
+        inputbyid(id, getLastYear() );
+        Thread.sleep(200);
 
 
         //Invoice date till
-//        id = "invoice_date_till";
-//        waitById(id);
-//        clickbyId(id);
-//        inputbyid(id, getToday());
-//
-//        Thread.sleep(500);
+        id = "invoice_date_till";
+        waitById(id);
+        clickbyId(id);
+        inputbyid(id, getToday());
+        Thread.sleep(2000);
 
         //invoice list
         id = "select2-order_list-container";
@@ -94,22 +89,17 @@ public class SalesReturn extends Page_Options {
         //search for bhai and hit enter
         xpath = "//input[@type='search']";
         waitByxpath(xpath);
-        inputbyxpath(xpath,"bhai");
+        inputbyxpath(xpath,SR_DistributorSearch);
         pressEnterbyXpath(xpath);
 
-
-//        classname = "select2 select2-container select2-container--default select2-container--above select2-container--focus";
-//        clickByClassName(classname);
-
-
-
         //select the store
+        Thread.sleep(2000);
         id = "select2-c_store_id-container";
         waitById(id);
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, "barisal");
+        inputbycssselector(cssSelector, SR_Store);
         cssSelectorPressEnter(cssSelector);
 
         //Return Date

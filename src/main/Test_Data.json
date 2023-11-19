@@ -382,9 +382,11 @@
     "E_DistributorPrice":"810"
   },
 
-  "Sales Return  ": {
-    "SearchInfo": "12012",
-    "DistributorSearch":"bhai bhai"
+  "Sales Return": {
+    "SearchInfo": "SI-00000025",
+    "DistributorSearch":"bhai",
+    "Store": "Barisal",
+    "Note": "This is automated"
   },
 
   "Loading Sheet": {

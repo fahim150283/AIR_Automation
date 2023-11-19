@@ -293,6 +293,10 @@ public class ReadJson {
     public static String E_PROD_RetailPrice;
     public static String E_PROD_TradePrice;
     public static String E_PROD_DistributorPrice;
+    public static String SR_SearchInfo;
+    public static String SR_DistributorSearch;
+    public static String SR_Store;
+    public static String SR_Note;
 
 
     public static String[] readJsonData() {
@@ -662,6 +666,13 @@ public class ReadJson {
                 E_PROD_RetailPrice = (String) PROD_Object.get("E_RetailPrice");
                 E_PROD_TradePrice = (String) PROD_Object.get("E_TradePrice");
                 E_PROD_DistributorPrice = (String) PROD_Object.get("E_DistributorPrice");
+            }
+            {// Read data from the "Sales Return" object
+                JSONObject PROD_Object = (JSONObject) jsonObject.get("Sales Return");
+                SR_SearchInfo = (String) PROD_Object.get("SearchInfo");
+                SR_DistributorSearch = (String) PROD_Object.get("DistributorSearch");
+                SR_Store = (String) PROD_Object.get("Store");
+                SR_Note = (String) PROD_Object.get("Note");
             }
 
 
