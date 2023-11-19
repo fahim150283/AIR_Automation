@@ -383,4 +383,17 @@ public class Page_Options extends BrowserUtils {
     }
 
 
+
+    public void Click_from_leftSideBar(String s) {
+        // Find the search input box and enter the search term "Damage Amount"
+        id = "menu-search";
+        waitById(id);
+        inputbyid(id, s);
+
+        // Wait for the search results to load (you might need to implement waits)
+        // Then, click on the searched item "Damage Amount"
+        WebElement damageAmountLink = driver.findElement(By.xpath("//span[text()='"+s+"']")); // Update the locator accordingly
+        damageAmountLink.click();
+    }
+
 }

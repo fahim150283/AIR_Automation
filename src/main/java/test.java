@@ -24,12 +24,7 @@ public class test extends Page_Options {
 
     @Test
     public void login_for_creating_new_pre_invoice() throws InterruptedException {
-//        String s = "love";
-        String s = Ofr_Type;
-        if (Objects.equals(s, "Cash")){
-            System.out.println("lalalalala");
-        }else {
-            System.out.println("okay");
-        }
+        Login_AIR2_AIR(user_Haseeb);
+        Click_from_leftSideBar("Gifts");
     }
 }

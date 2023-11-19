@@ -21,10 +21,8 @@ public class Products extends Page_Options {
     */
     @Given("login for creating new  Product")
     public void login_for_creating_new_product() {
-        Login_AIR2(user_Haseeb);
-        cssSelector = ".menues-bar:nth-child(42) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Login_AIR2_AIR(user_Haseeb);
+        Click_from_leftSideBar("Products");
     }
 
     @When("create new  Product")
@@ -123,7 +121,6 @@ public class Products extends Page_Options {
             if (!row.getAttribute("style").contains("display: none;")) {
                 // Find and click the "Add App Permissions" button for the visible row
                 Assert.assertEquals(productname, row.findElement(By.xpath(".//td[2]")).getText());
-
             }
         }
     }
@@ -251,9 +248,7 @@ public class Products extends Page_Options {
     public void check_if_the_product_is_available_for_order() throws InterruptedException {
 
         Thread.sleep(2000);
-        cssSelector = ".active:nth-child(41) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Pre Invoices");
         Thread.sleep(2000);
 
         //click the create new pre invoice
@@ -267,6 +262,7 @@ public class Products extends Page_Options {
         inputbyxpath(xpath, getToday());
 
         //wait and click distributors
+        Thread.sleep(200);
         id = "select2-distributor_list-container";
         waitById(id);
         clickbyId(id);
