@@ -11,7 +11,7 @@ import java.util.Random;
 public class Collections extends Page_Options {
     @Given("Login to Search Collection")
     public void login_to_search_collection() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(9) .active";
         waitByCssSelector(cssSelector);
@@ -39,7 +39,7 @@ public class Collections extends Page_Options {
 
     @Given("login for creating Collection")
     public void login_for_creating_collection() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(9) .active";
         waitByCssSelector(cssSelector);

@@ -13,7 +13,7 @@ import java.util.Random;
 public class Distributors extends Page_Options {
     @Given("login for Distributor")
     public void login_for_creation_of_a_distributor() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(14) .active";
         waitByCssSelector(cssSelector);

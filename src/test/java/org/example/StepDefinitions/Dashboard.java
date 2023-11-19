@@ -10,7 +10,7 @@ public class Dashboard extends Page_Options {
 
     @Given("^login for accessing dashboard$")
     public void dashboard() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
     }
 
     @When("^click the Dashboard$")

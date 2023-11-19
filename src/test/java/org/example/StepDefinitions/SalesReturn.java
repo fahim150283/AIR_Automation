@@ -6,30 +6,26 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class SalesReturn extends Page_Options {
     @Given("Login to Search Sales Return")
     public void login_to_search_sales_return() {
-        url = "http://192.168.11.182/air_2/air";
-        navigatetourl(url);
-        id = "username";
-        inputbyid(id, "h.abul");
-        id = "password";
-        inputbyid(id, "savoy123");
-        id = "login";
-        clickbyId(id);
+        Login_AIR2_AIR(user_Fahim);
 
         id = "menu-search";
         waitById(id);
-        inputbyid(id, "sales return");
-        cssSelector = ".menues-bar:nth-child(17) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        List<WebElement> searchResults = driver.findElements(By.xpath("//ul[@id='menu']//span[text()='Sales Return']"));
+
+        // Click on the first search result found
+            WebElement firstResult = searchResults.get(0);
+            firstResult.click();
     }
 
     @When("search for Sales Return")
@@ -56,21 +52,15 @@ public class SalesReturn extends Page_Options {
 
     @Given("login for creating Sales Return")
     public void login_for_creating_sales_return() {
-        url = "http://192.168.11.182/air_2/air";
-        navigatetourl(url);
-        id = "username";
-        inputbyid(id, "h.abul");
-        id = "password";
-        inputbyid(id, "savoy123");
-        id = "login";
-        clickbyId(id);
+        Login_AIR2_AIR(user_Fahim);
 
         id = "menu-search";
         waitById(id);
-        inputbyid(id, "sales return");
-        cssSelector = ".menues-bar:nth-child(17) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        List<WebElement> searchResults = driver.findElements(By.xpath("//ul[@id='menu']//span[text()='Sales Return']"));
+
+        // Click on the first search result found
+        WebElement firstResult = searchResults.get(0);
+        firstResult.click();
     }
 
     @And("create new Sales Return")

@@ -10,7 +10,7 @@ public class CancelOrder extends Page_Options {
 
     @Given("Login to Search CancelOrder")
     public void login_to_search_cancel_order() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(8) .active";
         waitByCssSelector(cssSelector);
@@ -39,7 +39,7 @@ public class CancelOrder extends Page_Options {
 
     @Given("login for Cancelling a Order")
     public void login_for_creating_new_order_to_cancel() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(8) .active";
         waitByCssSelector(cssSelector);

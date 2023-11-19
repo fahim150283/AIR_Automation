@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 public class CancelInvoice extends Page_Options {
     @Given("Login to Search cancelled Invoice")
     public void login_to_search_cancelled_invoice() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(7) .active";
         waitByCssSelector(cssSelector);
@@ -52,7 +52,7 @@ public class CancelInvoice extends Page_Options {
 
     @Given("login for cancellation of an Invoice")
     public void login_for_cancellation_of_an_invoice() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(7) .active";
         waitByCssSelector(cssSelector);

@@ -9,7 +9,7 @@ import org.example.Page_Options;
 public class DistributorInvoices extends Page_Options {
     @Given("Login to Search Invoice")
     public void login_to_search_invoice() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(19) .active";
         waitByCssSelector(cssSelector);
@@ -39,7 +39,7 @@ public class DistributorInvoices extends Page_Options {
 
     @Given("login for Invoice")
     public void login_for_invoice() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(19) .active";
         waitByCssSelector(cssSelector);

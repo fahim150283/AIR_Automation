@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 public class PreviousPendingDelivery extends Page_Options {
     @Given("Login to Search Previous Pending Delivery")
     public void login_to_search_previous_pending_delivery() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".active:nth-child(5) .active";
         waitByCssSelector(cssSelector);
@@ -52,7 +52,7 @@ public class PreviousPendingDelivery extends Page_Options {
 
     @Given("login for creating new Previous Pending Delivery")
     public void login_for_creating_new_previous_pending_delivery() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".active:nth-child(5) .active";
         waitByCssSelector(cssSelector);

@@ -14,7 +14,7 @@ import java.io.Closeable;
 public class FinishGoodsStore extends Page_Options {
     @Given("Login to Search a FG Store")
     public void login_to_search_a_fg_store() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(16) .active";
         waitByCssSelector(cssSelector);
@@ -56,7 +56,7 @@ public class FinishGoodsStore extends Page_Options {
 
     @Given("Login to edit a FG Store")
     public void login_to_edit_a_fg_store() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(16) .active";
         waitByCssSelector(cssSelector);
@@ -163,7 +163,7 @@ public class FinishGoodsStore extends Page_Options {
 
     @Given("Login to Create a FG Store")
     public void login_to_create_a_fg_store() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(16) .active";
         waitByCssSelector(cssSelector);
@@ -256,7 +256,7 @@ public class FinishGoodsStore extends Page_Options {
 
     @Given("Login to add products in a  FG Store")
     public void login_to_add_products_in_a_fg_store() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(16) .active";
         waitByCssSelector(cssSelector);

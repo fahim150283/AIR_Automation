@@ -1,8 +1,12 @@
 {
   "Login": {
-    "url": "http://192.168.11.182/air_2/air",
+    "url_AIR_2_AIR": "http://192.168.11.182/air_2/air",
+    "url_AIR_2": "http://192.168.11.182/air_2",
+    "url_AIR": "http://192.168.11.50",
     "user_Fahim": "h.abul",
+    "user_Haseeb": "haseeb",
     "user_Polash": "k.polash",
+    "user_Ashik": "a.islam",
     "user_Siam": "mh.siam",
     "password": "savoy123"
   },
@@ -358,7 +362,7 @@
 
   "Products": {
     "SearchInfo": "88009",
-    "Code":"TestCode",
+    "Code":"T_Code",
     "Name":"TestName",
     "Category":"Cup",
     "flavor":"Doi",
@@ -367,7 +371,7 @@
     "RetailPrice":"1000",
     "TradePrice":"900",
     "DistributorPrice":"800",
-    "E_Code":"EditedCode",
+    "E_Code":"E_Code",
     "E_Name":"EditedName",
     "E_Category":"STICK",
     "E_flavor":"Kulfi",
@@ -376,7 +380,6 @@
     "E_RetailPrice":"1100",
     "E_TradePrice":"910",
     "E_DistributorPrice":"810"
-
   },
 
   "Sales Return  ": {

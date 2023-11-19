@@ -12,7 +12,7 @@ public class Order extends Page_Options {
 
     @Given("Login to Search Order")
     public void login_to_search_order() {
-       Login(user_Fahim);
+       Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(23) .active";
         waitByCssSelector(cssSelector);
@@ -41,7 +41,7 @@ public class Order extends Page_Options {
 
     @Given("login for creating new Order")
     public void login_for_creating_new_order() throws InterruptedException {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(23) .active";
         waitByCssSelector(cssSelector);

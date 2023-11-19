@@ -15,7 +15,7 @@ public class LoadingSheet extends Page_Options {
     */
     @Given("login for creating new  Loading sheet")
     public void login_for_creating_new_loading_sheet() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
         cssSelector = ".menues-bar:nth-child(19) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
@@ -138,7 +138,7 @@ public class LoadingSheet extends Page_Options {
     */
     @Given("login for viewing new  Loading sheet")
     public void login_for_viewing_new_loading_sheet() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
         cssSelector = ".menues-bar:nth-child(19) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
@@ -183,7 +183,7 @@ public class LoadingSheet extends Page_Options {
     */
     @Given("login for printing new  Loading sheet")
     public void login_for_printing_new_loading_sheet() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
         cssSelector = ".menues-bar:nth-child(19) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);

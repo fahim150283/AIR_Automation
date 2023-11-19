@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 public class GoodsRequisition extends Page_Options {
     @Given("login for creation of a Goods Requisition")
     public void login_for_creation_of_a_goods_requisition() {
-        Login(user_Polash);
+        Login_AIR2_AIR(user_Polash);
         cssSelector = ".menues-bar:nth-child(12) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
@@ -103,7 +103,7 @@ public class GoodsRequisition extends Page_Options {
     //cancel  a good requisition
     @Given("login for cancellation of a requested Goods Requisition")
     public void login_for_cancellation_of_a_requested_goods_requisition() throws InterruptedException {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
         cssSelector = ".menues-bar:nth-child(18) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
@@ -132,7 +132,7 @@ public class GoodsRequisition extends Page_Options {
     //accept a good requisition
     @Given("login for accepting of a requested Goods Requisition")
     public void login_for_accepting_of_a_requested_goods_requisition() throws InterruptedException {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
         cssSelector = ".menues-bar:nth-child(18) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
@@ -199,7 +199,7 @@ public class GoodsRequisition extends Page_Options {
     //vehicle load
     @Given("login for vehicle load for a requested Goods Requisition")
     public void login_for_vehicle_load_for_a_requested_goods_requisition() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
         cssSelector = ".menues-bar:nth-child(22) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
@@ -238,7 +238,7 @@ public class GoodsRequisition extends Page_Options {
     //Vehicle unload
     @Given("login for vehicle unload for a requested Goods Requisition")
     public void login_for_vehicle_unload_for_a_requested_goods_requisition() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
         cssSelector = ".menues-bar:nth-child(22) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
@@ -276,7 +276,7 @@ public class GoodsRequisition extends Page_Options {
 
     @Given("login for Receiving The Goods")
     public void login_for_receiving_the_goods() {
-        Login(user_Polash);
+        Login_AIR2_AIR(user_Polash);
         cssSelector = ".menues-bar:nth-child(12) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);

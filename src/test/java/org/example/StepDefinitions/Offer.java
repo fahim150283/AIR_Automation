@@ -31,7 +31,7 @@ public class Offer extends Page_Options {
     */
     @Given("login for creation of an offer")
     public void login_for_creation_of_an_offer() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
         cssSelector = ".menues-bar:nth-child(21) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
@@ -435,7 +435,7 @@ public class Offer extends Page_Options {
 
     @When("navigate to order and click new order button")
     public void navigateToOrderAndClickNewOrderButton() {
-        Login(user_Polash);
+        Login_AIR2_AIR(user_Polash);
         cssSelector = ".menues-bar:nth-child(17) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);

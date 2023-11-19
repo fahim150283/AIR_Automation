@@ -16,7 +16,7 @@ public class Apps extends Page_Options {
     */
     @Given("login for creating new app")
     public void login_for_creating_new_app() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         //click the Apps option from the Side bar
         cssSelector = ".menues-bar:nth-child(6) .active";
@@ -96,7 +96,7 @@ public class Apps extends Page_Options {
     */
     @Given("login for editing an app")
     public void login_for_editing_an_app() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         //click the Apps option from the Side bar
         cssSelector = ".menues-bar:nth-child(6) .active";
@@ -204,7 +204,7 @@ public class Apps extends Page_Options {
     */
     @Given("login for giving access to an user")
     public void login_for_giving_access_to_an_user() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         //click the Apps option from the Side bar
         cssSelector = ".menues-bar:nth-child(6) .active";
@@ -323,7 +323,7 @@ public class Apps extends Page_Options {
     */
     @Given("login for checking access of first user")
     public void login_for_checking_access_of_first_user() {
-        Login(user_Siam);
+        Login_AIR2_AIR(user_Siam);
     }
 
     @And("verify from the side panel for the first user")
@@ -349,7 +349,7 @@ public class Apps extends Page_Options {
 
     @Then("login for checking access of 2nd user")
     public void login_for_checking_access_of_2nd_user() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
     }
 
     @And("verify from the side panel for the 2nd user")

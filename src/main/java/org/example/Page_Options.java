@@ -230,9 +230,29 @@ public class Page_Options extends BrowserUtils {
         return value;
     }
 
-    public static void Login(String username) {
+    public static void Login_AIR(String username) {
 
-        navigatetourl(url);
+        navigatetourl(url_AIR);
+        id = "username";
+        inputbyid(id, username);
+        id = "password";
+        inputbyid(id, String.valueOf(password));
+        id = "login";
+        clickbyId(id);
+    }
+    public static void Login_AIR2(String username) {
+
+        navigatetourl(url_AIR_2);
+        id = "username";
+        inputbyid(id, username);
+        id = "password";
+        inputbyid(id, String.valueOf(password));
+        id = "login";
+        clickbyId(id);
+    }
+    public static void Login_AIR2_AIR(String username) {
+
+        navigatetourl(url_AIR_2_AIR);
         id = "username";
         inputbyid(id, username);
         id = "password";

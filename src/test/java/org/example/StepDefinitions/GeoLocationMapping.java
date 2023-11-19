@@ -17,10 +17,10 @@ public class GeoLocationMapping extends Page_Options {
     */
     @Given("login for creating new  Geo Location Mapping")
     public void login_for_creating_new_geo_location_mapping() throws InterruptedException {
-        Login(user_Fahim);
-        Thread.sleep(1000);
-        url = "http://192.168.11.182/air_2/views/geo_location_mapping/";
-        driver.get(url);
+        Login_AIR2(user_Haseeb);
+        cssSelector = ".menues-bar:nth-child(25) .active";
+        waitByCssSelector(cssSelector);
+        clickbycssselector(cssSelector);
     }
 
     @And("create new  Geo Location Mapping")
@@ -145,9 +145,10 @@ public class GeoLocationMapping extends Page_Options {
     */
     @Given("Login to Search  Geo Location Mapping")
     public void login_to_search_geo_location_mapping() throws InterruptedException {
-        Login(user_Siam);
-        Thread.sleep(1000);
-        driver.get("http://192.168.11.182/air_2/views/geo_location_mapping/");
+        Login_AIR2(user_Haseeb);
+        cssSelector = ".menues-bar:nth-child(25) .active";
+        waitByCssSelector(cssSelector);
+        clickbycssselector(cssSelector);
     }
 
     @When("search for Geo Location Mappings of an user and copy important elements from Geo Location Mapping")
@@ -176,9 +177,10 @@ public class GeoLocationMapping extends Page_Options {
     */
     @Given("Login to copy the data for ordering by an user")
     public void login_to_copy_the_data_for_ordering_by_an_user() throws InterruptedException {
-        Login(user_Siam);
-        Thread.sleep(1000);
-        driver.get("http://192.168.11.182/air_2/views/orders/");
+        Login_AIR2(user_Haseeb);
+        cssSelector = ".menues-bar:nth-child(25) .active";
+        waitByCssSelector(cssSelector);
+        clickbycssselector(cssSelector);
     }
     @When("in create new order, copy the elements of order location")
     public void in_create_new_order_copy_the_elements_of_order_location() {

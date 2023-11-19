@@ -8,10 +8,15 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ReadJson {
-    public static String url;
-    public static String ItemsArray[] = new String[15];
+    public static String url_AIR_2_AIR;
+    public static String url_AIR_2;
+    public static String url_AIR;
+    public static String ItemsArray [] = new String[15];
+
     public static String user_Fahim;
+    public static String user_Haseeb;
     public static String user_Polash;
+    public static String user_Ashik;
     public static String user_Siam;
     public static String password;
     public static String ContactsSearchInfo;
@@ -299,10 +304,14 @@ public class ReadJson {
 
             {// Read data from the "Login" object
                 JSONObject loginObject = (JSONObject) jsonObject.get("Login");
-                url = (String) loginObject.get("url");
+                url_AIR = (String) loginObject.get("url_AIR");
+                url_AIR_2 = (String) loginObject.get("url_AIR_2");
+                url_AIR_2_AIR = (String) loginObject.get("url_AIR_2_AIR");
                 user_Fahim = (String) loginObject.get("user_Fahim");
                 user_Polash = (String) loginObject.get("user_Polash");
                 user_Siam = (String) loginObject.get("user_Siam");
+                user_Ashik = (String) loginObject.get("user_Ashik");
+                user_Haseeb = (String) loginObject.get("user_Haseeb");
                 password = (String) loginObject.get("password");
             }
             {// Read data from the "Contacts" object
@@ -624,7 +633,7 @@ public class ReadJson {
                 Ofr_Active = (String) Offer_Object.get("Active");
                 Ofr_CreditAllowed = (String) Offer_Object.get("CreditAllowed");
             }
-            {// Read data from the "Offer" object
+            {// Read data from the "Products Category" object
                 JSONObject PRODCAT_Object = (JSONObject) jsonObject.get("Products Category");
                 PRODCAT_SearchInfo = (String) PRODCAT_Object.get("SearchInfo");
                 PRODCAT_Name = (String) PRODCAT_Object.get("name");
@@ -632,7 +641,7 @@ public class ReadJson {
                 PRODCAT_Status = (String) PRODCAT_Object.get("status");
                 PRODCAT_E_Name = (String) PRODCAT_Object.get("E_Name");
             }
-            {// Read data from the "Offer" object
+            {// Read data from the "Products" object
                 JSONObject PROD_Object = (JSONObject) jsonObject.get("Products");
                 PROD_SearchInfo = (String) PROD_Object.get("SearchInfo");
                 PROD_Code = (String) PROD_Object.get("Code");

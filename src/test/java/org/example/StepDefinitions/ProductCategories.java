@@ -25,7 +25,7 @@ public class ProductCategories extends Page_Options {
     */
     @Given("login for creating new  Product Category")
     public void login_for_creating_new_product_category() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
         cssSelector = ".menues-bar:nth-child(25) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
@@ -108,7 +108,7 @@ public class ProductCategories extends Page_Options {
     */
     @Given("login for editing a Product Category")
     public void login_for_editing_a_product_category() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
         cssSelector = ".menues-bar:nth-child(25) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
@@ -206,7 +206,7 @@ public class ProductCategories extends Page_Options {
     */
     @Given("login for Verifying functionality of a Product Category")
     public void login_for_verifying_functionality_of_a_product_category() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
         cssSelector = ".menues-bar:nth-child(25) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);

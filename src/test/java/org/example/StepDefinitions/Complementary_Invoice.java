@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 public class Complementary_Invoice extends Page_Options {
     @Given("Login to Search Complementary Invoice")
     public void login_to_search_complementary_invoice() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(10) .active";
         waitByCssSelector(cssSelector);
@@ -49,7 +49,7 @@ public class Complementary_Invoice extends Page_Options {
 
     @Given("login for creation of an Complementary Invoice")
     public void login_for_creation_of_an_complementary_invoice() {
-        Login(user_Fahim);
+        Login_AIR2_AIR(user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(10) .active";
         waitByCssSelector(cssSelector);
