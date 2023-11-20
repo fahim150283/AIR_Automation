@@ -383,10 +383,11 @@
   },
 
   "Sales Return": {
-    "SearchInfo": "SI-00000025",
-    "DistributorSearch":"bhai",
+    "SearchInfo": "SI-00000033",
+    "DistributorSearch":"47",
     "Store": "Barisal",
-    "Note": "This is automated"
+    "Note": "This is automated",
+    "Full Return": "no"
   },
 
   "Loading Sheet": {

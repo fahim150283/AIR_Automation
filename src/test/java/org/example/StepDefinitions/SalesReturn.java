@@ -13,11 +13,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Objects;
 
 public class SalesReturn extends Page_Options {
     @Given("Login to Search Sales Return")
     public void login_to_search_sales_return() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2(user_Haseeb);
         Click_from_leftSideBar("Sales Return");
     }
 
@@ -31,7 +32,7 @@ public class SalesReturn extends Page_Options {
 
     @And("description of a Sales Return")
     public void description_of_a_sales_return() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         WebElement table = driver.findElement(By.xpath("//*[@id=\"invoice_table\"]"));
         java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
 
@@ -48,14 +49,14 @@ public class SalesReturn extends Page_Options {
 
     @Then("close Sales Return")
     public void close_sales_return() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         closedriver();
     }
 
 
     @Given("login for creating Sales Return")
     public void login_for_creating_sales_return() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2(user_Haseeb);
         Click_from_leftSideBar("Sales Return");
     }
 
@@ -65,22 +66,22 @@ public class SalesReturn extends Page_Options {
         xpath = "/html/body/div[2]/div[2]/div/div[1]/div/div/div/div[3]/a[2]";
         waitByxpath(xpath);
         clickbyxpath(xpath);
-        Thread.sleep(1000);
-
-        // Invoice date from
-        id = "invoice_date_from";
-        waitById(id);
-        clickbyId(id);
-        inputbyid(id, getLastYear() );
-        Thread.sleep(200);
-
-
-        //Invoice date till
-        id = "invoice_date_till";
-        waitById(id);
-        clickbyId(id);
-        inputbyid(id, getToday());
         Thread.sleep(2000);
+
+//        // Invoice date from
+//        id = "invoice_date_from";
+//        waitById(id);
+//        clickbyId(id);
+//        inputbyid(id, getLastYear() );
+//        Thread.sleep(2000);
+//
+//
+//        //Invoice date till
+//        id = "invoice_date_till";
+//        waitById(id);
+//        clickbyId(id);
+//        inputbyid(id, getToday());
+//        Thread.sleep(200);
 
         //invoice list
         id = "select2-order_list-container";
@@ -112,24 +113,35 @@ public class SalesReturn extends Page_Options {
 
 
         //Full or partial return
-        Boolean fullReturn = true;
-        xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[5]";
-        String s = String.valueOf(getText_double_byXpath(xpath));
+        String s;
+        if (Objects.equals(SR_FullReturn, "yes")) {
+            WebElement table = driver.findElement(By.id("c_inv_items_list"));
+            java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
 
-        if (fullReturn == true) {
-            xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[9]/input";
-            waitByxpath(xpath);
-            clearByXpath(xpath);
-            waitByxpath(xpath);
-            inputbyxpath(xpath, s);
+            // Iterate through rows
+            for (int i = 0; i < rows.size(); i++) {
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[5]";
+                s = String.valueOf(getText_double_byXpath(xpath));
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[9]/input";
+                waitByxpath(xpath);
+                clearByXpath(xpath);
+                waitByxpath(xpath);
+                inputbyxpath(xpath, s);
+            }
         } else {
-            xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[5]";
-            s = String.valueOf(getText_double_byXpath(xpath) - 1);
-            xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[9]/input";
-            waitByxpath(xpath);
-            clearByXpath(xpath);
-            waitByxpath(xpath);
-            inputbyxpath(xpath, s);
+            WebElement table = driver.findElement(By.id("c_inv_items_list"));
+            java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
+
+            // Iterate through rows
+            for (int i = 0; i < rows.size(); i++) {
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[5]";
+                s = String.valueOf(getText_double_byXpath(xpath) - 1);
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[9]/input";
+                waitByxpath(xpath);
+                clearByXpath(xpath);
+                waitByxpath(xpath);
+                inputbyxpath(xpath, s);
+            }
         }
 
         id = "add_region";

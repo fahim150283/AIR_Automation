@@ -297,6 +297,7 @@ public class ReadJson {
     public static String SR_DistributorSearch;
     public static String SR_Store;
     public static String SR_Note;
+    public static String SR_FullReturn;
 
 
     public static String[] readJsonData() {
@@ -308,7 +309,7 @@ public class ReadJson {
 
             {// Read data from the "Login" object
                 JSONObject loginObject = (JSONObject) jsonObject.get("Login");
-                url_AIR = (String) loginObject.get("url_AIR");
+//                url_AIR = (String) loginObject.get("url_AIR");
                 url_AIR_2 = (String) loginObject.get("url_AIR_2");
                 url_AIR_2_AIR = (String) loginObject.get("url_AIR_2_AIR");
                 user_Fahim = (String) loginObject.get("user_Fahim");
@@ -673,6 +674,7 @@ public class ReadJson {
                 SR_DistributorSearch = (String) PROD_Object.get("DistributorSearch");
                 SR_Store = (String) PROD_Object.get("Store");
                 SR_Note = (String) PROD_Object.get("Note");
+                SR_FullReturn = (String) PROD_Object.get("Full Return");
             }
 
 
