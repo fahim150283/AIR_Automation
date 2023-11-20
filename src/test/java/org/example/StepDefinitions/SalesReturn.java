@@ -143,11 +143,9 @@ public class SalesReturn extends Page_Options {
                 inputbyxpath(xpath, s);
             }
         }
-
         id = "add_region";
         waitById(id);
         clickbyId(id);
-
     }
 
     @Then("close the Sales Return window")
@@ -155,6 +153,4 @@ public class SalesReturn extends Page_Options {
         Thread.sleep(1000);
         closedriver();
     }
-
-
 }
