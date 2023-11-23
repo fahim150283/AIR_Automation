@@ -16,5 +16,3 @@ Feature: Loading sheet Test
     Given login for printing new  Loading sheet
     And Click the print button of the loading sheet
     Then close driver for printing Loading sheets
-
-
