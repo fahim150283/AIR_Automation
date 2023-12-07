@@ -393,6 +393,14 @@ public class Page_Options extends BrowserUtils {
     }
 
 
+    public boolean ElementVisible(String s){
+        // Find the element using XPath
+        WebElement element = driver.findElement(By.xpath(s));
+
+        // Check if the element is visible
+        return element.isDisplayed();
+
+    }
 
     public void Click_from_leftSideBar(String s) {
         // Find the search input box and enter the search term "Damage Amount"

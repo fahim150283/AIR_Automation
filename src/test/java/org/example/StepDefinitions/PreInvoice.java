@@ -17,10 +17,8 @@ public class PreInvoice extends Page_Options {
 
     @Given("^Login to Search PreInvoice$")
     public void login_for_accessing_pre_invoice() {
-        Login_AIR2_AIR(user_Fahim);
-
         Login_AIR2(user_Haseeb);
-        Click_from_leftSideBar("Sales Return");
+        Click_from_leftSideBar("Pre Invoices");
     }
 
     @When("search for preInvoice")
@@ -47,15 +45,14 @@ public class PreInvoice extends Page_Options {
     @Given("login for creating new preInvoice")
 //    @Test
     public void login_for_creating_new_pre_invoice() {
-        Login_AIR2_AIR(user_Fahim);
-        //click pre invoice from left bar
-        cssSelector = ".active:nth-child(4) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+
+        Login_AIR2(user_Haseeb);
+        Click_from_leftSideBar("Pre Invoices");
     }
 
     @Given("^create new preInvoice$")
     public void create_new_pre_invoice() throws InterruptedException {
+        Thread.sleep(1000);
         //click the create new pre invoice
         xpath = "//*[@id=\"tableData_wrapper\"]/div[1]/button[4]";
         clickbyxpath(xpath);
@@ -100,6 +97,17 @@ public class PreInvoice extends Page_Options {
             clickbyxpath(xpath);
         }
 
+        //pre Invoice date
+        xpath = "//*[@id=\"c_exp_delivery_date\"]";
+        clickbyxpath(xpath);
+        inputbyxpath(xpath, getToday());
+
+        //cash commission
+        xpath = "//*[@id=\"c_cash_com\"]";
+        clearByXpath(xpath);
+        inputbyxpath(xpath,PreInvoiceCashCommission);
+
+
         //notes
         id = "c_notes";
         inputbyid(id, "Automated Test");
@@ -107,12 +115,12 @@ public class PreInvoice extends Page_Options {
         //click the items bar and add 15 items
         for (int i = 0; i < PreInvoiceItems.length; i++) {
             xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[4]/div[6]/span/span[1]/span";
-            Thread.sleep(300);
+            Thread.sleep(100);
             System.out.println(PreInvoiceItems[i]);
             inputbyxpath(xpath, PreInvoiceItems[i]);
-            Thread.sleep(300);
+            Thread.sleep(10);
             pressEnterbyXpath(xpath);
-            Thread.sleep(300);
+            Thread.sleep(10);
 
             // press the plus button
             id = "c_add_inv_prod";
@@ -158,10 +166,18 @@ public class PreInvoice extends Page_Options {
             }
         }
 
+
+        //offer part
+        if(ElementVisible("//*[@id=\"tbl_data\"]/tr")){
+            for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++){
+                String s = getTextbyXpath("//*[@id=\"tbl_data\"]/tr["+(i+1)+"]/td[3]");
+            }
+        }
+
+
         //Save
         id = "add_region";
         clickbyId(id);
-
         //Click ok button in the alert
         AlertAccept();
     }

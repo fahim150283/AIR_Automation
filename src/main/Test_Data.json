@@ -40,7 +40,8 @@
     "SearchInfo": "SPI-00000004",
     "DistributorSearch":"bhai bhai",
     "ItemQuantity":"20",
-    "Checkbox": "Regular"
+    "Checkbox": "Regular",
+    "Cash Commission": "10"
   },
 
   "PreviousPendingDelivery": {
