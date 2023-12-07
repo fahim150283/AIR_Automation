@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
+import java.util.Objects;
+
 public class PreInvoice extends Page_Options {
 
 
@@ -17,9 +19,8 @@ public class PreInvoice extends Page_Options {
     public void login_for_accessing_pre_invoice() {
         Login_AIR2_AIR(user_Fahim);
 
-        cssSelector = ".active:nth-child(4) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Login_AIR2(user_Haseeb);
+        Click_from_leftSideBar("Sales Return");
     }
 
     @When("search for preInvoice")
@@ -30,7 +31,8 @@ public class PreInvoice extends Page_Options {
     }
 
     @And("description of a preinvoice")
-    public void description_of_a_preinvoice() {
+    public void description_of_a_preinvoice() throws InterruptedException {
+        Thread.sleep(1000);
         id = "btn_view";
         waitById(id);
         clickbyId(id);
@@ -70,6 +72,8 @@ public class PreInvoice extends Page_Options {
         cssSelector = ".select2-search--dropdown > .select2-search__field";
         inputbycssselector(cssSelector, PreInvoiceDistributorSearch);
         cssSelectorPressEnter(cssSelector);
+
+
 //        //wait and click routes
 //        xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[2]/div[3]/span";
 //        Thread.sleep(2000);
@@ -82,14 +86,19 @@ public class PreInvoice extends Page_Options {
 //        xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[1]/div[4]/span/span[1]/span";
 //        waitByxpath(xpath);
 //        clickbyxpath(xpath);
-//        //click the checkbox for regular or pending
-//        int chkbox = 1; 	//For checkbox    Regular = 1 and pending = 0
-//        if(chkbox == 0) {
-//            xpath = "//*[@id=\"pre_pending\"]";
-//            waitByxpath(xpath);
-//            clickbyxpath(xpath);
 //        }
 
+        //click the checkbox for regular or pending
+        if(Objects.equals(PreInvoiceCheckBox, "Regular")) {
+            xpath = "//*[@id=\"pre_regular\"]";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
+        }
+        else {
+            xpath = "//*[@id=\"pre_pending\"]";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
+        }
 
         //notes
         id = "c_notes";

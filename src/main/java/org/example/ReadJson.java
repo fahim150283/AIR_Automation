@@ -23,6 +23,7 @@ public class ReadJson {
     public static String PreInvoiceSearchInfo;
     public static String PreInvoiceDistributorSearch;
     public static String PreInvoiceItemQuantity;
+    public static String PreInvoiceCheckBox;
     public static String PreInvoiceItems[] = new String[15];
     public static String PreviousPendingDeliveryItems[] = new String[15];
     public static String PreviousPendingDeliveryDistributorSearch;
@@ -334,6 +335,7 @@ public class ReadJson {
                 PreInvoiceSearchInfo = (String) PreInvoiceObject.get("SearchInfo");
                 PreInvoiceItemQuantity = (String) PreInvoiceObject.get("ItemQuantity");
                 PreInvoiceDistributorSearch = (String) PreInvoiceObject.get("DistributorSearch");
+                PreInvoiceCheckBox = (String) PreInvoiceObject.get("Checkbox");
                 PreInvoiceItems = ItemsArray;
             }
             {// Read data from the "PreviousPendingDelivery" object

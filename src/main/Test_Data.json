@@ -37,9 +37,10 @@
   },
 
   "PreInvoice": {
-    "SearchInfo": "12012",
+    "SearchInfo": "SPI-00000004",
     "DistributorSearch":"bhai bhai",
-    "ItemQuantity":"20"
+    "ItemQuantity":"20",
+    "Checkbox": "Regular"
   },
 
   "PreviousPendingDelivery": {
@@ -106,7 +107,7 @@
     "InvoiceReferenceNo":"Test Reference"
   },
 
-  "Collection": {
+  "Collection":  {
     "SearchInfo": "SO-00000013",
     "DistributorSearch":"bhai bhai",
     "CollectedBy":"Automatically Collected",
