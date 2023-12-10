@@ -120,8 +120,6 @@ public class PreInvoice extends Page_Options {
         for (int i = 0; i < PreInvoices.Items.length; i++) {
             xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[4]/div[6]/span/span[1]/span";
             Thread.sleep(100);
-            System.out.println(PreInvoices.Items[i]);
-            System.out.println(PreInvoices.Items.length+" length");
             inputbyxpath(xpath, PreInvoices.Items[i]);
             Thread.sleep(10);
             pressEnterbyXpath(xpath);
@@ -173,21 +171,29 @@ public class PreInvoice extends Page_Options {
         }
 
 
-//        //offer part
-//        if(ElementVisible("//*[@id=\"tbl_data\"]/tr")){
-//            for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++){
-//                String s = getTextbyXpath("//*[@id=\"tbl_data\"]/tr["+(i+1)+"]/td[3]");
-//                if (Objects.equals(s, "Offer Type: Product")){          //for the offer:products
-//                    List<WebElement> rowsWithDropdowns = driver.findElements(By.xpath("//tbody[@id='tbl_data']/tr[td/select]"));
-//                    for (WebElement row : rowsWithDropdowns) {
-//                        WebElement dropdown = row.findElement(By.xpath("./td[5]/select"));
-//                        Select select = new Select(dropdown);
-//                        select.selectByIndex(1);
-//
-//                    }
-//                }
-//            }
-//        }
+        //offer part
+        if(ElementVisible("//*[@id=\"tbl_data\"]")){
+            System.out.println("offer part is available");
+            for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++){
+                String s = getTextbyXpath("//*[@id=\"tbl_data\"]/tr["+(i+1)+"]/td[3]");
+                if (Objects.equals(s, "Offer Type: Product")){          //for the offer:products
+                    List<WebElement> rowsWithDropdowns = driver.findElements(By.xpath("//tbody[@id='tbl_data']/tr[td/select]"));
+                    for (WebElement row : rowsWithDropdowns) {
+                        WebElement dropdownElement = row.findElement(By.xpath("//*[@id=\"dis_product"+(2+i)+"\"]"));
+                        Select dropdown = new Select(dropdownElement);
+                        dropdown.selectByIndex(2);
+                    }
+                    //Quantity CTN
+                    id = "showCtn"+(2+i);
+                    waitById(id);
+                    inputbyid(id, PreInvoices.OfferCTN);
+                    //Quantity PCS
+                    id = "showPcs"+(2+i);
+                    waitById(id);
+                    inputbyid(id, PreInvoices.OfferPCS);
+                }
+            }
+        }
 
 
         //Save

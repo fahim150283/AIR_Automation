@@ -41,7 +41,9 @@
     "DistributorSearch":"bhai bhai",
     "ItemQuantity":"20",
     "Checkbox": "Regular",
-    "Cash Commission": "10"
+    "Cash Commission": "10",
+    "OfferCTN": "5",
+    "OfferPCS": "5"
   },
 
   "PreviousPendingDelivery": {

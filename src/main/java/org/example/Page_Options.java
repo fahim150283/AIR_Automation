@@ -234,9 +234,7 @@ public class Page_Options extends BrowserUtils {
 
     public static String getTextbyXpath(String s) {
         WebElement inputElement = driver.findElement(By.xpath(s));
-
-        // Check if the input has a value
-        String value = inputElement.getAttribute("textContent");
+        String value = inputElement.getAttribute("value");
         return value;
     }
 

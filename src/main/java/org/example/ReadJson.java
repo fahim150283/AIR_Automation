@@ -31,6 +31,8 @@ public class ReadJson {
         public static String CheckBox;
         public static String CashCommission;
         public static String Items[] = new String[15];
+        public static String OfferCTN;
+        public static String OfferPCS;
     }
 
     public static class PreviousPendingDelivery {
@@ -391,6 +393,8 @@ public class ReadJson {
                 PreInvoices.CheckBox = (String) PreInvoiceObject.get("Checkbox");
                 PreInvoices.CashCommission = (String) PreInvoiceObject.get("Cash Commission");
                 PreInvoices.Items = Users.ItemsArray;
+                PreInvoices.OfferCTN = (String) PreInvoiceObject.get("OfferCTN");
+                PreInvoices.OfferPCS = (String) PreInvoiceObject.get("OfferPCS");
             }
             {// Read data from the "PreviousPendingDelivery" object
                 JSONObject PreviousPendingDeliveryObject = (JSONObject) jsonObject.get("PreviousPendingDelivery");
