@@ -53,7 +53,7 @@ public class PreInvoice extends Page_Options {
 
     @Given("^create new preInvoice$")
     public void create_new_pre_invoice() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         //click the create new pre invoice
         xpath = "//*[@id=\"tableData_wrapper\"]/div[1]/button[4]";
         clickbyxpath(xpath);
@@ -62,6 +62,9 @@ public class PreInvoice extends Page_Options {
         //waitByxpath(xpath);
         clickbyxpath(xpath);
         inputbyxpath(xpath, getToday());
+
+        Thread.sleep(2000);
+
         //wait and click distributors
         id = "select2-distributor_list-container";
         waitById(id);
@@ -118,6 +121,7 @@ public class PreInvoice extends Page_Options {
             xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[4]/div[6]/span/span[1]/span";
             Thread.sleep(100);
             System.out.println(PreInvoices.Items[i]);
+            System.out.println(PreInvoices.Items.length+" length");
             inputbyxpath(xpath, PreInvoices.Items[i]);
             Thread.sleep(10);
             pressEnterbyXpath(xpath);
@@ -154,13 +158,14 @@ public class PreInvoice extends Page_Options {
             inputbyxpath(xpath, PreInvoices.ItemQuantity);
         }
 
+        Thread.sleep(2000);
         //remove an item
         WebElement table = driver.findElement(By.id("c_inv_items_list"));
         java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
         // Iterate through rows
         for (int i = 0; i < rows.size(); i++) {
             WebElement row = rows.get(i);
-            if (i% 5 == 0) {
+            if (i%5 == 0) {
                 // Find and click the "delete" button for the visible row
                 WebElement delete_Button = row.findElement(By.id("delete_table_row"));
                 delete_Button.click();
@@ -168,21 +173,21 @@ public class PreInvoice extends Page_Options {
         }
 
 
-        //offer part
-        if(ElementVisible("//*[@id=\"tbl_data\"]/tr")){
-            for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++){
-                String s = getTextbyXpath("//*[@id=\"tbl_data\"]/tr["+(i+1)+"]/td[3]");
-                if (Objects.equals(s, "Offer Type: Product")){          //for the offer:products
-                    List<WebElement> rowsWithDropdowns = driver.findElements(By.xpath("//tbody[@id='tbl_data']/tr[td/select]"));
-                    for (WebElement row : rowsWithDropdowns) {
-                        WebElement dropdown = row.findElement(By.xpath("./td[5]/select"));
-                        Select select = new Select(dropdown);
-                        select.selectByIndex(1);
-
-                    }
-                }
-            }
-        }
+//        //offer part
+//        if(ElementVisible("//*[@id=\"tbl_data\"]/tr")){
+//            for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++){
+//                String s = getTextbyXpath("//*[@id=\"tbl_data\"]/tr["+(i+1)+"]/td[3]");
+//                if (Objects.equals(s, "Offer Type: Product")){          //for the offer:products
+//                    List<WebElement> rowsWithDropdowns = driver.findElements(By.xpath("//tbody[@id='tbl_data']/tr[td/select]"));
+//                    for (WebElement row : rowsWithDropdowns) {
+//                        WebElement dropdown = row.findElement(By.xpath("./td[5]/select"));
+//                        Select select = new Select(dropdown);
+//                        select.selectByIndex(1);
+//
+//                    }
+//                }
+//            }
+//        }
 
 
         //Save
