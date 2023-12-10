@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
+import java.util.List;
 import java.util.Objects;
 
 public class PreInvoice extends Page_Options {
@@ -17,7 +18,7 @@ public class PreInvoice extends Page_Options {
 
     @Given("^Login to Search PreInvoice$")
     public void login_for_accessing_pre_invoice() {
-        Login_AIR2(user_Haseeb);
+        Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Pre Invoices");
     }
 
@@ -25,7 +26,7 @@ public class PreInvoice extends Page_Options {
     public void search_for_pre_invoice() {
         xpath = "//*[@id=\"tableData_filter\"]/label/input";
         waitByxpath(xpath);
-        inputbyxpath(xpath, PreInvoiceSearchInfo);
+        inputbyxpath(xpath, PreInvoices.SearchInfo);
     }
 
     @And("description of a preinvoice")
@@ -46,7 +47,7 @@ public class PreInvoice extends Page_Options {
 //    @Test
     public void login_for_creating_new_pre_invoice() {
 
-        Login_AIR2(user_Haseeb);
+        Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Pre Invoices");
     }
 
@@ -67,7 +68,7 @@ public class PreInvoice extends Page_Options {
         clickbyId(id);
         //search for bhai bhai and hit enter
         cssSelector = ".select2-search--dropdown > .select2-search__field";
-        inputbycssselector(cssSelector, PreInvoiceDistributorSearch);
+        inputbycssselector(cssSelector, PreInvoices.DistributorSearch);
         cssSelectorPressEnter(cssSelector);
 
 
@@ -86,7 +87,7 @@ public class PreInvoice extends Page_Options {
 //        }
 
         //click the checkbox for regular or pending
-        if(Objects.equals(PreInvoiceCheckBox, "Regular")) {
+        if(Objects.equals(PreInvoices.CheckBox, "Regular")) {
             xpath = "//*[@id=\"pre_regular\"]";
             waitByxpath(xpath);
             clickbyxpath(xpath);
@@ -105,7 +106,7 @@ public class PreInvoice extends Page_Options {
         //cash commission
         xpath = "//*[@id=\"c_cash_com\"]";
         clearByXpath(xpath);
-        inputbyxpath(xpath,PreInvoiceCashCommission);
+        inputbyxpath(xpath,PreInvoices.CashCommission);
 
 
         //notes
@@ -113,11 +114,11 @@ public class PreInvoice extends Page_Options {
         inputbyid(id, "Automated Test");
 
         //click the items bar and add 15 items
-        for (int i = 0; i < PreInvoiceItems.length; i++) {
+        for (int i = 0; i < PreInvoices.Items.length; i++) {
             xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[4]/div[6]/span/span[1]/span";
             Thread.sleep(100);
-            System.out.println(PreInvoiceItems[i]);
-            inputbyxpath(xpath, PreInvoiceItems[i]);
+            System.out.println(PreInvoices.Items[i]);
+            inputbyxpath(xpath, PreInvoices.Items[i]);
             Thread.sleep(10);
             pressEnterbyXpath(xpath);
             Thread.sleep(10);
@@ -126,31 +127,31 @@ public class PreInvoice extends Page_Options {
             id = "c_add_inv_prod";
             clickbyId(id);
         }
-        System.out.println(PreInvoiceItems.length);
+        System.out.println(PreInvoices.Items.length);
 
 
         //click the amount buttons for the quantity of the items
-        for (int i = 0; i < PreInvoiceItems.length; i++) {
+        for (int i = 0; i < PreInvoices.Items.length; i++) {
             //ctn(quantity)
             xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
             waitByxpath(xpath);
             clearByXpath(xpath);
-            inputbyxpath(xpath, PreInvoiceItemQuantity);
+            inputbyxpath(xpath, PreInvoices.ItemQuantity);
             //pcs(quantity)
             xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[6]/input";
             waitByxpath(xpath);
             clearByXpath(xpath);
-            inputbyxpath(xpath, PreInvoiceItemQuantity);
+            inputbyxpath(xpath, PreInvoices.ItemQuantity);
             //ctn(COMP)
             xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[9]/input";
             waitByxpath(xpath);
             clearByXpath(xpath);
-            inputbyxpath(xpath, PreInvoiceItemQuantity);
+            inputbyxpath(xpath, PreInvoices.ItemQuantity);
             //pcs(COMP)
             xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[10]/input";
             waitByxpath(xpath);
             clearByXpath(xpath);
-            inputbyxpath(xpath, PreInvoiceItemQuantity);
+            inputbyxpath(xpath, PreInvoices.ItemQuantity);
         }
 
         //remove an item
@@ -171,6 +172,15 @@ public class PreInvoice extends Page_Options {
         if(ElementVisible("//*[@id=\"tbl_data\"]/tr")){
             for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++){
                 String s = getTextbyXpath("//*[@id=\"tbl_data\"]/tr["+(i+1)+"]/td[3]");
+                if (Objects.equals(s, "Offer Type: Product")){          //for the offer:products
+                    List<WebElement> rowsWithDropdowns = driver.findElements(By.xpath("//tbody[@id='tbl_data']/tr[td/select]"));
+                    for (WebElement row : rowsWithDropdowns) {
+                        WebElement dropdown = row.findElement(By.xpath("./td[5]/select"));
+                        Select select = new Select(dropdown);
+                        select.selectByIndex(1);
+
+                    }
+                }
             }
         }
 

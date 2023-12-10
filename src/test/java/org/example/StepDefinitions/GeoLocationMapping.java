@@ -17,7 +17,7 @@ public class GeoLocationMapping extends Page_Options {
     */
     @Given("login for creating new  Geo Location Mapping")
     public void login_for_creating_new_geo_location_mapping() throws InterruptedException {
-        Login_AIR2(user_Haseeb);
+        Login_AIR2(Users.user_Haseeb);
         cssSelector = ".menues-bar:nth-child(25) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
@@ -145,7 +145,7 @@ public class GeoLocationMapping extends Page_Options {
     */
     @Given("Login to Search  Geo Location Mapping")
     public void login_to_search_geo_location_mapping() throws InterruptedException {
-        Login_AIR2(user_Haseeb);
+        Login_AIR2(Users.user_Haseeb);
         cssSelector = ".menues-bar:nth-child(25) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
@@ -177,7 +177,7 @@ public class GeoLocationMapping extends Page_Options {
     */
     @Given("Login to copy the data for ordering by an user")
     public void login_to_copy_the_data_for_ordering_by_an_user() throws InterruptedException {
-        Login_AIR2(user_Haseeb);
+        Login_AIR2(Users.user_Haseeb);
         cssSelector = ".menues-bar:nth-child(25) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);

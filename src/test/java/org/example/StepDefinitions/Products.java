@@ -12,8 +12,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Products extends Page_Options {
-    String productname = PROD_Name + randomnumber();
-    String productcode = PROD_Code + randomnumber();
+    String productname = product.Name + randomnumber();
+    String productcode = product.Code + randomnumber();
 
 
     /*
@@ -21,7 +21,7 @@ public class Products extends Page_Options {
     */
     @Given("login for creating new  Product")
     public void login_for_creating_new_product() {
-        Login_AIR2_AIR(user_Haseeb);
+        Login_AIR2_AIR(Users.user_Haseeb);
         Click_from_leftSideBar("Products");
     }
 
@@ -48,7 +48,7 @@ public class Products extends Page_Options {
         waitByxpath(xpath);
         clickbyxpath(xpath);
         xpath = "/html/body/span/span/span[1]/input";
-        inputbyxpath(xpath, PROD_Category);
+        inputbyxpath(xpath, product.Category);
         pressEnterbyXpath(xpath);
 
         //product flavor
@@ -57,7 +57,7 @@ public class Products extends Page_Options {
         clickbyxpath(xpath);
         xpath = "/html/body/span/span/span[1]/input";
         clickbyxpath(xpath);
-        inputbyxpath(xpath, PROD_flavor);
+        inputbyxpath(xpath, product.flavor);
         pressEnterbyXpath(xpath);
 
         //size in ml
@@ -65,29 +65,29 @@ public class Products extends Page_Options {
         waitByxpath(xpath);
         clickbyxpath(xpath);
         clearByXpath(xpath);
-        inputbyxpath(xpath, PROD_sizeML);
+        inputbyxpath(xpath, product.sizeML);
 
         //ctn size in Pcs
         xpath = "//*[@id=\"product_quantity_ctn\"]";
         waitByxpath(xpath);
         clickbyxpath(xpath);
         clearByXpath(xpath);
-        inputbyxpath(xpath, PROD_CtnPCS);
+        inputbyxpath(xpath, product.CtnPCS);
 
         //retail price
         id = "retail_price";
         waitById(id);
-        inputbyid(id, PROD_RetailPrice);
+        inputbyid(id, product.RetailPrice);
 
         //trade price
         id = "trade_price";
         waitById(id);
-        inputbyid(id, PROD_TradePrice);
+        inputbyid(id, product.TradePrice);
 
         //distributor price
         id = "dist_price";
         waitById(id);
-        inputbyid(id, PROD_DistributorPrice);
+        inputbyid(id, product.DistributorPrice);
 
         //effective from
         id = "effect_date";
@@ -163,12 +163,12 @@ public class Products extends Page_Options {
         id = "edit_product_code";
         waitById(id);
         clearById(id);
-        inputbyid(id, E_PROD_Code);
+        inputbyid(id, product.E_Code);
         //product code
         id = "edit_product_name";
         waitById(id);
         clearById(id);
-        inputbyid(id, E_PROD_Name);
+        inputbyid(id, product.E_Name);
 
         //product category
         xpath = "//*[@id=\"select2-edit_product_category-container\"]";
@@ -176,7 +176,7 @@ public class Products extends Page_Options {
         clickbyxpath(xpath);
         xpath = "/html/body/span/span/span[1]/input";
         clickbyxpath(xpath);
-        inputbyxpath(xpath, E_PROD_Category);
+        inputbyxpath(xpath, product.E_Category);
         pressEnterbyXpath(xpath);
 
         //product flavor
@@ -185,7 +185,7 @@ public class Products extends Page_Options {
         clickbyxpath(xpath);
         xpath = "/html/body/span/span/span[1]/input";
         clickbyxpath(xpath);
-        inputbyxpath(xpath, E_PROD_flavor);
+        inputbyxpath(xpath, product.E_flavor);
         pressEnterbyXpath(xpath);
 
         //size in ml
@@ -193,14 +193,14 @@ public class Products extends Page_Options {
         waitByxpath(xpath);
         clickbyxpath(xpath);
         clearByXpath(xpath);
-        inputbyxpath(xpath, E_PROD_sizeML);
+        inputbyxpath(xpath, product.E_sizeML);
 
         //ctn size in Pcs
         xpath = "//*[@id=\"edit_product_quantity_ctn\"]";
         waitByxpath(xpath);
         clickbyxpath(xpath);
         clearByXpath(xpath);
-        inputbyxpath(xpath, E_PROD_CtnPCS);
+        inputbyxpath(xpath, product.E_CtnPCS);
 
         //price toggle button
         xpath = "//*[@id=\"flush-headingOne\"]/button";
@@ -212,17 +212,17 @@ public class Products extends Page_Options {
         //retail price
         id = "new_reatail_price";
         waitById(id);
-        inputbyid(id, E_PROD_RetailPrice);
+        inputbyid(id, product.E_RetailPrice);
 
         //trade price
         id = "new_trade_price";
         waitById(id);
-        inputbyid(id, E_PROD_TradePrice);
+        inputbyid(id, product.E_TradePrice);
 
         //distributor price
         id = "new_dist_price";
         waitById(id);
-        inputbyid(id, E_PROD_DistributorPrice);
+        inputbyid(id, product.E_DistributorPrice);
 
         //effective from
         id = "new_eff_from";
@@ -294,7 +294,7 @@ public class Products extends Page_Options {
         //get the price from the item list
         xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[4]";
         String itemprice = getTextbyXpath(xpath);
-        Assert.assertEquals(itemprice, PROD_DistributorPrice);
+        Assert.assertEquals(itemprice, product.DistributorPrice);
 
     }
 

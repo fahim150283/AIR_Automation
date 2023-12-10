@@ -12,7 +12,7 @@ public class Order extends Page_Options {
 
     @Given("Login to Search Order")
     public void login_to_search_order() {
-       Login_AIR2_AIR(user_Fahim);
+       Login_AIR2_AIR(Users.user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(23) .active";
         waitByCssSelector(cssSelector);
@@ -23,7 +23,7 @@ public class Order extends Page_Options {
     public void search_for_order() {
         xpath = "//*[@id=\"tableData_filter\"]/label/input";
         waitByxpath(xpath);
-        inputbyxpath(xpath, OrderSearchInfo);
+        inputbyxpath(xpath, Order.SearchInfo);
     }
 
     @And("description of a Order")
@@ -41,7 +41,7 @@ public class Order extends Page_Options {
 
     @Given("login for creating new Order")
     public void login_for_creating_new_order() throws InterruptedException {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(23) .active";
         waitByCssSelector(cssSelector);
@@ -93,14 +93,14 @@ public class Order extends Page_Options {
 
         //important notes
         id = "c_notes";
-        inputbyid(id, OrderNote);
+        inputbyid(id, Order.Note);
 
         //click the items bar and add items
-        for (int i = 0; i < OrderItems.length; i++) {
+        for (int i = 0; i < Order.Items.length; i++) {
             xpath = "//*[@id=\"add_invoice_form\"]/div/div[3]/div[4]/span/span[1]/span";
             Thread.sleep(300);
-            System.out.println(OrderItems[i]);
-            inputbyxpath(xpath, OrderItems[i]);
+            System.out.println(Order.Items[i]);
+            inputbyxpath(xpath, Order.Items[i]);
             Thread.sleep(300);
             pressEnterbyXpath(xpath);
             Thread.sleep(300);
@@ -111,17 +111,17 @@ public class Order extends Page_Options {
         }
 
         //click the amount buttons for the quantity of the items
-        for (int i = 0; i < OrderItems.length; i++) {
+        for (int i = 0; i < Order.Items.length; i++) {
             //ctn(quantity)
             xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[5]/input";
             waitByxpath(xpath);
             clearByXpath(xpath);
-            inputbyxpath(xpath, OrderItemQuantity);
+            inputbyxpath(xpath, Order.ItemQuantity);
             //pcs(quantity)
             xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[6]/input";
             waitByxpath(xpath);
             clearByXpath(xpath);
-            inputbyxpath(xpath, OrderItemQuantity);
+            inputbyxpath(xpath, Order.ItemQuantity);
         }
 
         //remove an item

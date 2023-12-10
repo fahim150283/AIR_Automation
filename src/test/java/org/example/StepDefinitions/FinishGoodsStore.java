@@ -14,7 +14,7 @@ import java.io.Closeable;
 public class FinishGoodsStore extends Page_Options {
     @Given("Login to Search a FG Store")
     public void login_to_search_a_fg_store() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(16) .active";
         waitByCssSelector(cssSelector);
@@ -26,7 +26,7 @@ public class FinishGoodsStore extends Page_Options {
         //search a FG store
         id= "search";
         waitById(id);
-        inputbyid(id,FGS_SearchInfo);
+        inputbyid(id,FGS.SearchInfo);
     }
     @When("description of a store and print")
     public void description_of_a_store() {
@@ -56,7 +56,7 @@ public class FinishGoodsStore extends Page_Options {
 
     @Given("Login to edit a FG Store")
     public void login_to_edit_a_fg_store() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(16) .active";
         waitByCssSelector(cssSelector);
@@ -67,7 +67,7 @@ public class FinishGoodsStore extends Page_Options {
         Thread.sleep(1000);
         id = "search";
         waitById(id);
-        inputbyid(id,FGS_SearchInfo);
+        inputbyid(id,FGS.SearchInfo);
     }
     @When("edit a store")
     public void edit_a_store() throws InterruptedException {
@@ -88,12 +88,12 @@ public class FinishGoodsStore extends Page_Options {
         //fg store code
         id = "edit_code";
         clearById(id);
-        inputbyid(id,FGS_EditedCode+randomnumber());
+        inputbyid(id,FGS.EditedCode+randomnumber());
 
         //fg store name
         id = "edit_name";
         clearById(id);
-        inputbyid(id,FGS_EditedName);
+        inputbyid(id,FGS.EditedName);
 
         boolean store= true;
         System.out.println(store);
@@ -111,19 +111,19 @@ public class FinishGoodsStore extends Page_Options {
         //definition
         id = "edit_defination";
         clearById(id);
-        inputbyid(id,FGS_EditedDefinition);
+        inputbyid(id,FGS.EditedDefinition);
 
         //address
         id = "edit_address";
         clearById(id);
-        inputbyid(id,FGS_EditedAddress);
+        inputbyid(id,FGS.EditedAddress);
 
         //Region
         id = "select2-edit_region-container";
         clickbyId(id);
         xpath = "/html/body/span/span/span[1]/input";
         waitByxpath(xpath);
-        inputbyxpath(xpath, FGS_Region);
+        inputbyxpath(xpath, FGS.Region);
         pressEnterbyXpath(xpath);
 
         //Depots
@@ -131,7 +131,7 @@ public class FinishGoodsStore extends Page_Options {
         clickbyId(id);
         xpath = "/html/body/span/span/span[1]/input";
         waitByxpath(xpath);
-        inputbyxpath(xpath, FGS_Region);
+        inputbyxpath(xpath, FGS.Region);
         pressEnterbyXpath(xpath);
 
         //status
@@ -163,7 +163,7 @@ public class FinishGoodsStore extends Page_Options {
 
     @Given("Login to Create a FG Store")
     public void login_to_create_a_fg_store() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(16) .active";
         waitByCssSelector(cssSelector);
@@ -182,11 +182,11 @@ public class FinishGoodsStore extends Page_Options {
 
         //store code
         id = "add_code";
-        inputbyid(id,FGS_Code+randomnumber());
+        inputbyid(id,FGS.Code+randomnumber());
 
         //store name
         id = "add_name";
-        inputbyid(id, FGS_Name);
+        inputbyid(id, FGS.Name);
 
         //type
         boolean store= true;
@@ -205,12 +205,12 @@ public class FinishGoodsStore extends Page_Options {
         //definition
         id = "add_defination";
         clearById(id);
-        inputbyid(id,FGS_EditedDefinition);
+        inputbyid(id,FGS.EditedDefinition);
 
         //address
         id = "add_address";
         clearById(id);
-        inputbyid(id,FGS_EditedAddress);
+        inputbyid(id,FGS.EditedAddress);
 
         //Region
         Thread.sleep(200);
@@ -218,7 +218,7 @@ public class FinishGoodsStore extends Page_Options {
         clickbyxpath(xpath);
         xpath = "/html/body/span/span/span[1]/input";
         waitByxpath(xpath);
-        inputbyxpath(xpath, FGS_Region);
+        inputbyxpath(xpath, FGS.Region);
         pressEnterbyXpath(xpath);
 
         //Depot
@@ -227,7 +227,7 @@ public class FinishGoodsStore extends Page_Options {
         clickbyxpath(xpath);
         xpath = "/html/body/span/span/span[1]/input";
         waitByxpath(xpath);
-        inputbyxpath(xpath, FGS_Region);
+        inputbyxpath(xpath, FGS.Region);
         pressEnterbyXpath(xpath);
 
         //status
@@ -256,7 +256,7 @@ public class FinishGoodsStore extends Page_Options {
 
     @Given("Login to add products in a  FG Store")
     public void login_to_add_products_in_a_fg_store() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(16) .active";
         waitByCssSelector(cssSelector);
@@ -276,16 +276,16 @@ public class FinishGoodsStore extends Page_Options {
         waitByxpath(xpath);
         clickbyxpath(xpath);
         xpath = "/html/body/span/span/span[1]/input";
-        inputbyxpath(xpath, FGS_Store);
+        inputbyxpath(xpath, FGS.Store);
         pressEnterbyXpath(xpath);
         pressESCbyXpath(xpath);
 
         //click the items bar and add items
-        for (int i = 0; i < FGS_Items.length; i++) {
+        for (int i = 0; i < FGS.Items.length; i++) {
             Thread.sleep(100);
             WebElement multiSelectDropdown = driver.findElement(By.id("goods_list"));
             Select dropdown = new Select(multiSelectDropdown);
-            dropdown.selectByVisibleText(FGS_Items[i]);
+            dropdown.selectByVisibleText(FGS.Items[i]);
         }
 
         //click the plus button
@@ -293,23 +293,23 @@ public class FinishGoodsStore extends Page_Options {
         clickbyId(id);
 
         //click the amount buttons for the quantity of the items
-        for (int i = 0; i < FGS_Items.length; i++) {
+        for (int i = 0; i < FGS.Items.length; i++) {
             //ctn(quantity)
             xpath = "//*[@id=\"fg_store_goods_table\"]/tr["+(i+1)+"]/td[5]/input";
             waitByxpath(xpath);
             clearByXpath(xpath);
-            inputbyxpath(xpath, FGS_ItemQuantity);
+            inputbyxpath(xpath, FGS.ItemQuantity);
             //pcs(quantity)
             xpath = "//*[@id=\"fg_store_goods_table\"]/tr["+(i+1)+"]/td[6]/input";
             waitByxpath(xpath);
             clearByXpath(xpath);
-            inputbyxpath(xpath, FGS_ItemQuantity);
+            inputbyxpath(xpath, FGS.ItemQuantity);
         }
 
         Thread.sleep(100);
 
         //remove an item
-        for (int i = 0; i < FGS_Items.length; i++) {
+        for (int i = 0; i < FGS.Items.length; i++) {
             if (i% 5 == 0) {
                 // Find and click the "delete" button for the visible row
                 xpath = "//*[@id=\"fg_store_goods_table\"]/tr["+(i+1)+"]/td[7]/button";

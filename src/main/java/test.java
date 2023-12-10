@@ -24,7 +24,7 @@ public class test extends Page_Options {
 
     @Test
     public void login_for_creating_new_pre_invoice() throws InterruptedException {
-        Login_AIR2_AIR(user_Haseeb);
+        Login_AIR2_AIR(Users.user_Haseeb);
         Click_from_leftSideBar("Gifts");
     }
 }

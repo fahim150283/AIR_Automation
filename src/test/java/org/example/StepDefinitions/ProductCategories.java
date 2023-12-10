@@ -14,10 +14,10 @@ import org.testng.Assert;
 import java.util.Objects;
 
 public class ProductCategories extends Page_Options {
-    String name = PRODCAT_Name + randomnumber();
-    String E_name = PRODCAT_E_Name + randomnumber();
+    String name = PRODCAT.Name + randomnumber();
+    String E_name = PRODCAT.E_Name + randomnumber();
 
-    String MainCategory = PRODCAT_MainCategory;
+    String MainCategory = PRODCAT.MainCategory;
 
 
     /*
@@ -25,7 +25,7 @@ public class ProductCategories extends Page_Options {
     */
     @Given("login for creating new  Product Category")
     public void login_for_creating_new_product_category() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
         cssSelector = ".menues-bar:nth-child(25) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
@@ -61,7 +61,7 @@ public class ProductCategories extends Page_Options {
         id = "add_status";
         WebElement Dropdown = driver.findElement(By.id(id));
         Select CatgSelect = new Select(Dropdown);
-        CatgSelect.selectByVisibleText(PRODCAT_Status);
+        CatgSelect.selectByVisibleText(PRODCAT.Status);
         Thread.sleep(20);
 
         //click save
@@ -92,7 +92,7 @@ public class ProductCategories extends Page_Options {
             if (!row.getAttribute("style").contains("display: none;")) {
                 // Find and click the "Add App Permissions" button for the visible row
                 Assert.assertEquals(name, row.findElement(By.xpath(".//td[2]")).getText());
-                Assert.assertEquals(PRODCAT_MainCategory, row.findElement(By.xpath(".//td[3]")).getText());
+                Assert.assertEquals(PRODCAT.MainCategory, row.findElement(By.xpath(".//td[3]")).getText());
             }
         }
     }
@@ -108,7 +108,7 @@ public class ProductCategories extends Page_Options {
     */
     @Given("login for editing a Product Category")
     public void login_for_editing_a_product_category() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
         cssSelector = ".menues-bar:nth-child(25) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
@@ -160,7 +160,7 @@ public class ProductCategories extends Page_Options {
         id = "edit_status";
         WebElement Dropdown = driver.findElement(By.id(id));
         Select CatgSelect = new Select(Dropdown);
-        CatgSelect.selectByVisibleText(PRODCAT_Status);
+        CatgSelect.selectByVisibleText(PRODCAT.Status);
         Thread.sleep(20);
 
         //save
@@ -206,7 +206,7 @@ public class ProductCategories extends Page_Options {
     */
     @Given("login for Verifying functionality of a Product Category")
     public void login_for_verifying_functionality_of_a_product_category() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
         cssSelector = ".menues-bar:nth-child(25) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);

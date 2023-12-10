@@ -9,7 +9,7 @@ import org.example.Page_Options;
 public class DistributorInvoices extends Page_Options {
     @Given("Login to Search Invoice")
     public void login_to_search_invoice() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(19) .active";
         waitByCssSelector(cssSelector);
@@ -20,7 +20,7 @@ public class DistributorInvoices extends Page_Options {
     public void search_for_invoice() {
         xpath = "//*[@id=\"inv_tableData_filter\"]/label/input";
         waitByxpath(xpath);
-        inputbyxpath(xpath, DistributorInvoiceSearchInfo);
+        inputbyxpath(xpath, Invoices.SearchInfo);
     }
 
     @And("description of an Invoice")
@@ -39,7 +39,7 @@ public class DistributorInvoices extends Page_Options {
 
     @Given("login for Invoice")
     public void login_for_invoice() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(19) .active";
         waitByCssSelector(cssSelector);
@@ -65,7 +65,7 @@ public class DistributorInvoices extends Page_Options {
         //search for bhai bhai and hit enter
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, DistributorInvoiceDistributorSearch);
+        inputbycssselector(cssSelector, Invoices.DistributorSearch);
         cssSelectorPressEnter(cssSelector);
 
         //select the store
@@ -75,12 +75,12 @@ public class DistributorInvoices extends Page_Options {
 
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, DistributorInvoiceStore);
+        inputbycssselector(cssSelector, Invoices.Store);
         cssSelectorPressEnter(cssSelector);
 
         //notes
         id = "c_notes";
-        inputbyid(id, DistributorInvoiceNote);
+        inputbyid(id, Invoices.Note);
 
         //partial cancel or full cancel
         Boolean fullCancel = false; //Default is Full Cancel
@@ -92,14 +92,14 @@ public class DistributorInvoices extends Page_Options {
                 xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[5]/input";
                 waitByxpath(xpath);
                 clearByXpath(xpath);
-                inputbyxpath(xpath, DistributorInvoiceItemQuantity); //here the number is the quantity that will be deleted
+                inputbyxpath(xpath, Invoices.ItemQuantity); //here the number is the quantity that will be deleted
 
                 //PCS
                 Thread.sleep(200);
                 xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[6]/input";
                 waitByxpath(xpath);
                 clearByXpath(xpath);
-                inputbyxpath(xpath, DistributorInvoiceItemQuantity); //here the number is the quantity that will be deleted
+                inputbyxpath(xpath, Invoices.ItemQuantity); //here the number is the quantity that will be deleted
             }
         }
 

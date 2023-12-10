@@ -15,9 +15,9 @@ import java.util.Objects;
 
 public class Offer extends Page_Options {
 
-    String offer_type = Ofr_Type;
+    String offer_type = Offer.Type;
     String offerName = offer_type + "" + randomTestString();
-    int Num_Cat = Integer.parseInt(Ofr_NumOfCategory);
+    int Num_Cat = Integer.parseInt(Offer.NumOfCategory);
     String temporary_Offer_Name;
     String temporary_Offer_Type1;
     String temporary_Offer_Type2;
@@ -31,7 +31,7 @@ public class Offer extends Page_Options {
     */
     @Given("login for creation of an offer")
     public void login_for_creation_of_an_offer() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
         cssSelector = ".menues-bar:nth-child(21) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
@@ -76,7 +76,7 @@ public class Offer extends Page_Options {
 //
             WebElement CatgDropdown = driver.findElement(By.xpath(xpath));
             Select CatgSelect = new Select(CatgDropdown);
-            CatgSelect.selectByVisibleText(Ofr_ItemCatg[k]);
+            CatgSelect.selectByVisibleText(Offer.ItemCatg[k]);
 
 
             //sub category
@@ -84,14 +84,14 @@ public class Offer extends Page_Options {
             id = "inc_prod_sub_cat" + (k + 1);
             WebElement SubCatgDropdown = driver.findElement(By.id(id));
             CatgSelect = new Select(SubCatgDropdown);
-            CatgSelect.selectByVisibleText(Ofr_ItemSubCatg[k]);
+            CatgSelect.selectByVisibleText(Offer.ItemSubCatg[k]);
 
             //product
             Thread.sleep(20);
             id = "inc_prod" + (k + 1);
             WebElement ProdDropdown = driver.findElement(By.id(id));
             CatgSelect = new Select(ProdDropdown);
-            CatgSelect.selectByVisibleText(Ofr_ItemProd[k]);
+            CatgSelect.selectByVisibleText(Offer.ItemProd[k]);
 
             //Excluded items
 
@@ -100,12 +100,12 @@ public class Offer extends Page_Options {
             id = "ex_sub_cat" + (k + 1);
             WebElement Dropdown = driver.findElement(By.id(id));
             CatgSelect = new Select(Dropdown);
-            CatgSelect.selectByVisibleText(Ofr_EItemSubCatg[k]);
+            CatgSelect.selectByVisibleText(Offer.EItemSubCatg[k]);
 
             //products
             Thread.sleep(20);
             xpath = "//*[@id=\"raw-row-id" + (21 + k) + "\"]/td[6]/span/span[1]/span";
-            inputbyxpath(xpath, Ofr_EItemProd[k]);
+            inputbyxpath(xpath, Offer.EItemProd[k]);
             Thread.sleep(10);
             pressEnterbyXpath(xpath);
 
@@ -136,11 +136,11 @@ public class Offer extends Page_Options {
         id = "offer_type";
         WebElement Dropdown = driver.findElement(By.id(id));
         Select CatgSelect = new Select(Dropdown);
-        CatgSelect.selectByVisibleText(Ofr_Type);
+        CatgSelect.selectByVisibleText(Offer.Type);
         Thread.sleep(200);
 
 
-        int numOfOffers = Integer.parseInt(Ofr_NumOfOffers);
+        int numOfOffers = Integer.parseInt(Offer.NumOfOffers);
 
         //If cash
         if (Objects.equals(offer_type, "Cash")) {
@@ -240,14 +240,14 @@ public class Offer extends Page_Options {
                 id = "prod_cat" + (k + 1);
                 Dropdown = driver.findElement(By.id(id));
                 CatgSelect = new Select(Dropdown);
-                CatgSelect.selectByVisibleText(Ofr_ItemCatg[k]);
+                CatgSelect.selectByVisibleText(Offer.ItemCatg[k]);
                 Thread.sleep(90);
 
                 //product
                 id = "product" + (k + 1);
                 Dropdown = driver.findElement(By.id(id));
                 CatgSelect = new Select(Dropdown);
-                CatgSelect.selectByVisibleText(Ofr_ItemProd[k]);
+                CatgSelect.selectByVisibleText(Offer.ItemProd[k]);
                 Thread.sleep(90);
 
                 //ctn
@@ -295,7 +295,7 @@ public class Offer extends Page_Options {
                 id = "gift_name" + (k + 1);
                 Dropdown = driver.findElement(By.id(id));
                 CatgSelect = new Select(Dropdown);
-                CatgSelect.selectByVisibleText(Ofr_GiftItem[k]);
+                CatgSelect.selectByVisibleText(Offer.GiftItem[k]);
                 Thread.sleep(90);
 
                 //quantity
@@ -328,42 +328,42 @@ public class Offer extends Page_Options {
             //choose the region
             xpath = "//*[@id=\"add_offer_form\"]/div/div[4]/div[1]/span/span[1]/span/span/textarea";
             waitByxpath(xpath);
-            inputbyxpath(xpath, Ofr_Region);
+            inputbyxpath(xpath, Offer.Region);
             pressEnterbyXpath(xpath);
             pressESCbyXpath(xpath);
 
             //choose the depot
             xpath = "//*[@id=\"depot_grp\"]/span/span[1]/span/span/textarea";
             waitByxpath(xpath);
-            inputbyxpath(xpath, Ofr_Depot);
+            inputbyxpath(xpath, Offer.Depot);
             pressEnterbyXpath(xpath);
             pressESCbyXpath(xpath);
 
             //choose the area
             xpath = "//*[@id=\"area_grp\"]/span/span[1]/span/span/textarea";
             waitByxpath(xpath);
-            inputbyxpath(xpath, Ofr_Area);
+            inputbyxpath(xpath, Offer.Area);
             pressEnterbyXpath(xpath);
             pressESCbyXpath(xpath);
 
             //choose the territory
             xpath = "//*[@id=\"territory_grp\"]/span/span[1]/span/span/textarea";
             waitByxpath(xpath);
-            inputbyxpath(xpath, Ofr_Territory);
+            inputbyxpath(xpath, Offer.Territory);
             pressEnterbyXpath(xpath);
             pressESCbyXpath(xpath);
 
             //choose the Distributor
             xpath = "//*[@id=\"distributor_grp\"]/span/span[1]/span/span/textarea";
             waitByxpath(xpath);
-            inputbyxpath(xpath, Ofr_Distributor);
+            inputbyxpath(xpath, Offer.Distributor);
             pressEnterbyXpath(xpath);
             pressESCbyXpath(xpath);
 
             //choose the Excluded Distributors
             xpath = "//*[@id=\"ex_distributor_grp\"]/span/span[1]/span/span/textarea";
             waitByxpath(xpath);
-            inputbyxpath(xpath, Ofr_ExDistributor);
+            inputbyxpath(xpath, Offer.ExDistributor);
             pressEnterbyXpath(xpath);
             pressESCbyXpath(xpath);
         }
@@ -371,12 +371,12 @@ public class Offer extends Page_Options {
         //Active or inactive
         id = "is_active";
         WebElement checkbox = driver.findElement(By.id(id));
-        if (Objects.equals(Ofr_Active, "YES")){
+        if (Objects.equals(Offer.Active, "YES")){
             if (!checkbox.isSelected()) {
                 checkbox.click();
             }
         }
-        else if(Objects.equals(Ofr_Active, "NO")){
+        else if(Objects.equals(Offer.Active, "NO")){
             if (checkbox.isSelected()) {
                 checkbox.click();
             }
@@ -385,12 +385,12 @@ public class Offer extends Page_Options {
         //credit allowed
         id = "credit_allowed";
         checkbox = driver.findElement(By.id(id));
-        if (Objects.equals(Ofr_CreditAllowed, "YES")){
+        if (Objects.equals(Offer.CreditAllowed, "YES")){
             if (!checkbox.isSelected()) {
                 checkbox.click();
             }
         }
-        else if(Objects.equals(Ofr_CreditAllowed, "NO")){
+        else if(Objects.equals(Offer.CreditAllowed, "NO")){
             if (checkbox.isSelected()) {
                 checkbox.click();
             }
@@ -435,7 +435,7 @@ public class Offer extends Page_Options {
 
     @When("navigate to order and click new order button")
     public void navigateToOrderAndClickNewOrderButton() {
-        Login_AIR2_AIR(user_Polash);
+        Login_AIR2_AIR(Users.user_Polash);
         cssSelector = ".menues-bar:nth-child(17) .active";
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);

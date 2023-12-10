@@ -18,7 +18,7 @@ import java.util.Objects;
 public class SalesReturn extends Page_Options {
     @Given("Login to Search Sales Return")
     public void login_to_search_sales_return() {
-        Login_AIR2(user_Haseeb);
+        Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Sales Return");
     }
 
@@ -27,7 +27,7 @@ public class SalesReturn extends Page_Options {
         Thread.sleep(1000);
         xpath = "//*[@id=\"search_input\"]";
         waitByxpath(xpath);
-        inputbyxpath(xpath, SR_SearchInfo);
+        inputbyxpath(xpath, SalesReturn.SearchInfo);
     }
 
     @And("description of a Sales Return")
@@ -56,7 +56,7 @@ public class SalesReturn extends Page_Options {
 
     @Given("login for creating Sales Return")
     public void login_for_creating_sales_return() {
-        Login_AIR2(user_Haseeb);
+        Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Sales Return");
     }
 
@@ -90,7 +90,7 @@ public class SalesReturn extends Page_Options {
         //search for bhai and hit enter
         xpath = "//input[@type='search']";
         waitByxpath(xpath);
-        inputbyxpath(xpath,SR_DistributorSearch);
+        inputbyxpath(xpath,SalesReturn.DistributorSearch);
         pressEnterbyXpath(xpath);
 
         //select the store
@@ -100,7 +100,7 @@ public class SalesReturn extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, SR_Store);
+        inputbycssselector(cssSelector, SalesReturn.Store);
         cssSelectorPressEnter(cssSelector);
 
         //Return Date
@@ -114,7 +114,7 @@ public class SalesReturn extends Page_Options {
 
         //Full or partial return
         String s;
-        if (Objects.equals(SR_FullReturn, "yes")) {
+        if (Objects.equals(SalesReturn.FullReturn, "yes")) {
             WebElement table = driver.findElement(By.id("c_inv_items_list"));
             java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
 

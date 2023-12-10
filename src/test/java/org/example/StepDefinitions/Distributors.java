@@ -13,7 +13,7 @@ import java.util.Random;
 public class Distributors extends Page_Options {
     @Given("login for Distributor")
     public void login_for_creation_of_a_distributor() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(14) .active";
         waitByCssSelector(cssSelector);
@@ -37,13 +37,13 @@ public class Distributors extends Page_Options {
 
         //Reference
         id = "add_ref";
-        inputbyid(id, Distributors_Reference);
+        inputbyid(id, Distributors.Reference);
         //SDF
         id = "add_sdf";
-        inputbyid(id, Distributors_SDF);
+        inputbyid(id, Distributors.SDF);
         //RDF
         id = "add_rdf";
-        inputbyid(id, Distributors_RDF);
+        inputbyid(id, Distributors.RDF);
         //date
         id = "add_start_date";
         waitById(id);
@@ -55,7 +55,7 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_Region);
+        inputbycssselector(cssSelector, Distributors.Region);
         cssSelectorPressEnter(cssSelector);
 
         //depot
@@ -64,7 +64,7 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_depot);
+        inputbycssselector(cssSelector, Distributors.depot);
         cssSelectorPressEnter(cssSelector);
 
         //Area
@@ -73,7 +73,7 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_Area);
+        inputbycssselector(cssSelector, Distributors.Area);
         cssSelectorPressEnter(cssSelector);
 
         //territory
@@ -82,14 +82,14 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_territory);
+        inputbycssselector(cssSelector, Distributors.territory);
         cssSelectorPressEnter(cssSelector);
 
 
         //B P code
         id = "add_code";
         waitById(id);
-        inputbyid(id, Distributors_B_P_code + randomnumber());
+        inputbyid(id, Distributors.B_P_code + randomnumber());
 
         //RSM
         Thread.sleep(1500);
@@ -98,7 +98,7 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_RSM);
+        inputbycssselector(cssSelector, Distributors.RSM);
         cssSelectorPressEnter(cssSelector);
 
         //  ASM / Sr. ASM
@@ -107,7 +107,7 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_ASM_Sr_ASM);
+        inputbycssselector(cssSelector, Distributors.ASM_Sr_ASM);
         cssSelectorPressEnter(cssSelector);
 
         //FPR
@@ -116,7 +116,7 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_FPR);
+        inputbycssselector(cssSelector, Distributors.FPR);
         cssSelectorPressEnter(cssSelector);
 
         //Running FPR
@@ -125,7 +125,7 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_Running_FPR);
+        inputbycssselector(cssSelector, Distributors.Running_FPR);
         cssSelectorPressEnter(cssSelector);
 
         //Effective date
@@ -142,7 +142,7 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_Identity_Of_Distributor);
+        inputbycssselector(cssSelector, Distributors.Identity_Of_Distributor);
         cssSelectorPressEnter(cssSelector);
 
         //Type Of Distributorship
@@ -151,17 +151,17 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_Type_Of_Distributorship);
+        inputbycssselector(cssSelector, Distributors.Type_Of_Distributorship);
         cssSelectorPressEnter(cssSelector);
 
         //distributor info
         id = "add_dist_info";
         waitById(id);
-        inputbyid(id, Distributors_distributor_info);
+        inputbyid(id, Distributors.distributor_info);
 
 
         //Name Of Distributor/Firm
-        String name = Distributors_Name_Of_Distributor_Firm + randomnumber();
+        String name = Distributors.Name_Of_Distributor_Firm + randomnumber();
         id = "add_name";
         waitById(id);
         inputbyid(id, name);
@@ -169,43 +169,43 @@ public class Distributors extends Page_Options {
         //Proprietor Name
         id = "add_o_name";
         waitById(id);
-        inputbyid(id, Distributors_Proprietor_Name);
+        inputbyid(id, Distributors.Proprietor_Name);
 
         //Proprietor Mobile Number
         id = "add_o_mobile";
         waitById(id);
-        inputbyid(id, Distributors_Proprietor_Mobile_Number + randomnumber());
+        inputbyid(id, Distributors.Proprietor_Mobile_Number + randomnumber());
 
         //Contact Person & Mobile Number
         id = "add_cp_mobile";
         waitById(id);
-        inputbyid(id, Distributors_Contact_Person_Mobile_Number + randomnumber());
+        inputbyid(id, Distributors.Contact_Person_Mobile_Number + randomnumber());
 
         //Farm Address
         id = "add_address";
         waitById(id);
-        inputbyid(id, Distributors_Farm_Address);
+        inputbyid(id, Distributors.Farm_Address);
 
 
         //Proprietor Permanent Address
         id = "add_o_address";
         waitById(id);
-        inputbyid(id, Distributors_Proprietor_Permanent_Address);
+        inputbyid(id, Distributors.Proprietor_Permanent_Address);
 
         //Proprietor Present Address
         id = "add_o_pre_address";
         waitById(id);
-        inputbyid(id, Distributors_Proprietor_Present_Address);
+        inputbyid(id, Distributors.Proprietor_Present_Address);
 
         //Proprietor National ID Number
         id = "add_o_nid";
         waitById(id);
-        inputbyid(id, Distributors_Proprietor_National_ID_Number + randomnumber());
+        inputbyid(id, Distributors.Proprietor_National_ID_Number + randomnumber());
 
         //Trade License Number & Last Date
         id = "add_tl_number";
         waitById(id);
-        inputbyid(id, Distributors_Trade_License_Number_Last_Date + randomnumber());
+        inputbyid(id, Distributors.Trade_License_Number_Last_Date + randomnumber());
         id = "add_tl_lastDate";
         waitById(id);
         clickbyId(id);
@@ -214,67 +214,67 @@ public class Distributors extends Page_Options {
         //Bank Name & Branch
         id = "add_b_name_b_branch";
         clickbyId(id);
-        inputbyid(id, Distributors_Bank_Name_Branch);
+        inputbyid(id, Distributors.Bank_Name_Branch);
 
         //Bank Account Number
         id = "add_b_account";
         clickbyId(id);
-        inputbyid(id, Distributors_Bank_Account_Number + randomnumber());
+        inputbyid(id, Distributors.Bank_Account_Number + randomnumber());
 
         //Name Of Existing Business
         id = "add_exist_bus_name1";
         clickbyId(id);
-        inputbyid(id, Distributors_Name_Of_Existing_Business1);
+        inputbyid(id, Distributors.Name_Of_Existing_Business1);
         id = "add_exist_bus_name2";
         clickbyId(id);
-        inputbyid(id, Distributors_Name_Of_Existing_Business2);
+        inputbyid(id, Distributors.Name_Of_Existing_Business2);
 
 
         //Existing Business Starting Year
         id = "add_exist_start1";
         clickbyId(id);
-        inputbyid(id, Distributors_Existing_Business1_Starting_Year);
+        inputbyid(id, Distributors.Existing_Business1_Starting_Year);
         id = "add_exist_start2";
         clickbyId(id);
-        inputbyid(id, Distributors_Existing_Business2_Starting_Year);
+        inputbyid(id, Distributors.Existing_Business2_Starting_Year);
 
         //No. Of Existing Van Puller & Or DSR
         id = "add_exist_van_puller";
         clickbyId(id);
-        inputbyid(id, Distributors_No_Of_Existing_Van_Puller_Or_DSR);
+        inputbyid(id, Distributors.No_Of_Existing_Van_Puller_Or_DSR);
 
         //Number Of Existing Ice Cream Van
         id = "add_exist_ice_van";
         clickbyId(id);
-        inputbyid(id, Distributors_Number_Of_Existing_Ice_Cream_Van);
+        inputbyid(id, Distributors.Number_Of_Existing_Ice_Cream_Van);
 
         //Existing Godown Size (SQFT)
         id = "add_exist_gd_size";
         clickbyId(id);
-        inputbyid(id, Distributors_Existing_Godown_Size_SQFT);
+        inputbyid(id, Distributors.Existing_Godown_Size_SQFT);
 
         //Relation With Golden Group Entity
         id = "add_rel_gge";
         waitById(id);
-        inputbyid(id, Distributors_Relation_With_Golden_Group_Entity);
+        inputbyid(id, Distributors.Relation_With_Golden_Group_Entity);
 
         //Market information
 
         //Area Demarcation
         xpath = "//*[@id=\"add_distributors_form\"]/div/div/div/div/div[3]/div/table/tbody/tr[1]/td[3]/span/span[1]/span";
         waitByxpath(xpath);
-        inputbyxpath(xpath, Distributors_Area_Demarcation);
+        inputbyxpath(xpath, Distributors.Area_Demarcation);
         pressEnterbyXpath(xpath);
         pressESCbyXpath(xpath);
 
         //Point Name
         id = "add_point_name";
-        inputbyid(id, Distributors_Point_Name);
+        inputbyid(id, Distributors.Point_Name);
 
         //Routes
         xpath = "//*[@id=\"add_distributors_form\"]/div/div/div/div/div[3]/div/table/tbody/tr[3]/td[3]/span/span[1]/span";
         waitByxpath(xpath);
-        inputbyxpath(xpath, Distributors_Routes);
+        inputbyxpath(xpath, Distributors.Routes);
         pressEnterbyXpath(xpath);
         pressESCbyXpath(xpath);
 
@@ -282,17 +282,17 @@ public class Distributors extends Page_Options {
         //Key Markets
         id = "add_k_market";
         waitById(id);
-        inputbyid(id, Distributors_Key_Markets);
+        inputbyid(id, Distributors.Key_Markets);
 
         //Ice Cream Selling Outlets Territory
         id = "add_ice_outlets";
         waitById(id);
-        inputbyid(id, Distributors_Ice_Cream_Selling_Outlets_Territory);
+        inputbyid(id, Distributors.Ice_Cream_Selling_Outlets_Territory);
 
         //Existing Avg Market Size (Tk) : (Yearly)
         id = "add_exist_avg_m_size";
         waitById(id);
-        inputbyid(id, Distributors_Existing_Avg_Market_Size_Tk_Yearly);
+        inputbyid(id, Distributors.Existing_Avg_Market_Size_Tk_Yearly);
 
         //Discount Information
 
@@ -304,13 +304,13 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_discount_type);
+        inputbycssselector(cssSelector, Distributors.discount_type);
         cssSelectorPressEnter(cssSelector);
         //discount amount
         id = "special_discount";
         waitById(id);
         clearById(id);
-        inputbyid(id, Distributors_discount_amount);
+        inputbyid(id, Distributors.discount_amount);
 
         //Competitors Intelligence : (Yearly)
 
@@ -318,62 +318,62 @@ public class Distributors extends Page_Options {
         //Igloo
         id = "add_ig_cont";
         waitById(id);
-        inputbyid(id, Distributors_C_Igloo);
+        inputbyid(id, Distributors.C_Igloo);
         // Polar
         id = "add_po_cont";
         waitById(id);
-        inputbyid(id, Distributors_C_Polar);
+        inputbyid(id, Distributors.C_Polar);
         // Lovello
         id = "add_lo_cont";
         waitById(id);
-        inputbyid(id, Distributors_C_Lovello);
+        inputbyid(id, Distributors.C_Lovello);
         // Kazi
         id = "add_ka_cont";
         waitById(id);
-        inputbyid(id, Distributors_C_Kazi);
+        inputbyid(id, Distributors.C_Kazi);
         // Bloop
         id = "add_bl_cont";
         waitById(id);
-        inputbyid(id, Distributors_C_Bloop);
+        inputbyid(id, Distributors.C_Bloop);
         // Kwality
         id = "add_kw_cont";
         waitById(id);
-        inputbyid(id, Distributors_C_Kwality);
+        inputbyid(id, Distributors.C_Kwality);
         // Others
         id = "add_others_cont";
         waitById(id);
-        inputbyid(id, Distributors_C_Others);
+        inputbyid(id, Distributors.C_Others);
 
 
         //D/F Quantity Of The Competitors
         //Igloo
         id = "add_ig_comp";
         waitById(id);
-        inputbyid(id, Distributors_D_F_Igloo);
+        inputbyid(id, Distributors.D_F_Igloo);
         // Polar
         id = "add_po_comp";
         waitById(id);
-        inputbyid(id, Distributors_D_F_Polar);
+        inputbyid(id, Distributors.D_F_Polar);
         // Lovello
         id = "add_lo_comp";
         waitById(id);
-        inputbyid(id, Distributors_D_F_Lovello);
+        inputbyid(id, Distributors.D_F_Lovello);
         // Kazi
         id = "add_ka_comp";
         waitById(id);
-        inputbyid(id, Distributors_D_F_Kazi);
+        inputbyid(id, Distributors.D_F_Kazi);
         // Bloop
         id = "add_bl_comp";
         waitById(id);
-        inputbyid(id, Distributors_D_F_Bloop);
+        inputbyid(id, Distributors.D_F_Bloop);
         // Kwality
         id = "add_kw_comp";
         waitById(id);
-        inputbyid(id, Distributors_D_F_Kwality);
+        inputbyid(id, Distributors.D_F_Kwality);
         // Others
         id = "add_others_comp";
         waitById(id);
-        inputbyid(id, Distributors_D_F_Others);
+        inputbyid(id, Distributors.D_F_Others);
 
 
         //Expected Sales
@@ -382,48 +382,48 @@ public class Distributors extends Page_Options {
         //Expected Monthly Sales(in taka)
         id = "add_m1_sales";
         waitById(id);
-        inputbyid(id, Distributors_S_Igloo);
+        inputbyid(id, Distributors.S_Igloo);
         id = "add_m2_sales";
         waitById(id);
-        inputbyid(id, Distributors_S_Polar);
+        inputbyid(id, Distributors.S_Polar);
         id = "add_m3_sales";
         waitById(id);
-        inputbyid(id, Distributors_S_Lovello);
+        inputbyid(id, Distributors.S_Lovello);
         id = "add_m4_sales";
         waitById(id);
-        inputbyid(id, Distributors_S_Kazi);
+        inputbyid(id, Distributors.S_Kazi);
         id = "add_m5_sales";
         waitById(id);
-        inputbyid(id, Distributors_S_Bloop);
+        inputbyid(id, Distributors.S_Bloop);
         id = "add_m6_sales";
         waitById(id);
-        inputbyid(id, Distributors_S_Kwality);
+        inputbyid(id, Distributors.S_Kwality);
         id = "add_m7_sales";
         waitById(id);
-        inputbyid(id, Distributors_S_Others);
+        inputbyid(id, Distributors.S_Others);
 
         //Expected Number Of Freezers Injection
         id = "add_m1_inj";
         waitById(id);
-        inputbyid(id, Distributors_F_Igloo);
+        inputbyid(id, Distributors.F_Igloo);
         id = "add_m2_inj";
         waitById(id);
-        inputbyid(id, Distributors_F_Polar);
+        inputbyid(id, Distributors.F_Polar);
         id = "add_m3_inj";
         waitById(id);
-        inputbyid(id, Distributors_F_Lovello);
+        inputbyid(id, Distributors.F_Lovello);
         id = "add_m4_inj";
         waitById(id);
-        inputbyid(id, Distributors_F_Kazi);
+        inputbyid(id, Distributors.F_Kazi);
         id = "add_m5_inj";
         waitById(id);
-        inputbyid(id, Distributors_F_Bloop);
+        inputbyid(id, Distributors.F_Bloop);
         id = "add_m6_inj";
         waitById(id);
-        inputbyid(id, Distributors_F_Kwality);
+        inputbyid(id, Distributors.F_Kwality);
         id = "add_m7_inj";
         waitById(id);
-        inputbyid(id, Distributors_F_Others);
+        inputbyid(id, Distributors.F_Others);
 
 
         //Investment Information
@@ -432,62 +432,62 @@ public class Distributors extends Page_Options {
         //Total Investment (Tk)
         id = "add_total_inv";
         waitById(id);
-        inputbyid(id, Distributors_Total_Investment_Tk);
+        inputbyid(id, Distributors.Total_Investment_Tk);
 
         //Initial Lifting (In Tk)
         id = "add_init_lifting";
         waitById(id);
-        inputbyid(id, Distributors_Initial_Lifting_In_Tk);
+        inputbyid(id, Distributors.Initial_Lifting_In_Tk);
 
         //Number Of SDFs :
         id = "add_num_SDF";
         waitById(id);
-        inputbyid(id, Distributors_Number_Of_SDFs);
+        inputbyid(id, Distributors.Number_Of_SDFs);
 
         //Godown Advance (Tk) :
         id = "add_gd_adv";
         waitById(id);
-        inputbyid(id, Distributors_Godown_Advance);
+        inputbyid(id, Distributors.Godown_Advance);
 
         //Value Of SDFs (Tk) :
         id = "add_val_SDF";
         waitById(id);
-        inputbyid(id, Distributors_Value_Of_SDFs);
+        inputbyid(id, Distributors.Value_Of_SDFs);
 
         //Market Credit :
         id = "add_m_credit";
         waitById(id);
-        inputbyid(id, Distributors_Market_Credit);
+        inputbyid(id, Distributors.Market_Credit);
 
         //Number Of Van(S) :
         id = "add_num_vans";
         waitById(id);
-        inputbyid(id, Distributors_Number_Of_Van_S);
+        inputbyid(id, Distributors.Number_Of_Van_S);
 
         //Running Capital :
         id = "add_run_capital";
         waitById(id);
-        inputbyid(id, Distributors_Running_Capital);
+        inputbyid(id, Distributors.Running_Capital);
 
         //Value Of Vans (Tk) :
         id = "add_val_vans";
         waitById(id);
-        inputbyid(id, Distributors_Value_Of_Vans_Tk);
+        inputbyid(id, Distributors.Value_Of_Vans_Tk);
 
         //Type Of Transaction :
         id = "add_transac_type";
         waitById(id);
-        inputbyid(id, Distributors_Type_Of_Transaction);
+        inputbyid(id, Distributors.Type_Of_Transaction);
 
         //RSM's (or ASM in absence of RSM) Recommendation
         id = "add_rsm_recom";
         waitById(id);
-        inputbyid(id, Distributors_RSMs_or_ASM_in_absence_of_RSM_Recommendation);
+        inputbyid(id, Distributors.RSMs_or_ASM_in_absence_of_RSM_Recommendation);
 
         //GM/DGM/AGM's Recommendation
         id = "add_gm_recom";
         waitById(id);
-        inputbyid(id, Distributors_GM_DGM_AGMs_Recommendation);
+        inputbyid(id, Distributors.GM_DGM_AGMs_Recommendation);
 
 
         //Agreement Image
@@ -576,7 +576,7 @@ public class Distributors extends Page_Options {
         //search
         xpath = "//*[@id=\"search_input1\"]";
         waitByxpath(xpath);
-        inputbyxpath(xpath, Distributors_SearchInfo);
+        inputbyxpath(xpath, Distributors.SearchInfo);
     }
 
     @When("description of a Distributor")
@@ -639,15 +639,15 @@ public class Distributors extends Page_Options {
         //Reference
         id = "edit_ref";
         clearByid(id);
-        inputbyid(id, Distributors_E_Reference);
+        inputbyid(id, Distributors.E_Reference);
         //SDF
         id = "edit_sdf";
         clearByid(id);
-        inputbyid(id, Distributors_E_SDF);
+        inputbyid(id, Distributors.E_SDF);
         //RDF
         id = "edit_rdf";
         clearByid(id);
-        inputbyid(id, Distributors_E_RDF);
+        inputbyid(id, Distributors.E_RDF);
         //date
         id = "edit_start_date";
         waitById(id);
@@ -659,7 +659,7 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         xpath = "/html/body/span/span/span[1]/input";
         waitByxpath(xpath);
-        inputbyxpath(xpath, Distributors_E_Region);
+        inputbyxpath(xpath, Distributors.E_Region);
         pressEnterbyXpath(xpath);
 
         //depot
@@ -668,7 +668,7 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         xpath = "/html/body/span/span/span[1]/input";
         waitByxpath(xpath);
-        inputbyxpath(xpath, Distributors_E_depot);
+        inputbyxpath(xpath, Distributors.E_depot);
         pressEnterbyXpath(xpath);
 
         //Area
@@ -677,7 +677,7 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_E_Area);
+        inputbycssselector(cssSelector, Distributors.E_Area);
         cssSelectorPressEnter(cssSelector);
 
         //territory
@@ -686,7 +686,7 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_E_territory);
+        inputbycssselector(cssSelector, Distributors.E_territory);
         cssSelectorPressEnter(cssSelector);
 
 
@@ -694,7 +694,7 @@ public class Distributors extends Page_Options {
         id = "edit_code";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_B_P_code + randomnumber());
+        inputbyid(id, Distributors.E_B_P_code + randomnumber());
 
         //RSM
         Thread.sleep(500);
@@ -703,7 +703,7 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_E_RSM);
+        inputbycssselector(cssSelector, Distributors.E_RSM);
         cssSelectorPressEnter(cssSelector);
 
         //  ASM / Sr. ASM
@@ -712,7 +712,7 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_E_ASM_Sr_ASM);
+        inputbycssselector(cssSelector, Distributors.E_ASM_Sr_ASM);
         cssSelectorPressEnter(cssSelector);
 
         //FPR
@@ -721,7 +721,7 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_E_FPR);
+        inputbycssselector(cssSelector, Distributors.E_FPR);
         cssSelectorPressEnter(cssSelector);
 
         //Running FPR
@@ -730,7 +730,7 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_E_Running_FPR);
+        inputbycssselector(cssSelector, Distributors.E_Running_FPR);
         cssSelectorPressEnter(cssSelector);
 
         //Effective date
@@ -747,7 +747,7 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_E_Identity_Of_Distributor);
+        inputbycssselector(cssSelector, Distributors.E_Identity_Of_Distributor);
         cssSelectorPressEnter(cssSelector);
 
         //Type Of Distributorship
@@ -756,18 +756,18 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_E_Type_Of_Distributorship);
+        inputbycssselector(cssSelector, Distributors.E_Type_Of_Distributorship);
         cssSelectorPressEnter(cssSelector);
 
         //distributor info
         id = "edit_dist_info";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_distributor_info);
+        inputbyid(id, Distributors.E_distributor_info);
 
 
         //Name Of Distributor/Firm
-        String name = Distributors_E_Name_Of_Distributor_Firm + randomnumber();
+        String name = Distributors.E_Name_Of_Distributor_Firm + randomnumber();
         id = "edit_name";
         waitById(id);
 //        clearByid(id);            //dont want to change this field now. To change it please uncomment these lines
@@ -777,49 +777,49 @@ public class Distributors extends Page_Options {
         id = "edit_o_name";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Proprietor_Name);
+        inputbyid(id, Distributors.E_Proprietor_Name);
 
         //Proprietor Mobile Number
         id = "edit_o_mobile";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Proprietor_Mobile_Number + randomnumber());
+        inputbyid(id, Distributors.E_Proprietor_Mobile_Number + randomnumber());
 
         //Contact Person & Mobile Number
         id = "edit_cp_mobile";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Contact_Person_Mobile_Number + randomnumber());
+        inputbyid(id, Distributors.E_Contact_Person_Mobile_Number + randomnumber());
 
         //Farm Address
         id = "edit_address";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Farm_Address);
+        inputbyid(id, Distributors.E_Farm_Address);
 
 
         //Proprietor Permanent Address
         id = "edit_o_address";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Proprietor_Permanent_Address);
+        inputbyid(id, Distributors.E_Proprietor_Permanent_Address);
 
         //Proprietor Present Address
         id = "edit_o_pre_address";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Proprietor_Present_Address);
+        inputbyid(id, Distributors.E_Proprietor_Present_Address);
 
         //Proprietor National ID Number
         id = "edit_o_nid";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Proprietor_National_ID_Number + randomnumber());
+        inputbyid(id, Distributors.E_Proprietor_National_ID_Number + randomnumber());
 
         //Trade License Number & Last Date
         id = "edit_tl_number";
         waitById(id);
-        inputbyid(id, Distributors_E_Trade_License_Number_Last_Date + randomnumber());
+        inputbyid(id, Distributors.E_Trade_License_Number_Last_Date + randomnumber());
         id = "edit_tl_lastDate";
         waitById(id);
         clickbyId(id);
@@ -829,58 +829,58 @@ public class Distributors extends Page_Options {
         id = "edit_b_name_b_branch";
         clickbyId(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Bank_Name_Branch);
+        inputbyid(id, Distributors.E_Bank_Name_Branch);
 
         //Bank Account Number
         id = "edit_b_account";
         clickbyId(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Bank_Account_Number + randomnumber());
+        inputbyid(id, Distributors.E_Bank_Account_Number + randomnumber());
 
         //Name Of Existing Business
         id = "edit_exist_bus_name1";
         clickbyId(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Name_Of_Existing_Business1);
+        inputbyid(id, Distributors.E_Name_Of_Existing_Business1);
         id = "edit_exist_bus_name2";
         clickbyId(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Name_Of_Existing_Business2);
+        inputbyid(id, Distributors.E_Name_Of_Existing_Business2);
 
 
         //Existing Business Starting Year
         id = "edit_exist_start1";
         clickbyId(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Existing_Business1_Starting_Year);
+        inputbyid(id, Distributors.E_Existing_Business1_Starting_Year);
         id = "edit_exist_start2";
         clickbyId(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Existing_Business2_Starting_Year);
+        inputbyid(id, Distributors.E_Existing_Business2_Starting_Year);
 
         //No. Of Existing Van Puller & Or DSR
         id = "edit_exist_van_puller";
         clickbyId(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_No_Of_Existing_Van_Puller_Or_DSR);
+        inputbyid(id, Distributors.E_No_Of_Existing_Van_Puller_Or_DSR);
 
         //Number Of Existing Ice Cream Van
         id = "edit_exist_ice_van";
         clickbyId(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Number_Of_Existing_Ice_Cream_Van);
+        inputbyid(id, Distributors.E_Number_Of_Existing_Ice_Cream_Van);
 
         //Existing Godown Size (SQFT)
         id = "edit_exist_gd_size";
         clickbyId(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Existing_Godown_Size_SQFT);
+        inputbyid(id, Distributors.E_Existing_Godown_Size_SQFT);
 
         //Relation With Golden Group Entity
         id = "edit_rel_gge";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Relation_With_Golden_Group_Entity);
+        inputbyid(id, Distributors.E_Relation_With_Golden_Group_Entity);
 
         //Market information
 
@@ -903,39 +903,39 @@ public class Distributors extends Page_Options {
         //Area Demarcation
         xpath = "//*[@id=\"edit_distributors_form\"]/div/div/div/div/div[3]/div/table/tbody/tr[1]/td[3]/span/span[1]/span";
         waitByxpath(xpath);
-        inputbyxpath(xpath, Distributors_E_Area_Demarcation);
+        inputbyxpath(xpath, Distributors.E_Area_Demarcation);
         pressEnterbyXpath(xpath);
         pressESCbyXpath(xpath);
 
         //Routes
         xpath = "//*[@id=\"edit_distributors_form\"]/div/div/div/div/div[3]/div/table/tbody/tr[3]/td[3]/span/span[1]/span";
         waitByxpath(xpath);
-        inputbyxpath(xpath, Distributors_E_Routes);
+        inputbyxpath(xpath, Distributors.E_Routes);
         pressEnterbyXpath(xpath);
         pressESCbyXpath(xpath);
 
         //Point Name
         id = "edit_point_name";
         clearByid(id);
-        inputbyid(id, Distributors_E_Point_Name);
+        inputbyid(id, Distributors.E_Point_Name);
 
         //Key Markets
         id = "edit_k_market";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Key_Markets);
+        inputbyid(id, Distributors.E_Key_Markets);
 
         //Ice Cream Selling Outlets Territory
         id = "edit_ice_outlets";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Ice_Cream_Selling_Outlets_Territory);
+        inputbyid(id, Distributors.E_Ice_Cream_Selling_Outlets_Territory);
 
         //Existing Avg Market Size (Tk) : (Yearly)
         id = "edit_exist_avg_m_size";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Existing_Avg_Market_Size_Tk_Yearly);
+        inputbyid(id, Distributors.E_Existing_Avg_Market_Size_Tk_Yearly);
 
         //Discount Information
 
@@ -947,13 +947,13 @@ public class Distributors extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Distributors_E_discount_type);
+        inputbycssselector(cssSelector, Distributors.E_discount_type);
         cssSelectorPressEnter(cssSelector);
         //discount amount
         id = "edit_special_discount";
         waitById(id);
         clearById(id);
-        inputbyid(id, Distributors_E_discount_amount);
+        inputbyid(id, Distributors.E_discount_amount);
 
         //Competitors Intelligence : (Yearly)
 
@@ -962,37 +962,37 @@ public class Distributors extends Page_Options {
         id = "edit_ig_cont";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_C_Igloo);
+        inputbyid(id, Distributors.E_C_Igloo);
         // Polar
         id = "edit_po_cont";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_C_Polar);
+        inputbyid(id, Distributors.E_C_Polar);
         // Lovello
         id = "edit_lo_cont";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_C_Lovello);
+        inputbyid(id, Distributors.E_C_Lovello);
         // Kazi
         id = "edit_ka_cont";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_C_Kazi);
+        inputbyid(id, Distributors.E_C_Kazi);
         // Bloop
         id = "edit_bl_cont";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_C_Bloop);
+        inputbyid(id, Distributors.E_C_Bloop);
         // Kwality
         id = "edit_kw_cont";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_C_Kwality);
+        inputbyid(id, Distributors.E_C_Kwality);
         // Others
         id = "edit_others_cont";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_C_Others);
+        inputbyid(id, Distributors.E_C_Others);
 
 
         //D/F Quantity Of The Competitors
@@ -1000,37 +1000,37 @@ public class Distributors extends Page_Options {
         id = "edit_ig_comp";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_D_F_Igloo);
+        inputbyid(id, Distributors.E_D_F_Igloo);
         // Polar
         id = "edit_po_comp";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_D_F_Polar);
+        inputbyid(id, Distributors.E_D_F_Polar);
         // Lovello
         id = "edit_lo_comp";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_D_F_Lovello);
+        inputbyid(id, Distributors.E_D_F_Lovello);
         // Kazi
         id = "edit_ka_comp";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_D_F_Kazi);
+        inputbyid(id, Distributors.E_D_F_Kazi);
         // Bloop
         id = "edit_bl_comp";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_D_F_Bloop);
+        inputbyid(id, Distributors.E_D_F_Bloop);
         // Kwality
         id = "edit_kw_comp";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_D_F_Kwality);
+        inputbyid(id, Distributors.E_D_F_Kwality);
         // Others
         id = "edit_others_comp";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_D_F_Others);
+        inputbyid(id, Distributors.E_D_F_Others);
 
 
         //Expected Sales
@@ -1040,61 +1040,61 @@ public class Distributors extends Page_Options {
         id = "edit_m1_sales";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_S_Igloo);
+        inputbyid(id, Distributors.E_S_Igloo);
         id = "edit_m2_sales";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_S_Polar);
+        inputbyid(id, Distributors.E_S_Polar);
         id = "edit_m3_sales";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_S_Lovello);
+        inputbyid(id, Distributors.E_S_Lovello);
         id = "edit_m4_sales";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_S_Kazi);
+        inputbyid(id, Distributors.E_S_Kazi);
         id = "edit_m5_sales";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_S_Bloop);
+        inputbyid(id, Distributors.E_S_Bloop);
         id = "edit_m6_sales";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_S_Kwality);
+        inputbyid(id, Distributors.E_S_Kwality);
         id = "edit_m7_sales";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_S_Others);
+        inputbyid(id, Distributors.E_S_Others);
 
         //Expected Number Of Freezers Injection
         id = "edit_m1_inj";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_F_Igloo);
+        inputbyid(id, Distributors.E_F_Igloo);
         id = "edit_m2_inj";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_F_Polar);
+        inputbyid(id, Distributors.E_F_Polar);
         id = "edit_m3_inj";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_F_Lovello);
+        inputbyid(id, Distributors.E_F_Lovello);
         id = "edit_m4_inj";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_F_Kazi);
+        inputbyid(id, Distributors.E_F_Kazi);
         id = "edit_m5_inj";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_F_Bloop);
+        inputbyid(id, Distributors.E_F_Bloop);
         id = "edit_m6_inj";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_F_Kwality);
+        inputbyid(id, Distributors.E_F_Kwality);
         id = "edit_m7_inj";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_F_Others);
+        inputbyid(id, Distributors.E_F_Others);
 
 
         //Investment Information
@@ -1104,73 +1104,73 @@ public class Distributors extends Page_Options {
         id = "edit_total_inv";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Total_Investment_Tk);
+        inputbyid(id, Distributors.E_Total_Investment_Tk);
 
         //Initial Lifting (In Tk)
         id = "edit_init_lifting";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Initial_Lifting_In_Tk);
+        inputbyid(id, Distributors.E_Initial_Lifting_In_Tk);
 
         //Number Of SDFs :
         id = "edit_num_SDF";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Number_Of_SDFs);
+        inputbyid(id, Distributors.E_Number_Of_SDFs);
 
         //Godown Advance (Tk) :
         id = "edit_gd_adv";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Godown_Advance);
+        inputbyid(id, Distributors.E_Godown_Advance);
 
         //Value Of SDFs (Tk) :
         id = "edit_val_SDF";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Value_Of_SDFs);
+        inputbyid(id, Distributors.E_Value_Of_SDFs);
 
         //Market Credit :
         id = "edit_m_credit";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Market_Credit);
+        inputbyid(id, Distributors.E_Market_Credit);
 
         //Number Of Van(S) :
         id = "edit_num_vans";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Number_Of_Van_S);
+        inputbyid(id, Distributors.E_Number_Of_Van_S);
 
         //Running Capital :
         id = "edit_run_capital";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Running_Capital);
+        inputbyid(id, Distributors.E_Running_Capital);
 
         //Value Of Vans (Tk) :
         id = "edit_val_vans";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Value_Of_Vans_Tk);
+        inputbyid(id, Distributors.E_Value_Of_Vans_Tk);
 
         //Type Of Transaction :
         id = "edit_transac_type";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_Type_Of_Transaction);
+        inputbyid(id, Distributors.E_Type_Of_Transaction);
 
         //RSM's (or ASM in absence of RSM) Recommendation
         id = "edit_rsm_recom";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_RSMs_or_ASM_in_absence_of_RSM_Recommendation);
+        inputbyid(id, Distributors.E_RSMs_or_ASM_in_absence_of_RSM_Recommendation);
 
         //GM/DGM/AGM's Recommendation
         id = "edit_gm_recom";
         waitById(id);
         clearByid(id);
-        inputbyid(id, Distributors_E_GM_DGM_AGMs_Recommendation);
+        inputbyid(id, Distributors.E_GM_DGM_AGMs_Recommendation);
 
 
         //Agreement Image

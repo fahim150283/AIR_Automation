@@ -9,7 +9,7 @@ public class Contacts extends Page_Options {
 
     @Given("^login for accessing Contacts$")
     public void contacts() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
     }
 
     @When("search for employee")

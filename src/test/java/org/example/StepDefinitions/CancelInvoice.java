@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 public class CancelInvoice extends Page_Options {
     @Given("Login to Search cancelled Invoice")
     public void login_to_search_cancelled_invoice() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(7) .active";
         waitByCssSelector(cssSelector);
@@ -23,7 +23,7 @@ public class CancelInvoice extends Page_Options {
         Thread.sleep(100);
         xpath = "//*[@id=\"search_input\"]";
         waitByxpath(xpath);
-        inputbyxpath(xpath, CancelInvoiceSearchInfo);
+        inputbyxpath(xpath, CancelInvoice.SearchInfo);
     }
 
     @And("description of a cancelled Invoice")
@@ -52,7 +52,7 @@ public class CancelInvoice extends Page_Options {
 
     @Given("login for cancellation of an Invoice")
     public void login_for_cancellation_of_an_invoice() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(7) .active";
         waitByCssSelector(cssSelector);
@@ -78,7 +78,7 @@ public class CancelInvoice extends Page_Options {
         //search for bhai bhai and hit enter
         xpath = "/html/body/span/span/span[1]/input";
         waitByxpath(xpath);
-        inputbyxpath(xpath, CancelInvoiceDistributorSearch);
+        inputbyxpath(xpath, CancelInvoice.DistributorSearch);
         pressEnterbyXpath(xpath);
 
         //select the store
@@ -87,12 +87,12 @@ public class CancelInvoice extends Page_Options {
         clickbyId(id);
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, CancelInvoiceStore);
+        inputbycssselector(cssSelector, CancelInvoice.Store);
         cssSelectorPressEnter(cssSelector);
 
         //important notes
         id = "c_notes";
-        inputbyid(id, CancelInvoiceNote);
+        inputbyid(id, CancelInvoice.Note);
 
         //save
         id = "add_region";

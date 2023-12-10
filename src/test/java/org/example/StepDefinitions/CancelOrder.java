@@ -10,7 +10,7 @@ public class CancelOrder extends Page_Options {
 
     @Given("Login to Search CancelOrder")
     public void login_to_search_cancel_order() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(8) .active";
         waitByCssSelector(cssSelector);
@@ -21,7 +21,7 @@ public class CancelOrder extends Page_Options {
     public void search_for_cancel_order() {
         xpath = "//*[@id=\"tableData_filter\"]/label/input";
         waitByxpath(xpath);
-        inputbyxpath(xpath, CancelOrderSearchInfo);
+        inputbyxpath(xpath, CancelOrder.SearchInfo);
     }
 
     @And("description of a cancelled Order")
@@ -39,7 +39,7 @@ public class CancelOrder extends Page_Options {
 
     @Given("login for Cancelling a Order")
     public void login_for_creating_new_order_to_cancel() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(8) .active";
         waitByCssSelector(cssSelector);
@@ -65,12 +65,12 @@ public class CancelOrder extends Page_Options {
         //search for bhai bhai and hit enter
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, CancelOrderDistributorSearch);
+        inputbycssselector(cssSelector, CancelOrder.DistributorSearch);
         cssSelectorPressEnter(cssSelector);
 
         //important notes
         id = "c_notes";
-        inputbyid(id, CancelOrderNote);
+        inputbyid(id, CancelOrder.Note);
 
         //partial cancel or full cancel
         Boolean fullCancel = false; //Default is Full Cancel
@@ -82,14 +82,14 @@ public class CancelOrder extends Page_Options {
                 xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[5]/input";
                 waitByxpath(xpath);
                 clearByXpath(xpath);
-                inputbyxpath(xpath, CancelOrderItemQuantity); //here the number is the quantity that will be deleted
+                inputbyxpath(xpath, CancelOrder.ItemQuantity); //here the number is the quantity that will be deleted
 
                 //PCS
                 Thread.sleep(200);
                 xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[6]/input";
                 waitByxpath(xpath);
                 clearByXpath(xpath);
-                inputbyxpath(xpath, CancelOrderItemQuantity); //here the number is the quantity that will be deleted
+                inputbyxpath(xpath, CancelOrder.ItemQuantity); //here the number is the quantity that will be deleted
             }
         }
 

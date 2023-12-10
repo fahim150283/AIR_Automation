@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 public class Complementary_Invoice extends Page_Options {
     @Given("Login to Search Complementary Invoice")
     public void login_to_search_complementary_invoice() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(10) .active";
         waitByCssSelector(cssSelector);
@@ -22,7 +22,7 @@ public class Complementary_Invoice extends Page_Options {
         id = "search_input";
         waitById(id);
         Thread.sleep(1000);
-        inputbyid(id, ComplementaryInvoiceSearchInfo);
+        inputbyid(id, ComplementaryInvoice.SearchInfo);
     }
     @And("description of a Complementary Invoice")
     public void description_of_a_complementary_invoice() throws InterruptedException {
@@ -49,7 +49,7 @@ public class Complementary_Invoice extends Page_Options {
 
     @Given("login for creation of an Complementary Invoice")
     public void login_for_creation_of_an_complementary_invoice() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         cssSelector = ".menues-bar:nth-child(10) .active";
         waitByCssSelector(cssSelector);
@@ -75,7 +75,7 @@ public class Complementary_Invoice extends Page_Options {
         //search for bhai bhai
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, ComplementaryInvoiceDistributorSearch);
+        inputbycssselector(cssSelector, ComplementaryInvoice.DistributorSearch);
         cssSelectorPressEnter(cssSelector);
 
         //Store
@@ -85,23 +85,23 @@ public class Complementary_Invoice extends Page_Options {
 
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, ComplementaryInvoiceStore);
+        inputbycssselector(cssSelector, ComplementaryInvoice.Store);
         cssSelectorPressEnter(cssSelector);
 
         //invoice reference no
         id = "c_inv_ref";
-        inputbyid(id,ComplementaryInvoiceInvoiceReferenceNo);
+        inputbyid(id,ComplementaryInvoice.InvoiceReferenceNo);
 
         //important notes
         id = "c_notes";
-        inputbyid(id, ComplementaryInvoiceNote);
+        inputbyid(id, ComplementaryInvoice.Note);
 
         //click the items bar
-        for (int i = 0; i < OrderItems.length; i++) {
+        for (int i = 0; i < Order.Items.length; i++) {
             xpath = "//*[@id=\"add_pending_product_delivery_form\"]/div/div[4]/div[4]/span/span[1]/span";
             Thread.sleep(300);
-            System.out.println(OrderItems[i]);
-            inputbyxpath(xpath, OrderItems[i]);
+            System.out.println(Order.Items[i]);
+            inputbyxpath(xpath, Order.Items[i]);
             Thread.sleep(100);
             pressEnterbyXpath(xpath);
             Thread.sleep(100);
@@ -112,17 +112,17 @@ public class Complementary_Invoice extends Page_Options {
         }
 
         //click the amount buttons for the quantity of the items
-        for (int i = 0; i < ComplementaryInvoiceItems.length; i++) {
+        for (int i = 0; i < ComplementaryInvoice.Items.length; i++) {
             //ctn(quantity)
             xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[4]/input";
             waitByxpath(xpath);
             clearByXpath(xpath);
-            inputbyxpath(xpath, ComplementaryInvoiceItemQuantity);
+            inputbyxpath(xpath, ComplementaryInvoice.ItemQuantity);
             //pcs(quantity)
             xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[5]/input";
             waitByxpath(xpath);
             clearByXpath(xpath);
-            inputbyxpath(xpath, ComplementaryInvoiceItemQuantity);
+            inputbyxpath(xpath, ComplementaryInvoice.ItemQuantity);
         }
 
         //remove an item

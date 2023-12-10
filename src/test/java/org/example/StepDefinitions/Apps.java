@@ -16,7 +16,7 @@ public class Apps extends Page_Options {
     */
     @Given("login for creating new app")
     public void login_for_creating_new_app() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         //click the Apps option from the Side bar
         cssSelector = ".menues-bar:nth-child(6) .active";
@@ -36,12 +36,12 @@ public class Apps extends Page_Options {
         //fillup name
         id = "add_name";
         waitById(id);
-        inputbyid(id, AppsName);
+        inputbyid(id, Apps.Name);
 
         //fillup Display name
         id = "add_d_name";
         waitById(id);
-        inputbyid(id, AppsDisplayName);
+        inputbyid(id, Apps.DisplayName);
 
         //functions
         xpath = "//*[@id=\"add_apps_form\"]/div/div[3]/div/span/span[1]/span";
@@ -76,7 +76,7 @@ public class Apps extends Page_Options {
         for (int i = 0; i < ttlRow; i++) {
             xpath = "//*[@id=\"apps_table\"]/tr[" + (i + 1) + "]/td[2]/p";
             String s = getTextbyXpath(xpath);
-            name = AppsName;
+            name = Apps.Name;
 
             if (name.equals(s)) {
                 found_app = true;
@@ -96,7 +96,7 @@ public class Apps extends Page_Options {
     */
     @Given("login for editing an app")
     public void login_for_editing_an_app() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         //click the Apps option from the Side bar
         cssSelector = ".menues-bar:nth-child(6) .active";
@@ -109,7 +109,7 @@ public class Apps extends Page_Options {
         Thread.sleep(500);
         id = "search_input";
         waitById(id);
-        inputbyid(id, AppsName);
+        inputbyid(id, Apps.Name);
     }
 
     @And("edit the app")
@@ -135,13 +135,13 @@ public class Apps extends Page_Options {
         id = "edit_name";
         waitById(id);
         clearById(id);
-        inputbyid(id, AppsEditedName);
+        inputbyid(id, Apps.EditedName);
 
         //edit display name
         id = "edit_d_name";
         waitById(id);
         clearById(id);
-        inputbyid(id, AppsEditedDisplayName);
+        inputbyid(id, Apps.EditedDisplayName);
 
         //status
         xpath = "//*[@id=\"edit_status\"]";
@@ -162,7 +162,7 @@ public class Apps extends Page_Options {
         Thread.sleep(2000);
         id = "search_input";
         waitById(id);
-        inputbyid(id, AppsEditedName);
+        inputbyid(id, Apps.EditedName);
         Thread.sleep(500);
 
         WebElement table = driver.findElement(By.id("apps_tableData"));
@@ -175,13 +175,13 @@ public class Apps extends Page_Options {
                 //verify name
                 WebElement element1 = row.findElement(By.xpath(".//td[2]/p"));
                 String name = element1.getText();
-                Assert.assertEquals(name, AppsEditedName);
+                Assert.assertEquals(name, Apps.EditedName);
                 System.out.println("Name is perfect");
 
                 //verify display name
                 WebElement element2 = row.findElement(By.xpath(".//td[3]/p"));
                 String display_name = element2.getText();
-                Assert.assertEquals(display_name, AppsEditedDisplayName);
+                Assert.assertEquals(display_name, Apps.EditedDisplayName);
                 System.out.println("Display Name is perfect");
 
                 //verify status
@@ -204,7 +204,7 @@ public class Apps extends Page_Options {
     */
     @Given("login for giving access to an user")
     public void login_for_giving_access_to_an_user() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         //click the Apps option from the Side bar
         cssSelector = ".menues-bar:nth-child(6) .active";
@@ -217,7 +217,7 @@ public class Apps extends Page_Options {
         Thread.sleep(1000);
         id = "search_input";
         waitById(id);
-        inputbyid(id, AppsEditedName);
+        inputbyid(id, Apps.EditedName);
     }
 
     @And("add permission")
@@ -240,7 +240,7 @@ public class Apps extends Page_Options {
         WebElement emptable = driver.findElement(By.id("include_emp_func_tbody"));
         java.util.List<WebElement> rows1 = emptable.findElements(By.xpath(".//tr"));
 
-        for (int i = 0; i < AppsEmployeeInfo.length; i++) {
+        for (int i = 0; i < Apps.EmployeeInfo.length; i++) {
             Thread.sleep(200);
             //click the employees field
             xpath = "//*[@id=\"select2-add_emp_list_" + (i + 1) + "-container\"]";
@@ -251,14 +251,14 @@ public class Apps extends Page_Options {
             xpath = "//*[@id=\"modal_emp\"]/span/span/span[1]/input";
             clickbyxpath(xpath);
             waitByxpath(xpath);
-            inputbyxpath(xpath, AppsEmployeeInfo[i]);
+            inputbyxpath(xpath, Apps.EmployeeInfo[i]);
             Thread.sleep(100);
             pressEnterbyXpath(xpath);
-            if (AppsEmployeeInfo.length > rows1.size() && (i + 1) < AppsEmployeeInfo.length) {
+            if (Apps.EmployeeInfo.length > rows1.size() && (i + 1) < Apps.EmployeeInfo.length) {
                 //add another row
                 id = "add-row";
                 clickbyId(id);
-            } else if (AppsEmployeeInfo.length < rows1.size() && (i) > AppsEmployeeInfo.length) {
+            } else if (Apps.EmployeeInfo.length < rows1.size() && (i) > Apps.EmployeeInfo.length) {
                 //click the selected row
                 xpath = "//*[@id=\"include_emp_func_tbody\"]/tr[" + (i + 1) + "]/td[1]/input";
                 clickbyxpath(xpath);
@@ -274,12 +274,12 @@ public class Apps extends Page_Options {
 
         //delete an employee
         // Iterate through the rows to find the one with "1077" in the dropdown
-        for (int i = 0; i<AppsEmployeeInfo.length; i++) {
+        for (int i = 0; i<Apps.EmployeeInfo.length; i++) {
             xpath = "//*[@id=\"select2-add_emp_list_"+(i+1)+"-container\"]";
             String s = getTextbyXpath(xpath);
             System.out.println(s);
 
-            if (s.contains(AppsEmployeeInfo[9])) {
+            if (s.contains(Apps.EmployeeInfo[9])) {
                 //select the row
                 xpath = "//*[@id=\"include_emp_func_tbody\"]/tr["+(i+1)+"]/td[1]/input";
                 clickbyxpath(xpath);
@@ -323,7 +323,7 @@ public class Apps extends Page_Options {
     */
     @Given("login for checking access of first user")
     public void login_for_checking_access_of_first_user() {
-        Login_AIR2_AIR(user_Siam);
+        Login_AIR2_AIR(Users.user_Siam);
     }
 
     @And("verify from the side panel for the first user")
@@ -349,7 +349,7 @@ public class Apps extends Page_Options {
 
     @Then("login for checking access of 2nd user")
     public void login_for_checking_access_of_2nd_user() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
     }
 
     @And("verify from the side panel for the 2nd user")

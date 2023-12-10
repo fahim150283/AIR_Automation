@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 public class PreviousPendingDelivery extends Page_Options {
     @Given("Login to Search Previous Pending Delivery")
     public void login_to_search_previous_pending_delivery() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         cssSelector = ".active:nth-child(5) .active";
         waitByCssSelector(cssSelector);
@@ -23,7 +23,7 @@ public class PreviousPendingDelivery extends Page_Options {
         Thread.sleep(500);
         id = "search_input";
         waitById(id);
-        inputbyid(id, PreviousPendingDeliverySearchInfo);
+        inputbyid(id, PreviousPendingDelivery.SearchInfo);
     }
 
     @And("description of a Previous Pending Delivery")
@@ -52,7 +52,7 @@ public class PreviousPendingDelivery extends Page_Options {
 
     @Given("login for creating new Previous Pending Delivery")
     public void login_for_creating_new_previous_pending_delivery() {
-        Login_AIR2_AIR(user_Fahim);
+        Login_AIR2_AIR(Users.user_Fahim);
 
         cssSelector = ".active:nth-child(5) .active";
         waitByCssSelector(cssSelector);
@@ -80,7 +80,7 @@ public class PreviousPendingDelivery extends Page_Options {
         clickbyxpath(xpath);
         //search for bhai bhai and hit enter
         xpath = "/html/body/span/span/span[1]/input";
-        inputbyxpath(xpath,PreviousPendingDeliveryDistributorSearch);
+        inputbyxpath(xpath,PreviousPendingDelivery.DistributorSearch);
         pressEnterbyXpath(xpath);
 
 
@@ -108,7 +108,7 @@ public class PreviousPendingDelivery extends Page_Options {
         id = "select2-c_store_id-container";
         clickbyId(id);
         xpath = "/html/body/span/span/span[1]/input";
-        inputbyxpath(xpath, PreviousPendingDeliveryStore);
+        inputbyxpath(xpath, PreviousPendingDelivery.Store);
         pressEnterbyXpath(xpath);
 
         //invoice reference no
@@ -120,11 +120,11 @@ public class PreviousPendingDelivery extends Page_Options {
         inputbyid(id, "Automated Test");
 
         //click the items bar and choose product
-        for (int i = 0; i < PreviousPendingDeliveryItems.length; i++) {
+        for (int i = 0; i < PreviousPendingDelivery.Items.length; i++) {
             xpath = "//*[@id=\"add_pending_product_delivery_form\"]/div/div[4]/div[4]/span/span[1]/span";
             Thread.sleep(100);
-            System.out.println(PreviousPendingDeliveryItems[i]);
-            inputbyxpath(xpath, PreviousPendingDeliveryItems[i]);
+            System.out.println(PreviousPendingDelivery.Items[i]);
+            inputbyxpath(xpath, PreviousPendingDelivery.Items[i]);
             Thread.sleep(200);
             pressEnterbyXpath(xpath);
             Thread.sleep(100);
@@ -135,17 +135,17 @@ public class PreviousPendingDelivery extends Page_Options {
         }
 
         //click the amount buttons for the quantity of the items
-        for (int i = 0; i < PreviousPendingDeliveryItems.length; i++) {
+        for (int i = 0; i < PreviousPendingDelivery.Items.length; i++) {
             //ctn(quantity)
             xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[4]/input[1]";
             waitByxpath(xpath);
             clearByXpath(xpath);
-            inputbyxpath(xpath, PreviousPendingDeliveryItemQuantity);
+            inputbyxpath(xpath, PreviousPendingDelivery.ItemQuantity);
             //pcs(quantity)
             xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[5]/input[1]";
             waitByxpath(xpath);
             clearByXpath(xpath);
-            inputbyxpath(xpath, PreviousPendingDeliveryItemQuantity);
+            inputbyxpath(xpath, PreviousPendingDelivery.ItemQuantity);
         }
 
         //remove an item
