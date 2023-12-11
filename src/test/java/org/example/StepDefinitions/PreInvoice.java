@@ -115,11 +115,7 @@ public class PreInvoice extends Page_Options {
         clearByXpath(xpath);
         inputbyxpath(xpath, PreInvoices.CashCommission);
 
-
-        //notes
-        id = "c_notes";
-        inputbyid(id, "Automated Test");
-
+        Thread.sleep(1000);
         //click the items bar and add 15 items
         for (int i = 0; i < PreInvoices.Items.length-10; i++) {
             xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[4]/div[6]/span/span[1]/span";
@@ -160,7 +156,7 @@ public class PreInvoice extends Page_Options {
             inputbyxpath(xpath, PreInvoices.ItemQuantity);
         }
 
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         //remove an item
         WebElement table = driver.findElement(By.id("c_inv_items_list"));
         java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
@@ -199,11 +195,14 @@ public class PreInvoice extends Page_Options {
             }
         }
 
+        //notes
+        id = "c_notes";
+        inputbyid(id, "Automated Test");
 
         //Save
-        Thread.sleep(100);
-        id = "add_region";
-        clickbyId(id);
+        Thread.sleep(3000);
+        xpath = "//*[@id=\"add_region\"]";
+        clickbyxpath(xpath);
         //Click ok button in the alert
         AlertAccept();
     }

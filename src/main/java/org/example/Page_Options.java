@@ -181,7 +181,8 @@ public class Page_Options extends BrowserUtils {
 //        stateDropdown.selectByIndex(i); // Haryana
 //    }
 
-    public static void AlertAccept() {
+    public static void AlertAccept() throws InterruptedException {
+        Thread.sleep(1000);
         driver.switchTo().alert().accept();
     }
 
