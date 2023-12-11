@@ -5,15 +5,18 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.Objects;
 
 public class DistributorInvoices extends Page_Options {
     @Given("Login to Search Invoice")
     public void login_to_search_invoice() {
-        Login_AIR2_AIR(Users.user_Fahim);
+        Login_AIR2(Users.user_Haseeb);
 
-        cssSelector = ".menues-bar:nth-child(19) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Distributor Invoices");
     }
 
     @When("search for Invoice")
@@ -39,11 +42,9 @@ public class DistributorInvoices extends Page_Options {
 
     @Given("login for Invoice")
     public void login_for_invoice() {
-        Login_AIR2_AIR(Users.user_Fahim);
+        Login_AIR2(Users.user_Haseeb);
 
-        cssSelector = ".menues-bar:nth-child(19) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Distributor Invoices");
     }
 
     @And("create new Invoice")
@@ -78,30 +79,60 @@ public class DistributorInvoices extends Page_Options {
         inputbycssselector(cssSelector, Invoices.Store);
         cssSelectorPressEnter(cssSelector);
 
-        //notes
-        id = "c_notes";
-        inputbyid(id, Invoices.Note);
 
         //partial cancel or full cancel
         Boolean fullCancel = false; //Default is Full Cancel
 
         for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"c_inv_items_list\"]"); i++) {
-            if (fullCancel == false && i%2 ==0 ) {
+            if (fullCancel == false && i % 2 == 0) {
                 //CTN
-                Thread.sleep(200);
-                xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[5]/input";
+                Thread.sleep(20);
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
                 waitByxpath(xpath);
                 clearByXpath(xpath);
                 inputbyxpath(xpath, Invoices.ItemQuantity); //here the number is the quantity that will be deleted
 
                 //PCS
-                Thread.sleep(200);
-                xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[6]/input";
+                Thread.sleep(20);
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[6]/input";
                 waitByxpath(xpath);
                 clearByXpath(xpath);
                 inputbyxpath(xpath, Invoices.ItemQuantity); //here the number is the quantity that will be deleted
             }
         }
+
+
+        //offer part
+        if (ElementVisible("//*[@id=\"tbl_data\"]")) {
+            System.out.println("offer part is available");
+            for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++) {
+                String s = getTextbyXpath("//tbody[@id='tbl_data']/tr[" + (i + 1) + "]/td[3]");
+                System.out.println("this is the found string: " + s);
+                if (Objects.equals(s, "Offer Type: Product")) {
+
+                    String dropdownXpath = "//*[@id='tbl_data']/tr[" + (i + 1) + "]/td[5]//select";
+                    //Selecting the dropdown options only for where available
+                    try {
+                        WebElement dropdownElement = driver.findElement(By.xpath(dropdownXpath));
+                        Select dropdown = new Select(dropdownElement);
+                        dropdown.selectByIndex(1);
+                    } catch (org.openqa.selenium.NoSuchElementException e) {
+                        continue;
+                    }
+
+                    //Quantity CTN
+                    Thread.sleep(50);
+                    xpath = "//*[@id=\"showCtn" + (2 + i) + "\"]";
+                    waitByxpath(xpath);
+                    clearByXpath(xpath);
+                    inputbyxpath(xpath, PreInvoices.OfferCTN);
+                }
+            }
+        }
+
+        //notes
+        id = "c_notes";
+        inputbyid(id, Invoices.Note);
 
         //save
         xpath = "//*[@id=\"add_region\"]";
