@@ -76,7 +76,9 @@
     "SearchInfo": "SO-00000012",
     "DistributorSearch":"bhai bhai",
     "ItemQuantity":"20",
-    "Note": "Automated Test"
+    "Note": "Automated Test",
+    "Refference No": "Testing Ref No 007",
+    "CashCommission": "10"
   },
 
   "CancelOrder": {

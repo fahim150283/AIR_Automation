@@ -59,6 +59,8 @@ public class ReadJson {
         public static String ItemQuantity;
         public static String DistributorSearch;
         public static String Note;
+        public static String Refference_No;
+        public static String CashCommission;
     }
 
     public static class CancelOrder {
@@ -422,6 +424,8 @@ public class ReadJson {
                 Order.ItemQuantity = (String) OrderObject.get("ItemQuantity");
                 Order.DistributorSearch = (String) OrderObject.get("DistributorSearch");
                 Order.Note = (String) OrderObject.get("Note");
+                Order.Refference_No = (String) OrderObject.get("Refference No");
+                Order.CashCommission = (String) OrderObject.get("CashCommission");
                 Order.Items = Users.ItemsArray;
             }
             {// Read data from the "CancelOrder" object

@@ -7,16 +7,18 @@ import io.cucumber.java.en.When;
 import org.example.Page_Options;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
+import java.util.Objects;
 
 public class Order extends Page_Options {
 
     @Given("Login to Search Order")
     public void login_to_search_order() {
-       Login_AIR2_AIR(Users.user_Fahim);
+       Login_AIR2(Users.user_Haseeb);
 
-        cssSelector = ".menues-bar:nth-child(23) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Orders");
     }
 
     @When("search for Order")
@@ -41,11 +43,9 @@ public class Order extends Page_Options {
 
     @Given("login for creating new Order")
     public void login_for_creating_new_order() throws InterruptedException {
-        Login_AIR2_AIR(Users.user_Fahim);
+        Login_AIR2(Users.user_Haseeb);
 
-        cssSelector = ".menues-bar:nth-child(23) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Orders");
     }
     @And("create new Order")
     public void create_new_order() throws InterruptedException {
@@ -91,19 +91,32 @@ public class Order extends Page_Options {
 //            clickbyxpath(xpath);
 
 
-        //important notes
-        id = "c_notes";
-        inputbyid(id, Order.Note);
+        //set Expected Delivery Date
+        id = "c_exp_delivery_date";
+        waitById(id);
+        clickbyId(id);
+        inputbyid(id, getToday());
+
+        //Refference No
+        id = "c_inv_ref";
+        inputbyid(id, Order.Refference_No);
+
+        //cash commission
+        xpath = "//*[@id=\"c_cash_com\"]";
+        clearByXpath(xpath);
+        inputbyxpath(xpath, Order.CashCommission);
+
 
         //click the items bar and add items
+        Thread.sleep(1000);
         for (int i = 0; i < Order.Items.length; i++) {
             xpath = "//*[@id=\"add_invoice_form\"]/div/div[3]/div[4]/span/span[1]/span";
-            Thread.sleep(300);
+            Thread.sleep(30);
             System.out.println(Order.Items[i]);
             inputbyxpath(xpath, Order.Items[i]);
-            Thread.sleep(300);
+            Thread.sleep(30);
             pressEnterbyXpath(xpath);
-            Thread.sleep(300);
+            Thread.sleep(30);
 
             // press the plus button
             id = "c_add_inv_prod";
@@ -136,6 +149,38 @@ public class Order extends Page_Options {
                 delete_Button.click();
             }
         }
+
+        Thread.sleep(1000);
+
+        //offer part
+        if (ElementVisible("//*[@id=\"tbl_data\"]")) {
+            System.out.println("offer part is available");
+            for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++) {
+                String s = getTextbyXpath("//tbody[@id='tbl_data']/tr[" + (i + 1) + "]/td[3]");
+                System.out.println("this is the found string: " + s);
+                if (Objects.equals(s, "Offer Type: Product")) {          //for the offer:products
+//                    List<WebElement> rowsWithDropdowns = driver.findElements(By.xpath("//tbody[@id='tbl_data']/tr[td/select]"));
+//                        WebElement dropdownElement = driver.findElement(By.xpath("//*[@id=\"dis_product" + (1+ i) + "\"]"));
+//                        Select dropdown = new Select(dropdownElement);
+//                        dropdown.selectByIndex(1);
+
+                    String dropdownXpath = "//*[@id='tbl_data']/tr[" + (i+1) + "]/td[5]//select";
+                    //Selecting the dropdown options only for where available
+                    try {
+                        WebElement dropdownElement = driver.findElement(By.xpath(dropdownXpath));
+                        Select dropdown = new Select(dropdownElement);
+                        dropdown.selectByIndex(1);
+                    } catch (org.openqa.selenium.NoSuchElementException e) {
+                        continue;
+                    }
+                }
+            }
+        }
+
+        //important notes
+        id = "c_notes";
+        inputbyid(id, Order.Note);
+
 
         //save
         xpath = "//*[@id=\"add_region\"]";

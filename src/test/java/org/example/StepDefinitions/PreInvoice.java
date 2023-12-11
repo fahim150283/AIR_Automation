@@ -117,7 +117,7 @@ public class PreInvoice extends Page_Options {
 
         Thread.sleep(1000);
         //click the items bar and add 15 items
-        for (int i = 0; i < PreInvoices.Items.length-10; i++) {
+        for (int i = 0; i < PreInvoices.Items.length; i++) {
             xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[4]/div[6]/span/span[1]/span";
             Thread.sleep(100);
             inputbyxpath(xpath, PreInvoices.Items[i]);
@@ -133,7 +133,7 @@ public class PreInvoice extends Page_Options {
 
 
         //click the amount buttons for the quantity of the items
-        for (int i = 0; i < PreInvoices.Items.length-10; i++) {
+        for (int i = 0; i < PreInvoices.Items.length; i++) {
             //ctn(quantity)
             xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
             waitByxpath(xpath);
