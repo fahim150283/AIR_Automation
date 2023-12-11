@@ -75,7 +75,7 @@ public class Apps extends Page_Options {
         boolean found_app = false;
         for (int i = 0; i < ttlRow; i++) {
             xpath = "//*[@id=\"apps_table\"]/tr[" + (i + 1) + "]/td[2]/p";
-            String s = getTextbyXpath(xpath);
+            String s = getTextAttributebyXpath(xpath);
             name = Apps.Name;
 
             if (name.equals(s)) {
@@ -145,7 +145,7 @@ public class Apps extends Page_Options {
 
         //status
         xpath = "//*[@id=\"edit_status\"]";
-        String status = getTextbyXpath(xpath);
+        String status = getTextAttributebyXpath(xpath);
         if (status != "Active") {
             clickbyxpath(xpath);
             pressUPbyXpath(xpath);
@@ -276,7 +276,7 @@ public class Apps extends Page_Options {
         // Iterate through the rows to find the one with "1077" in the dropdown
         for (int i = 0; i<Apps.EmployeeInfo.length; i++) {
             xpath = "//*[@id=\"select2-add_emp_list_"+(i+1)+"-container\"]";
-            String s = getTextbyXpath(xpath);
+            String s = getTextAttributebyXpath(xpath);
             System.out.println(s);
 
             if (s.contains(Apps.EmployeeInfo[9])) {

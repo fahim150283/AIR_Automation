@@ -1,6 +1,5 @@
 package org.example.StepDefinitions;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,7 +8,6 @@ import org.example.Page_Options;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 
 import java.util.Objects;
 
@@ -422,12 +420,12 @@ public class Offer extends Page_Options {
         Thread.sleep(1000);
 
         //copy
-        temporary_Offer_Name = getTextbyXpath("//*[@id=\"view_offer_name\"]");
-        temporary_Offer_Type1 = getTextbyXpath("//*[@id=\"view_offr_prod\"]/tr[1]/td[1]");
-        temporary_Offer_Type2 = getTextbyXpath("//*[@id=\"view_offr_prod\"]/tr[2]/td[1]");
-        temporary_Product1 = getTextbyXpath("//*[@id=\"view_inc_prod\"]/tr[1]/td[3]");
-        temporary_Product2 = getTextbyXpath("//*[@id=\"view_inc_prod\"]/tr[2]/td[3]");
-        temporary_Region_territory = getTextbyXpath("//*[@id=\"td_territory\"]");
+        temporary_Offer_Name = getTextAttributebyXpath("//*[@id=\"view_offer_name\"]");
+        temporary_Offer_Type1 = getTextAttributebyXpath("//*[@id=\"view_offr_prod\"]/tr[1]/td[1]");
+        temporary_Offer_Type2 = getTextAttributebyXpath("//*[@id=\"view_offr_prod\"]/tr[2]/td[1]");
+        temporary_Product1 = getTextAttributebyXpath("//*[@id=\"view_inc_prod\"]/tr[1]/td[3]");
+        temporary_Product2 = getTextAttributebyXpath("//*[@id=\"view_inc_prod\"]/tr[2]/td[3]");
+        temporary_Region_territory = getTextAttributebyXpath("//*[@id=\"td_territory\"]");
 
         System.out.println(temporary_Offer_Name + " , " + temporary_Offer_Type2 + " , " + temporary_Offer_Type2 + " , " + temporary_Product1 + " , " + temporary_Product2 + " , " + temporary_Region_territory);
         closedriver();

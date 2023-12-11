@@ -4,14 +4,11 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.commons.compress.archivers.zip.X000A_NTFS;
 import org.example.Page_Options;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-
-import java.util.Objects;
 
 public class ProductCategories extends Page_Options {
     String name = PRODCAT.Name + randomnumber();
@@ -251,7 +248,7 @@ public class ProductCategories extends Page_Options {
         Thread.sleep(2000);
         xpath = "//*[@id=\"select2-product_category-container\"]";
         waitByxpath(xpath);
-        String s = getTextbyXpath(xpath);
+        String s = getTextAttributebyXpath(xpath);
         Assert.assertTrue(s.contains(E_name));
     }
 

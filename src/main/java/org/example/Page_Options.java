@@ -232,9 +232,13 @@ public class Page_Options extends BrowserUtils {
         return Value;
     }
 
-    public static String getTextbyXpath(String s) {
+    public static String getTextAttributebyXpath(String s) {
         WebElement inputElement = driver.findElement(By.xpath(s));
         String value = inputElement.getAttribute("value");
+        return value;
+    }public static String getTextbyXpath(String s) {
+        WebElement inputElement = driver.findElement(By.xpath(s));
+        String value = inputElement.getText();
         return value;
     }
 
@@ -357,15 +361,15 @@ public class Page_Options extends BrowserUtils {
                 viewButton.click();
                 Thread.sleep(500);
                 xpath = "//*[@id=\"part1_body\"]/tr[2]/td[2]/p";
-                dataArray[tempcnt][0] = getTextbyXpath(xpath);
+                dataArray[tempcnt][0] = getTextAttributebyXpath(xpath);
                 xpath = "//*[@id=\"part1_body\"]/tr[4]/td[2]/p";
-                dataArray[tempcnt][1] = getTextbyXpath(xpath);
+                dataArray[tempcnt][1] = getTextAttributebyXpath(xpath);
                 xpath = "//*[@id=\"part1_body\"]/tr[5]/td[2]/p";
-                dataArray[tempcnt][2] = getTextbyXpath(xpath);
+                dataArray[tempcnt][2] = getTextAttributebyXpath(xpath);
                 xpath = "//*[@id=\"part1_body\"]/tr[6]/td[2]/p";
-                dataArray[tempcnt][3] = getTextbyXpath(xpath);
+                dataArray[tempcnt][3] = getTextAttributebyXpath(xpath);
                 xpath = "//*[@id=\"part1_body\"]/tr[7]/td[2]/p";
-                dataArray[tempcnt][4] = getTextbyXpath(xpath);
+                dataArray[tempcnt][4] = getTextAttributebyXpath(xpath);
 
                 //close modal
                 xpath = "//*[@id=\"modal_view\"]/div/div/div[3]/button";

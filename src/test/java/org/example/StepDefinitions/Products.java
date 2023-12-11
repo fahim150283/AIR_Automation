@@ -7,9 +7,7 @@ import io.cucumber.java.en.When;
 import org.example.Page_Options;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 
 public class Products extends Page_Options {
     String productname = product.Name + randomnumber();
@@ -287,13 +285,13 @@ public class Products extends Page_Options {
 
         //get the text from the item list
         xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[1]";
-        String iteminfo = getTextbyXpath(xpath);
+        String iteminfo = getTextAttributebyXpath(xpath);
 
         Assert.assertTrue(iteminfo.contains(productname));
 
         //get the price from the item list
         xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[4]";
-        String itemprice = getTextbyXpath(xpath);
+        String itemprice = getTextAttributebyXpath(xpath);
         Assert.assertEquals(itemprice, product.DistributorPrice);
 
     }

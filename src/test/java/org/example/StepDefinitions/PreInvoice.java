@@ -8,7 +8,6 @@ import org.example.Page_Options;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.Test;
 
 import java.util.List;
 import java.util.Objects;
@@ -90,15 +89,20 @@ public class PreInvoice extends Page_Options {
 //        }
 
         //click the checkbox for regular or pending
-        if(Objects.equals(PreInvoices.CheckBox, "Regular")) {
+        if (Objects.equals(PreInvoices.CheckBox, "Regular")) {
             xpath = "//*[@id=\"pre_regular\"]";
-            waitByxpath(xpath);
-            clickbyxpath(xpath);
-        }
-        else {
+            WebElement RegularCheckbox = driver.findElement(By.id("pre_regular"));
+            if (!RegularCheckbox.isSelected()) {
+                waitByxpath(xpath);
+                clickbyxpath(xpath);
+            }
+        } else if (Objects.equals(PreInvoices.CheckBox, "Pending")) {
             xpath = "//*[@id=\"pre_pending\"]";
-            waitByxpath(xpath);
-            clickbyxpath(xpath);
+            WebElement PendingCheckbox = driver.findElement(By.id("pre_ending"));
+            if (!PendingCheckbox.isSelected()) {
+                waitByxpath(xpath);
+                clickbyxpath(xpath);
+            }
         }
 
         //pre Invoice date
@@ -109,7 +113,7 @@ public class PreInvoice extends Page_Options {
         //cash commission
         xpath = "//*[@id=\"c_cash_com\"]";
         clearByXpath(xpath);
-        inputbyxpath(xpath,PreInvoices.CashCommission);
+        inputbyxpath(xpath, PreInvoices.CashCommission);
 
 
         //notes
@@ -117,7 +121,7 @@ public class PreInvoice extends Page_Options {
         inputbyid(id, "Automated Test");
 
         //click the items bar and add 15 items
-        for (int i = 0; i < PreInvoices.Items.length; i++) {
+        for (int i = 0; i < PreInvoices.Items.length-10; i++) {
             xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[4]/div[6]/span/span[1]/span";
             Thread.sleep(100);
             inputbyxpath(xpath, PreInvoices.Items[i]);
@@ -133,7 +137,7 @@ public class PreInvoice extends Page_Options {
 
 
         //click the amount buttons for the quantity of the items
-        for (int i = 0; i < PreInvoices.Items.length; i++) {
+        for (int i = 0; i < PreInvoices.Items.length-10; i++) {
             //ctn(quantity)
             xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
             waitByxpath(xpath);
@@ -163,7 +167,7 @@ public class PreInvoice extends Page_Options {
         // Iterate through rows
         for (int i = 0; i < rows.size(); i++) {
             WebElement row = rows.get(i);
-            if (i%5 == 0) {
+            if (i % 5 == 0) {
                 // Find and click the "delete" button for the visible row
                 WebElement delete_Button = row.findElement(By.id("delete_table_row"));
                 delete_Button.click();
@@ -172,31 +176,32 @@ public class PreInvoice extends Page_Options {
 
 
         //offer part
-        if(ElementVisible("//*[@id=\"tbl_data\"]")){
+        if (ElementVisible("//*[@id=\"tbl_data\"]")) {
             System.out.println("offer part is available");
-            for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++){
-                String s = getTextbyXpath("//*[@id=\"tbl_data\"]/tr["+(i+1)+"]/td[3]");
-                if (Objects.equals(s, "Offer Type: Product")){          //for the offer:products
+            for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++) {
+                String s = getTextbyXpath("//tbody[@id='tbl_data']/tr[" + (i + 1) + "]/td[3]");
+                System.out.println("this is the found string: " + s);
+                if (Objects.equals(s, "Offer Type: Product")) {          //for the offer:products
                     List<WebElement> rowsWithDropdowns = driver.findElements(By.xpath("//tbody[@id='tbl_data']/tr[td/select]"));
-                    for (WebElement row : rowsWithDropdowns) {
-                        WebElement dropdownElement = row.findElement(By.xpath("//*[@id=\"dis_product"+(2+i)+"\"]"));
+                    for (int k = 0; k < rowsWithDropdowns.size(); k++) {
+                        WebElement dropdownElement = driver.findElement(By.xpath("//*[@id=\"dis_product" + (2 + i) + "\"]"));
                         Select dropdown = new Select(dropdownElement);
-                        dropdown.selectByIndex(2);
+                        dropdown.selectByIndex(1);
                     }
+
                     //Quantity CTN
-                    id = "showCtn"+(2+i);
-                    waitById(id);
-                    inputbyid(id, PreInvoices.OfferCTN);
-                    //Quantity PCS
-                    id = "showPcs"+(2+i);
-                    waitById(id);
-                    inputbyid(id, PreInvoices.OfferPCS);
+                    Thread.sleep(50);
+                    xpath = "//*[@id=\"showCtn" + (2 + i) + "\"]";
+                    waitByxpath(xpath);
+                    clearByXpath(xpath);
+                    inputbyxpath(xpath, PreInvoices.OfferCTN);
                 }
             }
         }
 
 
         //Save
+        Thread.sleep(100);
         id = "add_region";
         clickbyId(id);
         //Click ok button in the alert
