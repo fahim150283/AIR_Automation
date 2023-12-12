@@ -58,8 +58,8 @@ public class ReadJson {
         public static String SearchInfo;
         public static String ItemQuantity;
         public static String DistributorSearch;
-        public static String Note;
         public static String Refference_No;
+        public static String Note;
         public static String CashCommission;
     }
 
