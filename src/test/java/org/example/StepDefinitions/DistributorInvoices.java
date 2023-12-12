@@ -81,7 +81,7 @@ public class DistributorInvoices extends Page_Options {
 
 
         //partial cancel or full cancel
-        Boolean fullCancel = false; //Default is Full Cancel
+        Boolean fullCancel = Invoices.CancelPartial; //Default is Full Cancel
 
         for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"c_inv_items_list\"]"); i++) {
             if (fullCancel == false && i % 2 == 0) {

@@ -94,6 +94,7 @@
     "Store": "depot",
     "Note": "Automated Test",
     "ItemQuantity":"5",
+    "CancelPartial": true,
     "OfferQuantity": "3"
   },
 

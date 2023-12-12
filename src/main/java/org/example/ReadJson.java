@@ -77,6 +77,7 @@ public class ReadJson {
         public static String Note;
         public static String OfferQuantity;
         public static String ItemQuantity;
+        public static boolean CancelPartial;
     }
 
     public static class CancelInvoice {
@@ -443,6 +444,7 @@ public class ReadJson {
                 Invoices.DistributorSearch = (String) DistributorInvoiceObject.get("DistributorSearch");
                 Invoices.Store = (String) DistributorInvoiceObject.get("Store");
                 Invoices.Note = (String) DistributorInvoiceObject.get("Note");
+                Invoices.CancelPartial = (boolean) DistributorInvoiceObject.get("CancelPartial");
                 Invoices.OfferQuantity = (String) DistributorInvoiceObject.get("OfferQuantity");
             }
             {// Read data from the "CancelInvoice" object
