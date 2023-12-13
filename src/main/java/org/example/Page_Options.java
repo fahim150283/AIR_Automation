@@ -237,7 +237,8 @@ public class Page_Options extends BrowserUtils {
         WebElement inputElement = driver.findElement(By.xpath(s));
         String value = inputElement.getAttribute("value");
         return value;
-    }public static String getTextbyXpath(String s) {
+    }
+    public static String getTextbyXpath(String s) {
         WebElement inputElement = driver.findElement(By.xpath(s));
         String value = inputElement.getText();
         return value;

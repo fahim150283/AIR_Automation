@@ -109,7 +109,6 @@ public class DistributorInvoices extends Page_Options {
                 String s = getTextbyXpath("//tbody[@id='tbl_data']/tr[" + (i + 1) + "]/td[3]");
                 System.out.println("this is the found string: " + s);
                 if (Objects.equals(s, "Offer Type: Product")) {
-
                     String dropdownXpath = "//*[@id='tbl_data']/tr[" + (i + 1) + "]/td[5]//select";
                     //Selecting the dropdown options only for where available
                     try {
@@ -121,11 +120,17 @@ public class DistributorInvoices extends Page_Options {
                     }
 
                     //Quantity CTN
-                    Thread.sleep(50);
-                    xpath = "//*[@id=\"showCtn" + (2 + i) + "\"]";
-                    waitByxpath(xpath);
-                    clearByXpath(xpath);
-                    inputbyxpath(xpath, PreInvoices.OfferCTN);
+                    Thread.sleep(200);
+                    String xpath = "//*[@id=\"tbl_data\"]/tr["+(i+1)+"]/td[6]/input[1]";
+                    int quantity = Integer.parseInt(getTextAttributebyXpath(xpath));
+                    System.out.println(quantity + " is the number of ctn");
+                    if (quantity > Integer.parseInt(Invoices.OfferCTN)) {
+                        System.out.println("from If");
+                        waitByxpath(xpath);
+                        Thread.sleep(300);
+                        clearByXpath(xpath);
+                        inputbyxpath(xpath, (Invoices.OfferCTN));
+                    }
                 }
             }
         }

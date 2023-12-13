@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
+import org.example.ReadJson;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -188,9 +189,12 @@ public class PreInvoice extends Page_Options {
                     //Quantity CTN
                     Thread.sleep(50);
                     xpath = "//*[@id=\"showCtn" + (2 + i) + "\"]";
-                    waitByxpath(xpath);
-                    clearByXpath(xpath);
-                    inputbyxpath(xpath, PreInvoices.OfferCTN);
+                    int l = Integer.parseInt(getTextbyXpath(xpath));
+                    if (l < Integer.parseInt(PreInvoices.OfferCTN)) {
+                        waitByxpath(xpath);
+                        clearByXpath(xpath);
+                        inputbyxpath(xpath, PreInvoices.OfferCTN);
+                    }
                 }
             }
         }

@@ -92,10 +92,12 @@
     "SearchInfo": "SO-00000011",
     "DistributorSearch":"bhai bhai",
     "Store": "depot",
+    "ctnOffer": "depot",
     "Note": "Automated Test",
     "ItemQuantity":"5",
+    "OfferQuantity": "3",
     "CancelPartial": true,
-    "OfferQuantity": "3"
+    "whatislove": "no more"
   },
 
   "Cancel Invoice": {

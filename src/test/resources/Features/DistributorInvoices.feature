@@ -10,4 +10,4 @@ Feature: Invoice Test
   Scenario: Create a new Invoice
     Given login for Invoice
     And create new Invoice
-    Then close the Invoice window
+#    Then close the Invoice window
