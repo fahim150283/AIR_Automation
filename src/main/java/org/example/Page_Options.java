@@ -418,4 +418,15 @@ public class Page_Options extends BrowserUtils {
         damageAmountLink.click();
     }
 
+    public void GetConfirmationMessage(){
+        // Wait for the modal dialog to be present
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement modalDialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("swal2-popup")));
+
+        // Extract the confirmation message from the modal
+        WebElement confirmationMessage = modalDialog.findElement(By.className("swal2-title"));
+        String messageText = confirmationMessage.getText();
+        System.out.println("Confirmation Message: " + messageText);
+    }
+
 }

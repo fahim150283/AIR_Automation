@@ -5,9 +5,12 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Objects;
 
@@ -104,7 +107,6 @@ public class DistributorInvoices extends Page_Options {
 
         //offer part
         if (ElementVisible("//*[@id=\"tbl_data\"]")) {
-            System.out.println("offer part is available");
             for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++) {
                 String s = getTextbyXpath("//tbody[@id='tbl_data']/tr[" + (i + 1) + "]/td[3]");
                 System.out.println("this is the found string: " + s);
@@ -121,11 +123,9 @@ public class DistributorInvoices extends Page_Options {
 
                     //Quantity CTN
                     Thread.sleep(200);
-                    String xpath = "//*[@id=\"tbl_data\"]/tr["+(i+1)+"]/td[6]/input[1]";
+                    String xpath = "//*[@id=\"tbl_data\"]/tr[" + (i + 1) + "]/td[6]/input[1]";
                     int quantity = Integer.parseInt(getTextAttributebyXpath(xpath));
-                    System.out.println(quantity + " is the number of ctn");
                     if (quantity > Integer.parseInt(Invoices.OfferCTN)) {
-                        System.out.println("from If");
                         waitByxpath(xpath);
                         Thread.sleep(300);
                         clearByXpath(xpath);
@@ -144,6 +144,7 @@ public class DistributorInvoices extends Page_Options {
         clickbyxpath(xpath);
 
         AlertAccept();
+        GetConfirmationMessage();
     }
 
     @Then("close the Invoice window")

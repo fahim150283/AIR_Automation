@@ -174,26 +174,29 @@ public class PreInvoice extends Page_Options {
 
         //offer part
         if (ElementVisible("//*[@id=\"tbl_data\"]")) {
-            System.out.println("offer part is available");
             for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++) {
                 String s = getTextbyXpath("//tbody[@id='tbl_data']/tr[" + (i + 1) + "]/td[3]");
                 System.out.println("this is the found string: " + s);
-                if (Objects.equals(s, "Offer Type: Product")) {          //for the offer:products
-                    List<WebElement> rowsWithDropdowns = driver.findElements(By.xpath("//tbody[@id='tbl_data']/tr[td/select]"));
-                    for (int k = 0; k < rowsWithDropdowns.size(); k++) {
-                        WebElement dropdownElement = driver.findElement(By.xpath("//*[@id=\"dis_product" + (2 + i) + "\"]"));
+                if (Objects.equals(s, "Offer Type: Product")) {
+                    String dropdownXpath = "//*[@id='tbl_data']/tr[" + (i + 1) + "]/td[5]//select";
+                    //Selecting the dropdown options only for where available
+                    try {
+                        WebElement dropdownElement = driver.findElement(By.xpath(dropdownXpath));
                         Select dropdown = new Select(dropdownElement);
                         dropdown.selectByIndex(1);
+                    } catch (org.openqa.selenium.NoSuchElementException e) {
+                        continue;
                     }
 
                     //Quantity CTN
-                    Thread.sleep(50);
-                    xpath = "//*[@id=\"showCtn" + (2 + i) + "\"]";
-                    int l = Integer.parseInt(getTextbyXpath(xpath));
-                    if (l < Integer.parseInt(PreInvoices.OfferCTN)) {
+                    Thread.sleep(200);
+                    String xpath = "//*[@id=\"tbl_data\"]/tr[" + (i + 1) + "]/td[6]/input[1]";
+                    int quantity = Integer.parseInt(getTextAttributebyXpath(xpath));
+                    if (quantity > Integer.parseInt(PreInvoices.OfferCTN)) {
                         waitByxpath(xpath);
+                        Thread.sleep(300);
                         clearByXpath(xpath);
-                        inputbyxpath(xpath, PreInvoices.OfferCTN);
+                        inputbyxpath(xpath, (PreInvoices.OfferCTN));
                     }
                 }
             }
@@ -207,8 +210,10 @@ public class PreInvoice extends Page_Options {
         Thread.sleep(3000);
         xpath = "//*[@id=\"add_region\"]";
         clickbyxpath(xpath);
+
         //Click ok button in the alert
         AlertAccept();
+        GetConfirmationMessage();
     }
 
     @Then("close the PreInvoice window")

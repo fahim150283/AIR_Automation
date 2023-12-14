@@ -73,13 +73,11 @@ public class ReadJson {
     public static class Invoices {
         public static String SearchInfo;
         public static String DistributorSearch;
-        public static String ctnOffer;
         public static String Store;
         public static String Note;
         public static String OfferQuantity;
         public static String ItemQuantity;
         public static String OfferCTN;
-        public static String what_is_love;
         public static boolean CancelPartial;
     }
 
@@ -445,13 +443,11 @@ public class ReadJson {
                 Invoices.SearchInfo = (String) DistributorInvoiceObject.get("SearchInfo");
                 Invoices.DistributorSearch = (String) DistributorInvoiceObject.get("DistributorSearch");
                 Invoices.Store = (String) DistributorInvoiceObject.get("Store");
-                Invoices.ctnOffer = (String) DistributorInvoiceObject.get("ctnOffer");
                 Invoices.Note = (String) DistributorInvoiceObject.get("Note");
                 Invoices.ItemQuantity = (String) DistributorInvoiceObject.get("ItemQuantity");
                 Invoices.OfferQuantity = (String) DistributorInvoiceObject.get("OfferQuantity");
-//                Invoices.OfferCTN = (String) DistributorInvoiceObject.get("OfferCTN");
+                Invoices.OfferCTN = (String) DistributorInvoiceObject.get("OfferCTN");
                 Invoices.CancelPartial = (boolean) DistributorInvoiceObject.get("CancelPartial");
-                Invoices.what_is_love = (String) DistributorInvoiceObject.get("whatislove");
 
             }
             {// Read data from the "CancelInvoice" object
