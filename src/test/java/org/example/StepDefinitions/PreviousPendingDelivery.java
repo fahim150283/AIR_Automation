@@ -167,6 +167,7 @@ public class PreviousPendingDelivery extends Page_Options {
         clickbycssselector(cssSelector);
 
         AlertAccept();
+        GetConfirmationMessage();
     }
 
     @Then("close the Previous Pending Delivery window")

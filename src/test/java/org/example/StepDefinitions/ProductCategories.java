@@ -163,6 +163,7 @@ public class ProductCategories extends Page_Options {
         //save
         xpath = "//*[@id=\"edit_product_categories_form\"]/div/div/div[3]/div/button";
         clickbyxpath(xpath);
+        GetConfirmationMessage();
     }
 
     @And("verify that the Product Category is edited")
@@ -241,6 +242,7 @@ public class ProductCategories extends Page_Options {
         clickbyxpath(xpath);
         inputbyxpath(xpath, E_name);
         pressEnterbyXpath(xpath);
+        GetConfirmationMessage();
     }
 
     @When("verify that the Product Category is there for product creation")

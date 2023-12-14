@@ -93,6 +93,7 @@ public class GoodsRequisition extends Page_Options {
         //save
         xpath = "//button[@id='send_req_fg_store']";
         clickbyxpath(xpath);
+        GetConfirmationMessage();
     }
 
     @Then("close the Goods Requisition window")
@@ -187,6 +188,7 @@ public class GoodsRequisition extends Page_Options {
             //Click accept
             id="accept_permission_btn";
             pressEnterById(id);
+            GetConfirmationMessage();
         }
     }
 
@@ -228,6 +230,7 @@ public class GoodsRequisition extends Page_Options {
         id = "send_req_fg_store";
         waitById(id);
         clickbyId(id);
+        GetConfirmationMessage();
     }
 
     @Then("close the Goods Requisition window for vehicle load")
@@ -267,6 +270,7 @@ public class GoodsRequisition extends Page_Options {
         id = "send_req_fg_store";
         waitById(id);
         clickbyId(id);
+        GetConfirmationMessage();
     }
 
     @Then("close the Goods Requisition window for vehicle unload")
@@ -300,6 +304,7 @@ public class GoodsRequisition extends Page_Options {
         xpath = "//*[@id=\"accept_permission_btn\"]";
         waitByxpath(xpath);
         clickbyxpath(xpath);
+        GetConfirmationMessage();
     }
 
     @Then("close the Goods Requisition window for receiving goods")

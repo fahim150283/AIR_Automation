@@ -153,6 +153,7 @@ public class FinishGoodsStore extends Page_Options {
         xpath = "//*[@id=\"edit_fg_store_form\"]/div/div[2]/div[6]/button";
         waitByxpath(xpath);
         clickbyxpath(xpath);
+        GetConfirmationMessage();
     }
     @Then("close window for editing a FG Store")
     public void close_window_for_editing_a_fg_store() throws InterruptedException {
@@ -247,6 +248,7 @@ public class FinishGoodsStore extends Page_Options {
         //save
         id = "add_fg_store";
         clickbyId(id);
+        GetConfirmationMessage();
 
     }
     @Then("close window for creating a FG Store")
@@ -322,6 +324,7 @@ public class FinishGoodsStore extends Page_Options {
         clickbyxpath(xpath);
 
         AlertAccept();
+        GetConfirmationMessage();
     }
     @Then("Close driver for adding goods to FG Store")
     public void close_driver_for_adding_goods_to_fg_store() throws InterruptedException {

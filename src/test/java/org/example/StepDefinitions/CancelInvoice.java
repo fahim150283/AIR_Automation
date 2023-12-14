@@ -100,6 +100,7 @@ public class CancelInvoice extends Page_Options {
         clickbyId(id);
 
         AlertAccept();
+        GetConfirmationMessage();
     }
 
     @Then("close the cancel Invoice window")

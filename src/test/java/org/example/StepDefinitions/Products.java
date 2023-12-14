@@ -96,6 +96,7 @@ public class Products extends Page_Options {
         //save
         xpath = "//*[@id=\"product_data\"]/div[2]/button";
         clickbyxpath(xpath);
+        GetConfirmationMessage();
     }
 
 
@@ -230,6 +231,7 @@ public class Products extends Page_Options {
         //update
         xpath = "//*[@id=\"update_product\"]/div[5]/button";
         clickbyxpath(xpath);
+        GetConfirmationMessage();
     }
 
     @Then("close driver for editing Product")

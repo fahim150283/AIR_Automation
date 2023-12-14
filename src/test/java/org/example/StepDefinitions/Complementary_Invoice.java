@@ -145,6 +145,7 @@ public class Complementary_Invoice extends Page_Options {
 
 
         AlertAccept();
+        GetConfirmationMessage();
     }
     @Then("close the Complementary Invoice window")
     public void close_the_complementary_invoice_window() throws InterruptedException {

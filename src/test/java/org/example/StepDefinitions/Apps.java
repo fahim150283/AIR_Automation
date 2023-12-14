@@ -66,6 +66,7 @@ public class Apps extends Page_Options {
         xpath = "//*[@id=\"add_apps_form\"]/div/div[5]/div/button";
         waitByxpath(xpath);
         clickbyxpath(xpath);
+        GetConfirmationMessage();
     }
 
     @And("verify that the app is created and listed in the apps list")
@@ -154,6 +155,7 @@ public class Apps extends Page_Options {
         //save
         id = "edit_apps";
         clickbyId(id);
+        GetConfirmationMessage();
     }
 
     @Then("verify that the app is edited")

@@ -186,6 +186,8 @@ public class Order extends Page_Options {
         xpath = "//*[@id=\"add_region\"]";
         clickbyxpath(xpath);
         AlertAccept();
+
+        GetConfirmationMessage();
     }
 
 

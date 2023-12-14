@@ -560,6 +560,7 @@ public class Distributors extends Page_Options {
         //Save button
         id = "add_distributors";
         clickbyId(id);
+        GetConfirmationMessage();
     }
 
     @Then("close the Distributor window")
@@ -1246,6 +1247,7 @@ public class Distributors extends Page_Options {
         //Save button
         id = "edit_distributors";
         clickbyId(id);
+        GetConfirmationMessage();
     }
 
 

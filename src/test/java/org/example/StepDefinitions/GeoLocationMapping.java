@@ -132,6 +132,7 @@ public class GeoLocationMapping extends Page_Options {
         clickbyId(id);
 
         AlertAccept();
+        GetConfirmationMessage();
     }
 
     @Then("close the Geo Location Mapping window")

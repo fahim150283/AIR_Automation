@@ -94,7 +94,7 @@ public class CancelOrder extends Page_Options {
         clickbyxpath(xpath);
 
         AlertAccept();
-
+        GetConfirmationMessage();
     }
 
 

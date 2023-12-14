@@ -123,6 +123,7 @@ public class LoadingSheet extends Page_Options {
         //save
         xpath = "//button[@id='send_req_fg_store']";
         clickbyxpath(xpath);
+        GetConfirmationMessage();
     }
 
     @Then("close driver for creating Loading sheet")

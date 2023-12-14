@@ -118,6 +118,7 @@ public class Collections extends Page_Options {
         //click the save button
         id = "add_col";
         clickbyId(id);
+        GetConfirmationMessage();
     }
 
     @Then("close the Collection window")

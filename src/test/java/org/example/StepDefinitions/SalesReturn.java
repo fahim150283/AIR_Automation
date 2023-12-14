@@ -146,6 +146,7 @@ public class SalesReturn extends Page_Options {
         id = "add_region";
         waitById(id);
         clickbyId(id);
+        GetConfirmationMessage();
     }
 
     @Then("close the Sales Return window")

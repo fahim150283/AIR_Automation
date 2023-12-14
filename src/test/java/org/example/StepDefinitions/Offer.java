@@ -398,6 +398,8 @@ public class Offer extends Page_Options {
         xpath = "//*[@id=\"submit_offer_add_sent\"]";
         waitByxpath(xpath);
         clickbyxpath(xpath);
+
+        GetConfirmationMessage();
     }
 
 
