@@ -16,7 +16,6 @@ import java.util.Random;
 public class Page_Options extends BrowserUtils {
     public static String id;
     public static String classname;
-    public static String name;
     public static String xpath;
     public static String cssSelector;
     public static String tempName;

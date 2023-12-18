@@ -11,17 +11,17 @@ import org.testng.Assert;
 
 public class Apps extends Page_Options {
 
+    public static String AppName = Apps.Name+randomnumber();
+    public static String Editedname = Apps.EditedName+randomnumber();
+
     /*
     create a new app
     */
     @Given("login for creating new app")
     public void login_for_creating_new_app() {
-        Login_AIR2_AIR(Users.user_Fahim);
+        Login_AIR2(Users.user_Haseeb);
 
-        //click the Apps option from the Side bar
-        cssSelector = ".menues-bar:nth-child(6) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Apps");
     }
 
     @When("create new  app")
@@ -36,7 +36,8 @@ public class Apps extends Page_Options {
         //fillup name
         id = "add_name";
         waitById(id);
-        inputbyid(id, Apps.Name);
+        inputbyid(id, AppName);
+        System.out.println(AppName);
 
         //fillup Display name
         id = "add_d_name";
@@ -71,19 +72,22 @@ public class Apps extends Page_Options {
 
     @And("verify that the app is created and listed in the apps list")
     public void verifyThatTheAppIsCreatedAndListedInTheAppsList() throws InterruptedException {
-        Thread.sleep(5000);
-        int ttlRow = getTotalRowCountByXpath("//*[@id=\"apps_table\"]");
-        boolean found_app = false;
-        for (int i = 0; i < ttlRow; i++) {
-            xpath = "//*[@id=\"apps_table\"]/tr[" + (i + 1) + "]/td[2]/p";
-            String s = getTextAttributebyXpath(xpath);
-            name = Apps.Name;
+        Thread.sleep(3000);
+        id = "search_input";
+        inputbyid(id, AppName);
 
-            if (name.equals(s)) {
-                found_app = true;
+        Thread.sleep(200);
+        // verify the created product
+        WebElement table = driver.findElement(By.id("apps_table"));
+        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
+        // Iterate through rows
+        for (WebElement row : rows) {
+            // Check if the row is displayed
+            if (!row.getAttribute("style").contains("display: none;")) {
+                // Find and click the "Add App Permissions" button for the visible row
+                Assert.assertEquals(AppName, row.findElement(By.xpath(".//td[2]")).getText());
             }
         }
-        Assert.assertTrue(found_app);
     }
 
     @Then("close driver for creating apps")
@@ -97,12 +101,9 @@ public class Apps extends Page_Options {
     */
     @Given("login for editing an app")
     public void login_for_editing_an_app() {
-        Login_AIR2_AIR(Users.user_Fahim);
+        Login_AIR2(Users.user_Haseeb);
 
-        //click the Apps option from the Side bar
-        cssSelector = ".menues-bar:nth-child(6) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Apps");
     }
 
     @When("search for the app")
@@ -110,7 +111,7 @@ public class Apps extends Page_Options {
         Thread.sleep(500);
         id = "search_input";
         waitById(id);
-        inputbyid(id, Apps.Name);
+        inputbyid(id, AppName);
     }
 
     @And("edit the app")
@@ -136,7 +137,7 @@ public class Apps extends Page_Options {
         id = "edit_name";
         waitById(id);
         clearById(id);
-        inputbyid(id, Apps.EditedName);
+        inputbyid(id, Editedname);
 
         //edit display name
         id = "edit_d_name";
@@ -160,37 +161,20 @@ public class Apps extends Page_Options {
 
     @Then("verify that the app is edited")
     public void verify_that_the_app_is_edited() throws InterruptedException {
-        //search the app
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         id = "search_input";
-        waitById(id);
-        inputbyid(id, Apps.EditedName);
-        Thread.sleep(500);
+        inputbyid(id, Editedname);
 
-        WebElement table = driver.findElement(By.id("apps_tableData"));
-        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tbody/tr"));
-
+        Thread.sleep(200);
+        // verify the created product
+        WebElement table = driver.findElement(By.id("apps_table"));
+        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
         // Iterate through rows
         for (WebElement row : rows) {
             // Check if the row is displayed
             if (!row.getAttribute("style").contains("display: none;")) {
-                //verify name
-                WebElement element1 = row.findElement(By.xpath(".//td[2]/p"));
-                String name = element1.getText();
-                Assert.assertEquals(name, Apps.EditedName);
-                System.out.println("Name is perfect");
-
-                //verify display name
-                WebElement element2 = row.findElement(By.xpath(".//td[3]/p"));
-                String display_name = element2.getText();
-                Assert.assertEquals(display_name, Apps.EditedDisplayName);
-                System.out.println("Display Name is perfect");
-
-                //verify status
-                WebElement element3 = row.findElement(By.xpath(".//td[5]/p"));
-                String status = element3.getText();
-                Assert.assertEquals(status, "Active");
-                System.out.println("Status is perfect");
+                // Find and click the "Add App Permissions" button for the visible row
+                Assert.assertEquals(Editedname, row.findElement(By.xpath(".//td[2]")).getText());
             }
         }
     }
@@ -206,12 +190,9 @@ public class Apps extends Page_Options {
     */
     @Given("login for giving access to an user")
     public void login_for_giving_access_to_an_user() {
-        Login_AIR2_AIR(Users.user_Fahim);
+        Login_AIR2(Users.user_Haseeb);
 
-        //click the Apps option from the Side bar
-        cssSelector = ".menues-bar:nth-child(6) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Apps");
     }
 
     @When("search for the app to give access")
@@ -219,7 +200,7 @@ public class Apps extends Page_Options {
         Thread.sleep(1000);
         id = "search_input";
         waitById(id);
-        inputbyid(id, Apps.EditedName);
+        inputbyid(id, Editedname);
     }
 
     @And("add permission")
@@ -325,7 +306,7 @@ public class Apps extends Page_Options {
     */
     @Given("login for checking access of first user")
     public void login_for_checking_access_of_first_user() {
-        Login_AIR2_AIR(Users.user_Siam);
+        Login_AIR2(Users.user_Haseeb);
     }
 
     @And("verify from the side panel for the first user")

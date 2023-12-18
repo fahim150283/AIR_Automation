@@ -11,11 +11,9 @@ import java.util.Random;
 public class Collections extends Page_Options {
     @Given("Login to Search Collection")
     public void login_to_search_collection() {
-        Login_AIR2_AIR(Users.user_Fahim);
+        Login_AIR2(Users.user_Haseeb);
 
-        cssSelector = ".menues-bar:nth-child(9) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Collections");
     }
 
     @When("search for Collection")
@@ -111,7 +109,7 @@ public class Collections extends Page_Options {
             }
 
             //click the order
-            name = "order_id[]";
+            String name = "order_id[]";
             clickByName(name);
 
         }
