@@ -224,7 +224,7 @@ public class Apps extends Page_Options {
         java.util.List<WebElement> rows1 = emptable.findElements(By.xpath(".//tr"));
 
         for (int i = 0; i < Apps.EmployeeInfo.length; i++) {
-            Thread.sleep(200);
+            Thread.sleep(100);
             //click the employees field
             xpath = "//*[@id=\"select2-add_emp_list_" + (i + 1) + "-container\"]";
             waitByxpath(xpath);
@@ -237,42 +237,37 @@ public class Apps extends Page_Options {
             inputbyxpath(xpath, Apps.EmployeeInfo[i]);
             Thread.sleep(100);
             pressEnterbyXpath(xpath);
-            if (Apps.EmployeeInfo.length > rows1.size() && (i + 1) < Apps.EmployeeInfo.length) {
-                //add another row
+
+            //add another row
+            if ((Apps.EmployeeInfo.length > rows1.size()) && ((i + 1) < Apps.EmployeeInfo.length)) {
                 id = "add-row";
-                clickbyId(id);
-            } else if (Apps.EmployeeInfo.length < rows1.size() && (i) > Apps.EmployeeInfo.length) {
-                //click the selected row
-                xpath = "//*[@id=\"include_emp_func_tbody\"]/tr[" + (i + 1) + "]/td[1]/input";
-                clickbyxpath(xpath);
-                //remove a row
-                id = "delete-row";
                 clickbyId(id);
             }
         }
+
 
         // Locate all the rows in the table
         WebElement table1 = driver.findElement(By.id("include_emp_func_tbody"));
-        java.util.List<WebElement> rows2 = table.findElements(By.tagName("tr"));
+        java.util.List<WebElement> rows2 = table1.findElements(By.tagName("tr"));
 
-        //delete an employee
+        //remove employees
         // Iterate through the rows to find the one with "1077" in the dropdown
-        for (int i = 0; i<Apps.EmployeeInfo.length; i++) {
+        for (int i = 0; i<rows2.size(); i++) {
             xpath = "//*[@id=\"select2-add_emp_list_"+(i+1)+"-container\"]";
-            String s = getTextAttributebyXpath(xpath);
-            System.out.println(s);
+            String s = getTextbyXpath(xpath);
 
-            if (s.contains(Apps.EmployeeInfo[9])) {
+            if (s.contains(Apps.EmployeeInfo[i]) && i%2 == 0 ) {
                 //select the row
                 xpath = "//*[@id=\"include_emp_func_tbody\"]/tr["+(i+1)+"]/td[1]/input";
                 clickbyxpath(xpath);
-
-                Thread.sleep(200);
-                //click the delete button
-                id = "delete-row";
-                clickbyId(id);
             }
         }
+
+        //click the delete button for the selected employees
+        Thread.sleep(200);
+        //click the delete button
+        id = "delete-row";
+        clickbyId(id);
 
         //add functions for the employees
         id = "check_APPR";
@@ -293,6 +288,8 @@ public class Apps extends Page_Options {
         //click the save button
         id = "save";
         clickbyId(id);
+
+        GetConfirmationMessage();
     }
 
     @Then("Close the driver for app permission")
