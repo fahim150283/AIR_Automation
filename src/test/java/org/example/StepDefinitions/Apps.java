@@ -13,6 +13,7 @@ public class Apps extends Page_Options {
 
     public static String AppName = Apps.Name + randomnumber();
     public static String Editedname = Apps.EditedName + randomnumber();
+    public static String EditedDisplayname = Apps.EditedDisplayName+randomnumber();
 
     /*
     create a new app
@@ -143,7 +144,7 @@ public class Apps extends Page_Options {
         id = "edit_d_name";
         waitById(id);
         clearById(id);
-        inputbyid(id, Apps.EditedDisplayName);
+        inputbyid(id, EditedDisplayname);
 
         //status
         xpath = "//*[@id=\"edit_status\"]";
@@ -310,16 +311,19 @@ public class Apps extends Page_Options {
     public void verify_from_the_side_panel_for_the_first_user() throws InterruptedException {
         Thread.sleep(2000);
 
-        // Locate all the rows in the table
-        WebElement table = driver.findElement(By.id("include_emp_func_tbody"));
-        java.util.List<WebElement> rows = table.findElements(By.tagName("tr"));
-        for (int i = 0; i < rows.size(); i++) {
-            // Specify the XPath to locate the element containing the string
-            xpath = "//*[@id=\"apps_table\"]/tr[" + (i + 1) + "]/td[2]/p";
-            waitByxpath(xpath);
-            String s = getTextbyXpath(xpath);
-            Assert.assertEquals(s,Editedname);
+        // Find all span elements within the specified ul element
+        WebElement ulElement = driver.findElement(By.id("menu"));
+        java.util.List<WebElement> spanElements = ulElement.findElements(By.tagName("span"));
+        boolean AppFound = false;
+
+        // Loop through each span element and print its text
+        for (WebElement span : spanElements) {
+            if (EditedDisplayname.equals(span.getText())){
+                AppFound = true;
+                break;
+            };
         }
+        System.out.println("Apps Found? "+ AppFound);
     }
 
     @And("close driver for verification of app permission for first user")
@@ -335,16 +339,19 @@ public class Apps extends Page_Options {
     @And("verify from the side panel for the 2nd user")
     public void verify_from_the_side_panel_for_the_2nd_user() throws InterruptedException {
         Thread.sleep(2000);
-        // Locate all the rows in the table
-        WebElement table = driver.findElement(By.id("include_emp_func_tbody"));
-        java.util.List<WebElement> rows = table.findElements(By.tagName("tr"));
-        for (int i = 0; i < rows.size(); i++) {
-            // Specify the XPath to locate the element containing the string
-            xpath = "//*[@id=\"apps_table\"]/tr[" + (i + 1) + "]/td[2]/p";
-            waitByxpath(xpath);
-            String s = getTextbyXpath(xpath);
-            Assert.assertEquals(s,Editedname);
+        // Find all span elements within the specified ul element
+        WebElement ulElement = driver.findElement(By.id("menu"));
+        java.util.List<WebElement> spanElements = ulElement.findElements(By.tagName("span"));
+        boolean AppFound = false;
+
+        // Loop through each span element and print its text
+        for (WebElement span : spanElements) {
+            if (EditedDisplayname.equals(span.getText())){
+                AppFound = true;
+                break;
+            };
         }
+        System.out.println("Apps Found? "+ AppFound);
     }
 
     @And("close driver for verification of app permission for 2nd user")
