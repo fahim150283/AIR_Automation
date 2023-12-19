@@ -11,8 +11,8 @@ import org.testng.Assert;
 
 public class Apps extends Page_Options {
 
-    public static String AppName = Apps.Name+randomnumber();
-    public static String Editedname = Apps.EditedName+randomnumber();
+    public static String AppName = Apps.Name + randomnumber();
+    public static String Editedname = Apps.EditedName + randomnumber();
 
     /*
     create a new app
@@ -252,13 +252,13 @@ public class Apps extends Page_Options {
 
         //remove employees
         // Iterate through the rows to find the one with "1077" in the dropdown
-        for (int i = 0; i<rows2.size(); i++) {
-            xpath = "//*[@id=\"select2-add_emp_list_"+(i+1)+"-container\"]";
+        for (int i = 0; i < rows2.size(); i++) {
+            xpath = "//*[@id=\"select2-add_emp_list_" + (i + 1) + "-container\"]";
             String s = getTextbyXpath(xpath);
 
-            if (s.contains(Apps.EmployeeInfo[i]) && i%2 == 0 ) {
+            if (s.contains(Apps.EmployeeInfo[i]) && i % 2 == 0) {
                 //select the row
-                xpath = "//*[@id=\"include_emp_func_tbody\"]/tr["+(i+1)+"]/td[1]/input";
+                xpath = "//*[@id=\"include_emp_func_tbody\"]/tr[" + (i + 1) + "]/td[1]/input";
                 clickbyxpath(xpath);
             }
         }
@@ -309,17 +309,17 @@ public class Apps extends Page_Options {
     @And("verify from the side panel for the first user")
     public void verify_from_the_side_panel_for_the_first_user() throws InterruptedException {
         Thread.sleep(2000);
-        // Specify the XPath to locate the element containing the string
-        String xpathExpression = "//*[contains(text(), 'Fight_Club')]";
 
-        // Find the element using the XPath
-        WebElement element = driver.findElement(By.xpath(xpathExpression));
-
-        Boolean found = false;
-        if (element != null) {
-            found = true;
+        // Locate all the rows in the table
+        WebElement table = driver.findElement(By.id("include_emp_func_tbody"));
+        java.util.List<WebElement> rows = table.findElements(By.tagName("tr"));
+        for (int i = 0; i < rows.size(); i++) {
+            // Specify the XPath to locate the element containing the string
+            xpath = "//*[@id=\"apps_table\"]/tr[" + (i + 1) + "]/td[2]/p";
+            waitByxpath(xpath);
+            String s = getTextbyXpath(xpath);
+            Assert.assertEquals(s,Editedname);
         }
-        Assert.assertTrue(found);
     }
 
     @And("close driver for verification of app permission for first user")
@@ -329,23 +329,22 @@ public class Apps extends Page_Options {
 
     @Then("login for checking access of 2nd user")
     public void login_for_checking_access_of_2nd_user() {
-        Login_AIR2_AIR(Users.user_Fahim);
+        Login_AIR2(Users.user_Ashik);
     }
 
     @And("verify from the side panel for the 2nd user")
     public void verify_from_the_side_panel_for_the_2nd_user() throws InterruptedException {
         Thread.sleep(2000);
-        // Specify the XPath to locate the element containing the string
-        String xpathExpression = "//*[contains(text(), 'Fight_Club')]";
-
-        // Find the element using the XPath
-        WebElement element = driver.findElement(By.xpath(xpathExpression));
-
-        Boolean found = false;
-        if (element != null) {
-            found = true;
+        // Locate all the rows in the table
+        WebElement table = driver.findElement(By.id("include_emp_func_tbody"));
+        java.util.List<WebElement> rows = table.findElements(By.tagName("tr"));
+        for (int i = 0; i < rows.size(); i++) {
+            // Specify the XPath to locate the element containing the string
+            xpath = "//*[@id=\"apps_table\"]/tr[" + (i + 1) + "]/td[2]/p";
+            waitByxpath(xpath);
+            String s = getTextbyXpath(xpath);
+            Assert.assertEquals(s,Editedname);
         }
-        Assert.assertTrue(found);
     }
 
     @And("close driver for verification of app permission for 2nd user")
