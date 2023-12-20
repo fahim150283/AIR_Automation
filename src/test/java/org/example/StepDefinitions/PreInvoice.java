@@ -120,7 +120,7 @@ public class PreInvoice extends Page_Options {
         //click the items bar and add 15 items
         for (int i = 0; i < PreInvoices.Items.length; i++) {
             xpath = "//*[@id=\"add_pre_invoice_form\"]/div/div[4]/div[6]/span/span[1]/span";
-            Thread.sleep(100);
+            Thread.sleep(10);
             inputbyxpath(xpath, PreInvoices.Items[i]);
             Thread.sleep(10);
             pressEnterbyXpath(xpath);

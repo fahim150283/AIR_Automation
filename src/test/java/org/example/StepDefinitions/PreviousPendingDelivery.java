@@ -13,9 +13,7 @@ public class PreviousPendingDelivery extends Page_Options {
     public void login_to_search_previous_pending_delivery() {
         Login_AIR2_AIR(Users.user_Fahim);
 
-        cssSelector = ".active:nth-child(5) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Previous Pending Delivery");
     }
 
     @When("search for Previous Pending Delivery")
@@ -53,10 +51,7 @@ public class PreviousPendingDelivery extends Page_Options {
     @Given("login for creating new Previous Pending Delivery")
     public void login_for_creating_new_previous_pending_delivery() {
         Login_AIR2_AIR(Users.user_Fahim);
-
-        cssSelector = ".active:nth-child(5) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Previous Pending Delivery");
     }
 
     @And("create new Previous Pending Delivery")
@@ -113,11 +108,11 @@ public class PreviousPendingDelivery extends Page_Options {
 
         //invoice reference no
         id = "c_inv_ref";
-        inputbyid(id, "Automated Test");
+        inputbyid(id, PreviousPendingDelivery.Inv_Ref);
 
         //important notes
         id = "c_notes";
-        inputbyid(id, "Automated Test");
+        inputbyid(id, PreviousPendingDelivery.ImportantNotes);
 
         //click the items bar and choose product
         for (int i = 0; i < PreviousPendingDelivery.Items.length; i++) {

@@ -41,6 +41,8 @@ public class ReadJson {
         public static String ItemQuantity;
         public static String SearchInfo;
         public static String Store;
+        public static String Inv_Ref;
+        public static String ImportantNotes;
     }
 
     public static class Apps {
@@ -407,6 +409,8 @@ public class ReadJson {
                 PreviousPendingDelivery.ItemQuantity = (String) PreviousPendingDeliveryObject.get("ItemQuantity");
                 PreviousPendingDelivery.DistributorSearch = (String) PreviousPendingDeliveryObject.get("DistributorSearch");
                 PreviousPendingDelivery.Store = (String) PreviousPendingDeliveryObject.get("Store");
+                PreviousPendingDelivery.Inv_Ref = (String) PreviousPendingDeliveryObject.get("Inv_Ref");
+                PreviousPendingDelivery.ImportantNotes = (String) PreviousPendingDeliveryObject.get("ImportantNoted");
                 PreviousPendingDelivery.Items = Users.ItemsArray;
             }
             {// Read data from the "Apps" object
