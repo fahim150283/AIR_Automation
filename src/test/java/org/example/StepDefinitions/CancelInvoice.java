@@ -11,11 +11,8 @@ import org.openqa.selenium.WebElement;
 public class CancelInvoice extends Page_Options {
     @Given("Login to Search cancelled Invoice")
     public void login_to_search_cancelled_invoice() {
-        Login_AIR2_AIR(Users.user_Fahim);
-
-        cssSelector = ".menues-bar:nth-child(7) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Login_AIR2(Users.user_Haseeb);
+        Click_from_leftSideBar("Cancel Invoice");
     }
 
     @When("search for cancelled Invoice")
@@ -52,11 +49,8 @@ public class CancelInvoice extends Page_Options {
 
     @Given("login for cancellation of an Invoice")
     public void login_for_cancellation_of_an_invoice() {
-        Login_AIR2_AIR(Users.user_Fahim);
-
-        cssSelector = ".menues-bar:nth-child(7) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Login_AIR2(Users.user_Haseeb);
+        Click_from_leftSideBar("Cancel Invoice");
     }
     @And("create new cancel Invoice")
     public void create_new_cancel_invoice() throws InterruptedException {
@@ -64,6 +58,8 @@ public class CancelInvoice extends Page_Options {
         xpath = "/html/body/div[2]/div[2]/div/div[1]/div/div/div/div[4]/a[2]";
         waitByxpath(xpath);
         clickbyxpath(xpath);
+
+        Thread.sleep(2000);
 
         //date
         xpath = "//*[@id=\"c_actual_inv_date\"]";

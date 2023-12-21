@@ -1,5 +1,6 @@
 package org.example.StepDefinitions;
 
+import com.google.common.collect.Ordering;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -67,7 +68,7 @@ public class Order extends Page_Options {
         //search for bhai bhai and hit enter
         cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
         waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, "bhai bhai");
+        inputbycssselector(cssSelector, Order.DistributorSearch);
         cssSelectorPressEnter(cssSelector);
 
 
@@ -158,7 +159,8 @@ public class Order extends Page_Options {
             for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++) {
                 String s = getTextbyXpath("//tbody[@id='tbl_data']/tr[" + (i + 1) + "]/td[3]");
                 System.out.println("this is the found string: " + s);
-                if (Objects.equals(s, "Offer Type: Product")) {          //for the offer:products
+                if (Objects.equals(s, "Offer Type: Product")) {
+                    //for the offer:products
 //                    List<WebElement> rowsWithDropdowns = driver.findElements(By.xpath("//tbody[@id='tbl_data']/tr[td/select]"));
 //                        WebElement dropdownElement = driver.findElement(By.xpath("//*[@id=\"dis_product" + (1+ i) + "\"]"));
 //                        Select dropdown = new Select(dropdownElement);

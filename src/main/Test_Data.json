@@ -40,7 +40,8 @@
     "Checkbox": "Regular",
     "Cash Commission": "10",
     "OfferCTN": "5",
-    "OfferPCS": "5"
+    "OfferPCS": "5",
+    "Notes": "Automated Test"
   },
   "PreviousPendingDelivery": {
     "SearchInfo": "CH-23-001504",
@@ -77,10 +78,11 @@
     "CashCommission": "10"
   },
   "CancelOrder": {
-    "SearchInfo": "SO-00000010",
+    "SearchInfo": "SO-00000028",
     "DistributorSearch": "bhai bhai",
     "ItemQuantity": "5",
-    "Note": "Automated Test"
+    "Note": "Automated Test",
+    "partialCancel": true
   },
   "DistributorInvoice": {
     "SearchInfo": "SO-00000011",

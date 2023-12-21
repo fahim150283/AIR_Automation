@@ -204,7 +204,7 @@ public class PreInvoice extends Page_Options {
 
         //notes
         id = "c_notes";
-        inputbyid(id, "Automated Test");
+        inputbyid(id, PreInvoices.Notes);
 
         //Save
         Thread.sleep(3000);

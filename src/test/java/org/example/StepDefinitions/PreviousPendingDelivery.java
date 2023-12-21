@@ -117,12 +117,12 @@ public class PreviousPendingDelivery extends Page_Options {
         //click the items bar and choose product
         for (int i = 0; i < PreviousPendingDelivery.Items.length; i++) {
             xpath = "//*[@id=\"add_pending_product_delivery_form\"]/div/div[4]/div[4]/span/span[1]/span";
-            Thread.sleep(100);
+            Thread.sleep(10);
             System.out.println(PreviousPendingDelivery.Items[i]);
             inputbyxpath(xpath, PreviousPendingDelivery.Items[i]);
-            Thread.sleep(200);
+            Thread.sleep(20);
             pressEnterbyXpath(xpath);
-            Thread.sleep(100);
+            Thread.sleep(10);
 
             // press the plus button
             id = "c_add_ch_prod";
@@ -167,7 +167,7 @@ public class PreviousPendingDelivery extends Page_Options {
 
     @Then("close the Previous Pending Delivery window")
     public void close_the_previous_pending_delivery_window() throws InterruptedException {
-        Thread.sleep(4000);
+        Thread.sleep(1000);
         closedriver();
     }
 }

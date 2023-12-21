@@ -33,6 +33,7 @@ public class ReadJson {
         public static String Items[] = new String[15];
         public static String OfferCTN;
         public static String OfferPCS;
+        public static String Notes;
     }
 
     public static class PreviousPendingDelivery {
@@ -70,6 +71,7 @@ public class ReadJson {
         public static String DistributorSearch;
         public static String ItemQuantity;
         public static String Note;
+        public static boolean partialCancel;
     }
 
     public static class Invoices {
@@ -402,6 +404,7 @@ public class ReadJson {
                 PreInvoices.Items = Users.ItemsArray;
                 PreInvoices.OfferCTN = (String) PreInvoiceObject.get("OfferCTN");
                 PreInvoices.OfferPCS = (String) PreInvoiceObject.get("OfferPCS");
+                PreInvoices.Notes = (String) PreInvoiceObject.get("Notes");
             }
             {// Read data from the "PreviousPendingDelivery" object
                 JSONObject PreviousPendingDeliveryObject = (JSONObject) jsonObject.get("PreviousPendingDelivery");
@@ -441,6 +444,7 @@ public class ReadJson {
                 CancelOrder.ItemQuantity = (String) CancelOrderObject.get("ItemQuantity");
                 CancelOrder.DistributorSearch = (String) CancelOrderObject.get("DistributorSearch");
                 CancelOrder.Note = (String) CancelOrderObject.get("Note");
+                CancelOrder.partialCancel = (boolean) CancelOrderObject.get("partialCancel");
             }
             {// Read data from the "DistributorInvoice" object
                 JSONObject DistributorInvoiceObject = (JSONObject) jsonObject.get("DistributorInvoice");

@@ -16,7 +16,8 @@ public class CancelOrder extends Page_Options {
     }
 
     @When("search for CancelOrder")
-    public void search_for_cancel_order() {
+    public void search_for_cancel_order() throws InterruptedException {
+        Thread.sleep(2000);
         xpath = "//*[@id=\"tableData_filter\"]/label/input";
         waitByxpath(xpath);
         inputbyxpath(xpath, CancelOrder.SearchInfo);
@@ -69,19 +70,19 @@ public class CancelOrder extends Page_Options {
         inputbyid(id, CancelOrder.Note);
 
         //partial cancel or full cancel
-        Boolean fullCancel = false; //Default is Full Cancel
+        Boolean PartialCancel = CancelOrder.partialCancel;
 
             for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"c_inv_items_list\"]"); i++) {
-                if (fullCancel == false && i%2 ==0 ) {
+                if (PartialCancel == true && i%2 ==0 ) {
                 //CTN
-                Thread.sleep(200);
+                Thread.sleep(20);
                 xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[5]/input";
                 waitByxpath(xpath);
                 clearByXpath(xpath);
                 inputbyxpath(xpath, CancelOrder.ItemQuantity); //here the number is the quantity that will be deleted
 
                 //PCS
-                Thread.sleep(200);
+                Thread.sleep(20);
                 xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[6]/input";
                 waitByxpath(xpath);
                 clearByXpath(xpath);
