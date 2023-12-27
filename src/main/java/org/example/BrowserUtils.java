@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -130,5 +131,19 @@ public class BrowserUtils extends ReadJson {
         wait.until(ExpectedConditions.elementToBeClickable(By.className(name)));
         element.click();
     }
+//    public static String dateTest(String name) {
+//        WebElement dateTimeInput = driver.findElement(By.xpath(name));
+//// Click on the input field to focus on it
+//        dateTimeInput.click();
+//
+//        // Use Actions class to send arrow keys to navigate and select the date
+//        Actions actions = new Actions(driver);
+//        actions.sendKeys(Keys.ARROW_DOWN) // Modify these steps according to your date picker
+//                .sendKeys(Keys.ARROW_RIGHT)
+//                .sendKeys(Keys.ARROW_RIGHT)
+//                .sendKeys(Keys.ENTER)
+//                .build()
+//                .perform();
+//
+//    }
 }
-

@@ -64,7 +64,7 @@ public class CancelInvoice extends Page_Options {
         //date
         xpath = "//*[@id=\"c_actual_inv_date\"]";
         waitByxpath(xpath);
-        inputbyxpath(xpath, getToday());
+        inputbyxpath(xpath, dateTest(xpath));
 
         //order list
         Thread.sleep(200);
