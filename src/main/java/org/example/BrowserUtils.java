@@ -9,6 +9,11 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Objects;
+
 public class BrowserUtils extends ReadJson {
     public static WebDriver driver;
     public static String[] returnedarray = ReadJson.readJsonData();  //This is just to call the function to read the files.
@@ -22,7 +27,7 @@ public class BrowserUtils extends ReadJson {
         driver = new ChromeDriver(co);
     }
 
-    public static void setDriverFirefox(){
+    public static void setDriverFirefox() {
         // Setup Firefox WebDriver using webdrivermanager
         System.setProperty("webdriver.gecko.driver", "D:/Software/geckodriver.exe");
         FirefoxOptions options = new FirefoxOptions();
@@ -125,25 +130,104 @@ public class BrowserUtils extends ReadJson {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.elementToBeClickable(By.className(name)));
         element.click();
-    }public static void RowCount(String name) {
+    }
+
+    public static void RowCount(String name) {
         WebElement element = driver.findElement(By.className(name));
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.elementToBeClickable(By.className(name)));
         element.click();
     }
-//    public static String dateTest(String name) {
-//        WebElement dateTimeInput = driver.findElement(By.xpath(name));
-//// Click on the input field to focus on it
-//        dateTimeInput.click();
+
+    public static void DateSet(String xpath) throws InterruptedException {
+        // Get current date and time
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy hh:mm a");
+        String formattedDateTime = currentDateTime.format(formatter);
+        System.out.println(formattedDateTime);
+
+        // Click on the input field to focus on it
+        WebElement dateTimeInput = driver.findElement(By.xpath(xpath));
+        dateTimeInput.click();
+        Actions actions = new Actions(driver);
+        for (int i = 0; i < 6; i++) {
+            actions.sendKeys(Keys.ARROW_LEFT).build().perform();
+        }
+
+        // Split the formatted date-time into parts
+        String[] parts = formattedDateTime.split(" ");
+        String datePart = parts[0]; // Date part
+        String timePart = parts[1]; // Time part
+        String amPmPart = parts[2]; // AM/PM part
+
+        // Split the date part into year, month, and day
+        String[] dateParts = datePart.split("-");
+        int desiredMonth = Integer.parseInt(dateParts[0]);
+        int desiredDay = Integer.parseInt(dateParts[1]);
+        int desiredYear = Integer.parseInt(dateParts[2]);
+
+        // Split the time part into hour and minute
+        String[] timeParts = timePart.split(":");
+        int desiredHour = Integer.parseInt(timeParts[0]);
+        int desiredMinute = Integer.parseInt(timeParts[1]);
+
+
+        // Navigate to the desired month
+
+        actions.sendKeys(Keys.BACK_SPACE).build().perform();
+        for (int currentMonth = 00; currentMonth != desiredMonth; currentMonth ++) {
+            if (currentMonth < desiredMonth) {
+                actions.sendKeys(Keys.ARROW_UP).build().perform();
+            } else {
+                actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+            }
+        }
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+
+        // Navigate to the desired day
+        actions.sendKeys(Keys.BACK_SPACE).build().perform();
+        for (int currentDay = 00; currentDay != desiredDay; currentDay ++) {
+            if (currentDay > desiredDay) {
+                actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+            } else {
+                actions.sendKeys(Keys.ARROW_UP).build().perform();
+            }
+        }
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+
+
+        // Navigate to the desired year
+        actions.sendKeys(Keys.ARROW_UP).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+
+//        // Navigate to the desired hour
+//        actions.sendKeys(Keys.BACK_SPACE).build().perform();
+//        for (int currentHour = 00; currentHour != desiredHour; currentHour ++) {
+//            if (currentHour > desiredHour) {
+//                actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+//            } else {
+//                actions.sendKeys(Keys.ARROW_UP).build().perform();
+//            }
+//        }
+//        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
 //
-//        // Use Actions class to send arrow keys to navigate and select the date
-//        Actions actions = new Actions(driver);
-//        actions.sendKeys(Keys.ARROW_DOWN) // Modify these steps according to your date picker
-//                .sendKeys(Keys.ARROW_RIGHT)
-//                .sendKeys(Keys.ARROW_RIGHT)
-//                .sendKeys(Keys.ENTER)
-//                .build()
-//                .perform();
+//        // Navigate to the desired minute
+//        actions.sendKeys(Keys.BACK_SPACE).build().perform();
+//        for (int currentMinute = 00; currentMinute != desiredMinute; currentMinute ++) {
+//            if (currentMinute > desiredMinute) {
+//                actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+//            } else {
+//                actions.sendKeys(Keys.ARROW_UP).build().perform();
+//            }
+//        }
+//        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
 //
-//    }
+//        // Toggle AM/PM if needed
+//        actions.sendKeys(Keys.BACK_SPACE).build().perform();
+//        if (Objects.equals(amPmPart, "PM")) {
+//            actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+//        } else {
+//            actions.sendKeys(Keys.ARROW_UP).build().perform();
+//        }
+    }
 }
