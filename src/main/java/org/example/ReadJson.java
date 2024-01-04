@@ -90,7 +90,9 @@ public class ReadJson {
         public static String DistributorSearch;
         public static String Store;
         public static String Note;
-        public static String ItemQuantity;
+        public static int Gift;
+        public static int Quantity;
+        public static int Comp;
     }
 
     public static class ComplementaryInvoice {
@@ -461,7 +463,6 @@ public class ReadJson {
             {// Read data from the "CancelInvoice" object
                 JSONObject CancelInvoiceObject = (JSONObject) jsonObject.get("Cancel Invoice");
                 CancelInvoice.SearchInfo = (String) CancelInvoiceObject.get("SearchInfo");
-                CancelInvoice.ItemQuantity = (String) CancelInvoiceObject.get("ItemQuantity");
                 CancelInvoice.DistributorSearch = (String) CancelInvoiceObject.get("DistributorSearch");
                 CancelInvoice.Store = (String) CancelInvoiceObject.get("Store");
                 CancelInvoice.Note = (String) CancelInvoiceObject.get("Note");

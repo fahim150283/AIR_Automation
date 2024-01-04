@@ -67,7 +67,7 @@ public class CancelInvoice extends Page_Options {
         DateSet(xpath);
 
         //order list
-        Thread.sleep(200);
+        Thread.sleep(300);
         xpath = "//*[@id=\"select2-invoice_list-container\"]";
         waitByxpath(xpath);
         clickbyxpath(xpath);
