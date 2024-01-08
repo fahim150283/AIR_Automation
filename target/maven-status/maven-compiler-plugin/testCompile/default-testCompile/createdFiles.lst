@@ -1,11 +1,9 @@
 org\example\Runner\DashboardTestRunner.class
 org\example\Runner\CollectionsTestRunner.class
-org\example\Runner\Rishat_SupplierTestRunner.class
 org\example\Runner\DistributorInvoicesTestRunner.class
 org\example\Runner\OrderTestRunner.class
 org\example\StepDefinitions\ProductCategories.class
 org\example\Runner\GoodsRequisitionTestRunner.class
-org\example\StepDefinitions\Rishat_Supplier.class
 org\example\Runner\AppsTestRunner.class
 org\example\StepDefinitions\Contacts.class
 org\example\StepDefinitions\Distributors.class
