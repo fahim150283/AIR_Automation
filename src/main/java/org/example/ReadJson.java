@@ -111,6 +111,15 @@ public class ReadJson {
         public static String CollectedBy;
         public static String CollectionAmount;
         public static String MoneyReceipt;
+        public static String InstrumentType;
+        public static String Field1;
+        public static String Field2;
+        public static String Field3;
+        public static String Field4;
+        public static String Field5;
+        public static Boolean AdvanceCollection;
+        public static Boolean AdjustFromAdvance;
+        public static Boolean CollectionInCash;
     }
 
     public static class GROVS {
@@ -484,6 +493,16 @@ public class ReadJson {
                 Collection.CollectedBy = (String) CollectionObject.get("CollectedBy");
                 Collection.CollectionAmount = (String) CollectionObject.get("CollectionAmount");
                 Collection.MoneyReceipt = (String) CollectionObject.get("MoneyReceipt");
+                Collection.AdvanceCollection = (Boolean) CollectionObject.get("AdvanceCollection");
+                Collection.AdjustFromAdvance = (Boolean) CollectionObject.get("AdjustFromAdvance");
+                Collection.CollectionInCash = (Boolean) CollectionObject.get("CollectionInCash");
+                Collection.InstrumentType = (String) CollectionObject.get("InstrumentType");
+                Collection.MoneyReceipt = (String) CollectionObject.get("MoneyReceipt");
+                Collection.Field1 = (String) CollectionObject.get("Field1");
+                Collection.Field2 = (String) CollectionObject.get("Field2");
+                Collection.Field3 = (String) CollectionObject.get("Field3");
+                Collection.Field4 = (String) CollectionObject.get("Field4");
+                Collection.Field5 = (String) CollectionObject.get("Field5");
             }
             {// Read data from the "Good Requisition and On Vehicle Store" object
                 JSONObject GROVS_Object = (JSONObject) jsonObject.get("Good Requisition and On Vehicle Store");

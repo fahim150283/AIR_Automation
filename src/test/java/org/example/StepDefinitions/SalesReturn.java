@@ -17,7 +17,7 @@ import java.util.Objects;
 
 public class SalesReturn extends Page_Options {
     @Given("Login to Search Sales Return")
-    public void login_to_search_sales_return() {
+    public void login_to_search_sales_return() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Sales Return");
     }

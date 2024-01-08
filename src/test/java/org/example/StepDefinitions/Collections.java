@@ -5,6 +5,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.Random;
 
@@ -37,11 +40,9 @@ public class Collections extends Page_Options {
 
     @Given("login for creating Collection")
     public void login_for_creating_collection() {
-        Login_AIR2_AIR(Users.user_Fahim);
+        Login_AIR2(Users.user_Haseeb);
 
-        cssSelector = ".menues-bar:nth-child(9) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Collections");
     }
 
     @And("create new Collection")
@@ -70,7 +71,7 @@ public class Collections extends Page_Options {
         inputbyid(id, Collection.CollectedBy);
 
         //Advance Collection or Collection for order
-        Boolean advanceCollection = false;
+        Boolean advanceCollection = Collection.AdvanceCollection;
         if (advanceCollection == true) {
             //enter pay amount
             id = "pay_amount";
@@ -82,10 +83,10 @@ public class Collections extends Page_Options {
             Random random = new Random();
             id = "mny_rcpt_num";
             waitById(id);
-            inputbyid(id,Collection.MoneyReceipt);
+            inputbyid(id,Collection.MoneyReceipt+random);
         } else {
             //Adjust from Advance or regular collection
-            Boolean adjustFromAdvance = false;
+            Boolean adjustFromAdvance = Collection.AdjustFromAdvance;
             if (adjustFromAdvance == true) {
                 //click the checkbox
                 id = "adjust_advance";
@@ -113,6 +114,257 @@ public class Collections extends Page_Options {
             clickByName(name);
 
         }
+
+
+
+        Boolean isCash = driver.findElement(By.xpath("//*[@id=\"inlineRadio1\"]")).isSelected();
+        if(isCash != Collection.CollectionInCash){
+            if (Collection.InstrumentType.contains("Direct Debit")){
+                // Find the dropdown element
+                // Select "Bank Cheque" by visible text
+                WebElement dropdown = driver.findElement(By.id("sel_instr_type"));
+                Select select = new Select(dropdown);
+                select.selectByVisibleText("Direct Debit");
+
+                //input date
+                xpath = "//*[@id=\"instru_date\"]";
+                inputbyxpath(xpath, getToday());
+
+                //input the  ac/slip/cheque/card number
+                xpath = "//*[@id=\"instru_num\"]";
+                inputbyxpath(xpath, Collection.Field1);
+
+                //input the  Bank
+                xpath = "//*[@id=\"instru_issuer\"]";
+                inputbyxpath(xpath, Collection.Field2);
+
+                //input the  card/branch/paid through
+                xpath = "//*[@id=\"instru_issue_to\"]";
+                inputbyxpath(xpath, Collection.Field3);
+
+                //input the name
+                xpath = "//*[@id=\"instru_provider\"]";
+                inputbyxpath(xpath, Collection.Field4);
+
+            }
+            else if (Collection.InstrumentType.contains("Bank Cheque")){
+                // Find the dropdown element
+                // Select "Bank Cheque" by visible text
+                WebElement dropdown = driver.findElement(By.id("sel_instr_type"));
+                Select select = new Select(dropdown);
+                select.selectByVisibleText("Bank Cheque");
+
+                //input date
+                xpath = "//*[@id=\"instru_date\"]";
+                inputbyxpath(xpath, getToday());
+
+                //input the  ac/slip/cheque/card number
+                xpath = "//*[@id=\"instru_num\"]";
+                inputbyxpath(xpath, Collection.Field1);
+
+                //input the  Bank
+                xpath = "//*[@id=\"instru_issuer\"]";
+                inputbyxpath(xpath, Collection.Field2);
+
+                //input the  card/branch/paid through
+                xpath = "//*[@id=\"instru_issue_to\"]";
+                inputbyxpath(xpath, Collection.Field3);
+
+                //input the name
+                xpath = "//*[@id=\"instru_provider\"]";
+                inputbyxpath(xpath, Collection.Field4);
+
+            }
+            else if (Collection.InstrumentType.contains("Credit Transfer")){
+                // Find the dropdown element
+                // Select "Bank Cheque" by visible text
+                WebElement dropdown = driver.findElement(By.id("sel_instr_type"));
+                Select select = new Select(dropdown);
+                select.selectByVisibleText("Credit Transfer");
+
+                //input date
+                xpath = "//*[@id=\"instru_date\"]";
+                inputbyxpath(xpath, getToday());
+
+                //input the  ac/slip/cheque/card number
+                xpath = "//*[@id=\"instru_num\"]";
+                inputbyxpath(xpath, Collection.Field1);
+
+                //input the  Bank
+                xpath = "//*[@id=\"instru_issuer\"]";
+                inputbyxpath(xpath, Collection.Field2);
+
+                //input the  card/branch/paid through
+                xpath = "//*[@id=\"instru_issue_to\"]";
+                inputbyxpath(xpath, Collection.Field3);
+
+                //input the name
+                xpath = "//*[@id=\"instru_provider\"]";
+                inputbyxpath(xpath, Collection.Field4);
+
+            }
+            else if (Collection.InstrumentType.contains("Credit Card")){
+                // Find the dropdown element
+                // Select "Bank Cheque" by visible text
+                WebElement dropdown = driver.findElement(By.id("sel_instr_type"));
+                Select select = new Select(dropdown);
+                select.selectByVisibleText("Credit Transfer");
+
+                //input date
+                xpath = "//*[@id=\"instru_date\"]";
+                inputbyxpath(xpath, getToday());
+
+                //input the  ac/slip/cheque/card number
+                xpath = "//*[@id=\"instru_num\"]";
+                inputbyxpath(xpath, Collection.Field1);
+
+                //input the  Bank
+                xpath = "//*[@id=\"instru_issuer\"]";
+                inputbyxpath(xpath, Collection.Field2);
+
+                //input the  card/branch/paid through
+                xpath = "//*[@id=\"instru_issue_to\"]";
+                inputbyxpath(xpath, Collection.Field3);
+
+                //input the name
+                xpath = "//*[@id=\"instru_provider\"]";
+                inputbyxpath(xpath, Collection.Field4);
+
+            }
+            else if (Collection.InstrumentType.contains("Debit Card")){
+                // Find the dropdown element
+                // Select "Bank Cheque" by visible text
+                WebElement dropdown = driver.findElement(By.id("sel_instr_type"));
+                Select select = new Select(dropdown);
+                select.selectByVisibleText("Debit Card");
+
+                //input date
+                xpath = "//*[@id=\"instru_date\"]";
+                inputbyxpath(xpath, getToday());
+
+                //input the  ac/slip/cheque/card number
+                xpath = "//*[@id=\"instru_num\"]";
+                inputbyxpath(xpath, Collection.Field1);
+
+                //input the  Bank
+                xpath = "//*[@id=\"instru_issuer\"]";
+                inputbyxpath(xpath, Collection.Field2);
+
+                //input the  card/branch/paid through
+                xpath = "//*[@id=\"instru_issue_to\"]";
+                inputbyxpath(xpath, Collection.Field3);
+
+                //input the name
+                xpath = "//*[@id=\"instru_provider\"]";
+                inputbyxpath(xpath, Collection.Field4);
+
+            }
+            else if (Collection.InstrumentType.contains("E-Money")){
+                // Find the dropdown element
+                // Select "Bank Cheque" by visible text
+                WebElement dropdown = driver.findElement(By.id("sel_instr_type"));
+                Select select = new Select(dropdown);
+                select.selectByVisibleText("E-Money");
+
+                //input date
+                xpath = "//*[@id=\"instru_date\"]";
+                inputbyxpath(xpath, getToday());
+
+                //input the  ac/slip/cheque/card number
+                xpath = "//*[@id=\"instru_num\"]";
+                inputbyxpath(xpath, Collection.Field1);
+
+                //input the  Bank
+                xpath = "//*[@id=\"instru_issuer\"]";
+                inputbyxpath(xpath, Collection.Field2);
+
+                //input the  card/branch/paid through
+                xpath = "//*[@id=\"instru_issue_to\"]";
+                inputbyxpath(xpath, Collection.Field3);
+
+                //input the name
+                xpath = "//*[@id=\"instru_provider\"]";
+                inputbyxpath(xpath, Collection.Field4);
+
+            }
+            else if (Collection.InstrumentType.contains("Telex Transfer (TT)")){
+                // Find the dropdown element
+                // Select "Bank Cheque" by visible text
+                WebElement dropdown = driver.findElement(By.id("sel_instr_type"));
+                Select select = new Select(dropdown);
+                select.selectByVisibleText("Telex Transfer (TT)");
+
+                //input date
+                xpath = "//*[@id=\"instru_date\"]";
+                inputbyxpath(xpath, getToday());
+
+                //input the  ac/slip/cheque/card number
+                xpath = "//*[@id=\"instru_num\"]";
+                inputbyxpath(xpath, Collection.Field1);
+
+                //input the  Bank
+                xpath = "//*[@id=\"instru_issuer\"]";
+                inputbyxpath(xpath, Collection.Field2);
+
+                //input the  card/branch/paid through
+                xpath = "//*[@id=\"instru_issue_to\"]";
+                inputbyxpath(xpath, Collection.Field3);
+
+                //input the name
+                xpath = "//*[@id=\"instru_provider\"]";
+                inputbyxpath(xpath, Collection.Field4);
+
+            }
+            else if (Collection.InstrumentType.contains("Demand Draft (DD)")){
+                // Find the dropdown element
+                // Select "Bank Cheque" by visible text
+                WebElement dropdown = driver.findElement(By.id("sel_instr_type"));
+                Select select = new Select(dropdown);
+                select.selectByVisibleText("Demand Draft (DD)");
+
+                //input date
+                xpath = "//*[@id=\"instru_date\"]";
+                inputbyxpath(xpath, getToday());
+
+                //input the  ac/slip/cheque/card number
+                xpath = "//*[@id=\"instru_num\"]";
+                inputbyxpath(xpath, Collection.Field1);
+
+                //input the  Bank
+                xpath = "//*[@id=\"instru_issuer\"]";
+                inputbyxpath(xpath, Collection.Field2);
+
+                //input the  card/branch/paid through
+                xpath = "//*[@id=\"instru_issue_to\"]";
+                inputbyxpath(xpath, Collection.Field3);
+
+                //input the name
+                xpath = "//*[@id=\"instru_provider\"]";
+                inputbyxpath(xpath, Collection.Field4);
+
+            }
+            else if (Collection.InstrumentType.contains("Credit Note")){
+                // Find the dropdown element
+                // Select "Bank Cheque" by visible text
+                WebElement dropdown = driver.findElement(By.id("sel_instr_type"));
+                Select select = new Select(dropdown);
+                select.selectByVisibleText("Credit Note");
+
+                //input date
+                xpath = "//*[@id=\"instru_date\"]";
+                inputbyxpath(xpath, getToday());
+
+                //input the  ac/slip/cheque/card number
+                xpath = "//*[@id=\"instru_num\"]";
+                inputbyxpath(xpath, Collection.Field1);
+
+                //input the name
+                xpath = "//*[@id=\"instru_provider\"]";
+                inputbyxpath(xpath, Collection.Field4);
+
+            }
+        }
+
         //click the save button
         id = "add_col";
         clickbyId(id);

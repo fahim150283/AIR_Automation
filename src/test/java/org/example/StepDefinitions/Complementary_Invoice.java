@@ -11,11 +11,9 @@ import org.openqa.selenium.WebElement;
 public class Complementary_Invoice extends Page_Options {
     @Given("Login to Search Complementary Invoice")
     public void login_to_search_complementary_invoice() {
-        Login_AIR2_AIR(Users.user_Fahim);
+        Login_AIR2(Users.user_Haseeb);
 
-        cssSelector = ".menues-bar:nth-child(10) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Complimentary Invoice");
     }
     @When("search for Complementary Invoice")
     public void search_for_complementary_invoice() throws InterruptedException {
@@ -49,14 +47,13 @@ public class Complementary_Invoice extends Page_Options {
 
     @Given("login for creation of an Complementary Invoice")
     public void login_for_creation_of_an_complementary_invoice() {
-        Login_AIR2_AIR(Users.user_Fahim);
+        Login_AIR2(Users.user_Haseeb);
 
-        cssSelector = ".menues-bar:nth-child(10) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Complimentary Invoice");
     }
     @And("create new Complementary Invoice")
     public void create_new_complementary_invoice() throws InterruptedException {
+        Thread.sleep(2000);
         //click the create new button
         xpath = "/html/body/div[2]/div[2]/div/div[1]/div/div/div/div[3]/a[2]";
         waitByxpath(xpath);
@@ -99,12 +96,11 @@ public class Complementary_Invoice extends Page_Options {
         //click the items bar
         for (int i = 0; i < Order.Items.length; i++) {
             xpath = "//*[@id=\"add_pending_product_delivery_form\"]/div/div[4]/div[4]/span/span[1]/span";
-            Thread.sleep(300);
-            System.out.println(Order.Items[i]);
+            Thread.sleep(30);
             inputbyxpath(xpath, Order.Items[i]);
-            Thread.sleep(100);
+            Thread.sleep(10);
             pressEnterbyXpath(xpath);
-            Thread.sleep(100);
+            Thread.sleep(10);
 
             // press the plus button
             id = "c_add_ch_prod";

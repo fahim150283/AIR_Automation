@@ -101,7 +101,7 @@
     "Note": "Automated Test"
   },
   "Complementary Invoice": {
-    "SearchInfo": "CI-23-000069",
+    "SearchInfo": "CI-23-000001",
     "DistributorSearch": "bhai bhai",
     "Store": "depot",
     "Note": "Automated Test",
@@ -109,11 +109,20 @@
     "InvoiceReferenceNo": "Test Reference"
   },
   "Collection": {
-    "SearchInfo": "SO-00000013",
+    "SearchInfo": "SO-00000052",
     "DistributorSearch": "bhai bhai",
+    "AdvanceCollection": true,
+    "AdjustFromAdvance": false,
+    "CollectionInCash": true,
     "CollectedBy": "Automatically Collected",
-    "CollectionAmount": "100000",
-    "MoneyReceipt": "Test MoneyReceipt 007"
+    "CollectionAmount": "1000000",
+    "InstrumentType": "Credit Card",
+    "MoneyReceipt": "TestMoneyReceipt",
+    "Field1": "9876543210",
+    "Field2": "Test Bank 1",
+    "Field3": "Test Bank 2",
+    "Field4": "Bkash/Gulshan/VISA",
+    "Field5": "SJIBL"
   },
   "Good Requisition and On Vehicle Store": {
     "SearchInfo": "FSR-23-000036",
