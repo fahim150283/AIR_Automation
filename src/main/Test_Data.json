@@ -129,7 +129,7 @@
     "RequestFrom": "Cumilla",
     "RequestTo": "Factory",
     "ItemQuantity": "20",
-    "AcceptedQuantity": "5",
+    "AcceptedQuantity": "15",
     "Vehicle": "factory"
   },
   "FG Store": {

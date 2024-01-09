@@ -8,11 +8,15 @@ public class test extends Page_Options {
 
     @Test
     public void login_for_creating_new_pre_invoice() throws InterruptedException {
-        navigatetourl("https://demo.guru99.com/test/");
-        Thread.sleep(1000);
-        xpath = "/html/body/form/input[1]";
-        getTextbyXpath(xpath);
-        DateSet(xpath);
-        Thread.sleep(2000);
+//        navigatetourl("https://demo.guru99.com/test/");
+//        Thread.sleep(1000);
+//        xpath = "/html/body/form/input[1]";
+//        getTextbyXpath(xpath);
+//        DateSet(xpath);
+//        Thread.sleep(2000);
+        for (int k = 0; k < Offer.GiftItem.length; k++) {
+            System.out.println(Offer.GiftItem[k]+" is gift");
+            System.out.println(Offer.EItemProd[k]+" is prod");
+        }
     }
 }

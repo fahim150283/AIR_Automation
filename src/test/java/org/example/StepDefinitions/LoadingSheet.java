@@ -15,7 +15,7 @@ public class LoadingSheet extends Page_Options {
     */
     @Given("login for creating new  Loading sheet")
     public void login_for_creating_new_loading_sheet() {
-        Login_AIR2_AIR(Users.user_Fahim);
+        Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Loading Sheet");
     }
 
@@ -137,10 +137,8 @@ public class LoadingSheet extends Page_Options {
     */
     @Given("login for viewing new  Loading sheet")
     public void login_for_viewing_new_loading_sheet() {
-        Login_AIR2_AIR(Users.user_Fahim);
-        cssSelector = ".menues-bar:nth-child(19) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Login_AIR2(Users.user_Haseeb);
+        Click_from_leftSideBar("Loading Sheet");
     }
     @When("Search for a loading sheet")
     public void search_for_a_loading_sheet() throws InterruptedException {
@@ -182,7 +180,7 @@ public class LoadingSheet extends Page_Options {
     */
     @Given("login for printing new  Loading sheet")
     public void login_for_printing_new_loading_sheet() {
-        Login_AIR2_AIR(Users.user_Fahim);
+        Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Loading Sheet");
     }
     @Given("Click the print button of the loading sheet")

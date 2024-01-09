@@ -709,22 +709,22 @@ public class ReadJson {
                 Offer.Type = (String) Offer_Object.get("OfrType");
                 Offer.NumOfCategory = (String) Offer_Object.get("NumOfCategory");
                 Offer.NumOfOffers = (String) Offer_Object.get("NumOfOffers");
-                for (int i = 0; i < Integer.parseInt(Offer.NumOfCategory); i++) {
+                for (int i = 0; i < Offer.ItemCatg.length; i++) {
                     Offer.ItemCatg[i] = (String) Offer_Object.get("ItemCatg" + (i + 1));
                 }
-                for (int i = 0; i < Integer.parseInt(Offer.NumOfCategory); i++) {
+                for (int i = 0; i < Offer.ItemSubCatg.length; i++) {
                     Offer.ItemSubCatg[i] = (String) Offer_Object.get("ItemSubCatg" + (i + 1));
                 }
-                for (int i = 0; i < Integer.parseInt(Offer.NumOfCategory); i++) {
+                for (int i = 0; i <Offer.ItemProd.length; i++) {
                     Offer.ItemProd[i] = (String) Offer_Object.get("ItemProd" + (i + 1));
                 }
-                for (int i = 0; i < Integer.parseInt(Offer.NumOfCategory); i++) {
+                for (int i = 0; i < Offer.EItemSubCatg.length; i++) {
                     Offer.EItemSubCatg[i] = (String) Offer_Object.get("EItemSubCatg" + (i + 1));
                 }
-                for (int i = 0; i < Integer.parseInt(Offer.NumOfCategory); i++) {
+                for (int i = 0; i < Offer.EItemProd.length; i++) {
                     Offer.EItemProd[i] = (String) Offer_Object.get("EItemProd" + (i + 1));
                 }
-                for (int i = 0; i < Integer.parseInt(Offer.NumOfCategory); i++) {
+                for (int i = 0; i < Offer.GiftItem.length; i++) {
                     Offer.GiftItem[i] = (String) Offer_Object.get("GiftItem" + (i + 1));
                 }
 

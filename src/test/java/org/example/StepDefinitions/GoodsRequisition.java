@@ -12,10 +12,8 @@ import org.openqa.selenium.support.ui.Select;
 public class GoodsRequisition extends Page_Options {
     @Given("login for creation of a Goods Requisition")
     public void login_for_creation_of_a_goods_requisition() {
-        Login_AIR2_AIR(Users.user_Polash);
-        cssSelector = ".menues-bar:nth-child(12) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Login_AIR2(Users.user_Polash);
+        Click_from_leftSideBar("Goods Requisition");
     }
 
     @And("create new Goods Requisition")
@@ -35,7 +33,7 @@ public class GoodsRequisition extends Page_Options {
         id = "select2-req_from-container";
         waitById(id);
         clickbyId(id);
-        //search for noakhali and hit enter
+        //search for comilla and hit enter
         cssSelector = ".select2-search--dropdown > .select2-search__field";
         waitByCssSelector(cssSelector);
         inputbycssselector(cssSelector, GROVS.RequestFrom);
@@ -104,10 +102,8 @@ public class GoodsRequisition extends Page_Options {
     //cancel  a good requisition
     @Given("login for cancellation of a requested Goods Requisition")
     public void login_for_cancellation_of_a_requested_goods_requisition() throws InterruptedException {
-        Login_AIR2_AIR(Users.user_Fahim);
-        cssSelector = ".menues-bar:nth-child(18) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Login_AIR2(Users.user_Haseeb);
+        Click_from_leftSideBar("Goods Requisition");
     }
 
     @And("cancel the good requisition")
@@ -133,10 +129,8 @@ public class GoodsRequisition extends Page_Options {
     //accept a good requisition
     @Given("login for accepting of a requested Goods Requisition")
     public void login_for_accepting_of_a_requested_goods_requisition() throws InterruptedException {
-        Login_AIR2_AIR(Users.user_Fahim);
-        cssSelector = ".menues-bar:nth-child(18) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Login_AIR2(Users.user_Haseeb);
+        Click_from_leftSideBar("Goods Requisition");
     }
 
     @And("Accept the good requisition")
@@ -201,10 +195,8 @@ public class GoodsRequisition extends Page_Options {
     //vehicle load
     @Given("login for vehicle load for a requested Goods Requisition")
     public void login_for_vehicle_load_for_a_requested_goods_requisition() {
-        Login_AIR2_AIR(Users.user_Fahim);
-        cssSelector = ".menues-bar:nth-child(22) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Login_AIR2(Users.user_Haseeb);
+        Click_from_leftSideBar("On Vehicle Store");
     }
 
     @And("vehicle load for the good requisition")
@@ -241,10 +233,8 @@ public class GoodsRequisition extends Page_Options {
     //Vehicle unload
     @Given("login for vehicle unload for a requested Goods Requisition")
     public void login_for_vehicle_unload_for_a_requested_goods_requisition() {
-        Login_AIR2_AIR(Users.user_Fahim);
-        cssSelector = ".menues-bar:nth-child(22) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Login_AIR2(Users.user_Haseeb);
+        Click_from_leftSideBar("On Vehicle Store");
     }
 
     @And("vehicle unload for the good requisition")
@@ -280,10 +270,8 @@ public class GoodsRequisition extends Page_Options {
 
     @Given("login for Receiving The Goods")
     public void login_for_receiving_the_goods() {
-        Login_AIR2_AIR(Users.user_Polash);
-        cssSelector = ".menues-bar:nth-child(12) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Login_AIR2(Users.user_Haseeb);
+        Click_from_leftSideBar("On Vehicle Store");
     }
 
     @And("Receive The Goods")

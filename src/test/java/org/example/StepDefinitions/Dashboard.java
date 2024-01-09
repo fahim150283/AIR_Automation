@@ -10,14 +10,12 @@ public class Dashboard extends Page_Options {
 
     @Given("^login for accessing dashboard$")
     public void dashboard() {
-        Login_AIR2_AIR(Users.user_Fahim);
+        Login_AIR2(Users.user_Haseeb);
     }
 
     @When("^click the Dashboard$")
     public void clickDashboard() {
-        cssSelector = ".active:nth-child(2) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Dashboard");
         switchTab();
         scrollToTheBottom();
     }

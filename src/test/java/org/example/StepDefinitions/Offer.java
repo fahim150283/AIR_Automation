@@ -29,10 +29,8 @@ public class Offer extends Page_Options {
     */
     @Given("login for creation of an offer")
     public void login_for_creation_of_an_offer() {
-        Login_AIR2_AIR(Users.user_Fahim);
-        cssSelector = ".menues-bar:nth-child(21) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Login_AIR2(Users.user_Haseeb);
+        Click_from_leftSideBar("Offer");
         System.out.println("The Expected page is : AIR - Offer");
         PrintPageTitle();
     }
@@ -69,7 +67,7 @@ public class Offer extends Page_Options {
         //Products Included in the Offer
         for (int k = 0; k < Num_Cat; k++) {
             //category
-            Thread.sleep(20);
+            Thread.sleep(50);
             xpath = "//*[@id=\"inc_prod_cat" + (k + 1) + "\"]";
 //
             WebElement CatgDropdown = driver.findElement(By.xpath(xpath));
@@ -78,14 +76,14 @@ public class Offer extends Page_Options {
 
 
             //sub category
-            Thread.sleep(20);
+            Thread.sleep(50);
             id = "inc_prod_sub_cat" + (k + 1);
             WebElement SubCatgDropdown = driver.findElement(By.id(id));
             CatgSelect = new Select(SubCatgDropdown);
             CatgSelect.selectByVisibleText(Offer.ItemSubCatg[k]);
 
             //product
-            Thread.sleep(20);
+            Thread.sleep(50);
             id = "inc_prod" + (k + 1);
             WebElement ProdDropdown = driver.findElement(By.id(id));
             CatgSelect = new Select(ProdDropdown);
@@ -94,14 +92,14 @@ public class Offer extends Page_Options {
             //Excluded items
 
             //sub category
-            Thread.sleep(20);
+            Thread.sleep(50);
             id = "ex_sub_cat" + (k + 1);
             WebElement Dropdown = driver.findElement(By.id(id));
             CatgSelect = new Select(Dropdown);
             CatgSelect.selectByVisibleText(Offer.EItemSubCatg[k]);
 
             //products
-            Thread.sleep(20);
+            Thread.sleep(50);
             xpath = "//*[@id=\"raw-row-id" + (21 + k) + "\"]/td[6]/span/span[1]/span";
             inputbyxpath(xpath, Offer.EItemProd[k]);
             Thread.sleep(10);
@@ -117,9 +115,9 @@ public class Offer extends Page_Options {
             }
 
             //remove last category
-            if (k + 1 == Num_Cat) {
+            if ((k + 1 == Num_Cat) && k>1) {
                 //click the checkbox
-                Thread.sleep(20);
+                Thread.sleep(50);
                 xpath = "//tr[@id=\'raw-row-id" + (21 + k) + "\']/td/label/span";
                 waitByxpath(xpath);
                 clickbyxpath(xpath);
@@ -132,6 +130,7 @@ public class Offer extends Page_Options {
 
         //offer type
         id = "offer_type";
+        clickbyId(id);
         WebElement Dropdown = driver.findElement(By.id(id));
         Select CatgSelect = new Select(Dropdown);
         CatgSelect.selectByVisibleText(Offer.Type);
@@ -139,11 +138,18 @@ public class Offer extends Page_Options {
 
 
         int numOfOffers = Integer.parseInt(Offer.NumOfOffers);
+        //Number of offers
+        int cnt = 0;
+        if (Num_Cat > 1) {
+            cnt = 1;
+        } else {
+            cnt = numOfOffers;
+        }
 
         //If cash
         if (Objects.equals(offer_type, "Cash")) {
-            //Number of offers
-            for (int k = 0; k < numOfOffers; k++) {
+
+            for (int k = 0; k < cnt; k++) {
 
                 //BDT or Precentage
                 if (k % 2 == 0) {
@@ -184,7 +190,7 @@ public class Offer extends Page_Options {
                 }
 
                 //click plus button
-                if (k < Num_Cat - 1) {
+                if ((k < cnt - 1) && driver.findElement(By.xpath("//*[@id=\"amount_group\"]/div/table/tfoot/tr/td/span[1]")).isDisplayed()) {
                     Thread.sleep(100);
                     xpath = "//*[@id=\"amount_group\"]/div/table/tfoot/tr/td/span[1]";
                     waitByxpath(xpath);
@@ -192,23 +198,25 @@ public class Offer extends Page_Options {
                     Thread.sleep(50);
                 }
             }
-            //delete the last category
-            //click the checkbox
-            xpath = "//tr[@id=\'raw-row-id33\']/td/label/span";
-            waitByxpath(xpath);
-            clickbyxpath(xpath);
-            //click delete button
-            xpath = "//div[2]/div/table/tfoot/tr/td/span[2]/i";
-            waitByxpath(xpath);
-            clickbyxpath(xpath);
 
+            if (cnt > 1) {
+                //delete the last category
+                //click the checkbox
+                xpath = "//tr[@id=\'raw-row-id33\']/td/label/span";
+                waitByxpath(xpath);
+                clickbyxpath(xpath);
+                //click delete button
+                xpath = "//div[2]/div/table/tfoot/tr/td/span[2]/i";
+                waitByxpath(xpath);
+                clickbyxpath(xpath);
+            }
 
         }
-        //if Product
+        //If Product
         else if (Objects.equals(offer_type, "Product")) {
 
             //category
-            for (int k = 0; k < numOfOffers; k++) {
+            for (int k = 0; k < cnt; k++) {
                 //min inv amount
                 id = "min_amnt" + (k + 1);
                 waitById(id);
@@ -221,13 +229,12 @@ public class Offer extends Page_Options {
 
                 //prod type
                 id = "min_prod_type" + (k + 1);
-                if (k%2 == 0){
+                if (k % 2 == 0) {
                     Dropdown = driver.findElement(By.id(id));
                     CatgSelect = new Select(Dropdown);
                     CatgSelect.selectByVisibleText("BDT");
                     Thread.sleep(90);
-                }
-                else {
+                } else {
                     Dropdown = driver.findElement(By.id(id));
                     CatgSelect = new Select(Dropdown);
                     CatgSelect.selectByVisibleText("Ctn");
@@ -251,45 +258,47 @@ public class Offer extends Page_Options {
                 //ctn
                 id = "ctn" + (k + 1);
                 clearByid(id);
-                inputbyid(id, ""+(k+1));
+                inputbyid(id, "" + (k + 1));
 
                 //pcs
                 id = "pcs" + (k + 1);
                 clearByid(id);
-                inputbyid(id, ""+(k+1));
+                inputbyid(id, "" + (k + 1));
 
-                //click the plus button to add a category
-                if (k < Num_Cat - 1) {
+                //click plus button
+                 if ((k+1 < cnt ) && driver.findElement(By.xpath("//*[@id=\"prod_cat_group\"]/div/table/tfoot/tr/td/span[1]")).isDisplayed()) {
                     Thread.sleep(100);
                     xpath = "//*[@id=\"prod_cat_group\"]/div/table/tfoot/tr/td/span[1]";
                     waitByxpath(xpath);
                     clickbyxpath(xpath);
-                    Thread.sleep(100);
+                    Thread.sleep(50);
                 }
-
             }
 
-            //click the checkbox
-            xpath = "//tr[@id='raw-row-id3']/td/label/span";
-            waitByxpath(xpath);
-            clickbyxpath(xpath);
-
-            //click the delete button
-            xpath = "//div[@id='prod_cat_group']/div/table/tfoot/tr/td/span[2]/i";
-            waitByxpath(xpath);
-            clickbyxpath(xpath);
+            if (cnt > 1) {
+                //delete the last category
+                //click the checkbox
+                xpath = "//tr[@id=\'raw-row-id33\']/td/label/span";
+                waitByxpath(xpath);
+                clickbyxpath(xpath);
+                //click delete button
+                xpath = "//div[2]/div/table/tfoot/tr/td/span[2]/i";
+                waitByxpath(xpath);
+                clickbyxpath(xpath);
+            }
 
         }
-        //if Gift
+        //If Gift
         else if (Objects.equals(offer_type, "Gift")) {
 
-            for (int k = 0; k < numOfOffers; k++) {
+            for (int k = 0; k < cnt; k++) {
                 //min amount
                 id = "g_min_amnt" + (k + 1);
                 waitById(id);
                 inputbyid(id, "" + (1000 * (k + 1)));
 
                 //gift name
+                Thread.sleep(50);
                 id = "gift_name" + (k + 1);
                 Dropdown = driver.findElement(By.id(id));
                 CatgSelect = new Select(Dropdown);
@@ -299,30 +308,34 @@ public class Offer extends Page_Options {
                 //quantity
                 id = "quantity" + (k + 1);
                 waitById(id);
-                inputbyid(id, ""+(k+1));
+                inputbyid(id, "" + (k + 1));
 
                 //click plus button
-                if (k < Num_Cat - 1) {
-                    Thread.sleep(1000);
+                if ((k+1 < cnt) && driver.findElement(By.xpath("//*[@id=\"gift_grp\"]/div/table/tfoot/tr/td/span[1]")).isDisplayed()) {
+                    Thread.sleep(100);
                     xpath = "//*[@id=\"gift_grp\"]/div/table/tfoot/tr/td/span[1]";
                     waitByxpath(xpath);
                     clickbyxpath(xpath);
-                    Thread.sleep(200);
+                    Thread.sleep(50);
                 }
             }
-            //delete the last category
-            //click the checkbox
-            xpath = "//*[@id=\"raw-row-id43\"]/td[1]/label/span";
-            waitByxpath(xpath);
-            clickbyxpath(xpath);
-            //click delete button
-            xpath = "//*[@id=\"gift_grp\"]/div/table/tfoot/tr/td/span[2]";
-            waitByxpath(xpath);
-            clickbyxpath(xpath);
+
+            if (cnt > 1) {
+                //delete the last category
+                //click the checkbox
+                xpath = "//tr[@id=\'raw-row-id33\']/td/label/span";
+                waitByxpath(xpath);
+                clickbyxpath(xpath);
+                //click delete button
+                xpath = "//div[2]/div/table/tfoot/tr/td/span[2]/i";
+                waitByxpath(xpath);
+                clickbyxpath(xpath);
+            }
         }
 
         //Eligibility
         {
+            Thread.sleep(20);
             //choose the region
             xpath = "//*[@id=\"add_offer_form\"]/div/div[4]/div[1]/span/span[1]/span/span/textarea";
             waitByxpath(xpath);
@@ -369,12 +382,11 @@ public class Offer extends Page_Options {
         //Active or inactive
         id = "is_active";
         WebElement checkbox = driver.findElement(By.id(id));
-        if (Objects.equals(Offer.Active, "YES")){
+        if (Objects.equals(Offer.Active, "YES")) {
             if (!checkbox.isSelected()) {
                 checkbox.click();
             }
-        }
-        else if(Objects.equals(Offer.Active, "NO")){
+        } else if (Objects.equals(Offer.Active, "NO")) {
             if (checkbox.isSelected()) {
                 checkbox.click();
             }
@@ -383,12 +395,11 @@ public class Offer extends Page_Options {
         //credit allowed
         id = "credit_allowed";
         checkbox = driver.findElement(By.id(id));
-        if (Objects.equals(Offer.CreditAllowed, "YES")){
+        if (Objects.equals(Offer.CreditAllowed, "YES")) {
             if (!checkbox.isSelected()) {
                 checkbox.click();
             }
-        }
-        else if(Objects.equals(Offer.CreditAllowed, "NO")){
+        } else if (Objects.equals(Offer.CreditAllowed, "NO")) {
             if (checkbox.isSelected()) {
                 checkbox.click();
             }
@@ -411,10 +422,10 @@ public class Offer extends Page_Options {
         Thread.sleep(4000);
         id = "search";
         waitById(id);
-        inputbyid(id,offerName);
+        inputbyid(id, offerName);
 
         Thread.sleep(2000);
-        row_element_click_By_xpath_and_id("//tbody[@id='offer_table']//tr[./td[contains(text(),'"+(offerName)+"')]]", "btn_view");
+        row_element_click_By_xpath_and_id("//tbody[@id='offer_table']//tr[./td[contains(text(),'" + (offerName) + "')]]", "btn_view");
     }
 
     @And("Copy required elements")
