@@ -9,7 +9,7 @@ import org.example.Page_Options;
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber-reports-html/Apps.html",
                 "json:target/cucumber-reports/Apps.json"},
-        features = {"G:/Abul Hossain Chowdhury/Projects/Cucumber_For_AIR/src/test/resources/Features/Apps.feature"},
+        features = {"src/test/resources/Features/Apps.feature"},
         glue = {"org.example.StepDefinitions"}
 //        ,tags = "@regression" //it runs all the scenarios of the feature file that contains @regression
 //        ,tags = "@google"  //it runs all the scenarios of the feature file that contains @google
