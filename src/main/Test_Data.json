@@ -319,7 +319,7 @@
     }
   },
   "Offer": {
-    "OfrType": "Gift",
+    "OfrType": "Cash",
     "NumOfCategory": "5",
     "NumOfOffers": "5",
     "ItemCatg1": "PREMIUM",
