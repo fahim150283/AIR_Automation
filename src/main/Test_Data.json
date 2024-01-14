@@ -95,8 +95,8 @@
     "OfferCTN": "5"
   },
   "Cancel Invoice": {
-    "SearchInfo": "SI-00000048",
-    "DistributorSearch": "Ma Traders",
+    "SearchInfo": "SI-00000002",
+    "DistributorSearch": "00000002",
     "Store": "depot",
     "Note": "Automated Test"
   },
