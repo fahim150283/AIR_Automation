@@ -27,7 +27,6 @@ public class GoodsRequisition extends Page_Options {
         waitById(id);
         clickbyId(id);
         inputbyid(id, getTodaynTime());
-        pressEnterById(id);
 
         //send request from
         id = "select2-req_from-container";
@@ -91,6 +90,8 @@ public class GoodsRequisition extends Page_Options {
         //save
         xpath = "//button[@id='send_req_fg_store']";
         clickbyxpath(xpath);
+
+        AlertAccept();
         GetConfirmationMessage();
     }
 

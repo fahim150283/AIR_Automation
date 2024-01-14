@@ -15,9 +15,11 @@ import java.util.Objects;
 
 public class Order extends Page_Options {
 
+    public static String refernce_no = Order.Refference_No+randomnumber();
+
     @Given("Login to Search Order")
     public void login_to_search_order() {
-       Login_AIR2(Users.user_Haseeb);
+        Login_AIR2(Users.user_Haseeb);
 
         Click_from_leftSideBar("Orders");
     }
@@ -48,6 +50,7 @@ public class Order extends Page_Options {
 
         Click_from_leftSideBar("Orders");
     }
+
     @And("create new Order")
     public void create_new_order() throws InterruptedException {
         //click the new order button
@@ -100,7 +103,7 @@ public class Order extends Page_Options {
 
         //Refference No
         id = "c_inv_ref";
-        inputbyid(id, Order.Refference_No);
+        inputbyid(id, refernce_no);
 
         //cash commission
         xpath = "//*[@id=\"c_cash_com\"]";
@@ -127,12 +130,12 @@ public class Order extends Page_Options {
         //click the amount buttons for the quantity of the items
         for (int i = 0; i < Order.Items.length; i++) {
             //ctn(quantity)
-            xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[5]/input";
+            xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
             waitByxpath(xpath);
             clearByXpath(xpath);
             inputbyxpath(xpath, Order.ItemQuantity);
             //pcs(quantity)
-            xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[6]/input";
+            xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[6]/input";
             waitByxpath(xpath);
             clearByXpath(xpath);
             inputbyxpath(xpath, Order.ItemQuantity);
@@ -144,9 +147,9 @@ public class Order extends Page_Options {
         // Iterate through rows
         for (int i = 0; i < rows.size(); i++) {
             WebElement row = rows.get(i);
-            if (i% 5 == 0) {
+            if (i % 5 == 0) {
                 // Find and click the "delete" button for the visible row
-                WebElement delete_Button = row.findElement(By.xpath("//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[12]/button"));
+                WebElement delete_Button = row.findElement(By.xpath("//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[12]/button"));
                 delete_Button.click();
             }
         }
@@ -166,7 +169,7 @@ public class Order extends Page_Options {
 //                        Select dropdown = new Select(dropdownElement);
 //                        dropdown.selectByIndex(1);
 
-                    String dropdownXpath = "//*[@id='tbl_data']/tr[" + (i+1) + "]/td[5]//select";
+                    String dropdownXpath = "//*[@id='tbl_data']/tr[" + (i + 1) + "]/td[5]//select";
                     //Selecting the dropdown options only for where available
                     try {
                         WebElement dropdownElement = driver.findElement(By.xpath(dropdownXpath));

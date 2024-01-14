@@ -70,22 +70,22 @@
     "Employee info10": "Mehedi Hasan Siam"
   },
   "Order": {
-    "SearchInfo": "SO-00000012",
+    "SearchInfo": "SO-00000003",
     "DistributorSearch": "bhai bhai",
     "ItemQuantity": "20",
     "Note": "Automated Test",
-    "Refference No": "Testing Ref No 007",
+    "Refference No": "Testing Ref No ",
     "CashCommission": "10"
   },
   "CancelOrder": {
-    "SearchInfo": "SO-00000028",
+    "SearchInfo": "SO-00000003",
     "DistributorSearch": "bhai bhai",
     "ItemQuantity": "5",
     "Note": "Automated Test",
     "partialCancel": true
   },
   "DistributorInvoice": {
-    "SearchInfo": "SO-00000011",
+    "SearchInfo": "SO-00000002",
     "DistributorSearch": "bhai bhai",
     "Store": "depot",
     "Note": "Automated Test",
@@ -133,17 +133,21 @@
     "Vehicle": "factory"
   },
   "FG Store": {
-    "SearchInfo": "DM-SHA-15-1844",
-    "Name": "Test FG Store",
-    "Code": "CMV",
+    "SearchInfo": "EditedFGstore",
+    "Name": "TestFGstore",
+    "Code": "TV",
+    "Type": "Vehicle",
+    "Activity": true,
     "Definition": "Test Definition",
     "EditedDefinition": "Edited Test Definition",
     "Address": "Test Address",
     "EditedAddress": "Edited Test Address",
-    "EditedCode": "CMV",
-    "EditedName": "Edited Name",
+    "EditedCode": "EV",
+    "EditedName": "EditedFGstore",
+    "EditedType": "Vehicle",
     "Region": "Cumilla",
     "Depots": "Cumilla",
+    "EditedActivity": true,
     "Store": "Depot Store",
     "Quantity": "20"
   },

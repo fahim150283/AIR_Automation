@@ -93,6 +93,8 @@ public class CancelOrder extends Page_Options {
         //save
         xpath = "//*[@id=\"add_region\"]";
         clickbyxpath(xpath);
+        clickbyxpath(xpath);
+        Thread.sleep(100);
 
         AlertAccept();
         GetConfirmationMessage();

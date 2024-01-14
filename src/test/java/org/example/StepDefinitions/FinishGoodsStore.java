@@ -10,15 +10,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import java.io.Closeable;
+import java.util.Objects;
 
 public class FinishGoodsStore extends Page_Options {
+
+    public static String randomno = randomnumber()+"";
     @Given("Login to Search a FG Store")
     public void login_to_search_a_fg_store() {
-        Login_AIR2_AIR(Users.user_Fahim);
+        Login_AIR2(Users.user_Polash);
 
-        cssSelector = ".menues-bar:nth-child(16) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Finish Goods Store");
     }
     @When("search for FG Store")
     public void search_for_fg_store() throws InterruptedException {
@@ -56,11 +57,9 @@ public class FinishGoodsStore extends Page_Options {
 
     @Given("Login to edit a FG Store")
     public void login_to_edit_a_fg_store() {
-        Login_AIR2_AIR(Users.user_Fahim);
+        Login_AIR2(Users.user_Polash);
 
-        cssSelector = ".menues-bar:nth-child(16) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Finish Goods Store");
     }
     @When("search for a FG Store")
     public void search_for_a_fg_store() throws InterruptedException {
@@ -88,17 +87,17 @@ public class FinishGoodsStore extends Page_Options {
         //fg store code
         id = "edit_code";
         clearById(id);
-        inputbyid(id,FGS.EditedCode+randomnumber());
+        inputbyid(id,FGS.EditedCode+randomno);
 
         //fg store name
         id = "edit_name";
         clearById(id);
-        inputbyid(id,FGS.EditedName);
+        inputbyid(id,FGS.EditedName+randomno);
 
-        boolean store= true;
+        String store = FGS.EditedType;
         System.out.println(store);
 
-        if (store == true){
+        if (Objects.equals(store, "Store")){
             WebElement dropdownElement = driver.findElement(By.id("edit_type"));
             Select dropdown = new Select(dropdownElement);
             dropdown.selectByValue("Store");
@@ -164,11 +163,9 @@ public class FinishGoodsStore extends Page_Options {
 
     @Given("Login to Create a FG Store")
     public void login_to_create_a_fg_store() {
-        Login_AIR2_AIR(Users.user_Fahim);
+        Login_AIR2(Users.user_Polash);
 
-        cssSelector = ".menues-bar:nth-child(16) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Finish Goods Store");
     }
     @Given("create a store new FG Store")
     public void create_a_store_new_fg_store() throws InterruptedException {
@@ -183,17 +180,17 @@ public class FinishGoodsStore extends Page_Options {
 
         //store code
         id = "add_code";
-        inputbyid(id,FGS.Code+randomnumber());
+        inputbyid(id,FGS.Code+randomno);
 
         //store name
         id = "add_name";
-        inputbyid(id, FGS.Name);
+        inputbyid(id, FGS.Name+randomno);
 
         //type
-        boolean store= true;
+        String store = FGS.Type;
         System.out.println(store);
 
-        if (store == true){
+        if (Objects.equals(store, "Store")){
             WebElement dropdownElement = driver.findElement(By.id("type"));
             Select dropdown = new Select(dropdownElement);
             dropdown.selectByValue("Store");
@@ -206,12 +203,12 @@ public class FinishGoodsStore extends Page_Options {
         //definition
         id = "add_defination";
         clearById(id);
-        inputbyid(id,FGS.EditedDefinition);
+        inputbyid(id,FGS.Definition);
 
         //address
         id = "add_address";
         clearById(id);
-        inputbyid(id,FGS.EditedAddress);
+        inputbyid(id,FGS.Address);
 
         //Region
         Thread.sleep(200);
@@ -231,25 +228,10 @@ public class FinishGoodsStore extends Page_Options {
         inputbyxpath(xpath, FGS.Region);
         pressEnterbyXpath(xpath);
 
-        //status
-        boolean active= true;
-        System.out.println(active);
-        Thread.sleep(200);
-        if (active == true){
-            WebElement dropdownElement1 = driver.findElement(By.id("edit_status"));
-            Select dropdown1 = new Select(dropdownElement1);
-            dropdown1.selectByVisibleText("Active");
-        }else {
-            WebElement dropdownElement1 = driver.findElement(By.id("edit_status"));
-            Select dropdown1 = new Select(dropdownElement1);
-            dropdown1.selectByVisibleText("Inactive");
-        }
-
         //save
         id = "add_fg_store";
         clickbyId(id);
         GetConfirmationMessage();
-
     }
     @Then("close window for creating a FG Store")
     public void close_window_for_creating_a_fg_store() throws InterruptedException {

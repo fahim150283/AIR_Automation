@@ -137,6 +137,8 @@ public class ReadJson {
         public static String EditedCode;
         public static String EditedName;
         public static String Name;
+        public static String EditedType;
+        public static String Type;
         public static String Code;
         public static String Definition;
         public static String EditedDefinition;
@@ -520,6 +522,8 @@ public class ReadJson {
                 FGS.EditedCode = (String) FGS_Object.get("EditedCode");
                 FGS.Name = (String) FGS_Object.get("Name");
                 FGS.Code = (String) FGS_Object.get("Code");
+                FGS.Type = (String) FGS_Object.get("Type");
+                FGS.EditedType = (String) FGS_Object.get("EditedType");
                 FGS.Definition = (String) FGS_Object.get("Definition");
                 FGS.EditedDefinition = (String) FGS_Object.get("EditedDefinition");
                 FGS.EditedAddress = (String) FGS_Object.get("EditedAddress");
