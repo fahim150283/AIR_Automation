@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class Collections extends Page_Options {
     @Given("Login to Search Collection")
-    public void login_to_search_collection() {
+    public void login_to_search_collection() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
 
         Click_from_leftSideBar("Collections");
@@ -39,7 +39,7 @@ public class Collections extends Page_Options {
 
 
     @Given("login for creating Collection")
-    public void login_for_creating_collection() {
+    public void login_for_creating_collection() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
 
         Click_from_leftSideBar("Collections");

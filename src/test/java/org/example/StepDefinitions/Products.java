@@ -18,7 +18,7 @@ public class Products extends Page_Options {
     Creation of a product
     */
     @Given("login for creating new  Product")
-    public void login_for_creating_new_product() {
+    public void login_for_creating_new_product() throws InterruptedException {
         Login_AIR2_AIR(Users.user_Haseeb);
         Click_from_leftSideBar("Products");
     }

@@ -14,7 +14,7 @@ public class Dashboard extends Page_Options {
     }
 
     @When("^click the Dashboard$")
-    public void clickDashboard() {
+    public void clickDashboard() throws InterruptedException {
         Click_from_leftSideBar("Dashboard");
         switchTab();
         scrollToTheBottom();

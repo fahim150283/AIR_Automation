@@ -22,6 +22,7 @@
             <class name="org.example.Runner.AppsTestRunner"></class>
             <class name="org.example.Runner.ProductCategoriesTestRunner"></class>
             <class name="org.example.Runner.ProductsTestRunner"></class>
+            <class name="org.example.Runner.AuditStockUpdateTestRunner"></class>
         </classes>
     </test>
 </suite>

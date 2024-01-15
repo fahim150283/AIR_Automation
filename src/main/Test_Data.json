@@ -33,6 +33,12 @@
   "Contacts": {
     "SearchInfo": "Siam"
   },
+  "Audit Stock Update": {
+    "SearchInfo": "Bogura siam",
+    "DepotSearch": "Cumilla",
+    "StoreSearch": "Depot",
+    "ItemQuantity": "200000"
+  },
   "PreInvoice": {
     "SearchInfo": "SPI-00000004",
     "DistributorSearch": "bhai bhai",

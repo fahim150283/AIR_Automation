@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 
 public class Complementary_Invoice extends Page_Options {
     @Given("Login to Search Complementary Invoice")
-    public void login_to_search_complementary_invoice() {
+    public void login_to_search_complementary_invoice() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
 
         Click_from_leftSideBar("Complimentary Invoice");
@@ -46,7 +46,7 @@ public class Complementary_Invoice extends Page_Options {
 
 
     @Given("login for creation of an Complementary Invoice")
-    public void login_for_creation_of_an_complementary_invoice() {
+    public void login_for_creation_of_an_complementary_invoice() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
 
         Click_from_leftSideBar("Complimentary Invoice");

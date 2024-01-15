@@ -55,7 +55,7 @@ public class SalesReturn extends Page_Options {
 
 
     @Given("login for creating Sales Return")
-    public void login_for_creating_sales_return() {
+    public void login_for_creating_sales_return() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Sales Return");
     }

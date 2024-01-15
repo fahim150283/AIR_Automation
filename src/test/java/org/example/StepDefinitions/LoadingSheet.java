@@ -14,7 +14,7 @@ public class LoadingSheet extends Page_Options {
     Creating a new loading sheet
     */
     @Given("login for creating new  Loading sheet")
-    public void login_for_creating_new_loading_sheet() {
+    public void login_for_creating_new_loading_sheet() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Loading Sheet");
     }
@@ -136,7 +136,7 @@ public class LoadingSheet extends Page_Options {
     view a loading sheet
     */
     @Given("login for viewing new  Loading sheet")
-    public void login_for_viewing_new_loading_sheet() {
+    public void login_for_viewing_new_loading_sheet() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Loading Sheet");
     }
@@ -179,7 +179,7 @@ public class LoadingSheet extends Page_Options {
     print the loading sheets
     */
     @Given("login for printing new  Loading sheet")
-    public void login_for_printing_new_loading_sheet() {
+    public void login_for_printing_new_loading_sheet() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Loading Sheet");
     }

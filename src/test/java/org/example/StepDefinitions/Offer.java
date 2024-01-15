@@ -28,7 +28,7 @@ public class Offer extends Page_Options {
     creation of an offer
     */
     @Given("login for creation of an offer")
-    public void login_for_creation_of_an_offer() {
+    public void login_for_creation_of_an_offer() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Offer");
         System.out.println("The Expected page is : AIR - Offer");

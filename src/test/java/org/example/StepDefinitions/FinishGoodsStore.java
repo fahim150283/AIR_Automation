@@ -16,7 +16,7 @@ public class FinishGoodsStore extends Page_Options {
 
     public static String randomno = randomnumber()+"";
     @Given("Login to Search a FG Store")
-    public void login_to_search_a_fg_store() {
+    public void login_to_search_a_fg_store() throws InterruptedException {
         Login_AIR2(Users.user_Polash);
 
         Click_from_leftSideBar("Finish Goods Store");
@@ -56,7 +56,7 @@ public class FinishGoodsStore extends Page_Options {
 
 
     @Given("Login to edit a FG Store")
-    public void login_to_edit_a_fg_store() {
+    public void login_to_edit_a_fg_store() throws InterruptedException {
         Login_AIR2(Users.user_Polash);
 
         Click_from_leftSideBar("Finish Goods Store");
@@ -162,7 +162,7 @@ public class FinishGoodsStore extends Page_Options {
 
 
     @Given("Login to Create a FG Store")
-    public void login_to_create_a_fg_store() {
+    public void login_to_create_a_fg_store() throws InterruptedException {
         Login_AIR2(Users.user_Polash);
 
         Click_from_leftSideBar("Finish Goods Store");

@@ -19,7 +19,7 @@ public class Apps extends Page_Options {
     create a new app
     */
     @Given("login for creating new app")
-    public void login_for_creating_new_app() {
+    public void login_for_creating_new_app() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
 
         Click_from_leftSideBar("Apps");
@@ -101,7 +101,7 @@ public class Apps extends Page_Options {
     editing an app
     */
     @Given("login for editing an app")
-    public void login_for_editing_an_app() {
+    public void login_for_editing_an_app() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
 
         Click_from_leftSideBar("Apps");
@@ -190,7 +190,7 @@ public class Apps extends Page_Options {
     Give permission to a user for an App
     */
     @Given("login for giving access to an user")
-    public void login_for_giving_access_to_an_user() {
+    public void login_for_giving_access_to_an_user() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
 
         Click_from_leftSideBar("Apps");

@@ -35,6 +35,12 @@ public class ReadJson {
         public static String OfferPCS;
         public static String Notes;
     }
+    public static class AuditStockUpdate {
+        public static String SearchInfo;
+        public static String StoreSearch;
+        public static String DepotSearch;
+        public static String ItemQuantity;
+    }
 
     public static class PreviousPendingDelivery {
         public static String Items[] = new String[15];
@@ -418,6 +424,13 @@ public class ReadJson {
                 PreInvoices.OfferCTN = (String) PreInvoiceObject.get("OfferCTN");
                 PreInvoices.OfferPCS = (String) PreInvoiceObject.get("OfferPCS");
                 PreInvoices.Notes = (String) PreInvoiceObject.get("Notes");
+            }
+            {// Read data from the "Audit Stock Update" object
+                JSONObject AuditStockUpdateObject = (JSONObject) jsonObject.get("Audit Stock Update");
+                AuditStockUpdate.SearchInfo = (String) AuditStockUpdateObject.get("SearchInfo");
+                AuditStockUpdate.ItemQuantity = (String) AuditStockUpdateObject.get("ItemQuantity");
+                AuditStockUpdate.StoreSearch = (String) AuditStockUpdateObject.get("StoreSearch");
+                AuditStockUpdate.DepotSearch = (String) AuditStockUpdateObject.get("DepotSearch");
             }
             {// Read data from the "PreviousPendingDelivery" object
                 JSONObject PreviousPendingDeliveryObject = (JSONObject) jsonObject.get("PreviousPendingDelivery");

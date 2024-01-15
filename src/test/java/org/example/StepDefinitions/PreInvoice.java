@@ -17,7 +17,7 @@ public class PreInvoice extends Page_Options {
 
 
     @Given("^Login to Search PreInvoice$")
-    public void login_for_accessing_pre_invoice() {
+    public void login_for_accessing_pre_invoice() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Pre Invoices");
     }
@@ -45,7 +45,7 @@ public class PreInvoice extends Page_Options {
 
     @Given("login for creating new preInvoice")
 //    @Test
-    public void login_for_creating_new_pre_invoice() {
+    public void login_for_creating_new_pre_invoice() throws InterruptedException {
 
         Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Pre Invoices");

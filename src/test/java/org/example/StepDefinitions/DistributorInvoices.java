@@ -16,7 +16,7 @@ import java.util.Objects;
 
 public class DistributorInvoices extends Page_Options {
     @Given("Login to Search Invoice")
-    public void login_to_search_invoice() {
+    public void login_to_search_invoice() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
 
         Click_from_leftSideBar("Distributor Invoices");
@@ -44,7 +44,7 @@ public class DistributorInvoices extends Page_Options {
 
 
     @Given("login for Invoice")
-    public void login_for_invoice() {
+    public void login_for_invoice() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
 
         Click_from_leftSideBar("Distributor Invoices");

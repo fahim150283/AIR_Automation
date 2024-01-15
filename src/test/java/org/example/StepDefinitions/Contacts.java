@@ -8,7 +8,7 @@ import org.example.Page_Options;
 public class Contacts extends Page_Options {
 
     @Given("^login for accessing Contacts$")
-    public void contacts() {
+    public void contacts() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Contacts");
     }

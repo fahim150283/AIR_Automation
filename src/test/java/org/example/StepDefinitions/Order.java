@@ -18,7 +18,7 @@ public class Order extends Page_Options {
     public static String refernce_no = Order.Refference_No+randomnumber();
 
     @Given("Login to Search Order")
-    public void login_to_search_order() {
+    public void login_to_search_order() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
 
         Click_from_leftSideBar("Orders");

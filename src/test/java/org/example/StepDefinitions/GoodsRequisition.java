@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public class GoodsRequisition extends Page_Options {
     @Given("login for creation of a Goods Requisition")
-    public void login_for_creation_of_a_goods_requisition() {
+    public void login_for_creation_of_a_goods_requisition() throws InterruptedException {
         Login_AIR2(Users.user_Polash);
         Click_from_leftSideBar("Goods Requisition");
     }
@@ -195,7 +195,7 @@ public class GoodsRequisition extends Page_Options {
 
     //vehicle load
     @Given("login for vehicle load for a requested Goods Requisition")
-    public void login_for_vehicle_load_for_a_requested_goods_requisition() {
+    public void login_for_vehicle_load_for_a_requested_goods_requisition() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("On Vehicle Store");
     }
@@ -233,7 +233,7 @@ public class GoodsRequisition extends Page_Options {
 
     //Vehicle unload
     @Given("login for vehicle unload for a requested Goods Requisition")
-    public void login_for_vehicle_unload_for_a_requested_goods_requisition() {
+    public void login_for_vehicle_unload_for_a_requested_goods_requisition() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("On Vehicle Store");
     }
@@ -270,7 +270,7 @@ public class GoodsRequisition extends Page_Options {
     }
 
     @Given("login for Receiving The Goods")
-    public void login_for_receiving_the_goods() {
+    public void login_for_receiving_the_goods() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("On Vehicle Store");
     }

@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 
 public class CancelInvoice extends Page_Options {
     @Given("Login to Search cancelled Invoice")
-    public void login_to_search_cancelled_invoice() {
+    public void login_to_search_cancelled_invoice() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Cancel Invoice");
     }
@@ -48,7 +48,7 @@ public class CancelInvoice extends Page_Options {
     }
 
     @Given("login for cancellation of an Invoice")
-    public void login_for_cancellation_of_an_invoice() {
+    public void login_for_cancellation_of_an_invoice() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Cancel Invoice");
     }

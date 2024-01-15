@@ -9,7 +9,7 @@ import org.example.Page_Options;
 public class CancelOrder extends Page_Options {
 
     @Given("Login to Search CancelOrder")
-    public void login_to_search_cancel_order() {
+    public void login_to_search_cancel_order() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
 
         Click_from_leftSideBar("Cancel Order");
@@ -37,7 +37,7 @@ public class CancelOrder extends Page_Options {
     }
 
     @Given("login for Cancelling a Order")
-    public void login_for_creating_new_order_to_cancel() {
+    public void login_for_creating_new_order_to_cancel() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
 
         Click_from_leftSideBar("Cancel Order");
