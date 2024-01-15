@@ -93,7 +93,7 @@
   "DistributorInvoice": {
     "SearchInfo": "SO-00000002",
     "DistributorSearch": "bhai bhai",
-    "Store": "depot",
+    "Store": "Cumilla depot",
     "Note": "Automated Test",
     "ItemQuantity": "5",
     "OfferQuantity": "3",
@@ -102,7 +102,7 @@
   },
   "Cancel Invoice": {
     "SearchInfo": "SI-00000002",
-    "DistributorSearch": "00000002",
+    "DistributorSearch": "Bhai bhai",
     "Store": "depot",
     "Note": "Automated Test"
   },
@@ -400,9 +400,9 @@
     "E_DistributorPrice": "810"
   },
   "Sales Return": {
-    "SearchInfo": "SI-00000033",
-    "DistributorSearch": "47",
-    "Store": "Barisal",
+    "SearchInfo": "SI-00000002",
+    "DistributorSearch": "bhai bhai",
+    "Store": "cumilla depot",
     "Note": "This is automated",
     "Full Return": "no"
   },

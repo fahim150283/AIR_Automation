@@ -68,20 +68,20 @@ public class SalesReturn extends Page_Options {
         clickbyxpath(xpath);
         Thread.sleep(2000);
 
-//        // Invoice date from
-//        id = "invoice_date_from";
-//        waitById(id);
-//        clickbyId(id);
-//        inputbyid(id, getLastYear() );
-//        Thread.sleep(2000);
-//
-//
-//        //Invoice date till
-//        id = "invoice_date_till";
-//        waitById(id);
-//        clickbyId(id);
-//        inputbyid(id, getToday());
-//        Thread.sleep(200);
+        // Invoice date from
+        id = "invoice_date_from";
+        waitById(id);
+        clickbyId(id);
+        inputbyid(id, getLastMonth());
+        Thread.sleep(1000);
+
+
+        //Invoice date till
+        id = "invoice_date_till";
+        waitById(id);
+        clickbyId(id);
+        inputbyid(id, getToday());
+        Thread.sleep(200);
 
         //invoice list
         id = "select2-order_list-container";
@@ -94,7 +94,7 @@ public class SalesReturn extends Page_Options {
         pressEnterbyXpath(xpath);
 
         //select the store
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         id = "select2-c_store_id-container";
         waitById(id);
         clickbyId(id);
