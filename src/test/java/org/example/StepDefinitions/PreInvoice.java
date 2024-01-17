@@ -168,6 +168,7 @@ public class PreInvoice extends Page_Options {
                 // Find and click the "delete" button for the visible row
                 WebElement delete_Button = row.findElement(By.id("delete_table_row"));
                 delete_Button.click();
+                rows = table.findElements(By.xpath(".//tr"));
             }
         }
 
