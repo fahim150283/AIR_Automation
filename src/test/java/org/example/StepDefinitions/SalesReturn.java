@@ -87,7 +87,6 @@ public class SalesReturn extends Page_Options {
         id = "select2-order_list-container";
         waitById(id);
         clickbyId(id);
-        //search for bhai and hit enter
         xpath = "//input[@type='search']";
         waitByxpath(xpath);
         inputbyxpath(xpath,SalesReturn.DistributorSearch);

@@ -116,7 +116,7 @@ public class Order extends Page_Options {
         for (int i = 0; i < Order.Items.length; i++) {
             xpath = "//*[@id=\"add_invoice_form\"]/div/div[3]/div[4]/span/span[1]/span";
             Thread.sleep(30);
-            System.out.println(Order.Items[i]);
+            System.out.println((i+1)+" - "+Order.Items[i]);
             inputbyxpath(xpath, Order.Items[i]);
             Thread.sleep(30);
             pressEnterbyXpath(xpath);
@@ -151,8 +151,14 @@ public class Order extends Page_Options {
                 // Find and click the "delete" button for the visible row
                 WebElement delete_Button = row.findElement(By.xpath("//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[12]/button"));
                 delete_Button.click();
+                rows = table.findElements(By.xpath(".//tr"));
             }
         }
+
+        //important notes
+        id = "c_notes";
+        clickbyId(id);
+        inputbyid(id, Order.Note);
 
         Thread.sleep(1000);
 
@@ -172,20 +178,15 @@ public class Order extends Page_Options {
                     String dropdownXpath = "//*[@id='tbl_data']/tr[" + (i + 1) + "]/td[5]//select";
                     //Selecting the dropdown options only for where available
                     try {
-                        WebElement dropdownElement = driver.findElement(By.xpath(dropdownXpath));
-                        Select dropdown = new Select(dropdownElement);
-                        dropdown.selectByIndex(1);
+                        WebElement dropdownElement1 = driver.findElement(By.xpath(dropdownXpath));
+                        Select dropdown1 = new Select(dropdownElement1);
+                        dropdown1.selectByIndex(1);
                     } catch (org.openqa.selenium.NoSuchElementException e) {
                         continue;
                     }
                 }
             }
         }
-
-        //important notes
-        id = "c_notes";
-        inputbyid(id, Order.Note);
-
 
         //save
         xpath = "//*[@id=\"add_region\"]";
