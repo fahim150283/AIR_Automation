@@ -217,15 +217,30 @@ public class Offer extends Page_Options {
 
             //category
             for (int k = 0; k < cnt; k++) {
-                //min inv amount
-                id = "min_amnt" + (k + 1);
-                waitById(id);
-                inputbyid(id, "" + (1000 * (k + 1)));
 
-                //min prod qty
-                id = "min_prod_qty" + (k + 1);
-                waitById(id);
-                inputbyid(id, "" + ((k + 1) * 10));
+                if (Objects.equals(Offer.ProductGiftCondition, "Amount")){
+                    //min inv amount
+                    id = "min_amnt" + (k + 1);
+                    waitById(id);
+                    inputbyid(id, "" + (1000 * (k + 1)));
+
+                    //min prod qty
+                    id = "min_prod_qty" + (k + 1);
+                    waitById(id);
+                    inputbyid(id, "" + (0));
+                }
+                else {
+                    //min inv amount
+                    id = "min_amnt" + (k + 1);
+                    waitById(id);
+                    inputbyid(id, "" + (0));
+
+                    //min prod qty
+                    id = "min_prod_qty" + (k + 1);
+                    waitById(id);
+                    inputbyid(id, "" + ((k + 1) * 10));
+
+                }
 
                 //prod type
                 id = "min_prod_type" + (k + 1);
@@ -344,6 +359,7 @@ public class Offer extends Page_Options {
             pressESCbyXpath(xpath);
 
             //choose the depot
+            Thread.sleep(20);
             xpath = "//*[@id=\"depot_grp\"]/span/span[1]/span/span/textarea";
             waitByxpath(xpath);
             inputbyxpath(xpath, Offer.Depot);
@@ -351,6 +367,7 @@ public class Offer extends Page_Options {
             pressESCbyXpath(xpath);
 
             //choose the area
+            Thread.sleep(20);
             xpath = "//*[@id=\"area_grp\"]/span/span[1]/span/span/textarea";
             waitByxpath(xpath);
             inputbyxpath(xpath, Offer.Area);
@@ -358,6 +375,7 @@ public class Offer extends Page_Options {
             pressESCbyXpath(xpath);
 
             //choose the territory
+            Thread.sleep(20);
             xpath = "//*[@id=\"territory_grp\"]/span/span[1]/span/span/textarea";
             waitByxpath(xpath);
             inputbyxpath(xpath, Offer.Territory);
@@ -365,6 +383,7 @@ public class Offer extends Page_Options {
             pressESCbyXpath(xpath);
 
             //choose the Distributor
+            Thread.sleep(20);
             xpath = "//*[@id=\"distributor_grp\"]/span/span[1]/span/span/textarea";
             waitByxpath(xpath);
             inputbyxpath(xpath, Offer.Distributor);
@@ -372,6 +391,7 @@ public class Offer extends Page_Options {
             pressESCbyXpath(xpath);
 
             //choose the Excluded Distributors
+            Thread.sleep(20);
             xpath = "//*[@id=\"ex_distributor_grp\"]/span/span[1]/span/span/textarea";
             waitByxpath(xpath);
             inputbyxpath(xpath, Offer.ExDistributor);

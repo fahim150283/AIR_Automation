@@ -327,6 +327,7 @@ public class ReadJson {
 
     public static class Offer {
         public static String Type;
+        public static String ProductGiftCondition;
         public static String NumOfCategory;
         public static String NumOfOffers;
         public static String[] ItemCatg = new String[5];
@@ -724,6 +725,7 @@ public class ReadJson {
             {// Read data from the "Offer" object
                 JSONObject Offer_Object = (JSONObject) jsonObject.get("Offer");
                 Offer.Type = (String) Offer_Object.get("OfrType");
+                Offer.ProductGiftCondition = (String) Offer_Object.get("ProductGiftCondition");
                 Offer.NumOfCategory = (String) Offer_Object.get("NumOfCategory");
                 Offer.NumOfOffers = (String) Offer_Object.get("NumOfOffers");
                 for (int i = 0; i < Offer.ItemCatg.length; i++) {
