@@ -115,12 +115,12 @@ public class Order extends Page_Options {
         Thread.sleep(1000);
         for (int i = 0; i < Order.Items.length; i++) {
             xpath = "//*[@id=\"add_invoice_form\"]/div/div[3]/div[4]/span/span[1]/span";
-            Thread.sleep(30);
+            Thread.sleep(10);
             System.out.println((i+1)+" - "+Order.Items[i]);
             inputbyxpath(xpath, Order.Items[i]);
-            Thread.sleep(30);
+            Thread.sleep(10);
             pressEnterbyXpath(xpath);
-            Thread.sleep(30);
+            Thread.sleep(10);
 
             // press the plus button
             id = "c_add_inv_prod";
@@ -134,11 +134,11 @@ public class Order extends Page_Options {
             waitByxpath(xpath);
             clearByXpath(xpath);
             inputbyxpath(xpath, Order.ItemQuantity);
-            //pcs(quantity)
-            xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[6]/input";
-            waitByxpath(xpath);
-            clearByXpath(xpath);
-            inputbyxpath(xpath, Order.ItemQuantity);
+//            //pcs quantity(not necessary)
+//            xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[6]/input";
+//            waitByxpath(xpath);
+//            clearByXpath(xpath);
+//            inputbyxpath(xpath, Order.ItemQuantity);
         }
 
         //remove an item

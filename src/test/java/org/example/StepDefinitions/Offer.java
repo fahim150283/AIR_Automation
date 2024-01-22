@@ -275,10 +275,10 @@ public class Offer extends Page_Options {
                 clearByid(id);
                 inputbyid(id, "" + (k + 1));
 
-                //pcs
-                id = "pcs" + (k + 1);
-                clearByid(id);
-                inputbyid(id, "" + (k + 1));
+//                //pcs (not necessary)
+//                id = "pcs" + (k + 1);
+//                clearByid(id);
+//                inputbyid(id, "" + (k + 1));
 
                 //click plus button
                  if ((k+1 < cnt ) && driver.findElement(By.xpath("//*[@id=\"prod_cat_group\"]/div/table/tfoot/tr/td/span[1]")).isDisplayed()) {

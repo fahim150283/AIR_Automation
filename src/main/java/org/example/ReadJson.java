@@ -153,6 +153,7 @@ public class ReadJson {
         public static String Depots;
         public static String Address;
         public static String Store;
+        public static String StoreToAddProducts;
         public static String ItemQuantity;
         public static String[] Items = new String[15];
     }
@@ -546,6 +547,7 @@ public class ReadJson {
                 FGS.Address = (String) FGS_Object.get("Address");
                 FGS.EditedName = (String) FGS_Object.get("EditedName");
                 FGS.Store = (String) FGS_Object.get("Store");
+                FGS.StoreToAddProducts = (String) FGS_Object.get("StoreToAddProducts");
                 FGS.Items = Users.ItemsArray;
                 FGS.ItemQuantity = (String) FGS_Object.get("Quantity");
             }

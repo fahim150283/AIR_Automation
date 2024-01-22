@@ -57,7 +57,7 @@ public class FinishGoodsStore extends Page_Options {
 
     @Given("Login to edit a FG Store")
     public void login_to_edit_a_fg_store() throws InterruptedException {
-        Login_AIR2(Users.user_Polash);
+        Login_AIR2(Users.user_Haseeb);
 
         Click_from_leftSideBar("Finish Goods Store");
     }
@@ -163,7 +163,7 @@ public class FinishGoodsStore extends Page_Options {
 
     @Given("Login to Create a FG Store")
     public void login_to_create_a_fg_store() throws InterruptedException {
-        Login_AIR2(Users.user_Polash);
+        Login_AIR2(Users.user_Haseeb);
 
         Click_from_leftSideBar("Finish Goods Store");
     }
@@ -239,12 +239,10 @@ public class FinishGoodsStore extends Page_Options {
     }
 
     @Given("Login to add products in a  FG Store")
-    public void login_to_add_products_in_a_fg_store() {
-        Login_AIR2_AIR(Users.user_Fahim);
+    public void login_to_add_products_in_a_fg_store() throws InterruptedException {
+        Login_AIR2(Users.user_Haseeb);
 
-        cssSelector = ".menues-bar:nth-child(16) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+        Click_from_leftSideBar("Finish Goods Store");
     }
     @Given("Add goods to FG Store")
     public void add_goods_to_store() throws InterruptedException {
@@ -260,13 +258,14 @@ public class FinishGoodsStore extends Page_Options {
         waitByxpath(xpath);
         clickbyxpath(xpath);
         xpath = "/html/body/span/span/span[1]/input";
-        inputbyxpath(xpath, FGS.Store);
+        inputbyxpath(xpath, FGS.StoreToAddProducts);
         pressEnterbyXpath(xpath);
         pressESCbyXpath(xpath);
 
         //click the items bar and add items
+        Thread.sleep(1000);
         for (int i = 0; i < FGS.Items.length; i++) {
-            Thread.sleep(100);
+            Thread.sleep(10);
             WebElement multiSelectDropdown = driver.findElement(By.id("goods_list"));
             Select dropdown = new Select(multiSelectDropdown);
             dropdown.selectByVisibleText(FGS.Items[i]);

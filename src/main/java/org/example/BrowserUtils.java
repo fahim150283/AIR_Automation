@@ -24,6 +24,8 @@ public class BrowserUtils extends ReadJson {
         System.setProperty("webdriver.chrome.driver", "C:/BrowserDriver/chromedriver.exe");
         ChromeOptions co = new ChromeOptions();
         co.setBinary("C:/BrowserDriver/chrome-win64/chrome-win64/chrome.exe");
+        // Disable cookies
+        co.addArguments("--disable-cookies");
         driver = new ChromeDriver(co);
     }
 

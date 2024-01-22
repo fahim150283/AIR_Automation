@@ -22,7 +22,7 @@
     "Item9": "88200 ~~ Butterscotch with Cashew Crackles Cup -- 120.00ml (PREMIUM -- CUP)",
     "Item10": "88212 ~~ Chocolate -- 500.00ml (REGULAR -- LTR CONTAINER)",
     "Item11": "88251 ~~ Crunchie Bar (N) -- 82.00ml (REGULAR -- STICK)",
-    "Item12": "88257 ~~ Doi Cup (N) -- 120.00ml (PREMIUM -- CUP)",
+    "Item12": "88159 ~~ Doi Cup -- 120.00ml (PREMIUM -- CUP)",
     "Item13": "88280 ~~ Mawa Kulfi - 1 Liter (N) -- 1000.00ml (PREMIUM -- LTR CONTAINER)",
     "Item14": "88153 ~~ Shell & Core -- 62.00ml (REGULAR -- STICK)",
     "Item15": "88203 ~~ Lolly - Orange -- 62.00ml (REGULAR -- STICK)"
@@ -155,7 +155,8 @@
     "Depots": "Cumilla",
     "EditedActivity": true,
     "Store": "Depot Store",
-    "Quantity": "20"
+    "Quantity": "2000",
+    "StoreToAddProducts": "Cumilla Depot"
   },
   "Distributors": {
     "SearchInfo": "TEST79706",
@@ -330,7 +331,7 @@
   },
   "Offer": {
     "OfrType": "Product",
-    "NumOfCategory": "1",
+    "NumOfCategory": "2",
     "NumOfOffers": "1",
     "ItemCatg1": "PREMIUM",
     "ItemCatg2": "REGULAR",
@@ -342,7 +343,7 @@
     "ItemSubCatg3": "Bulk Pack",
     "ItemSubCatg4": "GIFT-PACK",
     "ItemSubCatg5": "CONE",
-    "ItemProd1": "Butterscotch with Cashew Crackles Cup",
+    "ItemProd1": "Doi Cup",
     "ItemProd2": "Shell & Core",
     "ItemProd3": "Cookies & Cream - 5 Liter",
     "ItemProd4": "HAPPINESS BOX",

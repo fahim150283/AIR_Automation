@@ -84,7 +84,7 @@ public class DistributorInvoices extends Page_Options {
 
 
         //partial cancel or full cancel
-        Boolean fullCancel = Invoices.CancelPartial; //Default is Full Cancel
+        Boolean fullCancel = Invoices.CancelPartial;
 
         for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"c_inv_items_list\"]"); i++) {
             if (fullCancel == false && i % 2 == 0) {
@@ -95,12 +95,12 @@ public class DistributorInvoices extends Page_Options {
                 clearByXpath(xpath);
                 inputbyxpath(xpath, Invoices.ItemQuantity); //here the number is the quantity that will be deleted
 
-                //PCS
-                Thread.sleep(20);
-                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[6]/input";
-                waitByxpath(xpath);
-                clearByXpath(xpath);
-                inputbyxpath(xpath, Invoices.ItemQuantity); //here the number is the quantity that will be deleted
+//                //PCS(not necessary)
+//                Thread.sleep(20);
+//                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[6]/input";
+//                waitByxpath(xpath);
+//                clearByXpath(xpath);
+//                inputbyxpath(xpath, Invoices.ItemQuantity); //here the number is the quantity that will be deleted
             }
         }
 
