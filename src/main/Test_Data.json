@@ -11,19 +11,19 @@
     "password": "savoy123"
   },
   "Items": {
-    "Item1": "88003 ~~ Regular Kulfi -- 39.00ml (MINI -- STICK)",
-    "Item2": "88250 ~~ Crunchie Bar - Mini (N) -- 52.00ml (MINI -- STICK)",
-    "Item3": "88162 ~~ Crunchie Bar - Mini -- 52.00ml (MINI -- STICK)",
-    "Item4": "88204 ~~ Lolly - 2 in 1 -- 62.00ml (REGULAR -- STICK)",
-    "Item5": "88197 ~~ Dudh Malai -- 55.00ml (REGULAR -- STICK)",
-    "Item6": "88206 ~~ Single Sundae - Vanilla with Coffee Ripple -- 100.00ml (REGULAR -- SUNDAE)",
-    "Item7": "88191 ~~ Caramel Choco Crunch Cup -- 120.00ml (PREMIUM -- CUP)",
-    "Item8": "88192 ~~ Mawa Kulfi Cup -- 120.00ml (PREMIUM -- CUP)",
-    "Item9": "88200 ~~ Butterscotch with Cashew Crackles Cup -- 120.00ml (PREMIUM -- CUP)",
-    "Item10": "88212 ~~ Chocolate -- 500.00ml (REGULAR -- LTR CONTAINER)",
-    "Item11": "88251 ~~ Crunchie Bar (N) -- 82.00ml (REGULAR -- STICK)",
-    "Item12": "88159 ~~ Doi Cup -- 120.00ml (PREMIUM -- CUP)",
-    "Item13": "88280 ~~ Mawa Kulfi - 1 Liter (N) -- 1000.00ml (PREMIUM -- LTR CONTAINER)",
+    "Item1": "88250 ~~ Crunchie Bar - Mini (N) -- 52.00ml (MINI -- STICK)",
+    "Item2": "88162 ~~ Crunchie Bar - Mini -- 52.00ml (MINI -- STICK)",
+    "Item3": "88204 ~~ Lolly - 2 in 1 -- 62.00ml (REGULAR -- STICK)",
+    "Item4": "88197 ~~ Dudh Malai -- 55.00ml (REGULAR -- STICK)",
+    "Item5": "88206 ~~ Single Sundae - Vanilla with Coffee Ripple -- 100.00ml (REGULAR -- SUNDAE)",
+    "Item6": "88191 ~~ Caramel Choco Crunch Cup -- 120.00ml (PREMIUM -- CUP)",
+    "Item7": "88192 ~~ Mawa Kulfi Cup -- 120.00ml (PREMIUM -- CUP)",
+    "Item8": "88200 ~~ Butterscotch with Cashew Crackles Cup -- 120.00ml (PREMIUM -- CUP)",
+    "Item9": "88212 ~~ Chocolate -- 500.00ml (REGULAR -- LTR CONTAINER)",
+    "Item10": "88251 ~~ Crunchie Bar (N) -- 82.00ml (REGULAR -- STICK)",
+    "Item11": "88159 ~~ Doi Cup -- 120.00ml (PREMIUM -- CUP)",
+    "Item12": "88280 ~~ Mawa Kulfi - 1 Liter (N) -- 1000.00ml (PREMIUM -- LTR CONTAINER)",
+    "Item13": "88003 ~~ Regular Kulfi -- 39.00ml (MINI -- STICK)",
     "Item14": "88153 ~~ Shell & Core -- 62.00ml (REGULAR -- STICK)",
     "Item15": "88203 ~~ Lolly - Orange -- 62.00ml (REGULAR -- STICK)"
   },
@@ -81,7 +81,7 @@
     "ItemQuantity": "20",
     "Note": "Automated Test",
     "Refference No": "Testing Ref No ",
-    "CashCommission": "10"
+    "CashCommission": "0"
   },
   "CancelOrder": {
     "SearchInfo": "SO-00000003",
@@ -331,7 +331,7 @@
   },
   "Offer": {
     "OfrType": "Product",
-    "NumOfCategory": "2",
+    "NumOfCategory": "1",
     "NumOfOffers": "1",
     "ItemCatg1": "PREMIUM",
     "ItemCatg2": "REGULAR",
@@ -371,7 +371,7 @@
     "Distributor": "All",
     "ExDistributor": "None",
     "Active": "YES",
-    "CreditAllowed": "NO"
+    "CreditAllowed": "YES"
   },
   "Products Category": {
     "SearchInfo": "TestCategory420",
