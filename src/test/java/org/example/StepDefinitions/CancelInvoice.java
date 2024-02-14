@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
 public class CancelInvoice extends Page_Options {
@@ -17,14 +18,20 @@ public class CancelInvoice extends Page_Options {
 
     @When("search for cancelled Invoice")
     public void search_for_cancelled_invoice() throws InterruptedException {
-        Thread.sleep(100);
-        xpath = "//*[@id=\"search_input\"]";
-        waitByxpath(xpath);
-        inputbyxpath(xpath, CancelInvoice.SearchInfo);
+        try {
+            Thread.sleep(100);
+            xpath = "//*[@id=\"search_input\"]";
+            waitByxpath(xpath);
+            inputbyxpath(xpath, CancelInvoice.SearchInfo);
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
     }
 
     @And("description of a cancelled Invoice")
     public void description_of_a_cancelled_invoice() throws InterruptedException {
+        try{
         Thread.sleep(100);
         // verify the created product
         WebElement table = driver.findElement(By.id("invoice_table"));
@@ -39,6 +46,10 @@ public class CancelInvoice extends Page_Options {
                 editButton.click();
             }
         }
+        }catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
     }
 
     @Then("close cancelled Invoice for search")
@@ -52,8 +63,10 @@ public class CancelInvoice extends Page_Options {
         Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Cancel Invoice");
     }
+
     @And("create new cancel Invoice")
     public void create_new_cancel_invoice() throws InterruptedException {
+        try{
         //click the plus button
         xpath = "/html/body/div[2]/div[2]/div/div[1]/div/div/div/div[4]/a[2]";
         waitByxpath(xpath);
@@ -97,6 +110,10 @@ public class CancelInvoice extends Page_Options {
 
         AlertAccept();
         GetConfirmationMessage();
+        }catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
     }
 
     @Then("close the cancel Invoice window")

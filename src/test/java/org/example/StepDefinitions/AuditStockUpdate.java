@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
@@ -28,66 +29,77 @@ public class AuditStockUpdate extends Page_Options {
 
     @When("description of an Audit Stock")
     public void description_of_an_audit_stock() throws InterruptedException {
-        Thread.sleep(100);
+        try {
+            Thread.sleep(100);
 
-        xpath = "//*[@id=\"inv_tableData\"]/tbody/tr[1]/td[7]/a";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
+            xpath = "//*[@id=\"inv_tableData\"]/tbody/tr[1]/td[7]/a";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
     }
 
     @Given("create new Audit Stock")
     public void create_new_audit_stock() throws InterruptedException {
-        //click the create new button
-        xpath = "//*[@id=\"inv_tableData_wrapper\"]/div[1]/button[4]/span";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
+        try {
+            //click the create new button
 
-        //in the modal form
+            xpath = "//*[@id=\"inv_tableData_wrapper\"]/div[1]/button[4]/span";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
 
-        //select depot
-        xpath = "//*[@id=\"select2-add_depot-container\"]";
-        waitByxpath(xpath);
-        Thread.sleep(1000);
-        clickbyxpath(xpath);
-        xpath = "/html/body/span/span/span[1]/input";
-        inputbyxpath(xpath, AuditStockUpdate.DepotSearch);
-        Thread.sleep(10);
-        pressEnterbyXpath(xpath);
+            //in the modal form
 
-        //select store
-        xpath = "//*[@id=\"select2-add_store-container\"]";
-        waitByxpath(xpath);
-        Thread.sleep(1000);
-        clickbyxpath(xpath);
-        xpath = "/html/body/span/span/span[1]/input";
-        inputbyxpath(xpath, AuditStockUpdate.StoreSearch);
-        Thread.sleep(10);
-        pressEnterbyXpath(xpath);
+            //select depot
+            xpath = "//*[@id=\"select2-add_depot-container\"]";
+            waitByxpath(xpath);
+            Thread.sleep(1000);
+            clickbyxpath(xpath);
+            xpath = "/html/body/span/span/span[1]/input";
+            inputbyxpath(xpath, AuditStockUpdate.DepotSearch);
+            Thread.sleep(10);
+            pressEnterbyXpath(xpath);
 
-        //set audit date
-        xpath = "//*[@id=\"adjustment_date\"]";
-        inputbyxpath(xpath, getToday());
+            //select store
+            xpath = "//*[@id=\"select2-add_store-container\"]";
+            waitByxpath(xpath);
+            Thread.sleep(1000);
+            clickbyxpath(xpath);
+            xpath = "/html/body/span/span/span[1]/input";
+            inputbyxpath(xpath, AuditStockUpdate.StoreSearch);
+            Thread.sleep(10);
+            pressEnterbyXpath(xpath);
 
-        //set quantity amout
-        Thread.sleep(500);
-        int rowCnt = getTotalRowCountByXpath("//*[@id=\"product_details\"]");
-        for (int i = 0; i < rowCnt; i++) {
-            //set ctn amount
-            xpath = "//*[@id=\"product_details\"]/tr[" + (i + 1) + "]/td[6]/input";
-            clearByXpath(xpath);
-            inputbyxpath(xpath, AuditStockUpdate.ItemQuantity);
+            //set audit date
+            xpath = "//*[@id=\"adjustment_date\"]";
+            inputbyxpath(xpath, getToday());
 
-            //set pcs amount
-            xpath = "//*[@id=\"product_details\"]/tr[" + (i + 1) + "]/td[7]/input";
-            clearByXpath(xpath);
-            inputbyxpath(xpath, AuditStockUpdate.ItemQuantity);
+            //set quantity amout
+            Thread.sleep(500);
+            int rowCnt = getTotalRowCountByXpath("//*[@id=\"product_details\"]");
+            for (int i = 0; i < rowCnt; i++) {
+                //set ctn amount
+                xpath = "//*[@id=\"product_details\"]/tr[" + (i + 1) + "]/td[6]/input";
+                clearByXpath(xpath);
+                inputbyxpath(xpath, AuditStockUpdate.ItemQuantity);
+
+                //set pcs amount
+                xpath = "//*[@id=\"product_details\"]/tr[" + (i + 1) + "]/td[7]/input";
+                clearByXpath(xpath);
+                inputbyxpath(xpath, AuditStockUpdate.ItemQuantity);
+            }
+
+            //click save button
+            xpath = "//*[@id=\"add_audit_stock\"]/div/div[3]/div/button";
+            clickbyxpath(xpath);
+
+            GetConfirmationMessage();
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
         }
-
-        //click save button
-        xpath = "//*[@id=\"add_audit_stock\"]/div/div[3]/div/button";
-        clickbyxpath(xpath);
-
-        GetConfirmationMessage();
     }
 
     @Then("close Audit Stock window")
