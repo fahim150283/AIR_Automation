@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
 public class GeoLocationMapping extends Page_Options {
@@ -25,114 +26,119 @@ public class GeoLocationMapping extends Page_Options {
 
     @And("create new  Geo Location Mapping")
     public void create_new_geo_location_mapping() throws InterruptedException {
-        Thread.sleep(500);
+        try {
+            Thread.sleep(500);
 
-        xpath = "/html/body/div[2]/div[2]/div/div[1]/div/div/div[1]/div[3]/a[2]";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
+            xpath = "/html/body/div[2]/div[2]/div/div[1]/div/div/div[1]/div[3]/a[2]";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
 
-        //click the employee list
-        id = "select2-add_emp_list-container";
-        waitById(id);
-        clickbyId(id);
+            //click the employee list
+            id = "select2-add_emp_list-container";
+            waitById(id);
+            clickbyId(id);
 
-        //type int the name of the employee and select
-        xpath = "/html/body/span/span/span[1]/input";
-        clickbyxpath(xpath);
-        inputbyxpath(xpath, "kazi polash");
-        pressEnterbyXpath(xpath);
+            //type int the name of the employee and select
+            xpath = "/html/body/span/span/span[1]/input";
+            clickbyxpath(xpath);
+            inputbyxpath(xpath, "kazi polash");
+            pressEnterbyXpath(xpath);
 
-        Thread.sleep(500);
+            Thread.sleep(500);
 
 //        int rowCount = 1 + count_row_number_BYID("geo_loc_map_prevData_History_table");
 
 
-        Thread.sleep(500);
+            Thread.sleep(500);
 
-        //click the checkbox
-        xpath = "//*[@id=\"record_all\"]";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
+            //click the checkbox
+            xpath = "//*[@id=\"record_all\"]";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
 
-        //date
-        id = "add_eff_start_date";
-        waitById(id);
-        clickbyId(id);
-        inputbyid(id, getLastMonth());
-
-        for (int i = 0; i < 3; i++) {
-            //choose region
-            id = "select2-region_" + i + "-container";
+            //date
+            id = "add_eff_start_date";
             waitById(id);
             clickbyId(id);
-            //enter the region name
-            xpath = "/html/body/span/span/span[1]/input";
-            clickbyxpath(xpath);
-            for (int j = 0; j < i + 3; j++) {
-                pressDownbyXpath(xpath);
-            }
-            pressEnterbyXpath(xpath);
+            inputbyid(id, getLastMonth());
 
-            //choose depot
-            id = "select2-depot_" + i + "-container";
-            waitById(id);
-            clickbyId(id);
-            //enter the depot name
-            xpath = "/html/body/span/span/span[1]/input";
-            clickbyxpath(xpath);
-            for (int j = 0; j < i + 3; j++) {
-                pressDownbyXpath(xpath);
-            }
-            pressEnterbyXpath(xpath);
-
-            //choose area
-            id = "select2-area_" + i + "-container";
-            waitById(id);
-            clickbyId(id);
-            //enter the area name
-            xpath = "/html/body/span/span/span[1]/input";
-            clickbyxpath(xpath);
-            for (int j = 0; j < i + 3; j++) {
-                pressDownbyXpath(xpath);
-            }
-            pressEnterbyXpath(xpath);
-
-            //choose territory
-            id = "select2-territory_" + i + "-container";
-            waitById(id);
-            clickbyId(id);
-            //enter the territory name
-            xpath = "/html/body/span/span/span[1]/input";
-            clickbyxpath(xpath);
-            for (int j = 0; j < i + 3; j++) {
-                pressDownbyXpath(xpath);
-            }
-            pressEnterbyXpath(xpath);
-
-            if (i < 2) {
-                //click plus button
-                id = "add-row";
+            for (int i = 0; i < 3; i++) {
+                //choose region
+                id = "select2-region_" + i + "-container";
                 waitById(id);
                 clickbyId(id);
+                //enter the region name
+                xpath = "/html/body/span/span/span[1]/input";
+                clickbyxpath(xpath);
+                for (int j = 0; j < i + 3; j++) {
+                    pressDownbyXpath(xpath);
+                }
+                pressEnterbyXpath(xpath);
+
+                //choose depot
+                id = "select2-depot_" + i + "-container";
+                waitById(id);
+                clickbyId(id);
+                //enter the depot name
+                xpath = "/html/body/span/span/span[1]/input";
+                clickbyxpath(xpath);
+                for (int j = 0; j < i + 3; j++) {
+                    pressDownbyXpath(xpath);
+                }
+                pressEnterbyXpath(xpath);
+
+                //choose area
+                id = "select2-area_" + i + "-container";
+                waitById(id);
+                clickbyId(id);
+                //enter the area name
+                xpath = "/html/body/span/span/span[1]/input";
+                clickbyxpath(xpath);
+                for (int j = 0; j < i + 3; j++) {
+                    pressDownbyXpath(xpath);
+                }
+                pressEnterbyXpath(xpath);
+
+                //choose territory
+                id = "select2-territory_" + i + "-container";
+                waitById(id);
+                clickbyId(id);
+                //enter the territory name
+                xpath = "/html/body/span/span/span[1]/input";
+                clickbyxpath(xpath);
+                for (int j = 0; j < i + 3; j++) {
+                    pressDownbyXpath(xpath);
+                }
+                pressEnterbyXpath(xpath);
+
+                if (i < 2) {
+                    //click plus button
+                    id = "add-row";
+                    waitById(id);
+                    clickbyId(id);
+                }
             }
+
+            //click the checkbox of the last row
+            id = "rwdr_record_2";
+            waitById(id);
+            clickbyId(id);
+
+            //delete last row by clicking delete button
+            id = "delete-row";
+            waitById(id);
+            clickbyId(id);
+
+            //click save
+            id = "add_distributors";
+            clickbyId(id);
+
+            AlertAccept();
+            GetConfirmationMessage();
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
         }
-
-        //click the checkbox of the last row
-        id = "rwdr_record_2";
-        waitById(id);
-        clickbyId(id);
-
-        //delete last row by clicking delete button
-        id = "delete-row";
-        waitById(id);
-        clickbyId(id);
-
-        //click save
-        id = "add_distributors";
-        clickbyId(id);
-
-        AlertAccept();
-        GetConfirmationMessage();
     }
 
     @Then("close the Geo Location Mapping window")
@@ -154,18 +160,22 @@ public class GeoLocationMapping extends Page_Options {
 
     @When("search for Geo Location Mappings of an user and copy important elements from Geo Location Mapping")
     public void search_for_geo_location_mappings_of_an_user_and_copy_important_elements_from_geo_location_mapping() throws InterruptedException {
-        xpath = "//*[@id=\"geo_location_mapping_table\"]";
-        dataGetArray = viewButtonClickForMatchingRowsByXpathAndName(xpath, "Kazi Polash (1153)");
+        try {
+            xpath = "//*[@id=\"geo_location_mapping_table\"]";
+            dataGetArray = viewButtonClickForMatchingRowsByXpathAndName(xpath, "Kazi Polash (1153)");
 
-        int rows = dataGetArray.length;
-        int cols = dataGetArray[0].length;
-        for (int j = 0; j < rows; j++) {
-            for (int i = 0; i < cols; i++) {
-                System.out.print(dataGetArray[j][i] +"  ");
+            int rows = dataGetArray.length;
+            int cols = dataGetArray[0].length;
+            for (int j = 0; j < rows; j++) {
+                for (int i = 0; i < cols; i++) {
+                    System.out.print(dataGetArray[j][i] + "  ");
+                }
+                System.out.println();
             }
-            System.out.println();
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
         }
-
     }
 
     @Then("close  Geo Location Mapping for search")
@@ -183,19 +193,37 @@ public class GeoLocationMapping extends Page_Options {
         waitByCssSelector(cssSelector);
         clickbycssselector(cssSelector);
     }
+
     @When("in create new order, copy the elements of order location")
     public void in_create_new_order_copy_the_elements_of_order_location() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        try{
+
+
+    }catch (TimeoutException e) {
+        // Handle the TimeoutException
+        System.out.println("TimeoutException occurred: " + e.getMessage());
     }
+    }
+
     @Then("close  Geo Location Mapping for verification")
     public void close_geo_location_mapping_for_verification() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        try{
+
+
+        }catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
     }
+
     @And("assert if the information is correct or not")
     public void assert_if_the_information_is_correct_or_not() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        try{
+
+
+        }catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
     }
 }

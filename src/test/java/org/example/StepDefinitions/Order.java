@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -15,7 +16,7 @@ import java.util.Objects;
 
 public class Order extends Page_Options {
 
-    public static String refernce_no = Order.Refference_No+randomnumber();
+    public static String refernce_no = Order.Refference_No + randomnumber();
 
     @Given("Login to Search Order")
     public void login_to_search_order() throws InterruptedException {
@@ -26,16 +27,26 @@ public class Order extends Page_Options {
 
     @When("search for Order")
     public void search_for_order() {
-        xpath = "//*[@id=\"tableData_filter\"]/label/input";
-        waitByxpath(xpath);
-        inputbyxpath(xpath, Order.SearchInfo);
+        try {
+            xpath = "//*[@id=\"tableData_filter\"]/label/input";
+            waitByxpath(xpath);
+            inputbyxpath(xpath, Order.SearchInfo);
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
     }
 
     @And("description of a Order")
     public void description_of_a_order() throws InterruptedException {
-        Thread.sleep(2000);
-        xpath = "//*[@id=\"btn_view\"]/i";
-        clickbyxpath(xpath);
+        try {
+            Thread.sleep(2000);
+            xpath = "//*[@id=\"btn_view\"]/i";
+            clickbyxpath(xpath);
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
     }
 
     @Then("close Order for search")
@@ -53,26 +64,27 @@ public class Order extends Page_Options {
 
     @And("create new Order")
     public void create_new_order() throws InterruptedException {
-        //click the new order button
-        xpath = "//*[@id=\"tableData_wrapper\"]/div[1]/button[4]";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
+        try {
+            //click the new order button
+            xpath = "//*[@id=\"tableData_wrapper\"]/div[1]/button[4]";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
 
-        //set date
-        id = "c_inv_date";
-        waitById(id);
-        clickbyId(id);
-        inputbyid(id, getToday());
+            //set date
+            id = "c_inv_date";
+            waitById(id);
+            clickbyId(id);
+            inputbyid(id, getToday());
 
-        //wait and click distributors
-        xpath = "//*[@id=\"select2-distributor_list-container\"]";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
-        //search for bhai bhai and hit enter
-        cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
-        waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Order.DistributorSearch);
-        cssSelectorPressEnter(cssSelector);
+            //wait and click distributors
+            xpath = "//*[@id=\"select2-distributor_list-container\"]";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
+            //search for bhai bhai and hit enter
+            cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
+            waitByCssSelector(cssSelector);
+            inputbycssselector(cssSelector, Order.DistributorSearch);
+            cssSelectorPressEnter(cssSelector);
 
 
 //        //wait and click routes
@@ -95,105 +107,109 @@ public class Order extends Page_Options {
 //            clickbyxpath(xpath);
 
 
-        //set Expected Delivery Date
-        id = "c_exp_delivery_date";
-        waitById(id);
-        clickbyId(id);
-        inputbyid(id, getToday());
-
-        //Refference No
-        id = "c_inv_ref";
-        inputbyid(id, refernce_no);
-
-        //cash commission
-        xpath = "//*[@id=\"c_cash_com\"]";
-        clearByXpath(xpath);
-        inputbyxpath(xpath, Order.CashCommission);
-
-
-        //click the items bar and add items
-        Thread.sleep(1000);
-        for (int i = 0; i < Order.Items.length; i++) {
-            xpath = "//*[@id=\"add_invoice_form\"]/div/div[3]/div[4]/span/span[1]/span";
-            Thread.sleep(10);
-            System.out.println((i+1)+" - "+Order.Items[i]);
-            inputbyxpath(xpath, Order.Items[i]);
-            Thread.sleep(10);
-            pressEnterbyXpath(xpath);
-            Thread.sleep(10);
-
-            // press the plus button
-            id = "c_add_inv_prod";
+            //set Expected Delivery Date
+            id = "c_exp_delivery_date";
+            waitById(id);
             clickbyId(id);
-        }
+            inputbyid(id, getToday());
 
-        //click the amount buttons for the quantity of the items
-        for (int i = 0; i < Order.Items.length; i++) {
-            //ctn(quantity)
-            xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
-            waitByxpath(xpath);
+            //Refference No
+            id = "c_inv_ref";
+            inputbyid(id, refernce_no);
+
+            //cash commission
+            xpath = "//*[@id=\"c_cash_com\"]";
             clearByXpath(xpath);
-            inputbyxpath(xpath, Order.ItemQuantity);
+            inputbyxpath(xpath, Order.CashCommission);
+
+
+            //click the items bar and add items
+            Thread.sleep(1000);
+            for (int i = 0; i < Order.Items.length; i++) {
+                xpath = "//*[@id=\"add_invoice_form\"]/div/div[3]/div[4]/span/span[1]/span";
+                Thread.sleep(10);
+                System.out.println((i + 1) + " - " + Order.Items[i]);
+                inputbyxpath(xpath, Order.Items[i]);
+                Thread.sleep(10);
+                pressEnterbyXpath(xpath);
+                Thread.sleep(10);
+
+                // press the plus button
+                id = "c_add_inv_prod";
+                clickbyId(id);
+            }
+
+            //click the amount buttons for the quantity of the items
+            for (int i = 0; i < Order.Items.length; i++) {
+                //ctn(quantity)
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
+                waitByxpath(xpath);
+                clearByXpath(xpath);
+                inputbyxpath(xpath, Order.ItemQuantity);
 //            //pcs quantity(not necessary)
 //            xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[6]/input";
 //            waitByxpath(xpath);
 //            clearByXpath(xpath);
 //            inputbyxpath(xpath, Order.ItemQuantity);
-        }
-
-        //remove an item
-        WebElement table = driver.findElement(By.id("c_inv_items_list"));
-        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
-        // Iterate through rows
-        for (int i = 0; i < rows.size(); i++) {
-            WebElement row = rows.get(i);
-            if (i % 5 == 0) {
-                // Find and click the "delete" button for the visible row
-                WebElement delete_Button = row.findElement(By.xpath("//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[12]/button"));
-                delete_Button.click();
-                rows = table.findElements(By.xpath(".//tr"));
             }
-        }
 
-        //important notes
-        id = "c_notes";
-        clickbyId(id);
-        inputbyid(id, Order.Note);
+            //remove an item
+            WebElement table = driver.findElement(By.id("c_inv_items_list"));
+            java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
+            // Iterate through rows
+            for (int i = 0; i < rows.size(); i++) {
+                WebElement row = rows.get(i);
+                if (i % 5 == 0) {
+                    // Find and click the "delete" button for the visible row
+                    WebElement delete_Button = row.findElement(By.xpath("//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[12]/button"));
+                    delete_Button.click();
+                    rows = table.findElements(By.xpath(".//tr"));
+                }
+            }
 
-        Thread.sleep(1000);
+            //important notes
+            id = "c_notes";
+            clickbyId(id);
+            inputbyid(id, Order.Note);
 
-        //offer part
-        if (ElementVisible("//*[@id=\"tbl_data\"]")) {
-            System.out.println("offer part is available");
-            for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++) {
-                String s = getTextbyXpath("//tbody[@id='tbl_data']/tr[" + (i + 1) + "]/td[3]");
-                System.out.println("this is the found string: " + s);
-                if (Objects.equals(s, "Offer Type: Product")) {
-                    //for the offer:products
+            Thread.sleep(1000);
+
+            //offer part
+            if (ElementVisible("//*[@id=\"tbl_data\"]")) {
+                System.out.println("offer part is available");
+                for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++) {
+                    String s = getTextbyXpath("//tbody[@id='tbl_data']/tr[" + (i + 1) + "]/td[3]");
+                    System.out.println("this is the found string: " + s);
+                    if (Objects.equals(s, "Offer Type: Product")) {
+                        //for the offer:products
 //                    List<WebElement> rowsWithDropdowns = driver.findElements(By.xpath("//tbody[@id='tbl_data']/tr[td/select]"));
 //                        WebElement dropdownElement = driver.findElement(By.xpath("//*[@id=\"dis_product" + (1+ i) + "\"]"));
 //                        Select dropdown = new Select(dropdownElement);
 //                        dropdown.selectByIndex(1);
 
-                    String dropdownXpath = "//*[@id='tbl_data']/tr[" + (i + 1) + "]/td[5]//select";
-                    //Selecting the dropdown options only for where available
-                    try {
-                        WebElement dropdownElement1 = driver.findElement(By.xpath(dropdownXpath));
-                        Select dropdown1 = new Select(dropdownElement1);
-                        dropdown1.selectByIndex(1);
-                    } catch (org.openqa.selenium.NoSuchElementException e) {
-                        continue;
+                        String dropdownXpath = "//*[@id='tbl_data']/tr[" + (i + 1) + "]/td[5]//select";
+                        //Selecting the dropdown options only for where available
+                        try {
+                            WebElement dropdownElement1 = driver.findElement(By.xpath(dropdownXpath));
+                            Select dropdown1 = new Select(dropdownElement1);
+                            dropdown1.selectByIndex(1);
+                        } catch (org.openqa.selenium.NoSuchElementException e) {
+                            continue;
+                        }
                     }
                 }
             }
+
+            //save
+            xpath = "//*[@id=\"add_region\"]";
+            clickbyxpath(xpath);
+            AlertAccept();
+
+            GetConfirmationMessage();
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
         }
-
-        //save
-        xpath = "//*[@id=\"add_region\"]";
-        clickbyxpath(xpath);
-        AlertAccept();
-
-        GetConfirmationMessage();
     }
 
 

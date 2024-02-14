@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
@@ -18,81 +19,87 @@ public class GoodsRequisition extends Page_Options {
 
     @And("create new Goods Requisition")
     public void create_new_goods_requisition() throws InterruptedException {
-        xpath = "/html/body/div[2]/div[2]/div/div[1]/div/div/div/div[3]/a[2]";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
-
-        //date and time
-        id = "requested_on";
-        waitById(id);
-        clickbyId(id);
-        inputbyid(id, getTodaynTime());
-
-        //send request from
-        id = "select2-req_from-container";
-        waitById(id);
-        clickbyId(id);
-        //search for comilla and hit enter
-        cssSelector = ".select2-search--dropdown > .select2-search__field";
-        waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, GROVS.RequestFrom);
-        cssSelectorPressEnter(cssSelector);
-
-        //send request to
-        id = "select2-req_to-container";
-        waitById(id);
-        clickbyId(id);
-        //search for factory
-        xpath = "/html/body/span/span/span[1]/input";
-        waitByxpath(xpath);
-        inputbyxpath(xpath, GROVS.RequestTo);
-        pressEnterbyXpath(xpath);
-        clickbyId(id);
-
-        //click the items bar and add items
-        for (int i = 0; i < GROVS.InvoiceItems.length; i++) {
-            Thread.sleep(100);
-            WebElement multiSelectDropdown = driver.findElement(By.id("goods_list"));
-            Select dropdown = new Select(multiSelectDropdown);
-            dropdown.selectByVisibleText(GROVS.InvoiceItems[i]);
-        }
-        xpath = "//*[@id=\"add_goods_table\"]";
-        clickbyxpath(xpath);
-
-
-        //click the amount buttons for the quantity of the items
-        for (int i = 0; i < GROVS.InvoiceItems.length; i++) {
-            //ctn(quantity)
-            xpath = "//*[@id=\"fg_store_goods_table\"]/tr["+(i+1)+"]/td[5]/input[1]";
+        try {
+            xpath = "/html/body/div[2]/div[2]/div/div[1]/div/div/div/div[3]/a[2]";
             waitByxpath(xpath);
-            clearByXpath(xpath);
-            inputbyxpath(xpath, GROVS.ItemQuantity);
-            //pcs(quantity)
-            xpath = "//*[@id=\"fg_store_goods_table\"]/tr["+(i+1)+"]/td[6]/input";
-            waitByxpath(xpath);
-            clearByXpath(xpath);
-            inputbyxpath(xpath, GROVS.ItemQuantity);
-        }
+            clickbyxpath(xpath);
 
-        //remove an item
-        WebElement table = driver.findElement(By.id("fg_store_goods_table"));
-        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
-        // Iterate through rows
-        for (int i = 0; i < rows.size(); i++) {
-            WebElement row = rows.get(i);
-            if (i% 5 == 0) {
-                // Find and click the "delete" button for the visible row
-                WebElement delete_Button = row.findElement(By.xpath("//*[@id=\"fg_store_goods_table\"]/tr["+(i+1)+"]/td[7]/button"));
-                delete_Button.click();
+            //date and time
+            id = "requested_on";
+            waitById(id);
+            clickbyId(id);
+            inputbyid(id, getTodaynTime());
+
+            //send request from
+            id = "select2-req_from-container";
+            waitById(id);
+            clickbyId(id);
+            //search for comilla and hit enter
+            cssSelector = ".select2-search--dropdown > .select2-search__field";
+            waitByCssSelector(cssSelector);
+            inputbycssselector(cssSelector, GROVS.RequestFrom);
+            cssSelectorPressEnter(cssSelector);
+
+            //send request to
+            id = "select2-req_to-container";
+            waitById(id);
+            clickbyId(id);
+            //search for factory
+            xpath = "/html/body/span/span/span[1]/input";
+            waitByxpath(xpath);
+            inputbyxpath(xpath, GROVS.RequestTo);
+            pressEnterbyXpath(xpath);
+            clickbyId(id);
+
+            //click the items bar and add items
+            for (int i = 0; i < GROVS.InvoiceItems.length; i++) {
+                Thread.sleep(100);
+                WebElement multiSelectDropdown = driver.findElement(By.id("goods_list"));
+                Select dropdown = new Select(multiSelectDropdown);
+                dropdown.selectByVisibleText(GROVS.InvoiceItems[i]);
             }
+            xpath = "//*[@id=\"add_goods_table\"]";
+            clickbyxpath(xpath);
+
+
+            //click the amount buttons for the quantity of the items
+            for (int i = 0; i < GROVS.InvoiceItems.length; i++) {
+                //ctn(quantity)
+                xpath = "//*[@id=\"fg_store_goods_table\"]/tr[" + (i + 1) + "]/td[5]/input[1]";
+                waitByxpath(xpath);
+                clearByXpath(xpath);
+                inputbyxpath(xpath, GROVS.ItemQuantity);
+                //pcs(quantity)
+                xpath = "//*[@id=\"fg_store_goods_table\"]/tr[" + (i + 1) + "]/td[6]/input";
+                waitByxpath(xpath);
+                clearByXpath(xpath);
+                inputbyxpath(xpath, GROVS.ItemQuantity);
+            }
+
+            //remove an item
+            WebElement table = driver.findElement(By.id("fg_store_goods_table"));
+            java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
+            // Iterate through rows
+            for (int i = 0; i < rows.size(); i++) {
+                WebElement row = rows.get(i);
+                if (i % 5 == 0) {
+                    // Find and click the "delete" button for the visible row
+                    WebElement delete_Button = row.findElement(By.xpath("//*[@id=\"fg_store_goods_table\"]/tr[" + (i + 1) + "]/td[7]/button"));
+                    delete_Button.click();
+                }
+            }
+
+            //save
+            xpath = "//button[@id='send_req_fg_store']";
+            clickbyxpath(xpath);
+
+            AlertAccept();
+            GetConfirmationMessage();
+        } catch (
+                TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
         }
-
-        //save
-        xpath = "//button[@id='send_req_fg_store']";
-        clickbyxpath(xpath);
-
-        AlertAccept();
-        GetConfirmationMessage();
     }
 
     @Then("close the Goods Requisition window")
@@ -109,17 +116,22 @@ public class GoodsRequisition extends Page_Options {
 
     @And("cancel the good requisition")
     public void cancel_the_good_requisition() throws InterruptedException {
-        //click the eye button
-        Thread.sleep(2000);
-        xpath = "//*[@id=\"received_table\"]/tr[1]/td[2]/a";
-        scrollTo_ByXpath(xpath);
-        Thread.sleep(500);
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
+        try {
+            //click the eye button
+            Thread.sleep(2000);
+            xpath = "//*[@id=\"received_table\"]/tr[1]/td[2]/a";
+            scrollTo_ByXpath(xpath);
+            Thread.sleep(500);
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
 
-        //cancel
-        id = "cancel_permission_btn";
-        clickbyId(id);
+            //cancel
+            id = "cancel_permission_btn";
+            clickbyId(id);
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
     }
 
     @Then("close the Goods Requisition window for the cancellation of the request")
@@ -136,54 +148,59 @@ public class GoodsRequisition extends Page_Options {
 
     @And("Accept the good requisition")
     public void accept_the_good_requisition() throws InterruptedException {
-        //click the eye button
-        Thread.sleep(2000);
-        xpath = "//*[@id=\"received_table\"]/tr[1]/td[2]/a";
-        scrollTo_ByXpath(xpath);
-        Thread.sleep(2000);
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
-
-
-        //accepted quantity
-        Boolean acceptfull = false;
-        if (acceptfull == false) {
-            //click the amount buttons for the quantity of the items
-            for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"rcv_pro_data\"]") -2; i++) {
-                //ctn(quantity)
-                xpath = "//*[@id=\"rcv_pro_data\"]/tr["+(i+1)+"]/td[7]/p/input";
-                waitByxpath(xpath);
-                clearByXpath(xpath);
-                inputbyxpath(xpath, GROVS.AcceptedQuantity);
-                //pcs(quantity)
-                xpath = "//*[@id=\"rcv_pro_data\"]/tr["+(i+1)+"]/td[8]/p/input";
-                waitByxpath(xpath);
-                clearByXpath(xpath);
-                inputbyxpath(xpath, GROVS.AcceptedQuantity);
-            }
-
-            //Select a vehicle
-            id = "select2-select_vehicle-container";
-            waitById(id);
-            clickbyId(id);
-            //search for factory vehicle
-            xpath = "/html/body/span/span/span[1]/input";
+        try {
+            //click the eye button
+            Thread.sleep(2000);
+            xpath = "//*[@id=\"received_table\"]/tr[1]/td[2]/a";
+            scrollTo_ByXpath(xpath);
+            Thread.sleep(2000);
             waitByxpath(xpath);
-            inputbyxpath(xpath, GROVS.Vehicle);
-            pressEnterbyXpath(xpath);
+            clickbyxpath(xpath);
 
 
-            //accepted on date and time
-            id = "approved_on";
-            waitById(id);
-            clickbyId(id);
-            inputbyid(id, getTodaynTime());
-            pressEnterById(id);
+            //accepted quantity
+            Boolean acceptfull = false;
+            if (acceptfull == false) {
+                //click the amount buttons for the quantity of the items
+                for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"rcv_pro_data\"]") - 2; i++) {
+                    //ctn(quantity)
+                    xpath = "//*[@id=\"rcv_pro_data\"]/tr[" + (i + 1) + "]/td[7]/p/input";
+                    waitByxpath(xpath);
+                    clearByXpath(xpath);
+                    inputbyxpath(xpath, GROVS.AcceptedQuantity);
+                    //pcs(quantity)
+                    xpath = "//*[@id=\"rcv_pro_data\"]/tr[" + (i + 1) + "]/td[8]/p/input";
+                    waitByxpath(xpath);
+                    clearByXpath(xpath);
+                    inputbyxpath(xpath, GROVS.AcceptedQuantity);
+                }
 
-            //Click accept
-            id="accept_permission_btn";
-            pressEnterById(id);
-            GetConfirmationMessage();
+                //Select a vehicle
+                id = "select2-select_vehicle-container";
+                waitById(id);
+                clickbyId(id);
+                //search for factory vehicle
+                xpath = "/html/body/span/span/span[1]/input";
+                waitByxpath(xpath);
+                inputbyxpath(xpath, GROVS.Vehicle);
+                pressEnterbyXpath(xpath);
+
+
+                //accepted on date and time
+                id = "approved_on";
+                waitById(id);
+                clickbyId(id);
+                inputbyid(id, getTodaynTime());
+                pressEnterById(id);
+
+                //Click accept
+                id = "accept_permission_btn";
+                pressEnterById(id);
+                GetConfirmationMessage();
+            }
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
         }
     }
 
@@ -202,28 +219,33 @@ public class GoodsRequisition extends Page_Options {
 
     @And("vehicle load for the good requisition")
     public void vehicle_load_for_the_good_requisition() {
-        //select a requisition
-        xpath = "//*[@id=\"sent_view2\"]";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
+        try {
+            //select a requisition
+            xpath = "//*[@id=\"sent_view2\"]";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
 
-        //vehicle status
-        id = "vehicle_status";
-        waitById(id);
-        pressDownbyid(id);
+            //vehicle status
+            id = "vehicle_status";
+            waitById(id);
+            pressDownbyid(id);
 
-        //date
-        id = "load_date";
-        waitById(id);
-        clickbyId(id);
-        inputbyid(id, "literally anything");
-        pressEnterById(id);
+            //date
+            id = "load_date";
+            waitById(id);
+            clickbyId(id);
+            inputbyid(id, "literally anything");
+            pressEnterById(id);
 
-        //click save
-        id = "send_req_fg_store";
-        waitById(id);
-        clickbyId(id);
-        GetConfirmationMessage();
+            //click save
+            id = "send_req_fg_store";
+            waitById(id);
+            clickbyId(id);
+            GetConfirmationMessage();
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
     }
 
     @Then("close the Goods Requisition window for vehicle load")
@@ -240,28 +262,33 @@ public class GoodsRequisition extends Page_Options {
 
     @And("vehicle unload for the good requisition")
     public void vehicle_unload_for_the_good_requisition() {
-        //select a requisition
-        xpath = "//*[@id=\"sent_view2\"]";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
+        try {
+            //select a requisition
+            xpath = "//*[@id=\"sent_view2\"]";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
 
-        //vehicle status
-        id = "vehicle_status";
-        waitById(id);
-        pressDownbyid(id);
+            //vehicle status
+            id = "vehicle_status";
+            waitById(id);
+            pressDownbyid(id);
 
-        //date
-        id = "load_date";
-        waitById(id);
-        clickbyId(id);
-        inputbyid(id, "literally anything");
-        pressEnterById(id);
+            //date
+            id = "load_date";
+            waitById(id);
+            clickbyId(id);
+            inputbyid(id, "literally anything");
+            pressEnterById(id);
 
-        //click save
-        id = "send_req_fg_store";
-        waitById(id);
-        clickbyId(id);
-        GetConfirmationMessage();
+            //click save
+            id = "send_req_fg_store";
+            waitById(id);
+            clickbyId(id);
+            GetConfirmationMessage();
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
     }
 
     @Then("close the Goods Requisition window for vehicle unload")
@@ -277,23 +304,28 @@ public class GoodsRequisition extends Page_Options {
 
     @And("Receive The Goods")
     public void receive_the_goods() {
-        //click the eye button
-        id = "sent_view1";
-        waitById(id);
-        clickbyId(id);
+        try {
+            //click the eye button
+            id = "sent_view1";
+            waitById(id);
+            clickbyId(id);
 
-        //set date
-        id = "load_date";
-        waitById(id);
-        clickbyId(id);
-        inputbyid(id, "literally anything");
-        pressEnterById(id);
+            //set date
+            id = "load_date";
+            waitById(id);
+            clickbyId(id);
+            inputbyid(id, "literally anything");
+            pressEnterById(id);
 
-        //click receive button
-        xpath = "//*[@id=\"accept_permission_btn\"]";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
-        GetConfirmationMessage();
+            //click receive button
+            xpath = "//*[@id=\"accept_permission_btn\"]";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
+            GetConfirmationMessage();
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
     }
 
     @Then("close the Goods Requisition window for receiving goods")

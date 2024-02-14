@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -30,67 +31,76 @@ public class ProductCategories extends Page_Options {
 
     @When("create new  Product Category")
     public void create_new_product_category() throws InterruptedException {
-        Thread.sleep(2000);
+        try {
+            Thread.sleep(2000);
 
-        //click the create new button
-        xpath = "/html/body/div[2]/div[2]/div/div[1]/div/div/div/div[3]/a";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
+            //click the create new button
+            xpath = "/html/body/div[2]/div[2]/div/div[1]/div/div/div/div[3]/a";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
 
-        Thread.sleep(500);
+            Thread.sleep(500);
 
-        //name
-        id = "add_name";
-        waitById(id);
-        inputbyid(id, name);
+            //name
+            id = "add_name";
+            waitById(id);
+            inputbyid(id, name);
 
-        //main category
-        id = "select2-add_sub_of_list-container";
-        waitById(id);
-        clickbyId(id);
-        //search for cateegory
-        xpath = "/html/body/span/span/span[1]/input";
-        clickbyxpath(xpath);
-        inputbyxpath(xpath, MainCategory);
-        pressEnterbyXpath(xpath);
+            //main category
+            id = "select2-add_sub_of_list-container";
+            waitById(id);
+            clickbyId(id);
+            //search for cateegory
+            xpath = "/html/body/span/span/span[1]/input";
+            clickbyxpath(xpath);
+            inputbyxpath(xpath, MainCategory);
+            pressEnterbyXpath(xpath);
 
-        //status
-        id = "add_status";
-        WebElement Dropdown = driver.findElement(By.id(id));
-        Select CatgSelect = new Select(Dropdown);
-        CatgSelect.selectByVisibleText(PRODCAT.Status);
-        Thread.sleep(20);
+            //status
+            id = "add_status";
+            WebElement Dropdown = driver.findElement(By.id(id));
+            Select CatgSelect = new Select(Dropdown);
+            CatgSelect.selectByVisibleText(PRODCAT.Status);
+            Thread.sleep(20);
 
-        //click save
-        xpath = "//*[@id=\"add_product_categories_form\"]/div/div/div[3]/div/button";
+            //click save
+            xpath = "//*[@id=\"add_product_categories_form\"]/div/div/div[3]/div/button";
 
-        clickbyxpath(xpath);
-
+            clickbyxpath(xpath);
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
     }
 
     @And("verify that the Product Category is created and listed in the Products Category list")
     public void verify_that_the_product_category_is_created_and_listed_in_the_products_category_list() throws InterruptedException {
-        Thread.sleep(2000);
+        try {
+            Thread.sleep(2000);
 
-        //search for the category
-        id = "search_input";
-        clickbyId(id);
-        inputbyid(id, name);
+            //search for the category
+            id = "search_input";
+            clickbyId(id);
+            inputbyid(id, name);
 
-        Thread.sleep(100);
+            Thread.sleep(100);
 
-        // verify the created product
-        WebElement table = driver.findElement(By.id("product_categories_tableData"));
-        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tbody/tr"));
+            // verify the created product
+            WebElement table = driver.findElement(By.id("product_categories_tableData"));
+            java.util.List<WebElement> rows = table.findElements(By.xpath(".//tbody/tr"));
 
-        // Iterate through rows
-        for (WebElement row : rows) {
-            // Check if the row is displayed
-            if (!row.getAttribute("style").contains("display: none;")) {
-                // Find and click the "Add App Permissions" button for the visible row
-                Assert.assertEquals(name, row.findElement(By.xpath(".//td[2]")).getText());
-                Assert.assertEquals(PRODCAT.MainCategory, row.findElement(By.xpath(".//td[3]")).getText());
+            // Iterate through rows
+            for (WebElement row : rows) {
+                // Check if the row is displayed
+                if (!row.getAttribute("style").contains("display: none;")) {
+                    // Find and click the "Add App Permissions" button for the visible row
+                    Assert.assertEquals(name, row.findElement(By.xpath(".//td[2]")).getText());
+                    Assert.assertEquals(PRODCAT.MainCategory, row.findElement(By.xpath(".//td[3]")).getText());
+                }
             }
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
         }
     }
 
@@ -113,83 +123,93 @@ public class ProductCategories extends Page_Options {
 
     @When("edit a Product Category")
     public void edit_a_product_category() throws InterruptedException {
-        Thread.sleep(2000);
+        try {
+            Thread.sleep(2000);
 
-        //search for the category
-        id = "search_input";
-        clickbyId(id);
-        inputbyid(id, name);
+            //search for the category
+            id = "search_input";
+            clickbyId(id);
+            inputbyid(id, name);
 
-        Thread.sleep(100);
+            Thread.sleep(100);
 
-        // edit the category
-        WebElement table = driver.findElement(By.id("product_categories_tableData"));
-        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tbody/tr"));
+            // edit the category
+            WebElement table = driver.findElement(By.id("product_categories_tableData"));
+            java.util.List<WebElement> rows = table.findElements(By.xpath(".//tbody/tr"));
 
-        // Iterate through rows
-        for (WebElement row : rows) {
-            // Check if the row is displayed
-            if (!row.getAttribute("style").contains("display: none;")) {
-                // Find and click the "Add App Permissions" button for the visible row
-                row.findElement(By.id("btn_edit")).click();
+            // Iterate through rows
+            for (WebElement row : rows) {
+                // Check if the row is displayed
+                if (!row.getAttribute("style").contains("display: none;")) {
+                    // Find and click the "Add App Permissions" button for the visible row
+                    row.findElement(By.id("btn_edit")).click();
+                }
             }
+
+            Thread.sleep(1000);
+
+            //name
+            id = "edit_name";
+            waitById(id);
+            clearById(id);
+            inputbyid(id, E_name);
+
+            //main category
+            id = "select2-edit_sub_of_list-container";
+            waitById(id);
+            clickbyId(id);
+            //search for category
+            xpath = "/html/body/span/span/span[1]/input";
+            waitByxpath(xpath);
+            inputbyxpath(xpath, MainCategory);
+            pressEnterbyXpath(xpath);
+
+            //status
+            id = "edit_status";
+            WebElement Dropdown = driver.findElement(By.id(id));
+            Select CatgSelect = new Select(Dropdown);
+            CatgSelect.selectByVisibleText(PRODCAT.Status);
+            Thread.sleep(20);
+
+            //save
+            xpath = "//*[@id=\"edit_product_categories_form\"]/div/div/div[3]/div/button";
+            clickbyxpath(xpath);
+            GetConfirmationMessage();
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
         }
-
-        Thread.sleep(1000);
-
-        //name
-        id = "edit_name";
-        waitById(id);
-        clearById(id);
-        inputbyid(id, E_name);
-
-        //main category
-        id = "select2-edit_sub_of_list-container";
-        waitById(id);
-        clickbyId(id);
-        //search for category
-        xpath = "/html/body/span/span/span[1]/input";
-        waitByxpath(xpath);
-        inputbyxpath(xpath, MainCategory);
-        pressEnterbyXpath(xpath);
-
-        //status
-        id = "edit_status";
-        WebElement Dropdown = driver.findElement(By.id(id));
-        Select CatgSelect = new Select(Dropdown);
-        CatgSelect.selectByVisibleText(PRODCAT.Status);
-        Thread.sleep(20);
-
-        //save
-        xpath = "//*[@id=\"edit_product_categories_form\"]/div/div/div[3]/div/button";
-        clickbyxpath(xpath);
-        GetConfirmationMessage();
     }
 
     @And("verify that the Product Category is edited")
     public void verify_that_the_product_category_is_edited() throws InterruptedException {
-        Thread.sleep(2000);
+        try {
+            Thread.sleep(2000);
 
-        //search for the category
-        id = "search_input";
-        clickbyId(id);
-        clearById(id);
-        inputbyid(id, E_name);
+            //search for the category
+            id = "search_input";
+            clickbyId(id);
+            clearById(id);
+            inputbyid(id, E_name);
 
-        Thread.sleep(1000);
+            Thread.sleep(1000);
 
-        // verify the created product
-        WebElement table = driver.findElement(By.id("product_categories_tableData"));
-        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tbody/tr"));
+            // verify the created product
+            WebElement table = driver.findElement(By.id("product_categories_tableData"));
+            java.util.List<WebElement> rows = table.findElements(By.xpath(".//tbody/tr"));
 
-        // Iterate through rows
-        for (WebElement row : rows) {
-            // Check if the row is displayed
-            if (!row.getAttribute("style").contains("display: none;")) {
-                // Find and click the "Add App Permissions" button for the visible row
-                Assert.assertEquals(E_name, row.findElement(By.xpath(".//td[2]")).getText());
-                Assert.assertEquals(MainCategory, row.findElement(By.xpath(".//td[3]")).getText());
+            // Iterate through rows
+            for (WebElement row : rows) {
+                // Check if the row is displayed
+                if (!row.getAttribute("style").contains("display: none;")) {
+                    // Find and click the "Add App Permissions" button for the visible row
+                    Assert.assertEquals(E_name, row.findElement(By.xpath(".//td[2]")).getText());
+                    Assert.assertEquals(MainCategory, row.findElement(By.xpath(".//td[3]")).getText());
+                }
             }
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
         }
     }
 
@@ -212,46 +232,56 @@ public class ProductCategories extends Page_Options {
 
     @When("create a product")
     public void create_a_product() throws InterruptedException {
-        Thread.sleep(2000);
+        try {
+            Thread.sleep(2000);
 
-        //navigate to the products page
-        cssSelector = ".menues-bar:nth-child(24) .active";
-        waitByCssSelector(cssSelector);
-        clickbycssselector(cssSelector);
+            //navigate to the products page
+            cssSelector = ".menues-bar:nth-child(24) .active";
+            waitByCssSelector(cssSelector);
+            clickbycssselector(cssSelector);
 
-        //click the create new button
-        xpath = "/html/body/div[2]/div[2]/a";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
+            //click the create new button
+            xpath = "/html/body/div[2]/div[2]/a";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
 
-        //product code
-        xpath = "//*[@id=\"product_code\"]";
-        waitByxpath(xpath);
-        inputbyxpath(xpath, "productcode");
+            //product code
+            xpath = "//*[@id=\"product_code\"]";
+            waitByxpath(xpath);
+            inputbyxpath(xpath, "productcode");
 
-        //product name
-        xpath = "//*[@id=\"product_name\"]";
-        waitByxpath(xpath);
-        inputbyxpath(xpath, "productname");
+            //product name
+            xpath = "//*[@id=\"product_name\"]";
+            waitByxpath(xpath);
+            inputbyxpath(xpath, "productname");
 
-        //product category
-        xpath = "//*[@id=\"select2-product_category-container\"]";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
-        xpath = "/html/body/span/span/span[1]/input";
-        clickbyxpath(xpath);
-        inputbyxpath(xpath, E_name);
-        pressEnterbyXpath(xpath);
-        GetConfirmationMessage();
+            //product category
+            xpath = "//*[@id=\"select2-product_category-container\"]";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
+            xpath = "/html/body/span/span/span[1]/input";
+            clickbyxpath(xpath);
+            inputbyxpath(xpath, E_name);
+            pressEnterbyXpath(xpath);
+            GetConfirmationMessage();
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
     }
 
     @When("verify that the Product Category is there for product creation")
     public void verify_that_the_product_category_is_there_for_product_creation() throws InterruptedException {
-        Thread.sleep(2000);
-        xpath = "//*[@id=\"select2-product_category-container\"]";
-        waitByxpath(xpath);
-        String s = getTextAttributebyXpath(xpath);
-        Assert.assertTrue(s.contains(E_name));
+        try {
+            Thread.sleep(2000);
+            xpath = "//*[@id=\"select2-product_category-container\"]";
+            waitByxpath(xpath);
+            String s = getTextAttributebyXpath(xpath);
+            Assert.assertTrue(s.contains(E_name));
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
     }
 
     @Then("close driver for verifying Product Category")

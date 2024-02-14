@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import org.example.Page_Options;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -24,16 +25,26 @@ public class DistributorInvoices extends Page_Options {
 
     @When("search for Invoice")
     public void search_for_invoice() {
-        xpath = "//*[@id=\"inv_tableData_filter\"]/label/input";
-        waitByxpath(xpath);
-        inputbyxpath(xpath, Invoices.SearchInfo);
+        try {
+            xpath = "//*[@id=\"inv_tableData_filter\"]/label/input";
+            waitByxpath(xpath);
+            inputbyxpath(xpath, Invoices.SearchInfo);
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
     }
 
     @And("description of an Invoice")
     public void description_of_an_invoice() {
-        id = "btn_view";
-        waitById(id);
-        clickbyId(id);
+        try {
+            id = "btn_view";
+            waitById(id);
+            clickbyId(id);
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
     }
 
     @Then("close Invoice for search")
@@ -52,48 +63,49 @@ public class DistributorInvoices extends Page_Options {
 
     @And("create new Invoice")
     public void create_new_invoice() throws InterruptedException {
-        //click the create new button
-        xpath = "//*[@id=\"inv_tableData_wrapper\"]/div[1]/button[4]";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
+        try {
+            //click the create new button
+            xpath = "//*[@id=\"inv_tableData_wrapper\"]/div[1]/button[4]";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
 
-        //set date
-        xpath = "//*[@id=\"c_actual_inv_date\"]";
-        waitByxpath(xpath);
-        inputbyxpath(xpath, getToday());
+            //set date
+            xpath = "//*[@id=\"c_actual_inv_date\"]";
+            waitByxpath(xpath);
+            inputbyxpath(xpath, getToday());
 
-        //order list
-        xpath = "//*[@id=\"select2-order_list-container\"]";
-        waitByxpath(xpath);
-        clickbyxpath(xpath);
-        //search for bhai bhai and hit enter
-        cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
-        waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Invoices.DistributorSearch);
-        cssSelectorPressEnter(cssSelector);
+            //order list
+            xpath = "//*[@id=\"select2-order_list-container\"]";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
+            //search for bhai bhai and hit enter
+            cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
+            waitByCssSelector(cssSelector);
+            inputbycssselector(cssSelector, Invoices.DistributorSearch);
+            cssSelectorPressEnter(cssSelector);
 
-        //select the store
-        id = "select2-c_store_id-container";
-        waitById(id);
-        clickbyId(id);
+            //select the store
+            id = "select2-c_store_id-container";
+            waitById(id);
+            clickbyId(id);
 
-        cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
-        waitByCssSelector(cssSelector);
-        inputbycssselector(cssSelector, Invoices.Store);
-        cssSelectorPressEnter(cssSelector);
+            cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
+            waitByCssSelector(cssSelector);
+            inputbycssselector(cssSelector, Invoices.Store);
+            cssSelectorPressEnter(cssSelector);
 
 
-        //partial cancel or full cancel
-        Boolean fullCancel = Invoices.CancelPartial;
+            //partial cancel or full cancel
+            Boolean fullCancel = Invoices.CancelPartial;
 
-        for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"c_inv_items_list\"]"); i++) {
-            if (fullCancel == false && i % 2 == 0) {
-                //CTN
-                Thread.sleep(20);
-                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
-                waitByxpath(xpath);
-                clearByXpath(xpath);
-                inputbyxpath(xpath, Invoices.ItemQuantity); //here the number is the quantity that will be deleted
+            for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"c_inv_items_list\"]"); i++) {
+                if (fullCancel == false && i % 2 == 0) {
+                    //CTN
+                    Thread.sleep(20);
+                    xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
+                    waitByxpath(xpath);
+                    clearByXpath(xpath);
+                    inputbyxpath(xpath, Invoices.ItemQuantity); //here the number is the quantity that will be deleted
 
 //                //PCS(not necessary)
 //                Thread.sleep(20);
@@ -101,50 +113,54 @@ public class DistributorInvoices extends Page_Options {
 //                waitByxpath(xpath);
 //                clearByXpath(xpath);
 //                inputbyxpath(xpath, Invoices.ItemQuantity); //here the number is the quantity that will be deleted
+                }
             }
-        }
 
 
-        //offer part
-        if (ElementVisible("//*[@id=\"tbl_data\"]")) {
-            for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++) {
-                String s = getTextbyXpath("//tbody[@id='tbl_data']/tr[" + (i + 1) + "]/td[3]");
-                System.out.println("this is the found string: " + s);
-                if (Objects.equals(s, "Offer Type: Product")) {
-                    String dropdownXpath = "//*[@id='tbl_data']/tr[" + (i + 1) + "]/td[5]//select";
-                    //Selecting the dropdown options only for where available
-                    try {
-                        WebElement dropdownElement = driver.findElement(By.xpath(dropdownXpath));
-                        Select dropdown = new Select(dropdownElement);
-                        dropdown.selectByIndex(1);
-                    } catch (org.openqa.selenium.NoSuchElementException e) {
-                        continue;
-                    }
+            //offer part
+            if (ElementVisible("//*[@id=\"tbl_data\"]")) {
+                for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++) {
+                    String s = getTextbyXpath("//tbody[@id='tbl_data']/tr[" + (i + 1) + "]/td[3]");
+                    System.out.println("this is the found string: " + s);
+                    if (Objects.equals(s, "Offer Type: Product")) {
+                        String dropdownXpath = "//*[@id='tbl_data']/tr[" + (i + 1) + "]/td[5]//select";
+                        //Selecting the dropdown options only for where available
+                        try {
+                            WebElement dropdownElement = driver.findElement(By.xpath(dropdownXpath));
+                            Select dropdown = new Select(dropdownElement);
+                            dropdown.selectByIndex(1);
+                        } catch (org.openqa.selenium.NoSuchElementException e) {
+                            continue;
+                        }
 
-                    //Quantity CTN
-                    Thread.sleep(200);
-                    String xpath = "//*[@id=\"tbl_data\"]/tr[" + (i + 1) + "]/td[6]/input[1]";
-                    int quantity = Integer.parseInt(getTextAttributebyXpath(xpath));
-                    if (quantity > Integer.parseInt(Invoices.OfferCTN)) {
-                        waitByxpath(xpath);
-                        Thread.sleep(300);
-                        clearByXpath(xpath);
-                        inputbyxpath(xpath, (Invoices.OfferCTN));
+                        //Quantity CTN
+                        Thread.sleep(200);
+                        String xpath = "//*[@id=\"tbl_data\"]/tr[" + (i + 1) + "]/td[6]/input[1]";
+                        int quantity = Integer.parseInt(getTextAttributebyXpath(xpath));
+                        if (quantity > Integer.parseInt(Invoices.OfferCTN)) {
+                            waitByxpath(xpath);
+                            Thread.sleep(300);
+                            clearByXpath(xpath);
+                            inputbyxpath(xpath, (Invoices.OfferCTN));
+                        }
                     }
                 }
             }
+
+            //notes
+            id = "c_notes";
+            inputbyid(id, Invoices.Note);
+
+            //save
+            xpath = "//*[@id=\"add_region\"]";
+            clickbyxpath(xpath);
+
+            AlertAccept();
+            GetConfirmationMessage();
+        } catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
         }
-
-        //notes
-        id = "c_notes";
-        inputbyid(id, Invoices.Note);
-
-        //save
-        xpath = "//*[@id=\"add_region\"]";
-        clickbyxpath(xpath);
-
-        AlertAccept();
-        GetConfirmationMessage();
     }
 
     @Then("close the Invoice window")

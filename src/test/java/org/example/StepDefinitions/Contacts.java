@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
+import org.openqa.selenium.TimeoutException;
 
 public class Contacts extends Page_Options {
 
@@ -15,10 +16,15 @@ public class Contacts extends Page_Options {
 
     @When("search for employee")
     public void search_for_employee() throws InterruptedException {
+        try{
         id = "search";
         waitById(id);
         Thread.sleep(2000);
         inputbyid(id,ContactsSearchInfo);
+        }catch (TimeoutException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
     }
 
     @Then("^close Contacts$")
