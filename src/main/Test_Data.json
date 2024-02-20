@@ -76,12 +76,13 @@
     "Employee info10": "Mehedi Hasan Siam"
   },
   "Order": {
-    "SearchInfo": "SO-00000003",
-    "DistributorSearch": "bhai bhai",
-    "ItemQuantity": "20",
+    "SearchInfo": "CM1910",
+    "DistributorSearch": "CM1910",
+    "ItemQuantity": "200",
     "Note": "Automated Test",
     "Refference No": "Testing Ref No ",
-    "CashCommission": "0"
+    "CashCommission": "0",
+    "IntervalOfSaveTime": 3600000
   },
   "CancelOrder": {
     "SearchInfo": "SO-00000003",
@@ -91,14 +92,15 @@
     "partialCancel": true
   },
   "DistributorInvoice": {
-    "SearchInfo": "SO-00000002",
-    "DistributorSearch": "bhai bhai",
+    "SearchInfo": "CM1910",
+    "DistributorSearch": "CM1910",
     "Store": "Cumilla depot",
     "Note": "Automated Test",
-    "ItemQuantity": "5",
-    "OfferQuantity": "3",
+    "ItemQuantity": "100",
+    "OfferQuantity": "5",
     "CancelPartial": true,
-    "OfferCTN": "5"
+    "OfferCTN": "5",
+    "IntervalOfSaveTime": 3600000
   },
   "Cancel Invoice": {
     "SearchInfo": "SI-00000002",

@@ -71,10 +71,10 @@ public class Order extends Page_Options {
             clickbyxpath(xpath);
 
             //set date
-            id = "c_inv_date";
-            waitById(id);
-            clickbyId(id);
-            inputbyid(id, getToday());
+            xpath = "//*[@id=\"c_inv_date\"]";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
+            DateSet(xpath);
 
             //wait and click distributors
             xpath = "//*[@id=\"select2-distributor_list-container\"]";

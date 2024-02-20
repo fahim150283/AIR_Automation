@@ -64,6 +64,7 @@ public class ReadJson {
 
     public static class Order {
         public static String Items[] = new String[15];
+        public static long IntervalOfSaveTime;
         public static String SearchInfo;
         public static String ItemQuantity;
         public static String DistributorSearch;
@@ -89,6 +90,7 @@ public class ReadJson {
         public static String ItemQuantity;
         public static String OfferCTN;
         public static boolean CancelPartial;
+        public static long IntervalOfSaveTime;
     }
 
     public static class CancelInvoice {
@@ -484,6 +486,7 @@ public class ReadJson {
                 Invoices.OfferQuantity = (String) DistributorInvoiceObject.get("OfferQuantity");
                 Invoices.OfferCTN = (String) DistributorInvoiceObject.get("OfferCTN");
                 Invoices.CancelPartial = (boolean) DistributorInvoiceObject.get("CancelPartial");
+                Invoices.IntervalOfSaveTime = (long) DistributorInvoiceObject.get("IntervalOfSaveTime");
 
             }
             {// Read data from the "CancelInvoice" object

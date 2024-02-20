@@ -5,13 +5,12 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.util.Objects;
 
@@ -38,10 +37,16 @@ public class DistributorInvoices extends Page_Options {
     @And("description of an Invoice")
     public void description_of_an_invoice() {
         try {
+            Thread.sleep(2000);
+
             id = "btn_view";
             waitById(id);
             clickbyId(id);
-        } catch (TimeoutException e) {
+            Thread.sleep(2000);
+
+            scrollToTheBottomOfModal();
+
+        } catch (TimeoutException | InterruptedException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }
@@ -72,7 +77,7 @@ public class DistributorInvoices extends Page_Options {
             //set date
             xpath = "//*[@id=\"c_actual_inv_date\"]";
             waitByxpath(xpath);
-            inputbyxpath(xpath, getToday());
+            DateSet(xpath);
 
             //order list
             xpath = "//*[@id=\"select2-order_list-container\"]";
@@ -116,6 +121,35 @@ public class DistributorInvoices extends Page_Options {
                 }
             }
 
+            //notes
+            id = "c_notes";
+            inputbyid(id, Invoices.Note);
+
+
+
+
+            //calculate the grand total
+
+
+            int itemsRowSize = getTotalRowCountByXpath("//*[@id=\"c_inv_items_list\"]");
+            float [][]gtCacl = new float[itemsRowSize][2];
+            for (int i =0; i<itemsRowSize; i++) {
+                //get price/ctn
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[5]/input";
+                float s1 = Float.parseFloat(getTextAttributebyXpath(xpath));
+                //get ctn count
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[4]/input";
+                float s2 = Float.parseFloat(getTextbyXpath(xpath));
+
+                gtCacl[i][0] = s1;
+                gtCacl[i][1] = s2;
+                System.out.println(gtCacl[i][0] +" multiplied by"+gtCacl[i][1]);
+            }
+            double grandTotalActual = GrandTotalCalc(gtCacl);
+            System.out.println(grandTotalActual + " : is the actual grand total");
+            float grandTotalVisible = Float.parseFloat(getTextbyXpath("//*[@id=\"c_grand_total\"]"));
+            System.out.println("Visible Grand Total = "+grandTotalVisible + "and Actual Grand Total = "+ grandTotalActual);
+            Assert.assertEquals(grandTotalVisible,grandTotalActual);
 
             //offer part
             if (ElementVisible("//*[@id=\"tbl_data\"]")) {
@@ -129,7 +163,7 @@ public class DistributorInvoices extends Page_Options {
                             WebElement dropdownElement = driver.findElement(By.xpath(dropdownXpath));
                             Select dropdown = new Select(dropdownElement);
                             dropdown.selectByIndex(1);
-                        } catch (org.openqa.selenium.NoSuchElementException e) {
+                        } catch (NoSuchElementException e) {
                             continue;
                         }
 
@@ -147,13 +181,13 @@ public class DistributorInvoices extends Page_Options {
                 }
             }
 
-            //notes
-            id = "c_notes";
-            inputbyid(id, Invoices.Note);
+
+            //wait an hour
+            Thread.sleep(Invoices.IntervalOfSaveTime);
 
             //save
             xpath = "//*[@id=\"add_region\"]";
-            clickbyxpath(xpath);
+//            clickbyxpath(xpath);
 
             AlertAccept();
             GetConfirmationMessage();

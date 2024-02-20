@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -29,6 +30,18 @@ public class Page_Options extends BrowserUtils {
 
     public static void scrollToTheBottom() {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight * 0.9)");
+    }
+
+    public static void scrollToTheBottomOfModal() {
+        // Find the modal content element
+        WebElement modalContent = driver.findElement(By.className("modal-content"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollTop = arguments[0].scrollHeight",modalContent);
+//        JavascriptExecutor js = (JavascriptExecutor) driver;
+//        js.executeScript("arguments[0].scrollTop = arguments[0].scrollHeight", modalContent);
+// Use Actions class to perform scroll action
+//        Actions actions = new Actions(driver);
+//        actions.moveToElement(modalContent).clickAndHold().moveByOffset(0, 500).release().perform();
+
     }
 
     public static void PrintPageTitle() {
@@ -237,6 +250,7 @@ public class Page_Options extends BrowserUtils {
         String value = inputElement.getAttribute("value");
         return value;
     }
+
     public static String getTextbyXpath(String s) {
         WebElement inputElement = driver.findElement(By.xpath(s));
         String value = inputElement.getText();
@@ -253,6 +267,7 @@ public class Page_Options extends BrowserUtils {
         id = "login";
         clickbyId(id);
     }
+
     public static void Login_AIR2(String username) {
 
         navigatetourl(Users.AIR_2);
@@ -263,6 +278,7 @@ public class Page_Options extends BrowserUtils {
         id = "login";
         clickbyId(id);
     }
+
     public static void Login_AIR2_AIR(String username) {
 
         navigatetourl(Users.AIR_2_AIR);
@@ -321,7 +337,7 @@ public class Page_Options extends BrowserUtils {
         Thread.sleep(300);
         WebElement table = driver.findElement(By.xpath(xpath));
         int TotalRowCount = table.findElements(By.tagName("li")).size();
-        System.out.println(TotalRowCount+" Total Line count");
+        System.out.println(TotalRowCount + " Total Line count");
         return TotalRowCount;
     }
 
@@ -396,7 +412,7 @@ public class Page_Options extends BrowserUtils {
     }
 
 
-    public boolean ElementVisible(String s){
+    public boolean ElementVisible(String s) {
         // Find the element using XPath
         WebElement element = driver.findElement(By.xpath(s));
 
@@ -413,14 +429,14 @@ public class Page_Options extends BrowserUtils {
 
         // Wait for the search results to load (you might need to implement waits)
         // Then, click on the searched item "Damage Amount"
-        WebElement webElement = driver.findElement(By.xpath("//span[text()='"+s+"']")); // Update the locator accordingly
+        WebElement webElement = driver.findElement(By.xpath("//span[text()='" + s + "']")); // Update the locator accordingly
         webElement.click();
 
         Thread.sleep(2000);
-        System.out.println("Current page : "+driver.getTitle());
+        System.out.println("Current page : " + driver.getTitle());
     }
 
-    public void GetConfirmationMessage(){
+    public void GetConfirmationMessage() {
         // Wait for the modal dialog to be present
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement modalDialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("swal2-popup")));
@@ -431,4 +447,11 @@ public class Page_Options extends BrowserUtils {
         System.out.println("Confirmation Message: " + messageText);
     }
 
+    public double GrandTotalCalc(float [][]gt){
+        double GrandTotal = 0;
+        for (int i = 0; i < gt.length; i++) {
+            GrandTotal = GrandTotal+(gt[i][0] * gt[i][1]);
+        }
+        return GrandTotal;
+    }
 }
