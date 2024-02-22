@@ -85,10 +85,10 @@ public class AuditStockUpdate extends Page_Options {
                 clearByXpath(xpath);
                 inputbyxpath(xpath, AuditStockUpdate.ItemQuantity);
 
-                //set pcs amount
-                xpath = "//*[@id=\"product_details\"]/tr[" + (i + 1) + "]/td[7]/input";
-                clearByXpath(xpath);
-                inputbyxpath(xpath, AuditStockUpdate.ItemQuantity);
+//                //set pcs amount
+//                xpath = "//*[@id=\"product_details\"]/tr[" + (i + 1) + "]/td[7]/input";
+//                clearByXpath(xpath);
+//                inputbyxpath(xpath, AuditStockUpdate.ItemQuantity);
             }
 
             //click save button

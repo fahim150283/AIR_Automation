@@ -37,7 +37,7 @@
     "SearchInfo": "Bogura siam",
     "DepotSearch": "Cumilla",
     "StoreSearch": "Depot",
-    "ItemQuantity": "200000"
+    "ItemQuantity": "10000"
   },
   "PreInvoice": {
     "SearchInfo": "SPI-00000004",
@@ -98,7 +98,7 @@
     "Note": "Automated Test",
     "ItemQuantity": "100",
     "OfferQuantity": "5",
-    "CancelPartial": true,
+    "PartialInvoice": true,
     "OfferCTN": "5",
     "IntervalOfSaveTime": 3600000
   },

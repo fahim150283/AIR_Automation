@@ -8,6 +8,7 @@ import io.cucumber.testng.CucumberOptions;
         plugin = {"pretty", "html:target/cucumber-reports-html/ProductCategories.html",
                 "json:target/cucumber-reports/ProductCategories.json"},
         features = {"src/test/resources/Features/ProductCategories.feature"},
+        publish = true,
         glue = {"org.example.StepDefinitions"}
 //        ,tags = "@regression" //it runs all the scenarios of the feature file that contains @regression
 //        ,tags = "@google"  //it runs all the scenarios of the feature file that contains @google

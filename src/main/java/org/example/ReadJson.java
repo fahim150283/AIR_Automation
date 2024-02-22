@@ -89,7 +89,7 @@ public class ReadJson {
         public static String OfferQuantity;
         public static String ItemQuantity;
         public static String OfferCTN;
-        public static boolean CancelPartial;
+        public static boolean PartialInvoice;
         public static long IntervalOfSaveTime;
     }
 
@@ -485,7 +485,7 @@ public class ReadJson {
                 Invoices.ItemQuantity = (String) DistributorInvoiceObject.get("ItemQuantity");
                 Invoices.OfferQuantity = (String) DistributorInvoiceObject.get("OfferQuantity");
                 Invoices.OfferCTN = (String) DistributorInvoiceObject.get("OfferCTN");
-                Invoices.CancelPartial = (boolean) DistributorInvoiceObject.get("CancelPartial");
+                Invoices.PartialInvoice = (boolean) DistributorInvoiceObject.get("PartialInvoice");
                 Invoices.IntervalOfSaveTime = (long) DistributorInvoiceObject.get("IntervalOfSaveTime");
 
             }

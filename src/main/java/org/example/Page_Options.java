@@ -1,14 +1,14 @@
 package org.example;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -20,6 +20,7 @@ public class Page_Options extends BrowserUtils {
     public static String xpath;
     public static String cssSelector;
     public static String tempName;
+    public static String newLine = System.getProperty("line.separator");//This will retrieve line separator dependent on OS.;
 
     public static void navigatetourl(String URL) {
         setDriverChrome();
@@ -447,11 +448,27 @@ public class Page_Options extends BrowserUtils {
         System.out.println("Confirmation Message: " + messageText);
     }
 
-    public double GrandTotalCalc(float [][]gt){
+    public double GrandTotalCalc(double [][]gt){
         double GrandTotal = 0;
         for (int i = 0; i < gt.length; i++) {
             GrandTotal = GrandTotal+(gt[i][0] * gt[i][1]);
         }
         return GrandTotal;
+    }
+
+    public void TakeScreenShot() throws IOException {
+        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile, new File("C:\\Users\\h.abul\\Pictures\\SS from automated tests\\screenshot"+randomnumber()+".png"));
+    }
+
+    public void PageUp() throws InterruptedException {
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.PAGE_UP).perform();
+        Thread.sleep(700);
+    }
+    public void PageDown() throws InterruptedException {
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        Thread.sleep(700);
     }
 }

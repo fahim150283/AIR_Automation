@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class DistributorInvoices extends Page_Options {
@@ -100,11 +101,11 @@ public class DistributorInvoices extends Page_Options {
             cssSelectorPressEnter(cssSelector);
 
 
-            //partial cancel or full cancel
-            Boolean fullCancel = Invoices.CancelPartial;
+            //partial invoice or full invoice
+            Boolean partialInvoice = Invoices.PartialInvoice;
 
             for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"c_inv_items_list\"]"); i++) {
-                if (fullCancel == false && i % 2 == 0) {
+                if (partialInvoice == true && i % 2 == 0) {
                     //CTN
                     Thread.sleep(20);
                     xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
@@ -126,30 +127,33 @@ public class DistributorInvoices extends Page_Options {
             inputbyid(id, Invoices.Note);
 
 
-
-
             //calculate the grand total
 
 
             int itemsRowSize = getTotalRowCountByXpath("//*[@id=\"c_inv_items_list\"]");
-            float [][]gtCacl = new float[itemsRowSize][2];
-            for (int i =0; i<itemsRowSize; i++) {
+            double[][] gtCacl = new double[itemsRowSize][2];
+            for (int i = 0; i < itemsRowSize; i++) {
                 //get price/ctn
-                xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[5]/input";
-                float s1 = Float.parseFloat(getTextAttributebyXpath(xpath));
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
+                double s1 = Double.parseDouble(getTextAttributebyXpath(xpath));
                 //get ctn count
-                xpath = "//*[@id=\"c_inv_items_list\"]/tr["+(i+1)+"]/td[4]/input";
-                float s2 = Float.parseFloat(getTextbyXpath(xpath));
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[4]/input";
+                double s2 = Double.parseDouble(getTextAttributebyXpath(xpath));
 
                 gtCacl[i][0] = s1;
                 gtCacl[i][1] = s2;
-                System.out.println(gtCacl[i][0] +" multiplied by"+gtCacl[i][1]);
+                System.out.println(gtCacl[i][0] + " * " + gtCacl[i][1] + " = " + gtCacl[i][0] * gtCacl[i][1]);
             }
             double grandTotalActual = GrandTotalCalc(gtCacl);
-            System.out.println(grandTotalActual + " : is the actual grand total");
-            float grandTotalVisible = Float.parseFloat(getTextbyXpath("//*[@id=\"c_grand_total\"]"));
-            System.out.println("Visible Grand Total = "+grandTotalVisible + "and Actual Grand Total = "+ grandTotalActual);
-            Assert.assertEquals(grandTotalVisible,grandTotalActual);
+            double grandTotalVisible = Double.parseDouble(getTextAttributebyXpath("//*[@id=\"c_grand_total\"]"));
+            System.out.println("Visible Grand Total = " + grandTotalVisible + newLine + "Actual Grand Total = " + grandTotalActual);
+            Assert.assertEquals(grandTotalVisible, grandTotalActual);
+
+
+            //get total payable from interface
+            xpath = "//*[@id=\"c_total_payable\"]";
+            String sd = getTextAttributebyXpath(xpath);
+            System.out.println(sd + " : is the Total payable");
 
             //offer part
             if (ElementVisible("//*[@id=\"tbl_data\"]")) {
@@ -168,9 +172,10 @@ public class DistributorInvoices extends Page_Options {
                         }
 
                         //Quantity CTN
-                        Thread.sleep(200);
-                        String xpath = "//*[@id=\"tbl_data\"]/tr[" + (i + 1) + "]/td[6]/input[1]";
+                        Thread.sleep(700);
+                        String xpath = "//*[@id=\"showCtn" + (i + 1) + "\"]";
                         int quantity = Integer.parseInt(getTextAttributebyXpath(xpath));
+                        System.out.println("Default offer quantity is " + quantity + " ctn");
                         if (quantity > Integer.parseInt(Invoices.OfferCTN)) {
                             waitByxpath(xpath);
                             Thread.sleep(300);
@@ -181,19 +186,31 @@ public class DistributorInvoices extends Page_Options {
                 }
             }
 
+            //For Screen Shot
+            for (int i = 0; i < 5; i++) {
+                Thread.sleep(100);
+                PageUp();
+            }
+            TakeScreenShot();
+            PageDown();
+            TakeScreenShot();
 
-            //wait an hour
+
+            //wait for a defined period of time
             Thread.sleep(Invoices.IntervalOfSaveTime);
 
             //save
             xpath = "//*[@id=\"add_region\"]";
-//            clickbyxpath(xpath);
+            clickbyxpath(xpath);
+
 
             AlertAccept();
             GetConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
