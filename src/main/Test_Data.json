@@ -89,7 +89,7 @@
     "DistributorSearch": "bhai bhai",
     "ItemQuantity": "5",
     "Note": "Automated Test",
-    "partialCancel": false
+    "partialCancel": true
   },
   "DistributorInvoice": {
     "SearchInfo": "CM1910",
