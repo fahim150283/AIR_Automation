@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import java.util.List;
 import java.util.Objects;
@@ -80,7 +81,7 @@ public class Order extends Page_Options {
             xpath = "//*[@id=\"select2-distributor_list-container\"]";
             waitByxpath(xpath);
             clickbyxpath(xpath);
-            //search for bhai bhai and hit enter
+            //search for distributor and hit enter
             cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
             waitByCssSelector(cssSelector);
             inputbycssselector(cssSelector, Order.DistributorSearch);
@@ -113,7 +114,7 @@ public class Order extends Page_Options {
             clickbyId(id);
             inputbyid(id, getToday());
 
-            //Refference No
+            //Reference No
             id = "c_inv_ref";
             inputbyid(id, refernce_no);
 
@@ -171,6 +172,30 @@ public class Order extends Page_Options {
             id = "c_notes";
             clickbyId(id);
             inputbyid(id, Order.Note);
+
+
+            //calculate the grand total
+
+
+            int itemsRowSize = getTotalRowCountByXpath("//*[@id=\"c_inv_items_list\"]");
+            double[][] gtCacl = new double[itemsRowSize][2];
+            for (int i = 0; i < itemsRowSize; i++) {
+                //get price/ctn
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[4]/input";
+                double s1 = Double.parseDouble(getTextAttributebyXpath(xpath));
+                //get ctn count
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
+                double s2 = Double.parseDouble(getTextAttributebyXpath(xpath));
+
+                gtCacl[i][0] = s1;
+                gtCacl[i][1] = s2;
+                System.out.println(gtCacl[i][0] + " * " + gtCacl[i][1] + " = " + gtCacl[i][0] * gtCacl[i][1]);
+            }
+            double grandTotalActual = GrandTotalCalc(gtCacl);
+            double grandTotalVisible = Double.parseDouble(getTextAttributebyXpath("//*[@id=\"c_grand_total\"]"));
+            System.out.println("Visible Grand Total = " + grandTotalVisible + newLine + "Actual Grand Total = " + grandTotalActual);
+            Assert.assertEquals(grandTotalVisible, grandTotalActual);
+
 
             Thread.sleep(1000);
 
