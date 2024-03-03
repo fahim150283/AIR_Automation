@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -196,6 +197,7 @@ public class Page_Options extends BrowserUtils {
 
     public static void AlertAccept() throws InterruptedException {
         Thread.sleep(1000);
+        //Wait for the alert to be displayed and store it in a variable
         driver.switchTo().alert().accept();
     }
 

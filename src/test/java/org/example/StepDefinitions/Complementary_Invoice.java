@@ -130,11 +130,11 @@ public class Complementary_Invoice extends Page_Options {
                 waitByxpath(xpath);
                 clearByXpath(xpath);
                 inputbyxpath(xpath, ComplementaryInvoice.ItemQuantity);
-                //pcs(quantity)
-                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
-                waitByxpath(xpath);
-                clearByXpath(xpath);
-                inputbyxpath(xpath, ComplementaryInvoice.ItemQuantity);
+//                //pcs(quantity)
+//                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
+//                waitByxpath(xpath);
+//                clearByXpath(xpath);
+//                inputbyxpath(xpath, ComplementaryInvoice.ItemQuantity);
             }
 
             //remove an item
