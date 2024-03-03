@@ -8,6 +8,7 @@ import org.example.Page_Options;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 public class CancelInvoice extends Page_Options {
     @Given("Login to Search cancelled Invoice")
@@ -79,8 +80,8 @@ public class CancelInvoice extends Page_Options {
         waitByxpath(xpath);
         DateSet(xpath);
 
-        //order list
-        Thread.sleep(300);
+        //invoice list
+        Thread.sleep(15000);
         xpath = "//*[@id=\"select2-invoice_list-container\"]";
         waitByxpath(xpath);
         clickbyxpath(xpath);
@@ -102,6 +103,30 @@ public class CancelInvoice extends Page_Options {
         //important notes
         id = "c_notes";
         inputbyid(id, CancelInvoice.Note);
+
+
+            //calculate the grand total
+
+
+            int itemsRowSize = getTotalRowCountByXpath("//*[@id=\"c_inv_items_list\"]");
+            double[][] gtCacl = new double[itemsRowSize][2];
+            for (int i = 0; i < itemsRowSize; i++) {
+                //get price/ctn
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[4]/input";
+                double s1 = Double.parseDouble(getTextAttributebyXpath(xpath));
+                //get ctn count
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
+                double s2 = Double.parseDouble(getTextAttributebyXpath(xpath));
+
+                gtCacl[i][0] = s1;
+                gtCacl[i][1] = s2;
+                System.out.println(gtCacl[i][0] + " * " + gtCacl[i][1] + " = " + gtCacl[i][0] * gtCacl[i][1]);
+            }
+            double grandTotalActual = GrandTotalCalc(gtCacl);
+            double grandTotalVisible = Double.parseDouble(getTextAttributebyXpath("//*[@id=\"c_grand_total\"]"));
+            System.out.println("Visible Grand Total = " + grandTotalVisible + newLine + "Actual Grand Total = " + grandTotalActual);
+            Assert.assertEquals(grandTotalVisible, grandTotalActual);
+
 
         //save
         id = "add_region";
