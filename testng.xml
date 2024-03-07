@@ -3,6 +3,7 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="G:/Abul Hossain Chowdhury/Projects/AIR_Automation">
         <classes>
+            <class name="org.example.Runner.LoginTestRunner"></class>
             <class name="org.example.Runner.DashboardTestRunner"></class>
             <class name="org.example.Runner.ContactsTestRunner"></class>
             <class name="org.example.Runner.PreInvoiceTestRunner"></class>

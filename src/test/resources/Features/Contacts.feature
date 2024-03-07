@@ -1,8 +1,9 @@
 Feature: Contacts Test
 
-  Scenario: Load Contacts for AIR
+  Scenario: Check the searchbar
 
     Given login for accessing Contacts
     When search for employee
+    And verify if the the employee is searched or not
     Then close Contacts
 
