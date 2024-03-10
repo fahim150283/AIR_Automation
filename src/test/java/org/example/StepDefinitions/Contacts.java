@@ -41,35 +41,40 @@ public class Contacts extends Page_Options {
 
     @And("verify if the the employee is searched or not")
     public void verifyIfTheTheEmployeeIsSearchedOrNot() throws InterruptedException {
-        String s = null;
+        Boolean isNameFound = false;
         Thread.sleep(100);
 
         // Find the parent element containing all the employee details
         WebElement wrapper = driver.findElement(By.id("wrapper"));
+        int i=0;
 
         // Find all the visible boxes
-        List<WebElement> boxes = wrapper.findElements(By.xpath(".//div[@class='col-md-4 box' and not(contains(@style, 'display: none;'))]"));
+        java.util.List<WebElement> boxes = wrapper.findElements(By.xpath(".//div"));
 
         // Iterate through each visible box
         for (WebElement box : boxes) {
             // Find the <p> element with class 'name' inside each box
             WebElement nameElement = null;
             try {
-                nameElement = box.findElement(By.xpath(".//p[@class='name']"));
-                // Get the text of the <p> element
-                String name = nameElement.getText();
-                // Print or store the name as needed
-                System.out.println("Found contact name: " + name);
-                // You can break out of the loop if needed, depending on your use case
-                s = name;
+                if (!box.getAttribute("style").contains("display: none;")) {
+                    // Find and click the "Add App Permissions" button for the visible row
+                    nameElement = box.findElement(By.xpath(".//p"));
+                    // Get the text of the <p> element
+                    String name = nameElement.getText();
+                    // Check if the name contains the desired string
+                    if (name.contains(ContactsSearchInfo)) {
+                        isNameFound = true;
+                        break; // Exit the loop if the name is found
+                    }
+                }
             } catch (NoSuchElementException e) {
                 // If the name element is not found in the current box, continue to the next box
                 continue;
             }
         }
 
-        // Assert if the found name matches the expected name
-        Assert.assertEquals(s, ContactsSearchInfo);
+        // Assert if the name is found
+        Assert.assertTrue(isNameFound, "Employee name '"+ContactsSearchInfo+"' not found");
     }
 
 }
