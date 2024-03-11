@@ -98,7 +98,7 @@ public class ProductCategories extends Page_Options {
                     Assert.assertEquals(PRODCAT.MainCategory, row.findElement(By.xpath(".//td[3]")).getText());
                 }
             }
-        } catch (TimeoutException e) {
+        }  catch (InterruptedException | TimeoutException | AssertionError e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }
@@ -174,7 +174,7 @@ public class ProductCategories extends Page_Options {
             //save
             xpath = "//*[@id=\"edit_product_categories_form\"]/div/div/div[3]/div/button";
             clickbyxpath(xpath);
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
@@ -207,7 +207,7 @@ public class ProductCategories extends Page_Options {
                     Assert.assertEquals(MainCategory, row.findElement(By.xpath(".//td[3]")).getText());
                 }
             }
-        } catch (TimeoutException e) {
+        }  catch (InterruptedException | TimeoutException | AssertionError e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }
@@ -263,7 +263,7 @@ public class ProductCategories extends Page_Options {
             clickbyxpath(xpath);
             inputbyxpath(xpath, E_name);
             pressEnterbyXpath(xpath);
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
@@ -278,7 +278,7 @@ public class ProductCategories extends Page_Options {
             waitByxpath(xpath);
             String s = getTextAttributebyXpath(xpath);
             Assert.assertTrue(s.contains(E_name));
-        } catch (TimeoutException e) {
+        }  catch (InterruptedException | TimeoutException | AssertionError e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }

@@ -157,7 +157,7 @@ public class Complementary_Invoice extends Page_Options {
 
 
             AlertAccept();
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());

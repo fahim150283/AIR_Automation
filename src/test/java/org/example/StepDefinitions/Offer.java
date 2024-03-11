@@ -431,7 +431,7 @@ public class Offer extends Page_Options {
             waitByxpath(xpath);
             clickbyxpath(xpath);
 
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());

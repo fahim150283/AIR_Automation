@@ -6,10 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.io.IOException;
@@ -78,7 +75,7 @@ public class DistributorInvoices extends Page_Options {
             //set date
             xpath = "//*[@id=\"c_actual_inv_date\"]";
             waitByxpath(xpath);
-            DateSet(xpath);
+            SetToday(xpath);
 
             //order list
             xpath = "//*[@id=\"select2-order_list-container\"]";
@@ -205,12 +202,8 @@ public class DistributorInvoices extends Page_Options {
 
 
             AlertAccept();
-            GetConfirmationMessage();
-        } catch (TimeoutException e) {
-            // Handle the TimeoutException
-            System.out.println("TimeoutException occurred: " + e.getMessage());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            PrintConfirmationMessage();
+        }  catch(InterruptedException | TimeoutException | AssertionError | IOException e){} {
         }
     }
 

@@ -8,12 +8,7 @@ import org.example.Page_Options;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-import java.util.List;
 import java.util.Objects;
 
 public class SalesReturn extends Page_Options {
@@ -157,7 +152,7 @@ public class SalesReturn extends Page_Options {
             id = "add_region";
             waitById(id);
             clickbyId(id);
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());

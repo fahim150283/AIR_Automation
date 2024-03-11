@@ -83,7 +83,7 @@ public class Apps extends Page_Options {
             xpath = "//*[@id=\"add_apps_form\"]/div/div[5]/div/button";
             waitByxpath(xpath);
             clickbyxpath(xpath);
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
@@ -109,7 +109,7 @@ public class Apps extends Page_Options {
                     Assert.assertEquals(AppName, row.findElement(By.xpath(".//td[2]")).getText());
                 }
             }
-        } catch (TimeoutException e) {
+        } catch (InterruptedException | TimeoutException | AssertionError e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }
@@ -198,7 +198,7 @@ public class Apps extends Page_Options {
             //save
             id = "edit_apps";
             clickbyId(id);
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
@@ -224,7 +224,7 @@ public class Apps extends Page_Options {
                     Assert.assertEquals(Editedname, row.findElement(By.xpath(".//td[2]")).getText());
                 }
             }
-        } catch (TimeoutException e) {
+        } catch (InterruptedException | TimeoutException | AssertionError e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }
@@ -349,7 +349,7 @@ public class Apps extends Page_Options {
             id = "save";
             clickbyId(id);
 
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
 
         } catch (
                 TimeoutException e) {
@@ -392,7 +392,7 @@ public class Apps extends Page_Options {
             }
             System.out.println("Apps Found? " + AppFound);
             Assert.assertTrue(AppFound);
-        } catch (TimeoutException e) {
+        } catch (InterruptedException | TimeoutException | AssertionError e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }
@@ -467,7 +467,7 @@ public class Apps extends Page_Options {
             xpath = "//*[@id=\"save\"]";
             clickbyxpath(xpath);
 
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
 
         } catch (TimeoutException | InterruptedException e) {
             // Handle the TimeoutException

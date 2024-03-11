@@ -3,7 +3,6 @@ package org.example.StepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.example.Page_Options;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -94,7 +93,7 @@ public class GoodsRequisition extends Page_Options {
             clickbyxpath(xpath);
 
             AlertAccept();
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (
                 TimeoutException e) {
             // Handle the TimeoutException
@@ -196,7 +195,7 @@ public class GoodsRequisition extends Page_Options {
                 //Click accept
                 id = "accept_permission_btn";
                 pressEnterById(id);
-                GetConfirmationMessage();
+                PrintConfirmationMessage();
             }
         } catch (TimeoutException e) {
             // Handle the TimeoutException
@@ -241,7 +240,7 @@ public class GoodsRequisition extends Page_Options {
             id = "send_req_fg_store";
             waitById(id);
             clickbyId(id);
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
@@ -284,7 +283,7 @@ public class GoodsRequisition extends Page_Options {
             id = "send_req_fg_store";
             waitById(id);
             clickbyId(id);
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
@@ -321,7 +320,7 @@ public class GoodsRequisition extends Page_Options {
             xpath = "//*[@id=\"accept_permission_btn\"]";
             waitByxpath(xpath);
             clickbyxpath(xpath);
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());

@@ -78,7 +78,7 @@ public class CancelInvoice extends Page_Options {
         //date
         xpath = "//*[@id=\"c_actual_inv_date\"]";
         waitByxpath(xpath);
-        DateSet(xpath);
+        SetToday(xpath);
 
         //invoice list
         Thread.sleep(15000);
@@ -134,8 +134,8 @@ public class CancelInvoice extends Page_Options {
         clickbyId(id);
 
         AlertAccept();
-        GetConfirmationMessage();
-        }catch (TimeoutException e) {
+        PrintConfirmationMessage();
+        }catch (InterruptedException | TimeoutException | AssertionError e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }

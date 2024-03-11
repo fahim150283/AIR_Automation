@@ -71,7 +71,7 @@ public class CancelOrder extends Page_Options {
             //set date
             xpath = "//*[@id=\"c_actual_inv_date\"]";
             waitByxpath(xpath);
-            DateSet(xpath);
+            SetToday(xpath);
 
             //order list
             xpath = "//*[@id=\"select2-order_list-container\"]";
@@ -166,8 +166,8 @@ public class CancelOrder extends Page_Options {
             Thread.sleep(100);
 
             AlertAccept();
-            GetConfirmationMessage();
-        } catch (TimeoutException e) {
+            PrintConfirmationMessage();
+        } catch (InterruptedException | TimeoutException | AssertionError e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }

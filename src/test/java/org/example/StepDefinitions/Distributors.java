@@ -9,8 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
-import java.util.Random;
-
 public class Distributors extends Page_Options {
     @Given("login for Distributor")
     public void login_for_creation_of_a_distributor() {
@@ -562,7 +560,7 @@ public class Distributors extends Page_Options {
             //Save button
             id = "add_distributors";
             clickbyId(id);
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
@@ -1264,7 +1262,7 @@ public class Distributors extends Page_Options {
             //Save button
             id = "edit_distributors";
             clickbyId(id);
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());

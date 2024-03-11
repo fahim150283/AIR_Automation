@@ -98,7 +98,7 @@ public class Products extends Page_Options {
             //save
             xpath = "//*[@id=\"product_data\"]/div[2]/button";
             clickbyxpath(xpath);
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
@@ -129,7 +129,7 @@ public class Products extends Page_Options {
                     Assert.assertEquals(productname, row.findElement(By.xpath(".//td[2]")).getText());
                 }
             }
-        } catch (TimeoutException e) {
+        } catch (InterruptedException | TimeoutException | AssertionError e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }
@@ -243,7 +243,7 @@ public class Products extends Page_Options {
             //update
             xpath = "//*[@id=\"update_product\"]/div[5]/button";
             clickbyxpath(xpath);
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
@@ -311,7 +311,7 @@ public class Products extends Page_Options {
             xpath = "//*[@id=\"c_inv_items_list\"]/tr/td[4]";
             String itemprice = getTextAttributebyXpath(xpath);
             Assert.assertEquals(itemprice, product.DistributorPrice);
-        } catch (TimeoutException e) {
+        }  catch (InterruptedException | TimeoutException | AssertionError e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }

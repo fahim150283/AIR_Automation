@@ -5,9 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
-import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebElement;
 
 public class GeoLocationMapping extends Page_Options {
     int matchingRowsCNT;
@@ -134,7 +132,7 @@ public class GeoLocationMapping extends Page_Options {
             clickbyId(id);
 
             AlertAccept();
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());

@@ -367,7 +367,7 @@ public class Collections extends Page_Options {
             //click the save button
             id = "add_col";
             clickbyId(id);
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());

@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -439,7 +438,7 @@ public class Page_Options extends BrowserUtils {
         System.out.println("Current page : " + driver.getTitle());
     }
 
-    public void GetConfirmationMessage() {
+    public void PrintConfirmationMessage() {
         // Wait for the modal dialog to be present
         WebDriverWait wait = new WebDriverWait(driver, 10);
         WebElement modalDialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("swal2-popup")));
@@ -448,6 +447,17 @@ public class Page_Options extends BrowserUtils {
         WebElement confirmationMessage = modalDialog.findElement(By.className("swal2-title"));
         String messageText = confirmationMessage.getText();
         System.out.println("Confirmation Message: " + messageText);
+    }
+
+    public String GetConfirmationMessage() {
+        // Wait for the modal dialog to be present
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement modalDialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("swal2-popup")));
+
+        // Extract the confirmation message from the modal
+        WebElement confirmationMessage = modalDialog.findElement(By.className("swal2-title"));
+        String messageText = confirmationMessage.getText();
+        return messageText;
     }
 
     public double GrandTotalCalc(double [][]gt){

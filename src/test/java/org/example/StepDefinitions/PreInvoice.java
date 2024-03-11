@@ -5,13 +5,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
-import org.example.ReadJson;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.List;
 import java.util.Objects;
 
 public class PreInvoice extends Page_Options {
@@ -226,7 +224,7 @@ public class PreInvoice extends Page_Options {
 
             //Click ok button in the alert
             AlertAccept();
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
 
 
         } catch (TimeoutException e) {

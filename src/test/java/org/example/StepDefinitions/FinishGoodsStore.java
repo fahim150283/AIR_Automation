@@ -1,6 +1,5 @@
 package org.example.StepDefinitions;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,7 +9,6 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.io.Closeable;
 import java.util.Objects;
 
 public class FinishGoodsStore extends Page_Options {
@@ -174,7 +172,7 @@ public class FinishGoodsStore extends Page_Options {
             xpath = "//*[@id=\"edit_fg_store_form\"]/div/div[2]/div[6]/button";
             waitByxpath(xpath);
             clickbyxpath(xpath);
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
@@ -260,7 +258,7 @@ public class FinishGoodsStore extends Page_Options {
             //save
             id = "add_fg_store";
             clickbyId(id);
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
@@ -341,7 +339,7 @@ public class FinishGoodsStore extends Page_Options {
             clickbyxpath(xpath);
 
             AlertAccept();
-            GetConfirmationMessage();
+            PrintConfirmationMessage();
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
