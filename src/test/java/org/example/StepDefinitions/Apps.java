@@ -10,9 +10,12 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import java.util.List;
+import java.util.Objects;
+
 public class Apps extends Page_Options {
 
-    public static String AppName = Apps.Name + randomnumber();
+    public static String AppName = Apps.Name;
     public static String Editedname = Apps.EditedName + randomnumber();
     public static String EditedDisplayname = Apps.EditedDisplayName + randomnumber();
 
@@ -48,6 +51,7 @@ public class Apps extends Page_Options {
             inputbyid(id, Apps.DisplayName);
 
             //functions
+            Thread.sleep(500);
             xpath = "//*[@id=\"add_apps_form\"]/div/div[3]/div/span/span[1]/span";
             waitByxpath(xpath);
             for (int i = 0; i < 7; i++) {
@@ -57,13 +61,22 @@ public class Apps extends Page_Options {
             }
             clickbyxpath(xpath);
 
-            //Status
+            //status
             xpath = "//*[@id=\"add_status\"]";
-            boolean active = false;
-            if (active == false) {
-                clickbyxpath(xpath);
-                pressDownbyXpath(xpath);
-                pressEnterbyXpath(xpath);
+            String status = getTextAttributebyXpath(xpath);
+            Boolean isAppActive = Apps.AppActive;
+            if (isAppActive == true) {
+                if (Objects.equals(status, "In Active")) {
+                    clickbyxpath(xpath);
+                    pressUPbyXpath(xpath);
+                    pressEnterbyXpath(xpath);
+                }
+            } else if (isAppActive == false) {
+                if (Objects.equals(status, "Active")) {
+                    clickbyxpath(xpath);
+                    pressDownbyid(xpath);
+                    pressEnterbyXpath(xpath);
+                }
             }
 
             //click the save button
@@ -123,7 +136,7 @@ public class Apps extends Page_Options {
         Thread.sleep(500);
         id = "search_input";
         waitById(id);
-        inputbyid(id, AppName);
+        inputbyid(id, Apps.Name);
     }
 
     @And("edit the app")
@@ -145,27 +158,42 @@ public class Apps extends Page_Options {
                 }
             }
 
+            Thread.sleep(3000);
+
+
             //edit name
-            Thread.sleep(300);
-            id = "edit_name";
-            waitById(id);
-            clearById(id);
-            inputbyid(id, Editedname);
+            xpath = "//*[@id=\"edit_apps_form\"]/div[1]/div[1]/div[1]/input";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
+            clearByXpath(xpath);
+            inputbyxpath(xpath, Editedname);
 
             //edit display name
-            id = "edit_d_name";
-            waitById(id);
-            clearById(id);
-            inputbyid(id, EditedDisplayname);
+            xpath = "//*[@id=\"edit_apps_form\"]/div[1]/div[1]/div[2]/input";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
+            clearByXpath(xpath);
+            inputbyxpath(xpath, EditedDisplayname);
 
             //status
             xpath = "//*[@id=\"edit_status\"]";
             String status = getTextAttributebyXpath(xpath);
-            if (status != "Active") {
-                clickbyxpath(xpath);
-                pressUPbyXpath(xpath);
-                pressEnterbyXpath(xpath);
+            Boolean isAppActive = Apps.AppActive;
+            if (isAppActive == true) {
+                if (Objects.equals(status, "In Active")) {
+                    clickbyxpath(xpath);
+                    pressUPbyXpath(xpath);
+                    pressEnterbyXpath(xpath);
+                }
+            } else if (isAppActive == false) {
+                if (Objects.equals(status, "Active")) {
+                    clickbyxpath(xpath);
+                    pressDownbyid(xpath);
+                    pressEnterbyXpath(xpath);
+                }
             }
+
+
             //save
             id = "edit_apps";
             clickbyId(id);
@@ -223,9 +251,8 @@ public class Apps extends Page_Options {
             Thread.sleep(1000);
             id = "search_input";
             waitById(id);
-            inputbyid(id, Editedname);
-        } catch (
-                TimeoutException e) {
+            inputbyid(id, AppName);
+        } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }
@@ -278,8 +305,8 @@ public class Apps extends Page_Options {
 
 
             // Locate all the rows in the table
-            WebElement table1 = driver.findElement(By.id("include_emp_func_tbody"));
-            java.util.List<WebElement> rows2 = table1.findElements(By.tagName("tr"));
+            WebElement table3 = driver.findElement(By.id("include_emp_func_tbody"));
+            List<WebElement> rows2 = table3.findElements(By.tagName("tr"));
 
             //remove employees
             // Iterate through the rows to find the one with "1077" in the dropdown
@@ -343,8 +370,8 @@ public class Apps extends Page_Options {
         Login_AIR2(Users.user_Haseeb);
     }
 
-    @And("verify from the side panel for the first user")
-    public void verify_from_the_side_panel_for_the_first_user() throws InterruptedException {
+    @And("verify from the side panel")
+    public void verify_from_the_side_panel() throws InterruptedException {
         try {
             Thread.sleep(2000);
 
@@ -355,13 +382,14 @@ public class Apps extends Page_Options {
 
             // Loop through each span element and print its text
             for (WebElement span : spanElements) {
-                if (EditedDisplayname.equals(span.getText())) {
+                if (Apps.DisplayName.equals(span.getText())) {
                     AppFound = true;
                     break;
                 }
                 ;
             }
             System.out.println("Apps Found? " + AppFound);
+            Assert.assertTrue(AppFound);
         } catch (TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
@@ -378,33 +406,70 @@ public class Apps extends Page_Options {
         Login_AIR2(Users.user_Ashik);
     }
 
-    @And("verify from the side panel for the 2nd user")
-    public void verify_from_the_side_panel_for_the_2nd_user() throws InterruptedException {
-        try {
-            Thread.sleep(2000);
-            // Find all span elements within the specified ul element
-            WebElement ulElement = driver.findElement(By.id("menu"));
-            java.util.List<WebElement> spanElements = ulElement.findElements(By.tagName("span"));
-            boolean AppFound = false;
-
-            // Loop through each span element and print its text
-            for (WebElement span : spanElements) {
-                if (EditedDisplayname.equals(span.getText())) {
-                    AppFound = true;
-                    break;
-                }
-                ;
-            }
-            System.out.println("Apps Found? " + AppFound);
-        } catch (TimeoutException e) {
-            // Handle the TimeoutException
-            System.out.println("TimeoutException occurred: " + e.getMessage());
-        }
-    }
 
     @And("close driver for verification of app permission for 2nd user")
     public void close_driver_for_verification_of_app_permission_for_2nd_user() throws InterruptedException {
         closedriver();
     }
+
+    @When("Revoke user permission")
+    public void revoke_user_permission() {
+        try {
+            Thread.sleep(1000);
+            // click the plus button of the displayed app
+            WebElement table = driver.findElement(By.id("apps_tableData"));
+            java.util.List<WebElement> rows = table.findElements(By.xpath(".//tbody/tr"));
+            // Iterate through rows
+            for (WebElement row : rows) {
+                // Check if the row is displayed
+                if (!row.getAttribute("style").contains("display: none;")) {
+                    // Find and click the "Add App Permissions" button for the visible row
+                    WebElement addButton = row.findElement(By.id("btn_add_emp"));
+                    addButton.click();
+                }
+            }
+
+            //click the checkbox of the row for which user permission needs to be revoked
+
+            Thread.sleep(2000);
+            // Locate all the rows in the table
+            WebElement table1 = driver.findElement(By.id("include_emp_func_tbody"));
+            List<WebElement> emprows2 = table1.findElements(By.xpath("//tr"));
+
+            //remove employees
+            // Iterate through the rows
+            for (int i = 0; i < emprows2.size()-111; i++) {     //emprows2 has 111 invalid rows. It has to be subtracted
+                xpath = "//*[@id=\"include_emp_func_tbody\"]/tr["+(i+1)+"]/td[2]/div/span/span/span/span";
+                String s = getTextbyXpath(xpath);
+                System.out.println(s);
+
+                for (int j = 0; j < Apps.EmployeeInfo.length; j++) {
+                    if (s.contains(Apps.EmployeeInfo[j])) {
+                        //select the row
+                        xpath = "//*[@id=\"include_emp_func_tbody\"]/tr["+(i+1)+"]/td[1]/input";
+                        clickbyxpath(xpath);
+                        break;
+                    }
+                }
+            }
+
+            //click the delete button for the selected employees
+            Thread.sleep(200);
+            //click the delete button
+            id = "delete-row";
+            clickbyId(id);
+
+            //save
+            xpath = "//*[@id=\"save\"]";
+            clickbyxpath(xpath);
+
+            GetConfirmationMessage();
+
+        } catch (TimeoutException | InterruptedException e) {
+            // Handle the TimeoutException
+            System.out.println("TimeoutException occurred: " + e.getMessage());
+        }
+    }
+
 
 }

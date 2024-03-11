@@ -60,6 +60,7 @@
   "Apps": {
     "SearchInfo": "create_employee",
     "Name": "Test App",
+    "AppActive": true,
     "Edited Name": "Edited App",
     "Display Name": "Test App display",
     "Edited Display Name": "Edited App display",

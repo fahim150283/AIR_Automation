@@ -56,6 +56,7 @@ public class ReadJson {
         public static String SearchInfo;
         public static String DisplayName;
         public static String Name;
+        public static Boolean AppActive;
         public static String EditedDisplayName;
         public static String EditedName;
         public static String Link;
@@ -450,6 +451,7 @@ public class ReadJson {
                 JSONObject AppsObject = (JSONObject) jsonObject.get("Apps");
                 Apps.SearchInfo = (String) AppsObject.get("SearchInfo");
                 Apps.Name = (String) AppsObject.get("Name");
+                Apps.AppActive = (Boolean) AppsObject.get("AppActive");
                 Apps.DisplayName = (String) AppsObject.get("Display Name");
                 Apps.Link = (String) AppsObject.get("Link");
                 Apps.EditedName = (String) AppsObject.get("Edited Name");
