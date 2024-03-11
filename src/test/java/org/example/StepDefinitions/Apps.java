@@ -155,6 +155,7 @@ public class Apps extends Page_Options {
                     // Find and click the "Add App Permissions" button for the visible row
                     WebElement editButton = row.findElement(By.id("btn_edit"));
                     editButton.click();
+                    break;
                 }
             }
 
@@ -274,6 +275,7 @@ public class Apps extends Page_Options {
                     // Find and click the "Add App Permissions" button for the visible row
                     WebElement addButton = row.findElement(By.id("btn_add_emp"));
                     addButton.click();
+                    break;
                 }
             }
 
@@ -426,12 +428,13 @@ public class Apps extends Page_Options {
                     // Find and click the "Add App Permissions" button for the visible row
                     WebElement addButton = row.findElement(By.id("btn_add_emp"));
                     addButton.click();
+                    break;
                 }
             }
 
             //click the checkbox of the row for which user permission needs to be revoked
 
-            Thread.sleep(2000);
+            Thread.sleep(4000);
             // Locate all the rows in the table
             WebElement table1 = driver.findElement(By.id("include_emp_func_tbody"));
             List<WebElement> emprows2 = table1.findElements(By.xpath("//tr"));
