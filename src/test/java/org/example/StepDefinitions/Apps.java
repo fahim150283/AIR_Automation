@@ -142,7 +142,7 @@ public class Apps extends Page_Options {
     @And("edit the app")
     public void editTheApp() throws InterruptedException {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
 
             // click the edit button of the displayed app
             WebElement table = driver.findElement(By.id("apps_tableData"));
@@ -436,12 +436,13 @@ public class Apps extends Page_Options {
 
             Thread.sleep(4000);
             // Locate all the rows in the table
-            WebElement table1 = driver.findElement(By.id("include_emp_func_tbody"));
-            List<WebElement> emprows2 = table1.findElements(By.xpath("//tr"));
+//            WebElement table1 = driver.findElement(By.id("emp_func_table"));
+            List<WebElement> emprows2 = driver.findElements(By.xpath("//*[@id=\"emp_func_table\"]/tbody/tr"));
+            System.out.println("row size is : "+emprows2.size());
 
             //remove employees
             // Iterate through the rows
-            for (int i = 0; i < emprows2.size()-111; i++) {     //emprows2 has 111 invalid rows. It has to be subtracted
+            for (int i = 0; i < emprows2.size(); i++) {     //emprows2 has 111 invalid rows. It has to be subtracted
                 xpath = "//*[@id=\"include_emp_func_tbody\"]/tr["+(i+1)+"]/td[2]/div/span/span/span/span";
                 String s = getTextbyXpath(xpath);
                 System.out.println(s);
