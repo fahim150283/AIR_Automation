@@ -1,5 +1,6 @@
 package org.example.StepDefinitions;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,8 +10,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class AuditStockUpdate extends Page_Options {
+    SoftAssert softAssert = new SoftAssert();
+
+
     @Given("login for Audit Stock")
     public void login_for_audit_stock() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
@@ -102,94 +107,89 @@ public class AuditStockUpdate extends Page_Options {
         }
     }
 
-    @Then("close Audit Stock window")
-    public void close_audit_stock_window() throws InterruptedException {
-        closedriver();
-    }
-
     @And("verify that the searched result is correct")
-    public void verifyThatTheSearchedResultIsCorrect() {
-        try {
-            Boolean depotisvisible = false;
-            Boolean updatedbyisvisible = false;
+    public void verifyThatTheSearchedResultIsCorrect() throws InterruptedException {
 
-            String DepotString = getTextbyXpath("//*[@id=\"inv_tableData\"]/tbody/tr[1]/td[2]");
-            String UpdatedByString = getTextbyXpath("//*[@id=\"inv_tableData\"]/tbody/tr[1]/td[5]");
-            String str = AuditStockUpdate.SearchInfo;
-            String[] arrOfStr = str.split(" ");
+        Boolean depotisvisible = false;
+        Boolean updatedbyisvisible = false;
 
-            if (DepotString.contains(arrOfStr[0])) {
-                depotisvisible = true;
-            }
-            if (UpdatedByString.contains(arrOfStr[1])) {
-                updatedbyisvisible = true;
-            }
-            Assert.assertTrue(depotisvisible);
-            Assert.assertTrue(updatedbyisvisible);
-        }catch (TimeoutException | AssertionError e){
+        String DepotString = getTextbyXpath("//*[@id=\"inv_tableData\"]/tbody/tr[1]/td[2]");
+        String UpdatedByString = getTextbyXpath("//*[@id=\"inv_tableData\"]/tbody/tr[1]/td[5]");
+        String str = AuditStockUpdate.SearchInfo;
+        String[] arrOfStr = str.split(" ");
 
+        if (DepotString.contains(arrOfStr[0])) {
+            depotisvisible = true;
         }
+        if (UpdatedByString.contains(arrOfStr[1])) {
+            updatedbyisvisible = true;
+        }
+        softAssert.assertTrue(depotisvisible);
+        softAssert.assertTrue(updatedbyisvisible);
+
+        closedriver();
+        softAssert.assertAll();
     }
 
     @And("verify that the audit stock update is viewed")
-    public void verifyThatTheAuditStockUpdateIsViewed() {
-        try {
-            Thread.sleep(4000);
+    public void verifyThatTheAuditStockUpdateIsViewed() throws InterruptedException {
 
-            Boolean depotisvisible = false;
-            Boolean updatedbyisvisible = false;
+        Thread.sleep(4000);
 
-            String DepotString = getTextbyXpath("//*[@id=\"v_depot\"]");
-            String UpdatedByString = getTextbyXpath("//*[@id=\"v_emp\"]");
-            String str = AuditStockUpdate.SearchInfo;
-            String[] arrOfStr = str.split(" ");
+        Boolean depotisvisible = false;
+        Boolean updatedbyisvisible = false;
 
-            if (DepotString.contains(arrOfStr[0])) {
-                depotisvisible = true;
-            }
-            if (UpdatedByString.contains(arrOfStr[1])) {
-                updatedbyisvisible = true;
-            }
-            Assert.assertTrue(depotisvisible);
-            Assert.assertTrue(updatedbyisvisible);
-        } catch (InterruptedException | TimeoutException | AssertionError e) {
-            throw new RuntimeException(e);
+        String DepotString = getTextbyXpath("//*[@id=\"v_depot\"]");
+        String UpdatedByString = getTextbyXpath("//*[@id=\"v_emp\"]");
+        String str = AuditStockUpdate.SearchInfo;
+        String[] arrOfStr = str.split(" ");
+
+        if (DepotString.contains(arrOfStr[0])) {
+            depotisvisible = true;
         }
+        if (UpdatedByString.contains(arrOfStr[1])) {
+            updatedbyisvisible = true;
+        }
+        softAssert.assertTrue(depotisvisible);
+        softAssert.assertTrue(updatedbyisvisible);
 
-
+        closedriver();
+        softAssert.assertAll();
     }
 
     @And("verify that the Fg Store is updated")
     public void verifyThatTheFgStoreIsUpdated() throws InterruptedException {
-        try {
-            Thread.sleep(2000);
-            Click_from_leftSideBar("Finish Goods Store");
 
-            String searchString = AuditStockUpdate.DepotSearch + " " + AuditStockUpdate.StoreSearch + " Store";
+        Thread.sleep(2000);
+        Click_from_leftSideBar("Finish Goods Store");
 
-            Thread.sleep(2000);
-            //search a FG store
-            id = "search";
-            waitById(id);
-            inputbyid(id, searchString);
+        String searchString = AuditStockUpdate.DepotSearch + " " + AuditStockUpdate.StoreSearch + " Store";
 
-            //description of the store
-            WebElement table = driver.findElement(By.id("fg_store_table"));
-            java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
-            // Iterate through rows
-            for (int i = 0; i < rows.size(); i++) {
-                WebElement row = rows.get(i);
-                if (!row.getAttribute("style").contains("display: none;")) {
-                    // Find and click the "delete" button for the visible row
-                    WebElement view_Button = row.findElement(By.id("btn_view"));
-                    view_Button.click();
-                }
+        Thread.sleep(2000);
+        //search a FG store
+        id = "search";
+        waitById(id);
+        inputbyid(id, searchString);
+
+        //description of the store
+        WebElement table = driver.findElement(By.id("fg_store_table"));
+        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
+        // Iterate through rows
+        for (int i = 0; i < rows.size(); i++) {
+            WebElement row = rows.get(i);
+            if (!row.getAttribute("style").contains("display: none;")) {
+                // Find and click the "delete" button for the visible row
+                WebElement view_Button = row.findElement(By.id("btn_view"));
+                view_Button.click();
             }
+        }
 
-            //check if the items are all the same amount as the audit stock update
-            for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"fg_store_qty\"]") - 3; i++) {   // (-3) is used here because 3 of the last rows are reserved for the total value or amount calculation
-                Assert.assertEquals(getTextbyXpath("//*[@id=\"fg_store_qty\"]/tr[" + (i + 1) + "]/td[6]"), AuditStockUpdate.ItemQuantity);
-            }
-        }catch (InterruptedException | TimeoutException | AssertionError e){}
+        //check if the items are all the same amount as the audit stock update
+        for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"fg_store_qty\"]") - 3; i++) {   // (-3) is used here because 3 of the last rows are reserved for the total value or amount calculation
+            softAssert.assertEquals(getTextbyXpath("//*[@id=\"fg_store_qty\"]/tr[" + (i + 1) + "]/td[6]"), AuditStockUpdate.ItemQuantity);
+        }
+
+        closedriver();
+        softAssert.assertAll();
     }
 }

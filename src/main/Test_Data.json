@@ -58,7 +58,7 @@
     "ImportantNoted":"Automated Test"
   },
   "Apps": {
-    "SearchInfo": "create_employee",
+    "SearchInfo": "id_visiting_generator",
     "Name": "Test App",
     "AppActive": true,
     "Edited Name": "Edited App",

@@ -6,10 +6,12 @@ import io.cucumber.java.en.When;
 import org.example.Page_Options;
 import org.openqa.selenium.TimeoutException;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import java.util.Objects;
 
 public class Login extends Page_Options {
+    SoftAssert softAssert = new SoftAssert();
 
     @Given("Navigate to AIR")
     public void navigate_to_air() {
@@ -27,13 +29,14 @@ public class Login extends Page_Options {
     }
 
     @When("verify if the login is unsuccessful")
-    public void verify_if_the_login_is_unsuccessful() {
+    public void verify_if_the_login_is_unsuccessful() throws InterruptedException {
         try {
             System.out.println("The expected page title is: AIR - Login" + " and the actual page title is: " + driver.getTitle());
-            PrintPageTitle();
-
-            Assert.assertEquals(driver.getTitle(), "AIR - Login");
-        } catch (TimeoutException | AssertionError e) {
+            softAssert.assertEquals(driver.getTitle(), "AIR - Login");
+            closedriver();
+            softAssert.assertAll();
+        } catch (TimeoutException | InterruptedException | AssertionError e) {
+            throw e;
         }
     }
 
@@ -45,11 +48,6 @@ public class Login extends Page_Options {
         inputbyid(id, Users.password);
         id = "login";
         clickbyId(id);
-    }
-
-    @Then("close driver")
-    public void close_driver() throws InterruptedException {
-        closedriver();
     }
 
     @When("Input the credentials\\(valid username and invalid password)")
@@ -78,8 +76,9 @@ public class Login extends Page_Options {
             System.out.println("The expected page title is: AIR - Contacts" + " and the actual page title is: " + driver.getTitle());
             PrintPageTitle();
             Thread.sleep(1000);
-            Assert.assertEquals(driver.getTitle(), "AIR - Contacts");
-
+            softAssert.assertEquals(driver.getTitle(), "AIR - Contacts");
+            closedriver();
+            softAssert.assertAll();
         } catch (InterruptedException | TimeoutException | AssertionError e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());

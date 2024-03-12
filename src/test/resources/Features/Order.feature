@@ -4,7 +4,8 @@ Feature: Order Test
   Scenario: Create a new regular Order
     Given login for creating new Order
     And create new Order
-    Then close the Order window
+    Then verify if the order is searched accordingly
+
 
   Scenario: Create a new Order with zero products or no products in it
     Given login for creating new Order
@@ -22,6 +23,5 @@ Feature: Order Test
   Scenario: Description of an Order for AIR
     Given Login to Search Order
     When search for Order
-    And verify if the order is searched accordingly
     And description of a Order
     Then close Order for search

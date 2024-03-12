@@ -1,5 +1,7 @@
 package org.example.StepDefinitions;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -10,10 +12,12 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import java.util.Objects;
 
 public class Order extends Page_Options {
+    SoftAssert softAssert = new SoftAssert();
 
     public static String refernce_no = Order.Refference_No + randomnumber();
 
@@ -288,7 +292,7 @@ public class Order extends Page_Options {
             double grandTotalActual = GrandTotalCalc(gtCacl);
             double grandTotalVisible = Double.parseDouble(getTextAttributebyXpath("//*[@id=\"c_grand_total\"]"));
             System.out.println("Visible Grand Total = " + grandTotalVisible + newLine + "Actual Grand Total = " + grandTotalActual);
-            Assert.assertEquals(grandTotalVisible, grandTotalActual);
+            softAssert.assertEquals("grandTotalVisible", grandTotalActual);
 
 
             Thread.sleep(1000);
@@ -325,6 +329,8 @@ public class Order extends Page_Options {
             AlertAccept();
 
             PrintConfirmationMessage();
+
+            softAssert.assertAll();
         } catch (InterruptedException | TimeoutException | AssertionError e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
@@ -346,7 +352,7 @@ public class Order extends Page_Options {
             int itemsRowSize = getTotalRowCountByXpath(xpath);
             System.out.println("Expected total Rows are : 0 and the found total rows are : " + getTotalRowCountByXpath(xpath));
             Thread.sleep(100);
-            Assert.assertEquals(itemsRowSize, 0);
+            softAssert.assertEquals(itemsRowSize, 0);
         } catch (InterruptedException | TimeoutException | AssertionError e) {
             // Handle the InterruptedException, TimeoutException, and AssertionError
             System.out.println("Exception occurred: " + e.getMessage());
@@ -355,17 +361,18 @@ public class Order extends Page_Options {
     }
 
     @And("verify if the order is searched accordingly")
-    public void verifyIfTheOrderIsSearchedAccordingly() {
-        try {
-            Thread.sleep(3000);
-            Boolean isfound = false;
-            xpath = "//*[@id=\"tableData\"]/tbody/tr/td[2]";
-            if (getTextbyXpath(xpath).contains(Order.SearchInfo)) {
-                isfound = true;
-            }
-            Assert.assertTrue(isfound);
-        } catch (InterruptedException | TimeoutException | AssertionError e) {
+    public void verifyIfTheOrderIsSearchedAccordingly() throws InterruptedException {
+
+        Thread.sleep(3000);
+        Boolean isfound = false;
+        xpath = "//*[@id=\"tableData\"]/tbody/tr/td[2]";
+        if (getTextbyXpath(xpath).contains(Order.SearchInfo)) {
+            isfound = true;
         }
+        softAssert.assertTrue(isfound);
+
+        closedriver();
+        softAssert.assertAll();
     }
 
     @And("creation of an order with zero product quantity in it")
@@ -478,7 +485,7 @@ public class Order extends Page_Options {
             clickbyxpath(xpath);
             AlertAccept();
 
-            Assert.assertEquals(GetConfirmationMessage(),"Please Add Items to Order");
+            Assert.assertEquals(GetConfirmationMessage(), "Please Add Items to Order");
 
         } catch (InterruptedException | TimeoutException | AssertionError e) {
             // Handle the TimeoutException
@@ -498,17 +505,17 @@ public class Order extends Page_Options {
 
             Thread.sleep(500);
             //set previous date
-            xpath="//*[@id=\"c_inv_date\"]";
+            xpath = "//*[@id=\"c_inv_date\"]";
             SetPreviousDate(xpath);
 
             Boolean isdateerror = false;
             String s = getTextbyXpath("//*[@id=\"add_invoice_form\"]/div/div[1]/div/div");
-            if (s.contains(" can not be selected.")){
+            if (s.contains(" can not be selected.")) {
                 isdateerror = true;
             }
             Assert.assertTrue(isdateerror);
 
-        }  catch (InterruptedException | TimeoutException | AssertionError e) {
+        } catch (InterruptedException | TimeoutException | AssertionError e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }
@@ -521,20 +528,21 @@ public class Order extends Page_Options {
         try {
             Thread.sleep(500);
             //set previous date
-            xpath="//*[@id=\"c_inv_date\"]";
+            xpath = "//*[@id=\"c_inv_date\"]";
             clearByXpath(xpath);
 
             Boolean isdateerror = false;
             String s = getTextbyXpath("//*[@id=\"add_invoice_form\"]/div/div[1]/div/div");
-            if (s.contains("can not be selected.")){
+            if (s.contains("can not be selected.")) {
                 isdateerror = true;
             }
             Assert.assertTrue(isdateerror);
 
-        }  catch (InterruptedException | TimeoutException | AssertionError e) {
+        } catch (InterruptedException | TimeoutException | AssertionError e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }
 
     }
+
 }

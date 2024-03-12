@@ -10,10 +10,12 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
 public class Contacts extends Page_Options {
+    SoftAssert softAssert = new SoftAssert();
 
     @Given("^login for accessing Contacts$")
     public void contacts() throws InterruptedException {
@@ -34,14 +36,8 @@ public class Contacts extends Page_Options {
         }
     }
 
-    @Then("^close Contacts$")
-    public void close() throws InterruptedException {
-        closedriver();
-    }
-
     @And("verify if the the employee is searched or not")
     public void verifyIfTheTheEmployeeIsSearchedOrNot() throws InterruptedException {
-        try {
             Boolean isNameFound = false;
             Thread.sleep(100);
 
@@ -75,7 +71,8 @@ public class Contacts extends Page_Options {
             }
 
             // Assert if the name is found
-            Assert.assertTrue(isNameFound, "Employee name '" + ContactsSearchInfo + "' not found");
-        }catch(InterruptedException | TimeoutException | AssertionError e){}
+            softAssert.assertTrue(isNameFound, "Employee name '" + ContactsSearchInfo + "' not found");
+            closedriver();
+            softAssert.assertAll();
     }
 }
