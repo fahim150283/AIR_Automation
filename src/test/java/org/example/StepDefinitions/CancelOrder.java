@@ -47,12 +47,6 @@ public class CancelOrder extends Page_Options {
         }
     }
 
-    @Then("close CancelOrder for search")
-    public void close_cancel_order_for_search() throws InterruptedException {
-        Thread.sleep(1500);
-        closedriver();
-    }
-
     @Given("login for Cancelling a Order")
     public void login_for_creating_new_order_to_cancel() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
@@ -173,11 +167,5 @@ public class CancelOrder extends Page_Options {
         }
     }
 
-
-    @Then("close the CancelOrder window")
-    public void close_the_cancel_order_window() throws InterruptedException {
-        Thread.sleep(2000);
-        closedriver();
-    }
 }
 

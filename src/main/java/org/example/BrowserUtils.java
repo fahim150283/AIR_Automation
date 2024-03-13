@@ -10,7 +10,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.LocalDateTime;
+import java.time.Year;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 public class BrowserUtils extends ReadJson {
     public static WebDriver driver;
@@ -175,7 +177,7 @@ public class BrowserUtils extends ReadJson {
         // Navigate to the desired month
 
         actions.sendKeys(Keys.BACK_SPACE).build().perform();
-        for (int currentMonth = 00; currentMonth != desiredMonth; currentMonth ++) {
+        for (int currentMonth = 00; currentMonth != desiredMonth; currentMonth++) {
             if (currentMonth < desiredMonth) {
                 actions.sendKeys(Keys.ARROW_UP).build().perform();
             } else {
@@ -186,7 +188,7 @@ public class BrowserUtils extends ReadJson {
 
         // Navigate to the desired day
         actions.sendKeys(Keys.BACK_SPACE).build().perform();
-        for (int currentDay = 00; currentDay != desiredDay; currentDay ++) {
+        for (int currentDay = 00; currentDay != desiredDay; currentDay++) {
             if (currentDay > desiredDay) {
                 actions.sendKeys(Keys.ARROW_DOWN).build().perform();
             } else {
@@ -230,11 +232,12 @@ public class BrowserUtils extends ReadJson {
 //            actions.sendKeys(Keys.ARROW_UP).build().perform();
 //        }
     }
+
     public static void SetPreviousDate(String xpath) throws InterruptedException {
 //        // Get current date and time
 //        LocalDateTime currentDateTime = LocalDateTime.now();
 //        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy hh:mm a");
-        String formattedDateTime = "04-25-2023 00:00 a";
+        String formattedDateTime = "04-20-2023 00:00 a";
         System.out.println(formattedDateTime);
 
         // Click on the input field to focus on it
@@ -266,7 +269,7 @@ public class BrowserUtils extends ReadJson {
         // Navigate to the desired month
 
         actions.sendKeys(Keys.BACK_SPACE).build().perform();
-        for (int currentMonth = 00; currentMonth != desiredMonth; currentMonth ++) {
+        for (int currentMonth = 00; currentMonth != desiredMonth; currentMonth++) {
             if (currentMonth < desiredMonth) {
                 actions.sendKeys(Keys.ARROW_UP).build().perform();
             } else {
@@ -277,7 +280,7 @@ public class BrowserUtils extends ReadJson {
 
         // Navigate to the desired day
         actions.sendKeys(Keys.BACK_SPACE).build().perform();
-        for (int currentDay = 00; currentDay != desiredDay; currentDay ++) {
+        for (int currentDay = 00; currentDay != desiredDay; currentDay++) {
             if (currentDay > desiredDay) {
                 actions.sendKeys(Keys.ARROW_DOWN).build().perform();
             } else {
@@ -288,7 +291,16 @@ public class BrowserUtils extends ReadJson {
 
 
         // Navigate to the desired year
+        actions.sendKeys(Keys.BACK_SPACE).build().perform();
+        int Year = Calendar.getInstance().get(Calendar.YEAR);
         actions.sendKeys(Keys.ARROW_UP).build().perform();
+        for (int currentYear = Year; currentYear < desiredYear; currentYear++) {
+            actions.sendKeys(Keys.ARROW_UP).build().perform();
+        }
+        for (int currentYear = Year; currentYear > desiredYear; currentYear--) {
+            actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        }
+
         actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
 
 //        // Navigate to the desired hour
@@ -321,6 +333,7 @@ public class BrowserUtils extends ReadJson {
 //            actions.sendKeys(Keys.ARROW_UP).build().perform();
 //        }
     }
+
     public static void SetFutureDate(String xpath) throws InterruptedException {
         // Get current date and time
         LocalDateTime currentDateTime = LocalDateTime.now().plusDays(1);
@@ -358,7 +371,7 @@ public class BrowserUtils extends ReadJson {
         // Navigate to the desired month
 
         actions.sendKeys(Keys.BACK_SPACE).build().perform();
-        for (int currentMonth = 00; currentMonth != desiredMonth; currentMonth ++) {
+        for (int currentMonth = 00; currentMonth != desiredMonth; currentMonth++) {
             if (currentMonth < desiredMonth) {
                 actions.sendKeys(Keys.ARROW_UP).build().perform();
             } else {
@@ -369,7 +382,7 @@ public class BrowserUtils extends ReadJson {
 
         // Navigate to the desired day
         actions.sendKeys(Keys.BACK_SPACE).build().perform();
-        for (int currentDay = 00; currentDay != desiredDay; currentDay ++) {
+        for (int currentDay = 00; currentDay != desiredDay; currentDay++) {
             if (currentDay > desiredDay) {
                 actions.sendKeys(Keys.ARROW_DOWN).build().perform();
             } else {
@@ -380,7 +393,16 @@ public class BrowserUtils extends ReadJson {
 
 
         // Navigate to the desired year
+        actions.sendKeys(Keys.BACK_SPACE).build().perform();
+        int Year = Calendar.getInstance().get(Calendar.YEAR);
         actions.sendKeys(Keys.ARROW_UP).build().perform();
+        for (int currentYear = Year; currentYear < desiredYear; currentYear++) {
+            actions.sendKeys(Keys.ARROW_UP).build().perform();
+        }
+        for (int currentYear = Year; currentYear > desiredYear; currentYear--) {
+            actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+        }
+
         actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
 
 //        // Navigate to the desired hour
