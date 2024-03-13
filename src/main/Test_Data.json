@@ -86,7 +86,7 @@
     "IntervalOfSaveTime": 3600000
   },
   "CancelOrder": {
-    "SearchInfo": "SO-00000003",
+    "SearchInfo": "CM1910",
     "DistributorSearch": "bhai bhai",
     "ItemQuantity": "5",
     "Note": "Automated Test",

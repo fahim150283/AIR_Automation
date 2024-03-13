@@ -161,11 +161,15 @@ public class CancelOrder extends Page_Options {
 
             AlertAccept();
             PrintConfirmationMessage();
-        } catch (InterruptedException | TimeoutException | AssertionError e) {
+        } catch (InterruptedException | TimeoutException e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }
     }
 
+    @Then("verify that the cancel order is created")
+    public void verifyThatTheCancelOrderIsCreated() {
+
+    }
 }
 
