@@ -35,6 +35,7 @@ public class ReadJson {
         public static String OfferPCS;
         public static String Notes;
     }
+
     public static class AuditStockUpdate {
         public static String SearchInfo;
         public static String StoreSearch;
@@ -476,7 +477,6 @@ public class ReadJson {
                 CancelOrder.ItemQuantity = (String) CancelOrderObject.get("ItemQuantity");
                 CancelOrder.DistributorSearch = (String) CancelOrderObject.get("DistributorSearch");
                 CancelOrder.Note = (String) CancelOrderObject.get("Note");
-                CancelOrder.partialCancel = (boolean) CancelOrderObject.get("partialCancel");
             }
             {// Read data from the "DistributorInvoice" object
                 JSONObject DistributorInvoiceObject = (JSONObject) jsonObject.get("DistributorInvoice");
@@ -741,7 +741,7 @@ public class ReadJson {
                 for (int i = 0; i < Offer.ItemSubCatg.length; i++) {
                     Offer.ItemSubCatg[i] = (String) Offer_Object.get("ItemSubCatg" + (i + 1));
                 }
-                for (int i = 0; i <Offer.ItemProd.length; i++) {
+                for (int i = 0; i < Offer.ItemProd.length; i++) {
                     Offer.ItemProd[i] = (String) Offer_Object.get("ItemProd" + (i + 1));
                 }
                 for (int i = 0; i < Offer.EItemSubCatg.length; i++) {

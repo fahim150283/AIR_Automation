@@ -86,11 +86,10 @@
     "IntervalOfSaveTime": 3600000
   },
   "CancelOrder": {
-    "SearchInfo": "CM1910",
-    "DistributorSearch": "bhai bhai",
-    "ItemQuantity": "5",
-    "Note": "Automated Test",
-    "partialCancel": true
+    "SearchInfo": "CM1945",
+    "DistributorSearch": "noman traders",
+    "ItemQuantity": "10",
+    "Note": "Automated Test"
   },
   "DistributorInvoice": {
     "SearchInfo": "CM1910",
