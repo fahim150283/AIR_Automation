@@ -10,6 +10,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 public class DistributorInvoices extends Page_Options {
@@ -49,13 +52,6 @@ public class DistributorInvoices extends Page_Options {
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }
     }
-
-    @Then("close Invoice for search")
-    public void close_invoice_for_search() throws InterruptedException {
-        Thread.sleep(1500);
-        closedriver();
-    }
-
 
     @Given("login for Invoice")
     public void login_for_invoice() throws InterruptedException {
@@ -207,9 +203,54 @@ public class DistributorInvoices extends Page_Options {
         }
     }
 
-    @Then("close the Invoice window")
-    public void close_the_invoice_window() throws InterruptedException {
-        Thread.sleep(2000);
-        closedriver();
+    @Then("verify if the invoice is searched accordingly")
+    public void verifyIfTheInvoiceIsSearchedAccordingly() throws InterruptedException {
+        Thread.sleep(1000);
+
+        xpath = "//*[@id=\"inv_tableData\"]/tbody/tr[1]/td[6]";
+        String s = getTextbyXpath(xpath);
+        Boolean isfound = false;
+
+        if(s.contains(Invoices.SearchInfo)){
+            isfound = true;
+        }
+        Assert.assertTrue(isfound);
+    }
+
+    @When("check if only the orders that are created within the selected date are visible, while creating an invoice,")
+    public void checkIfTheOrdersInTheSelectedDateAreVisibleOnlyOrNotWhileCreatingAnInvoice() throws InterruptedException, ParseException {
+        Thread.sleep(1000);
+        Click_from_leftSideBar("Orders");
+
+        //object of SimpleDateFormat class
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        Date date1 = sdf.parse("01/12/2023");
+        Date date2;
+
+        //check the date
+        WebElement table = driver.findElement(By.id("tableData"));
+        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tbody/tr"));
+        String orderNum;
+        // Iterate through rows
+        for (int i = 0; i < rows.size(); i++) {
+            WebElement row = rows.get(i);
+            date2 = sdf.parse(getTextbyXpath("//[@id=\"tableData\"]/tbody/tr["+(i+1)+"]/td[4]"));
+            if (date1.compareTo(date2) > 0) {       //date1 comes after date2
+
+                //copy the order number
+                xpath = "//*[@id=\"inv_tableData\"]/tbody/tr["+(i+1)+"]/td[2]";
+                orderNum = getTextbyXpath(xpath);
+                Click_from_leftSideBar("Distributor Invoices");
+                Thread.sleep(1000);
+
+            }
+        }
+
+
+        for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tableData\"]/tbody"); i++) {
+            date2 = sdf.parse(getTextbyXpath("//[@id=\"tableData\"]/tbody/tr[1]/td[4]"));
+        }
+
+
     }
 }

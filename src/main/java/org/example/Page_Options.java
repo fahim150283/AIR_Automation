@@ -37,12 +37,6 @@ public class Page_Options extends BrowserUtils {
         // Find the modal content element
         WebElement modalContent = driver.findElement(By.className("modal-content"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollTop = arguments[0].scrollHeight",modalContent);
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("arguments[0].scrollTop = arguments[0].scrollHeight", modalContent);
-// Use Actions class to perform scroll action
-//        Actions actions = new Actions(driver);
-//        actions.moveToElement(modalContent).clickAndHold().moveByOffset(0, 500).release().perform();
-
     }
 
     public static void PrintPageTitle() {
