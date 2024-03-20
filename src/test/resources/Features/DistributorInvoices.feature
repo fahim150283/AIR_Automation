@@ -11,7 +11,7 @@ Feature: Invoice Test
     And description of an Invoice
 
   Scenario: While creating an invoice, check if the orders in the selected date are visible only or not
-    Given login for Invoice
+    Given Login to Search Order
     When check if only the orders that are created within the selected date are visible, while creating an invoice,
 #    When check if the orders that are created after the selected date are not visible, while creating an invoice,
 #

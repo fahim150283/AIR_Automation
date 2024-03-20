@@ -6,13 +6,16 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.Page_Options;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class DistributorInvoices extends Page_Options {
@@ -219,38 +222,64 @@ public class DistributorInvoices extends Page_Options {
 
     @When("check if only the orders that are created within the selected date are visible, while creating an invoice,")
     public void checkIfTheOrdersInTheSelectedDateAreVisibleOnlyOrNotWhileCreatingAnInvoice() throws InterruptedException, ParseException {
-        Thread.sleep(1000);
-        Click_from_leftSideBar("Orders");
+        Thread.sleep(3000);
+        //view 100 rows per page
+        xpath = "//*[@id=\"tableData_wrapper\"]/div[1]/div/button";
+        clickbyxpath(xpath);
+        Thread.sleep(100);
+        xpath = "//*[@id=\"tableData_wrapper\"]/div[1]/div/div[2]/div/a[4]";
+        clickbyxpath(xpath);
 
         //object of SimpleDateFormat class
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        Date date1 = sdf.parse("01/12/2023");
-        Date date2;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+        Date date1 = sdf.parse(getLastMonth());
+        Date date2 = sdf.parse("13/12/2023");
 
         //check the date
         WebElement table = driver.findElement(By.id("tableData"));
-        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tbody/tr"));
-        String orderNum;
+        List<WebElement> rows = table.findElements(By.xpath(".//tbody/tr"));
+        System.out.println(rows.size());
+        String orderNum = null;
+        String dlv_stat;
         // Iterate through rows
         for (int i = 0; i < rows.size(); i++) {
+            Thread.sleep(500);
             WebElement row = rows.get(i);
-            date2 = sdf.parse(getTextbyXpath("//[@id=\"tableData\"]/tbody/tr["+(i+1)+"]/td[4]"));
-            if (date1.compareTo(date2) > 0) {       //date1 comes after date2
-
+            date2 = sdf.parse(getTextbyXpath("//*[@id=\"tableData\"]/tbody/tr["+(i+1)+"]/td[4]"));
+            dlv_stat = getTextbyXpath("//*[@id=\"tableData\"]/tbody/tr["+(i+1)+"]/td[8]");
+            if (date1.compareTo(date2) > 0  && !Objects.equals(dlv_stat, "Delivered")) {       //date1 comes after date2
                 //copy the order number
                 xpath = "//*[@id=\"inv_tableData\"]/tbody/tr["+(i+1)+"]/td[2]";
                 orderNum = getTextbyXpath(xpath);
-                Click_from_leftSideBar("Distributor Invoices");
-                Thread.sleep(1000);
-
+                break;
+            }
+            if (orderNum == null && (i+1)==rows.size()){
+                i=0;
+                //click the next button
+                WebDriverWait wait = new WebDriverWait(driver, 4);
+                WebElement nextButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("tableData_next")));
+                // Scroll the element into view using JavaScript
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("arguments[0].scrollIntoView(true);", nextButton);
+                Thread.sleep(900);
+                nextButton.click();
             }
         }
+        System.out.println(sdf.format(date1)+" , "+ sdf.format(date2)+" , "+orderNum);
+
+        //now set the date and order for
+        Click_from_leftSideBar("Distributor Invoices");
+        Thread.sleep(1000);
+
+        //click the create new button
+        xpath = "//*[@id=\"inv_tableData_wrapper\"]/div[1]/button[4]";
+        clickbyxpath(xpath);
+
+        Thread.sleep(500);
 
 
-        for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tableData\"]/tbody"); i++) {
-            date2 = sdf.parse(getTextbyXpath("//[@id=\"tableData\"]/tbody/tr[1]/td[4]"));
-        }
 
-
+        closedriver();
     }
 }
