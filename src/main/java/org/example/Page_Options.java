@@ -93,7 +93,15 @@ public class Page_Options extends BrowserUtils {
     public static String getLastMonth() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         LocalDate today = LocalDate.now();
-        LocalDate lastMonthDate = today.minusMonths(2);
+        LocalDate lastMonthDate = today.minusMonths(1);
+        String date = dtf.format(lastMonthDate);
+        return date;
+    }
+
+    public static String getregularLastMonth() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate today = LocalDate.now();
+        LocalDate lastMonthDate = today.minusMonths(1);
         String date = dtf.format(lastMonthDate);
         return date;
     }

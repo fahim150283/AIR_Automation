@@ -10,15 +10,24 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 public class DistributorInvoices extends Page_Options {
+    SoftAssert softAssert = new SoftAssert();
+    String orderNum = null;
+    Date date1;
+    Date date2;
+
     @Given("Login to Search Invoice")
     public void login_to_search_invoice() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
@@ -220,37 +229,35 @@ public class DistributorInvoices extends Page_Options {
         Assert.assertTrue(isfound);
     }
 
-    @When("check if only the orders that are created within the selected date are visible, while creating an invoice,")
-    public void checkIfTheOrdersInTheSelectedDateAreVisibleOnlyOrNotWhileCreatingAnInvoice() throws InterruptedException, ParseException {
-        Thread.sleep(3000);
+    @When("Gather the orders information")
+    public void gatherTheOrdersInformation() throws InterruptedException, ParseException {
+        Thread.sleep(1000);
         //view 100 rows per page
         xpath = "//*[@id=\"tableData_wrapper\"]/div[1]/div/button";
         clickbyxpath(xpath);
-        Thread.sleep(100);
+        Thread.sleep(10);
         xpath = "//*[@id=\"tableData_wrapper\"]/div[1]/div/div[2]/div/a[4]";
         clickbyxpath(xpath);
+        Thread.sleep(4000);
 
         //object of SimpleDateFormat class
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-        Date date1 = sdf.parse(getLastMonth());
-        Date date2 = sdf.parse("13/12/2023");
+        date1 = sdf.parse(getregularLastMonth());
+        date2 = sdf.parse("13/12/2023");
 
         //check the date
         WebElement table = driver.findElement(By.id("tableData"));
         List<WebElement> rows = table.findElements(By.xpath(".//tbody/tr"));
-        System.out.println(rows.size());
-        String orderNum = null;
         String dlv_stat;
         // Iterate through rows
         for (int i = 0; i < rows.size(); i++) {
-            Thread.sleep(500);
-            WebElement row = rows.get(i);
+//            WebElement row = rows.get(i);
             date2 = sdf.parse(getTextbyXpath("//*[@id=\"tableData\"]/tbody/tr["+(i+1)+"]/td[4]"));
             dlv_stat = getTextbyXpath("//*[@id=\"tableData\"]/tbody/tr["+(i+1)+"]/td[8]");
             if (date1.compareTo(date2) > 0  && !Objects.equals(dlv_stat, "Delivered")) {       //date1 comes after date2
                 //copy the order number
-                xpath = "//*[@id=\"inv_tableData\"]/tbody/tr["+(i+1)+"]/td[2]";
+                xpath = "//*[@id=\"tableData\"]/tbody/tr["+(i+1)+"]/td[2]";
                 orderNum = getTextbyXpath(xpath);
                 break;
             }
@@ -264,9 +271,14 @@ public class DistributorInvoices extends Page_Options {
                 js.executeScript("arguments[0].scrollIntoView(true);", nextButton);
                 Thread.sleep(900);
                 nextButton.click();
+                Thread.sleep(4000);
             }
         }
-        System.out.println(sdf.format(date1)+" , "+ sdf.format(date2)+" , "+orderNum);
+        System.out.println(sdf.format(date1)+" is the date range || "+ sdf.format(date2)+" is the order date || the order number is "+orderNum);
+    }
+
+    @When("check if the orders that are created after the selected date are not visible, while creating an invoice,")
+    public void checkIfTheOrdersThatAreCreatedAfterTheSelectedDateAreNotVisibleWhileCreatingAnInvoice() throws InterruptedException {
 
         //now set the date and order for
         Click_from_leftSideBar("Distributor Invoices");
@@ -278,8 +290,37 @@ public class DistributorInvoices extends Page_Options {
 
         Thread.sleep(500);
 
+        //set date
+        xpath = "//*[@id=\"c_actual_inv_date\"]";
+        SimpleDateFormat dtf = new SimpleDateFormat("MM/dd/yyyy");
+
+        String date = dtf.format(date2);
+        Setaday(xpath, date);
+
+        //the order should not be visible today
+        Thread.sleep(3000);
 
 
+        // Find the dropdown element by its ID
+        WebElement dropdown = driver.findElement(By.id("order_list"));
+        // Click on the dropdown to open the options
+//        dropdown.click();
+        // Find all the options within the dropdown
+        List<WebElement> options = dropdown.findElements(By.tagName("option"));
+        // Flag to track if the desired option is found
+        boolean found = false;
+        // Iterate over each option to check if it contains the desired text
+        for (WebElement option : options) {
+            if (option.getText().contains(orderNum)) {
+                found = true;
+                break;
+            }
+        }
+
+        softAssert.assertFalse(found);
         closedriver();
+        softAssert.assertAll();
     }
+
+
 }

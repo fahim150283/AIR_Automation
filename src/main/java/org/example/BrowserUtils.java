@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.time.Year;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
 
 public class BrowserUtils extends ReadJson {
     public static WebDriver driver;
@@ -231,6 +232,58 @@ public class BrowserUtils extends ReadJson {
 //        } else {
 //            actions.sendKeys(Keys.ARROW_UP).build().perform();
 //        }
+    }
+    public static void Setaday(String xpath , String date) throws InterruptedException {
+        String formattedDateTime = date;
+        System.out.println(formattedDateTime);
+
+        // Click on the input field to focus on it
+        WebElement dateTimeInput = driver.findElement(By.xpath(xpath));
+        dateTimeInput.click();
+        Actions actions = new Actions(driver);
+
+        //go to top left
+        for (int i = 0; i < 4; i++) {
+            actions.sendKeys(Keys.ARROW_LEFT).build().perform();
+        }
+
+        // Split the formatted date-time into parts
+        String[] parts = formattedDateTime.split(" ");
+        String datePart = parts[0]; // Date part
+
+        // Split the date part into year, month, and day
+        String[] dateParts = datePart.split("/");
+        int desiredMonth = Integer.parseInt(dateParts[0]);
+        int desiredDay = Integer.parseInt(dateParts[1]);
+        int desiredYear = Integer.parseInt(dateParts[2]);
+
+        // Navigate to the desired month
+
+        actions.sendKeys(Keys.BACK_SPACE).build().perform();
+        for (int currentMonth = 00; currentMonth != desiredMonth; currentMonth++) {
+            if (currentMonth < desiredMonth) {
+                actions.sendKeys(Keys.ARROW_UP).build().perform();
+            } else {
+                actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+            }
+        }
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+
+        // Navigate to the desired day
+        actions.sendKeys(Keys.BACK_SPACE).build().perform();
+        for (int currentDay = 00; currentDay != desiredDay; currentDay++) {
+            if (currentDay > desiredDay) {
+                actions.sendKeys(Keys.ARROW_DOWN).build().perform();
+            } else {
+                actions.sendKeys(Keys.ARROW_UP).build().perform();
+            }
+        }
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
+
+
+        // Navigate to the desired year
+        actions.sendKeys(Keys.ARROW_UP).build().perform();
+        actions.sendKeys(Keys.ARROW_RIGHT).build().perform();
     }
 
     public static void SetPreviousDate(String xpath) throws InterruptedException {
