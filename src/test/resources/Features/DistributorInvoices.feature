@@ -14,30 +14,19 @@ Feature: Invoice Test
     Given Login to Search Order
     When Gather the orders information
     When check if the orders that are created after the selected date are not visible, while creating an invoice,
-#
-#  Scenario: While creating an invoice, check if if the invoice can be saved without selecting a store
-#    Given login for Invoice
-#    When check if the invoice can be created without selecting a store
-#
-#  Scenario: Create a new Invoice where offer type is cash
-#    Given login for Invoice
-#    And create new Invoice for cash offer
-#    Then verify the creation of invoice
-#
-#  Scenario: Create a new Invoice where offer type is gift
-#    Given login for Invoice
-#    And create new Invoice for gift offer
-#    Then verify the creation of invoice
-#
-#  Scenario: Create a new Invoice where offer type is gift
-#    Given login for Invoice
-#    And create new Invoice for product offer
-#    Then verify the creation of invoice
-#
-#  Scenario: new Invoice price calculation
-#    Given login for Invoice
-#    And create new Invoice
-#    Then verify the creation of invoice
+
+  Scenario: While creating an invoice, check if if the invoice can be saved without selecting a store
+    Given login for Invoice
+    When check if the invoice can be created without selecting a store
+
+  Scenario: new Invoice price calculation
+    Given login for Invoice
+    And verify the calculation of prices for an invoice
+
+  Scenario: create an Invoice and verify the creation
+    Given login for Invoice
+    And create new Invoice
+    Then verify the creation of invoice
 #
 #  Scenario: Creation of a new Invoice with no products in it
 #    Given login for Invoice

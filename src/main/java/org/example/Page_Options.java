@@ -336,6 +336,15 @@ public class Page_Options extends BrowserUtils {
         return TotalRowCount;
     }
 
+    public static String getAttributeByXpath(String xpath, String attributeName) throws InterruptedException {
+        // Find the WebElement using XPath
+        WebElement element = driver.findElement(By.xpath(xpath));
+
+        // Get the attribute value
+        String attributeValue = element.getAttribute(attributeName);
+        return attributeValue;
+    }
+
     public static int getTotalLiCountByXpath(String xpath) throws InterruptedException {
         // Find all the rows in the table
         Thread.sleep(300);

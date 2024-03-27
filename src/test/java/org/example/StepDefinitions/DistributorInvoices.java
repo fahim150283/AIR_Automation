@@ -211,7 +211,9 @@ public class DistributorInvoices extends Page_Options {
 
             AlertAccept();
             PrintConfirmationMessage();
-        }  catch(InterruptedException | TimeoutException | AssertionError | IOException e){} {
+        } catch (InterruptedException | TimeoutException | AssertionError | IOException e) {
+        }
+        {
         }
     }
 
@@ -223,7 +225,7 @@ public class DistributorInvoices extends Page_Options {
         String s = getTextbyXpath(xpath);
         Boolean isfound = false;
 
-        if(s.contains(Invoices.SearchInfo)){
+        if (s.contains(Invoices.SearchInfo)) {
             isfound = true;
         }
         Assert.assertTrue(isfound);
@@ -253,16 +255,16 @@ public class DistributorInvoices extends Page_Options {
         // Iterate through rows
         for (int i = 0; i < rows.size(); i++) {
 //            WebElement row = rows.get(i);
-            date2 = sdf.parse(getTextbyXpath("//*[@id=\"tableData\"]/tbody/tr["+(i+1)+"]/td[4]"));
-            dlv_stat = getTextbyXpath("//*[@id=\"tableData\"]/tbody/tr["+(i+1)+"]/td[8]");
-            if (date1.compareTo(date2) > 0  && !Objects.equals(dlv_stat, "Delivered")) {       //date1 comes after date2
+            date2 = sdf.parse(getTextbyXpath("//*[@id=\"tableData\"]/tbody/tr[" + (i + 1) + "]/td[4]"));
+            dlv_stat = getTextbyXpath("//*[@id=\"tableData\"]/tbody/tr[" + (i + 1) + "]/td[8]");
+            if (date1.compareTo(date2) > 0 && !Objects.equals(dlv_stat, "Delivered")) {       //date1 comes after date2
                 //copy the order number
-                xpath = "//*[@id=\"tableData\"]/tbody/tr["+(i+1)+"]/td[2]";
+                xpath = "//*[@id=\"tableData\"]/tbody/tr[" + (i + 1) + "]/td[2]";
                 orderNum = getTextbyXpath(xpath);
                 break;
             }
-            if (orderNum == null && (i+1)==rows.size()){
-                i=0;
+            if (orderNum == null && (i + 1) == rows.size()) {
+                i = 0;
                 //click the next button
                 WebDriverWait wait = new WebDriverWait(driver, 4);
                 WebElement nextButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("tableData_next")));
@@ -274,7 +276,7 @@ public class DistributorInvoices extends Page_Options {
                 Thread.sleep(4000);
             }
         }
-        System.out.println(sdf.format(date1)+" is the date range || "+ sdf.format(date2)+" is the order date || the order number is "+orderNum);
+        System.out.println(sdf.format(date1) + " is the date range || " + sdf.format(date2) + " is the order date || the order number is " + orderNum);
     }
 
     @When("check if the orders that are created after the selected date are not visible, while creating an invoice,")
@@ -323,4 +325,141 @@ public class DistributorInvoices extends Page_Options {
     }
 
 
+    @When("check if the invoice can be created without selecting a store")
+    public void checkIfTheInvoiceCanBeCreatedWithoutSelectingAStore() throws InterruptedException {
+        Thread.sleep(1000);
+
+        //click the create new button
+        xpath = "//*[@id=\"inv_tableData_wrapper\"]/div[1]/button[4]";
+        clickbyxpath(xpath);
+
+        Thread.sleep(500);
+
+        //set the date
+        xpath = "//*[@id=\"c_actual_inv_date\"]";
+        SetToday(xpath);
+
+        //order list
+        xpath = "//*[@id=\"select2-order_list-container\"]";
+        waitByxpath(xpath);
+        clickbyxpath(xpath);
+        //search for bhai bhai and hit enter
+        cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
+        waitByCssSelector(cssSelector);
+        inputbycssselector(cssSelector, Invoices.DistributorSearch);
+        cssSelectorPressEnter(cssSelector);
+
+        //dont select store
+
+        //click the save button
+        Boolean save_visible = false;
+        WebElement savebutton = driver.findElement(By.id("loading_save"));
+
+        // Check if the save button is displayed or not based on the visibility of the div
+        if (savebutton.isDisplayed()) {
+            save_visible = true;
+            System.out.println("Save button is displayed.");
+        } else {
+            System.out.println("Save button is not displayed.");
+        }
+
+        softAssert.assertFalse(save_visible);
+        closedriver();
+        softAssert.assertAll();
+    }
+
+    @And("verify the calculation of prices for an invoice")
+    public void verifyTheCalculationOfPricesForAnInvoice() {
+        try {
+            //click the create new button
+            xpath = "//*[@id=\"inv_tableData_wrapper\"]/div[1]/button[4]";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
+
+            //set date
+            xpath = "//*[@id=\"c_actual_inv_date\"]";
+            waitByxpath(xpath);
+            SetToday(xpath);
+
+            //order list
+            xpath = "//*[@id=\"select2-order_list-container\"]";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
+            //search for bhai bhai and hit enter
+            cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
+            waitByCssSelector(cssSelector);
+            inputbycssselector(cssSelector, Invoices.DistributorSearch);
+            cssSelectorPressEnter(cssSelector);
+
+            //select the store
+            id = "select2-c_store_id-container";
+            waitById(id);
+            clickbyId(id);
+
+            cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
+            waitByCssSelector(cssSelector);
+            inputbycssselector(cssSelector, Invoices.Store);
+            cssSelectorPressEnter(cssSelector);
+
+
+            //partial invoice or full invoice
+            Boolean partialInvoice = false;
+
+            for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"c_inv_items_list\"]"); i++) {
+                if (partialInvoice == true && i % 2 == 0) {
+                    //CTN
+                    Thread.sleep(20);
+                    xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
+                    waitByxpath(xpath);
+                    clearByXpath(xpath);
+                    inputbyxpath(xpath, Invoices.ItemQuantity); //here the number is the quantity that will be deleted
+                }
+            }
+
+            //notes
+            id = "c_notes";
+            inputbyid(id, Invoices.Note);
+
+
+            //calculate the grand total
+
+
+            int itemsRowSize = getTotalRowCountByXpath("//*[@id=\"c_inv_items_list\"]");
+            double[][] gtCacl = new double[itemsRowSize][2];
+            for (int i = 0; i < itemsRowSize; i++) {
+                String rowClass = getAttributeByXpath("//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]", "class");
+                if (!rowClass.equals("d-none")) {
+                    //get price/ctn
+                    xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
+                    double s1 = Double.parseDouble(getTextAttributebyXpath(xpath));
+                    //get ctn count
+                    xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[4]/input";
+                    double s2 = Double.parseDouble(getTextAttributebyXpath(xpath));
+
+                    gtCacl[i][0] = s1;
+                    gtCacl[i][1] = s2;
+                    System.out.println(gtCacl[i][0] + " * " + gtCacl[i][1] + " = " + gtCacl[i][0] * gtCacl[i][1]);
+                }else {
+                    gtCacl[i][0] = 0;
+                    gtCacl[i][1] = 0;
+                }
+            }
+            double grandTotalActual = GrandTotalCalc(gtCacl);
+            double grandTotalVisible = Double.parseDouble(getTextAttributebyXpath("//*[@id=\"c_grand_total\"]"));
+            System.out.println("Visible Grand Total = " + grandTotalVisible + newLine + "Actual Grand Total = " + grandTotalActual);
+            softAssert.assertEquals(grandTotalVisible, grandTotalActual);
+
+
+            //get total payable from interface
+            xpath = "//*[@id=\"c_total_payable\"]";
+            String sd = getTextAttributebyXpath(xpath);
+            System.out.println(sd + " : is the Total payable");
+
+            closedriver();
+            softAssert.assertAll();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
+
