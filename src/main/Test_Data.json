@@ -96,11 +96,11 @@
     "DistributorSearch": "CM1910",
     "Store": "Cumilla depot",
     "Note": "Automated Test",
-    "ItemQuantity": "100",
+    "ItemQuantity": "10",
     "OfferQuantity": "5",
     "PartialInvoice": true,
     "OfferCTN": "5",
-    "IntervalOfSaveTime": 3600000
+    "IntervalOfSaveTime": 360
   },
   "Cancel Invoice": {
     "SearchInfo": "SI-00000002",

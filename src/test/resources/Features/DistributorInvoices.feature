@@ -25,8 +25,7 @@ Feature: Invoice Test
 
   Scenario: create an Invoice and verify the creation
     Given login for Invoice
-    And create new Invoice
-    Then verify the creation of invoice
+    And create new Invoice and verify the creation
 #
 #  Scenario: Creation of a new Invoice with no products in it
 #    Given login for Invoice

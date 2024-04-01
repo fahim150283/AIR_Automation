@@ -272,7 +272,7 @@ public class Page_Options extends BrowserUtils {
         clickbyId(id);
     }
 
-    public static void Login_AIR2(String username) {
+    public static void Login_AIR2(String username) throws InterruptedException {
 
         navigatetourl(Users.AIR_2);
         id = "username";
@@ -281,6 +281,7 @@ public class Page_Options extends BrowserUtils {
         inputbyid(id, String.valueOf(Users.password));
         id = "login";
         clickbyId(id);
+        Thread.sleep(1000);
     }
 
     public static void Login_AIR2_AIR(String username) {
@@ -438,6 +439,7 @@ public class Page_Options extends BrowserUtils {
         // Find the search input box and enter the search term "Damage Amount"
         id = "menu-search";
         waitById(id);
+        Thread.sleep(200);
         inputbyid(id, s);
 
         // Wait for the search results to load (you might need to implement waits)

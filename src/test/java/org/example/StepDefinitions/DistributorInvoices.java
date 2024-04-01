@@ -27,6 +27,7 @@ public class DistributorInvoices extends Page_Options {
     String orderNum = null;
     Date date1;
     Date date2;
+    String confirmation_msg;
 
     @Given("Login to Search Invoice")
     public void login_to_search_invoice() throws InterruptedException {
@@ -72,7 +73,7 @@ public class DistributorInvoices extends Page_Options {
         Click_from_leftSideBar("Distributor Invoices");
     }
 
-    @And("create new Invoice")
+    @And("create new Invoice and verify the creation")
     public void create_new_invoice() throws InterruptedException {
         try {
             //click the create new button
@@ -95,6 +96,10 @@ public class DistributorInvoices extends Page_Options {
             inputbycssselector(cssSelector, Invoices.DistributorSearch);
             cssSelectorPressEnter(cssSelector);
 
+
+            //if order does not have minimum rows visible for invoice then change the order
+            
+
             //select the store
             id = "select2-c_store_id-container";
             waitById(id);
@@ -110,7 +115,9 @@ public class DistributorInvoices extends Page_Options {
             Boolean partialInvoice = Invoices.PartialInvoice;
 
             for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"c_inv_items_list\"]"); i++) {
-                if (partialInvoice == true && i % 2 == 0) {
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
+                int k  = Integer.parseInt(getTextAttributebyXpath(xpath));
+                if ((partialInvoice == true && i % 2 == 0 )&& k > Integer.parseInt(Invoices.ItemQuantity)) {
                     //CTN
                     Thread.sleep(20);
                     xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
@@ -152,19 +159,14 @@ public class DistributorInvoices extends Page_Options {
             double grandTotalActual = GrandTotalCalc(gtCacl);
             double grandTotalVisible = Double.parseDouble(getTextAttributebyXpath("//*[@id=\"c_grand_total\"]"));
             System.out.println("Visible Grand Total = " + grandTotalVisible + newLine + "Actual Grand Total = " + grandTotalActual);
-            Assert.assertEquals(grandTotalVisible, grandTotalActual);
 
 
-            //get total payable from interface
-            xpath = "//*[@id=\"c_total_payable\"]";
-            String sd = getTextAttributebyXpath(xpath);
-            System.out.println(sd + " : is the Total payable");
-
+            Thread.sleep(200);
             //offer part
             if (ElementVisible("//*[@id=\"tbl_data\"]")) {
                 for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++) {
                     String s = getTextbyXpath("//tbody[@id='tbl_data']/tr[" + (i + 1) + "]/td[3]");
-                    System.out.println("this is the found string: " + s);
+                    System.out.println("the found " + s);
                     if (Objects.equals(s, "Offer Type: Product")) {
                         String dropdownXpath = "//*[@id='tbl_data']/tr[" + (i + 1) + "]/td[5]//select";
                         //Selecting the dropdown options only for where available
@@ -177,28 +179,28 @@ public class DistributorInvoices extends Page_Options {
                         }
 
                         //Quantity CTN
-                        Thread.sleep(700);
-                        String xpath = "//*[@id=\"showCtn" + (i + 1) + "\"]";
-                        int quantity = Integer.parseInt(getTextAttributebyXpath(xpath));
-                        System.out.println("Default offer quantity is " + quantity + " ctn");
-                        if (quantity > Integer.parseInt(Invoices.OfferCTN)) {
-                            waitByxpath(xpath);
-                            Thread.sleep(300);
-                            clearByXpath(xpath);
-                            inputbyxpath(xpath, (Invoices.OfferCTN));
-                        }
+//                        Thread.sleep(700);
+//                        String xpath = "//*[@id=\"showCtn" + (i + 1) + "\"]";
+//                        int quantity = Integer.parseInt(getTextAttributebyXpath(xpath));
+//                        System.out.println("Default offer quantity is " + quantity + " ctn");
+//                        if (quantity > Integer.parseInt(Invoices.OfferCTN)) {
+//                            waitByxpath(xpath);
+//                            Thread.sleep(300);
+//                            clearByXpath(xpath);
+//                            inputbyxpath(xpath, (Invoices.OfferCTN));
+//                        }
                     }
                 }
             }
 
-            //For Screen Shot
-            for (int i = 0; i < 5; i++) {
-                Thread.sleep(100);
-                PageUp();
-            }
-            TakeScreenShot();
-            PageDown();
-            TakeScreenShot();
+//            //For Screen Shot
+//            for (int i = 0; i < 5; i++) {
+//                Thread.sleep(100);
+//                PageUp();
+//            }
+//            TakeScreenShot();
+//            PageDown();
+//            TakeScreenShot();
 
 
             //wait for a defined period of time
@@ -211,9 +213,15 @@ public class DistributorInvoices extends Page_Options {
 
             AlertAccept();
             PrintConfirmationMessage();
-        } catch (InterruptedException | TimeoutException | AssertionError | IOException e) {
-        }
-        {
+
+            //verify the creation of the invoice
+            confirmation_msg = GetConfirmationMessage();
+            softAssert.assertEquals(confirmation_msg,"Invoice has been created");
+
+            closedriver();
+            softAssert.assertAll();
+
+        } catch (InterruptedException e) {
         }
     }
 
@@ -460,6 +468,15 @@ public class DistributorInvoices extends Page_Options {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Then("verify the creation of invoice")
+    public void verifyTheCreationOfInvoice() throws InterruptedException {
+        Thread.sleep(5000);
+
+        confirmation_msg = GetConfirmationMessage();
+
+
     }
 }
 

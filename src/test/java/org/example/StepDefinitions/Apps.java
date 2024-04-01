@@ -350,7 +350,7 @@ public class Apps extends Page_Options {
     verify if the user has access to the app
     */
     @Given("login for checking access of first user")
-    public void login_for_checking_access_of_first_user() {
+    public void login_for_checking_access_of_first_user() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
     }
 
@@ -381,7 +381,7 @@ public class Apps extends Page_Options {
 
 
     @Then("login for checking access of 2nd user")
-    public void login_for_checking_access_of_2nd_user() {
+    public void login_for_checking_access_of_2nd_user() throws InterruptedException {
         Login_AIR2(Users.user_Ashik);
     }
 

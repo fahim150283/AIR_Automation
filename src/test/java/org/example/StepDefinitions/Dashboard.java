@@ -9,7 +9,7 @@ import org.example.Page_Options;
 public class Dashboard extends Page_Options {
 
     @Given("^login for accessing dashboard$")
-    public void dashboard() {
+    public void dashboard() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
     }
 
