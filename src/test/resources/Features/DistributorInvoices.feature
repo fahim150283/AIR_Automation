@@ -26,13 +26,12 @@ Feature: Invoice Test
   Scenario: create an Invoice and verify the creation
     Given login for Invoice
     And create new Invoice and verify the creation
-#
-#  Scenario: Creation of a new Invoice with no products in it
-#    Given login for Invoice
-#    And create a new Invoice with no products in it
-#    Then verify the creation of invoice
-#
-#  Scenario: Getting an error message for the products with less stock
-#    Given login for Invoice
-#    And creation of an invoice where the product quantity is greater than the stock quantity
-#    Then verify that the error message is there for low stock
+
+  Scenario: Creation of a new Invoice with no products in it
+    Given login for Invoice
+    And create a new Invoice with no products in it and verify that it is not created
+
+  Scenario: Getting an error message for the products with less stock
+    Given login for Invoice
+    And creation of an invoice where the product quantity is greater than the order quantity
+    Then verify that the error message is there for low stock
