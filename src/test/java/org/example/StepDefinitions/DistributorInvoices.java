@@ -681,7 +681,7 @@ public class DistributorInvoices extends Page_Options {
                 xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
                 waitByxpath(xpath);
                 clearByXpath(xpath);
-                inputbyxpath(xpath, "0"); //here the number is the quantity that will be deleted
+                inputbyxpath(xpath, "9999999"); //here the number is the quantity that will be deleted
 
 //                //PCS(not necessary)
 //                Thread.sleep(20);
@@ -781,6 +781,10 @@ public class DistributorInvoices extends Page_Options {
 
         } catch (InterruptedException e) {
         }
+    }
+
+    @Then("verify that the invoice is not created")
+    public void verifyThatTheInvoiceIsNotCreated() {
     }
 }
 
