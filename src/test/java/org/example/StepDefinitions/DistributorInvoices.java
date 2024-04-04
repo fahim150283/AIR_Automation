@@ -645,6 +645,7 @@ public class DistributorInvoices extends Page_Options {
             SetToday(xpath);
 
             //order list
+            Thread.sleep(5000);
             xpath = "//*[@id=\"select2-order_list-container\"]";
             waitByxpath(xpath);
             clickbyxpath(xpath);
@@ -768,23 +769,23 @@ public class DistributorInvoices extends Page_Options {
             xpath = "//*[@id=\"add_region\"]";
             clickbyxpath(xpath);
 
-
-            AlertAccept();
-            PrintConfirmationMessage();
-
-            //verify the creation of the invoice
-            confirmation_msg = GetConfirmationMessage();
-            softAssert.assertNotEquals(confirmation_msg,"Invoice has been created");
-
-            closedriver();
-            softAssert.assertAll();
-
         } catch (InterruptedException e) {
         }
     }
 
     @Then("verify that the invoice is not created")
-    public void verifyThatTheInvoiceIsNotCreated() {
+    public void verifyThatTheInvoiceIsNotCreated() throws InterruptedException {
+        // Wait for the modal dialog to be present
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement modalDialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("swal2-popup")));
+
+        Boolean popupVisible = true;
+        if(!modalDialog.isDisplayed()) {
+            popupVisible = false;
+        }
+        softAssert.assertFalse(popupVisible);
+        closedriver();
+        softAssert.assertAll();
     }
 }
 
