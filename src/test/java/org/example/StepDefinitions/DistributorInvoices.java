@@ -768,7 +768,14 @@ public class DistributorInvoices extends Page_Options {
             //save
             xpath = "//*[@id=\"add_region\"]";
             clickbyxpath(xpath);
+            AlertAccept();
 
+            //the invoice wont be saved and the there wont be a confirmation message
+            boolean popUpVisible = driver.findElement(By.className("swal2-popup")).isDisplayed();
+            softAssert .assertFalse(popUpVisible);
+
+            closedriver();
+            softAssert.assertAll();
         } catch (InterruptedException e) {
         }
     }
