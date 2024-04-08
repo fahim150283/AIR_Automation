@@ -40,3 +40,7 @@ Feature: Invoice Test
     Given login for Invoice
     And creation of an invoice where the product quantity is zero as a total
     Then verify that the invoice is not created
+
+  Scenario: creation of an invoice with no stores selected
+    Given login for Invoice
+    And creation of an invoice with no store selected

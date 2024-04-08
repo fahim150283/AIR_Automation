@@ -936,5 +936,152 @@ public class DistributorInvoices extends Page_Options {
             System.out.println("There was an exception that is caught");
         }
     }
+
+    @And("creation of an invoice with no store selected")
+    public void creationOfAnInvoiceWithNoStoreSelected() {
+        try {
+            //click the create new button
+            xpath = "//*[@id=\"inv_tableData_wrapper\"]/div[1]/button[4]";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
+
+            //set date
+            xpath = "//*[@id=\"c_actual_inv_date\"]";
+            waitByxpath(xpath);
+            SetToday(xpath);
+
+            //order list
+            Thread.sleep(5000);
+            xpath = "//*[@id=\"select2-order_list-container\"]";
+            waitByxpath(xpath);
+            clickbyxpath(xpath);
+            //search for bhai bhai and hit enter
+            cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
+            waitByCssSelector(cssSelector);
+            inputbycssselector(cssSelector, Invoices.DistributorSearch);
+            cssSelectorPressEnter(cssSelector);
+
+
+            //if order does not have minimum rows visible for invoice then change the order
+
+
+            //don't select the store
+//            id = "select2-c_store_id-container";
+//            waitById(id);
+//            clickbyId(id);
+//
+//            cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
+//            waitByCssSelector(cssSelector);
+//            inputbycssselector(cssSelector, Invoices.Store);
+//            cssSelectorPressEnter(cssSelector);
+
+
+            //partial invoice or full invoice
+            Boolean partialInvoice = Invoices.PartialInvoice;
+
+            for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"c_inv_items_list\"]"); i++) {
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
+                int k  = Integer.parseInt(getTextAttributebyXpath(xpath));
+//                if ((partialInvoice == true && i % 2 == 0 )&& k > Integer.parseInt(Invoices.ItemQuantity)) {
+                //CTN
+                Thread.sleep(20);
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
+                waitByxpath(xpath);
+                clearByXpath(xpath);
+                inputbyxpath(xpath, "0"); //here the number is the quantity that will be deleted
+
+//                //PCS(not necessary)
+//                Thread.sleep(20);
+//                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[6]/input";
+//                waitByxpath(xpath);
+//                clearByXpath(xpath);
+//                inputbyxpath(xpath, Invoices.ItemQuantity); //here the number is the quantity that will be deleted
+
+            }
+
+            //notes
+            id = "c_notes";
+            inputbyid(id, Invoices.Note);
+
+
+            //calculate the grand total
+
+
+            int itemsRowSize = getTotalRowCountByXpath("//*[@id=\"c_inv_items_list\"]");
+            double[][] gtCacl = new double[itemsRowSize][2];
+            for (int i = 0; i < itemsRowSize; i++) {
+                //get price/ctn
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
+                double s1 = Double.parseDouble(getTextAttributebyXpath(xpath));
+                //get ctn count
+                xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[4]/input";
+                double s2 = Double.parseDouble(getTextAttributebyXpath(xpath));
+
+                gtCacl[i][0] = s1;
+                gtCacl[i][1] = s2;
+                System.out.println(gtCacl[i][0] + " * " + gtCacl[i][1] + " = " + gtCacl[i][0] * gtCacl[i][1]);
+            }
+            double grandTotalActual = GrandTotalCalc(gtCacl);
+            double grandTotalVisible = Double.parseDouble(getTextAttributebyXpath("//*[@id=\"c_grand_total\"]"));
+            System.out.println("Visible Grand Total = " + grandTotalVisible + newLine + "Actual Grand Total = " + grandTotalActual);
+
+
+            Thread.sleep(200);
+            //offer part
+            if (ElementVisible("//*[@id=\"tbl_data\"]")) {
+                for (int i = 0; i < getTotalRowCountByXpath("//*[@id=\"tbl_data\"]"); i++) {
+                    String s = getTextbyXpath("//tbody[@id='tbl_data']/tr[" + (i + 1) + "]/td[3]");
+                    System.out.println("the found " + s);
+                    if (Objects.equals(s, "Offer Type: Product")) {
+                        String dropdownXpath = "//*[@id='tbl_data']/tr[" + (i + 1) + "]/td[5]//select";
+                        //Selecting the dropdown options only for where available
+                        try {
+                            WebElement dropdownElement = driver.findElement(By.xpath(dropdownXpath));
+                            Select dropdown = new Select(dropdownElement);
+                            dropdown.selectByIndex(1);
+                        } catch (NoSuchElementException e) {
+                            continue;
+                        }
+
+                        //Quantity CTN
+//                        Thread.sleep(700);
+//                        String xpath = "//*[@id=\"showCtn" + (i + 1) + "\"]";
+//                        int quantity = Integer.parseInt(getTextAttributebyXpath(xpath));
+//                        System.out.println("Default offer quantity is " + quantity + " ctn");
+//                        if (quantity > Integer.parseInt(Invoices.OfferCTN)) {
+//                            waitByxpath(xpath);
+//                            Thread.sleep(300);
+//                            clearByXpath(xpath);
+//                            inputbyxpath(xpath, (Invoices.OfferCTN));
+//                        }
+                    }
+                }
+            }
+
+//            //For Screen Shot
+//            for (int i = 0; i < 5; i++) {
+//                Thread.sleep(100);
+//                PageUp();
+//            }
+//            TakeScreenShot();
+//            PageDown();
+//            TakeScreenShot();
+
+
+            //wait for a defined period of time
+            Thread.sleep(Invoices.IntervalOfSaveTime);
+
+            //save
+            xpath = "//*[@id=\"add_region\"]";
+            Boolean saveVisible = IsVisibleByXpath(xpath);
+            softAssert.assertFalse(saveVisible);
+
+            closedriver();
+            softAssert.assertAll();
+
+        } catch (InterruptedException e) {
+            System.out.println("There was an exception that is caught");
+        }
+    }
 }
 

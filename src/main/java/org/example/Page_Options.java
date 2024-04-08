@@ -496,4 +496,15 @@ public class Page_Options extends BrowserUtils {
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         Thread.sleep(700);
     }
+    public Boolean IsVisibleByXpath(String xpath) throws InterruptedException {
+        Boolean visible = false;
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement confirmationMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+
+        // Check if the confirmation message is visible
+        if (confirmationMessage.isDisplayed()) {
+            visible = true;
+        }
+        return visible;
+    }
 }
