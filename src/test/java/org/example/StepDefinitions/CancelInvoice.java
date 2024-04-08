@@ -140,10 +140,4 @@ public class CancelInvoice extends Page_Options {
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }
     }
-
-    @Then("close the cancel Invoice window")
-    public void close_the_cancel_invoice_window() throws InterruptedException {
-        Thread.sleep(1500);
-        closedriver();
-    }
 }

@@ -35,3 +35,8 @@ Feature: Invoice Test
     Given login for Invoice
     And creation of an invoice where the product quantity is greater than the order quantity or the stock quantity is less than the invoice quantity
     Then verify that the invoice is not created
+
+  Scenario: Not allowing to create the invoice for 0 total quantity in the invoice
+    Given login for Invoice
+    And creation of an invoice where the product quantity is zero as a total
+    Then verify that the invoice is not created
