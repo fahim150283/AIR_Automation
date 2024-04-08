@@ -631,7 +631,7 @@ public class DistributorInvoices extends Page_Options {
         }
     }
 
-    @And("creation of an invoice where the product quantity is greater than the order quantity")
+    @And("creation of an invoice where the product quantity is greater than the order quantity or the stock quantity is less than the invoice quantity")
     public void creationOfAnInvoiceWhereTheProductQuantityIsGreaterThanTheStockQuantity() {
         try {
             //click the create new button
@@ -682,7 +682,7 @@ public class DistributorInvoices extends Page_Options {
                 xpath = "//*[@id=\"c_inv_items_list\"]/tr[" + (i + 1) + "]/td[5]/input";
                 waitByxpath(xpath);
                 clearByXpath(xpath);
-                inputbyxpath(xpath, "9999999"); //here the number is the quantity that will be deleted
+                inputbyxpath(xpath, "1"); //here the number is the quantity that will be deleted
 
 //                //PCS(not necessary)
 //                Thread.sleep(20);
@@ -770,27 +770,24 @@ public class DistributorInvoices extends Page_Options {
             clickbyxpath(xpath);
             AlertAccept();
 
-            //the invoice wont be saved and the there wont be a confirmation message
-            boolean popUpVisible = driver.findElement(By.className("swal2-popup")).isDisplayed();
-            softAssert .assertFalse(popUpVisible);
-
-            closedriver();
-            softAssert.assertAll();
         } catch (InterruptedException e) {
+            System.out.println("There was an exception that is caught");
         }
     }
 
     @Then("verify that the invoice is not created")
     public void verifyThatTheInvoiceIsNotCreated() throws InterruptedException {
-        // Wait for the modal dialog to be present
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        WebElement modalDialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("swal2-popup")));
-
-        Boolean popupVisible = true;
-        if(!modalDialog.isDisplayed()) {
-            popupVisible = false;
+        //the invoice won't be saved and there won't be a confirmation message
+        List<WebElement> modalDialogs = driver.findElements(By.className("swal2-popup"));
+        Boolean popUpVisible = false;
+        if (!modalDialogs.isEmpty()) {
+            WebElement modalDialog = modalDialogs.get(0); // Get the first element
+            if (modalDialog.isDisplayed()) {
+                popUpVisible = true;
+            }
         }
-        softAssert.assertFalse(popupVisible);
+        softAssert .assertFalse(popUpVisible);
+
         closedriver();
         softAssert.assertAll();
     }
