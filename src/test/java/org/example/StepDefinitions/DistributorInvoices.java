@@ -938,7 +938,7 @@ public class DistributorInvoices extends Page_Options {
     }
 
     @And("creation of an invoice with no store selected")
-    public void creationOfAnInvoiceWithNoStoreSelected() {
+    public void creationOfAnInvoiceWithNoStoreSelected() throws InterruptedException {
         try {
             //click the create new button
             xpath = "//*[@id=\"inv_tableData_wrapper\"]/div[1]/button[4]";
@@ -962,18 +962,8 @@ public class DistributorInvoices extends Page_Options {
             cssSelectorPressEnter(cssSelector);
 
 
-            //if order does not have minimum rows visible for invoice then change the order
-
-
             //don't select the store
-//            id = "select2-c_store_id-container";
-//            waitById(id);
-//            clickbyId(id);
-//
-//            cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
-//            waitByCssSelector(cssSelector);
-//            inputbycssselector(cssSelector, Invoices.Store);
-//            cssSelectorPressEnter(cssSelector);
+
 
 
             //partial invoice or full invoice

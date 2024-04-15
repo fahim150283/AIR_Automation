@@ -498,13 +498,19 @@ public class Page_Options extends BrowserUtils {
     }
     public Boolean IsVisibleByXpath(String xpath) throws InterruptedException {
         Boolean visible = false;
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        WebElement confirmationMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            WebElement confirmationMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 
-        // Check if the confirmation message is visible
-        if (confirmationMessage.isDisplayed()) {
-            visible = true;
+            // Check if the confirmation message is visible
+            if (confirmationMessage.isDisplayed()) {
+                visible = true;
+            }
+
+        }catch (TimeoutException e){
+            System.out.println("There was a timeout exception that is caught");
         }
+
         return visible;
     }
 }
