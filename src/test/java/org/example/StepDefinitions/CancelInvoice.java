@@ -9,8 +9,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 public class CancelInvoice extends Page_Options {
+    SoftAssert softAssert = new SoftAssert();
     @Given("Login to Search cancelled Invoice")
     public void login_to_search_cancelled_invoice() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
@@ -33,7 +35,7 @@ public class CancelInvoice extends Page_Options {
     @And("description of a cancelled Invoice")
     public void description_of_a_cancelled_invoice() throws InterruptedException {
         try{
-        Thread.sleep(100);
+        Thread.sleep(500);
         // verify the created product
         WebElement table = driver.findElement(By.id("invoice_table"));
         java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
@@ -65,7 +67,7 @@ public class CancelInvoice extends Page_Options {
         Click_from_leftSideBar("Cancel Invoice");
     }
 
-    @And("create new cancel Invoice")
+    @And("create new regular cancel Invoice")
     public void create_new_cancel_invoice() throws InterruptedException {
         try{
         //click the plus button
@@ -125,7 +127,7 @@ public class CancelInvoice extends Page_Options {
             double grandTotalActual = GrandTotalCalc(gtCacl);
             double grandTotalVisible = Double.parseDouble(getTextAttributebyXpath("//*[@id=\"c_grand_total\"]"));
             System.out.println("Visible Grand Total = " + grandTotalVisible + newLine + "Actual Grand Total = " + grandTotalActual);
-            Assert.assertEquals(grandTotalVisible, grandTotalActual);
+            softAssert.assertEquals(grandTotalVisible, grandTotalActual);
 
 
         //save
@@ -135,9 +137,31 @@ public class CancelInvoice extends Page_Options {
 
         AlertAccept();
         PrintConfirmationMessage();
+
+        closedriver();
+        softAssert.assertAll();
         }catch (InterruptedException | TimeoutException | AssertionError e) {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }
+    }
+
+    @And("verify that the cancelled invoice is searched")
+    public void verifyThatTheCancelledInvoiceIsSearched() throws InterruptedException {
+        Thread.sleep(1000);
+
+        WebElement table = driver.findElement(By.id("tableData"));
+        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tbody/tr"));
+
+        // Iterate through rows
+        for (WebElement row : rows) {
+            // Check if the row is displayed
+            if (!row.getAttribute("style").contains("display: none;")) {
+                softAssert.assertEquals(CancelInvoice.SearchInfo, row.findElement(By.xpath(".//td[8]")).getText());
+                break;
+            }
+        }
+        closedriver();
+        softAssert.assertAll();
     }
 }

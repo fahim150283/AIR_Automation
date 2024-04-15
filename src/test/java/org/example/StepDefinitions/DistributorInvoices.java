@@ -236,7 +236,10 @@ public class DistributorInvoices extends Page_Options {
         if (s.contains(Invoices.SearchInfo)) {
             isfound = true;
         }
-        Assert.assertTrue(isfound);
+        softAssert.assertTrue(isfound);
+
+        closedriver();
+        softAssert.assertAll();
     }
 
     @When("Gather the orders information")
@@ -1074,4 +1077,3 @@ public class DistributorInvoices extends Page_Options {
         }
     }
 }
-

@@ -103,7 +103,7 @@
     "IntervalOfSaveTime": 360
   },
   "Cancel Invoice": {
-    "SearchInfo": "SI-00000002",
+    "SearchInfo": "MS Ibrahim Traders",
     "DistributorSearch": "Bhai bhai",
     "Store": "depot",
     "Note": "Automated Test"
