@@ -11,6 +11,7 @@ Feature: Cancel Invoice Test
 
   Scenario: View a cancelled Invoice for AIR
     Given Login to Search cancelled Invoice
+    When search for cancelled Invoice
     And description of a cancelled Invoice
 
 #  Scenario: future and previous date validation for cancelling an invoice

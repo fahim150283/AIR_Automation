@@ -37,8 +37,8 @@ public class CancelInvoice extends Page_Options {
         try{
         Thread.sleep(500);
         // verify the created product
-        WebElement table = driver.findElement(By.id("invoice_table"));
-        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));
+        WebElement table = driver.findElement(By.id("tableData"));
+        java.util.List<WebElement> rows = table.findElements(By.xpath(".//tbody/tr"));
 
         // Iterate through rows
         for (WebElement row : rows) {
