@@ -38,4 +38,12 @@ public class test extends Page_Options {
             throw e;
         }
     }
+
+    @Test
+    public void tata(){
+        String s = "৳sdsd sjhd 480.00";
+        String ss = s.replaceAll("[^\\d.]", "");
+        System.out.println(ss);
+        System.out.println(s);
+    }
 }
