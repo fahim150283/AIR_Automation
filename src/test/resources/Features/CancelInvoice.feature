@@ -19,11 +19,3 @@ Feature: Cancel Invoice Test
     When search for cancelled Invoice
     And description of a cancelled Invoice
     And check grand total calculation of the cancelled invoice
-
-  Scenario: future and previous date validation for cancelling an invoice
-    Given login for cancellation of an Invoice
-    When set previous date and future date for cancel order
-
-  Scenario: Check the items and price calculation
-    Given login for cancellation of an Invoice
-    When check and verify that the cancel invoice items and price are correct

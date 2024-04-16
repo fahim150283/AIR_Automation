@@ -66,7 +66,7 @@ public class Complementary_Invoice extends Page_Options {
         Click_from_leftSideBar("Complimentary Invoice");
     }
 
-    @And("create new Complementary Invoice")
+    @And("create new regular Complementary Invoice")
     public void create_new_complementary_invoice() throws InterruptedException {
         try {
             Thread.sleep(2000);
@@ -162,12 +162,6 @@ public class Complementary_Invoice extends Page_Options {
             // Handle the TimeoutException
             System.out.println("TimeoutException occurred: " + e.getMessage());
         }
-    }
-
-    @Then("close the Complementary Invoice window")
-    public void close_the_complementary_invoice_window() throws InterruptedException {
-        Thread.sleep(1500);
-        closedriver();
     }
 
 }
