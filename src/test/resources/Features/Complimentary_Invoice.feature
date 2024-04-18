@@ -14,3 +14,8 @@ Feature: Complementary Invoice Test
   Scenario: Create a new Complementary Invoice
     Given login for creation of an Complementary Invoice
     And create new regular Complementary Invoice
+
+  Scenario: Not allowing to create a new Complementary Invoice if the stock is less than selected amount for a product
+    Given login for creation of an Complementary Invoice
+    And create new regular Complementary Invoice for checking the stock error
+    Then verify that the complementary invoice is not created
