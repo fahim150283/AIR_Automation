@@ -24,8 +24,9 @@
     "Item11": "88159 ~~ Doi Cup -- 120.00ml (PREMIUM -- CUP)",
     "Item12": "88211 ~~ Mango -- 500.00ml (REGULAR -- LTR CONTAINER)",
     "Item13": "88003 ~~ Regular Kulfi -- 39.00ml (MINI -- STICK)",
-    "Item14": "88200 ~~ Butterscotch with Cashew Crackles Cup -- 120.00ml (PREMIUM -- CUP)",
-    "Item15": "88230 ~~ Kheer Malai -- 500.00ml (PREMIUM -- LTR CONTAINER)14"
+    "Item14": "88230 ~~ Kheer Malai -- 500.00ml (PREMIUM -- LTR CONTAINER)",
+    "Item15": "88297 ~~ Coffee - Half Liter -- 500.00ml (PREMIUM -- LTR CONTAINER)"
+
   },
   "Dashboard": {
     "SearchInfo": "Siam"
@@ -118,12 +119,12 @@
   },
   "Collection": {
     "SearchInfo": "SO-00000052",
-    "DistributorSearch": "bhai bhai",
+    "DistributorSearch": "BG1902",
     "AdvanceCollection": true,
     "AdjustFromAdvance": false,
     "CollectionInCash": true,
     "CollectedBy": "Automatically Collected",
-    "CollectionAmount": "1000000",
+    "CollectionAmount": "500000",
     "InstrumentType": "Credit Card",
     "MoneyReceipt": "TestMoneyReceipt",
     "Field1": "9876543210",

@@ -122,7 +122,7 @@ public class Complementary_Invoice extends Page_Options {
         Thread.sleep(100);
 
         //click the items bar
-        for (int i = 0; i < Order.Items.length; i++) {
+        for (int i = 0; i < Order.Items.length+1; i++) {
             xpath = "//*[@id=\"add_pending_product_delivery_form\"]/div/div[4]/div[4]/span/span[1]/span";
             Thread.sleep(10);
             inputbyxpath(xpath, Order.Items[i]);

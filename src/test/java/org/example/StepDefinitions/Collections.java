@@ -1,11 +1,15 @@
 package org.example.StepDefinitions;
 
-import io.cucumber.java.en.And;
+import
+io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.lightbody.bmp.core.har.Har;
+import net.lightbody.bmp.core.har.HarEntry;
+import net.lightbody.bmp.proxy.CaptureType;
 import org.example.Page_Options;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -36,11 +40,6 @@ public class Collections extends Page_Options {
     public void description_of_a_collection() {
         //scroll for now
         scrollToTheBottom();
-    }
-
-    @Then("close Collection")
-    public void close_collection() throws InterruptedException {
-        closedriver();
     }
 
 
@@ -374,9 +373,54 @@ public class Collections extends Page_Options {
         }
     }
 
-    @Then("close the Collection window")
-    public void close_the_collection_window() throws InterruptedException {
-        Thread.sleep(2000);
+    @And("create new Collection for advance payment in cash")
+    public void createNewCollectionForAdvancePaymentInCash() throws InterruptedException {
+        //click the create new button
+        xpath = "//*[@id=\"tableData_wrapper\"]/div[1]/button[4]";
+        clickbyxpath(xpath);
+
+        //select date
+        xpath = "//*[@id=\"col_date\"]";
+        SetToday(xpath);
+
+        //select Distributor
+        Thread.sleep(1500);
+        xpath = "//*[@id=\"select2-distri-container\"]";
+        waitByxpath(xpath);
+        clickbyxpath(xpath);
+        //search for bhai bhai and hit enter
+        cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
+        waitByCssSelector(cssSelector);
+        inputbycssselector(cssSelector, Collection.DistributorSearch);
+        cssSelectorPressEnter(cssSelector);
+
+        //collected by
+        id = "col_by";
+        inputbyid(id, Collection.CollectedBy);
+
+        //Advance Collection or Collection for order
+        Boolean advanceCollection = true;
+        if (advanceCollection == true) {
+            //enter pay amount
+            id = "pay_amount";
+            waitById(id);
+            clearById(id);
+            inputbyid(id, Collection.CollectionAmount);
+
+            //money receipt number
+            id = "mny_rcpt_num";
+            waitById(id);
+            inputbyid(id, Collection.MoneyReceipt + Math.random());
+        }
+
+
+        //print the payload
+        BrowserMobProxyToPrint("http://10.101.13.28/controller/process_collections_data.php");
+
+        //click the save button
+        id = "add_col";
+        clickbyId(id);
+        PrintConfirmationMessage();
         closedriver();
     }
 }

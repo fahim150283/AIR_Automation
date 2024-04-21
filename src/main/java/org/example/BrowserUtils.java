@@ -1,5 +1,8 @@
 package org.example;
 
+import net.lightbody.bmp.BrowserMobProxy;
+import net.lightbody.bmp.BrowserMobProxyServer;
+import net.lightbody.bmp.client.ClientUtil;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -17,13 +20,15 @@ import java.util.Date;
 
 public class BrowserUtils extends ReadJson {
     public static WebDriver driver;
+    public static BrowserMobProxy proxy;
+    public static ChromeOptions co;
     public static String[] returnedarray = ReadJson.readJsonData();  //This is just to call the function to read the files.
     // This is not gonna be used anywhere but the json data will be
 
 
     public static void setDriverChrome() {
         System.setProperty("webdriver.chrome.driver", "C:/BrowserDriver/chromedriver.exe");
-        ChromeOptions co = new ChromeOptions();
+        co = new ChromeOptions();
         co.setBinary("C:/BrowserDriver/chrome-win64/chrome-win64/chrome.exe");
         // Disable cookies
         co.addArguments("--disable-cookies");
@@ -54,11 +59,6 @@ public class BrowserUtils extends ReadJson {
     }
 
     public static void waitById(String id) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
-    }
-
-    public static void waitByName(String id) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
     }
@@ -144,6 +144,7 @@ public class BrowserUtils extends ReadJson {
 
     public static void SetToday(String xpath) throws InterruptedException {
         // Get current date and time
+        Thread.sleep(100);
         LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy hh:mm a");
         String formattedDateTime = currentDateTime.format(formatter);

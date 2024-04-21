@@ -1,5 +1,11 @@
 package org.example;
 
+import net.lightbody.bmp.BrowserMobProxy;
+import net.lightbody.bmp.BrowserMobProxyServer;
+import net.lightbody.bmp.client.ClientUtil;
+import net.lightbody.bmp.core.har.Har;
+import net.lightbody.bmp.core.har.HarEntry;
+import net.lightbody.bmp.proxy.CaptureType;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -13,6 +19,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class Page_Options extends BrowserUtils {
     public static String id;
@@ -512,5 +519,40 @@ public class Page_Options extends BrowserUtils {
         }
 
         return visible;
+    }
+
+    public void BrowserMobProxyToPrint (String url) throws InterruptedException {
+        // Start BrowserMob Proxy server
+        proxy = new BrowserMobProxyServer();
+        proxy.start();
+        // Get the Selenium proxy object
+        Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
+        co.setProxy(seleniumProxy);
+
+        // Enable more detailed HAR capture, if desired (see CaptureType for the complete list)
+        proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
+
+        // Create a new HAR with the label "example.com"
+        proxy.newHar("example.com");
+
+        // Wait for the form submission and associated network requests to complete
+        TimeUnit.SECONDS.sleep(5); // Adjust wait time as needed
+
+
+        // Retrieve the HAR data
+        Har har = proxy.getHar();
+
+        // Print API payload for the form submission
+        System.out.println("API Payload:");
+        // url = "http://10.101.13.28/controller/process_collections_data.php"
+        for (HarEntry entry : har.getLog().getEntries()) {
+//            if (entry.getRequest().getUrl().contains("api_endpoint")) {
+            if (entry.getRequest().getUrl().contains(url)) {
+                System.out.println(entry.getRequest().getPostData().getText());
+            }
+        }
+
+        // Stop the BrowserMob Proxy server
+        proxy.stop();
     }
 }
