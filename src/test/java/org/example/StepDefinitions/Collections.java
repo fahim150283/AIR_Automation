@@ -413,13 +413,15 @@ public class Collections extends Page_Options {
             inputbyid(id, Collection.MoneyReceipt + Math.random());
         }
 
-
-        //print the payload
-        BrowserMobProxyToPrint("http://10.101.13.28/controller/process_collections_data.php");
+//
+//        //print the payload
+//        BrowserMobProxyToPrint("http://10.101.13.28/controller/process_collections_data.php");
 
         //click the save button
         id = "add_col";
         clickbyId(id);
+        //print the payload
+        BrowserMobProxyToPrint("http://10.101.13.28/controller/process_collections_data.php");
         PrintConfirmationMessage();
         closedriver();
     }

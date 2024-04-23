@@ -449,7 +449,6 @@ public class Page_Options extends BrowserUtils {
         Thread.sleep(200);
         inputbyid(id, s);
 
-        // Wait for the search results to load (you might need to implement waits)
         // Then, click on the searched item "Damage Amount"
         WebElement webElement = driver.findElement(By.xpath("//span[text()='" + s + "']")); // Update the locator accordingly
         webElement.click();
@@ -536,7 +535,7 @@ public class Page_Options extends BrowserUtils {
         proxy.newHar("example.com");
 
         // Wait for the form submission and associated network requests to complete
-        TimeUnit.SECONDS.sleep(5); // Adjust wait time as needed
+        TimeUnit.SECONDS.sleep(15); // Adjust wait time as needed
 
 
         // Retrieve the HAR data
@@ -544,10 +543,10 @@ public class Page_Options extends BrowserUtils {
 
         // Print API payload for the form submission
         System.out.println("API Payload:");
-        // url = "http://10.101.13.28/controller/process_collections_data.php"
         for (HarEntry entry : har.getLog().getEntries()) {
 //            if (entry.getRequest().getUrl().contains("api_endpoint")) {
             if (entry.getRequest().getUrl().contains(url)) {
+                System.out.println(entry.getRequest().getPostData().getText());
                 System.out.println(entry.getRequest().getPostData().getText());
             }
         }

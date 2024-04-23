@@ -40,10 +40,16 @@ public class test extends Page_Options {
     }
 
     @Test
-    public void tata(){
-        String s = "৳sdsd sjhd 480.00";
-        String ss = s.replaceAll("[^\\d.]", "");
-        System.out.println(ss);
-        System.out.println(s);
+    public void tata() throws InterruptedException {
+        Login_AIR2(Users.user_Haseeb);
+        Click_from_leftSideBar("Products");
+        //print the payload
+        BrowserMobProxyToPrint("http://10.101.13.28/apis/api_m/api.php");
+        closedriver();
+    }
+
+    @Test
+    public void tatat() throws InterruptedException {
+        navigatetourl("google.com");
     }
 }
