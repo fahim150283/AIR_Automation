@@ -1,22 +1,20 @@
 package org.example.StepDefinitions;
 
-import
-io.cucumber.java.en.And;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
-import net.lightbody.bmp.core.har.Har;
-import net.lightbody.bmp.core.har.HarEntry;
-import net.lightbody.bmp.proxy.CaptureType;
 import org.example.Page_Options;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Proxy;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.asserts.SoftAssert;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Collections extends Page_Options {
+    SoftAssert softAssert = new SoftAssert();
     @Given("Login to Search Collection")
     public void login_to_search_collection() throws InterruptedException {
         Login_AIR2(Users.user_Haseeb);
@@ -384,7 +382,7 @@ public class Collections extends Page_Options {
         SetToday(xpath);
 
         //select Distributor
-        Thread.sleep(1500);
+        Thread.sleep(2500);
         xpath = "//*[@id=\"select2-distri-container\"]";
         waitByxpath(xpath);
         clickbyxpath(xpath);
@@ -420,9 +418,101 @@ public class Collections extends Page_Options {
         //click the save button
         id = "add_col";
         clickbyId(id);
+
         //print the payload
-        BrowserMobProxyToPrint("http://10.101.13.28/controller/process_collections_data.php");
+//        BrowserMobProxyToPrint("http://10.101.13.28/controller/process_collections_data.php");
+
         PrintConfirmationMessage();
         closedriver();
+    }
+
+    @And("create new Collection for an order which will be adjusted from advance")
+    public void createNewCollectionForAnOrderWhichWillBeAdjustedFromAdvance() throws InterruptedException {
+        //click the create new button
+        xpath = "//*[@id=\"tableData_wrapper\"]/div[1]/button[4]";
+        clickbyxpath(xpath);
+
+        //select date
+        xpath = "//*[@id=\"col_date\"]";
+        SetToday(xpath);
+
+        //select Distributor
+        Thread.sleep(2500);
+        xpath = "//*[@id=\"select2-distri-container\"]";
+        waitByxpath(xpath);
+        clickbyxpath(xpath);
+        //search for distributor and hit enter
+        cssSelector = "body > span > span > span.select2-search.select2-search--dropdown > input";
+        waitByCssSelector(cssSelector);
+        inputbycssselector(cssSelector, Collection.DistributorSearch);
+        cssSelectorPressEnter(cssSelector);
+
+        //collected by
+        id = "col_by";
+        inputbyid(id, Collection.CollectedBy);
+
+        //Advance Collection or Collection for order
+        Boolean advanceCollection = false;
+        if (advanceCollection == true) {
+            //enter pay amount
+            id = "pay_amount";
+            waitById(id);
+            clearById(id);
+            inputbyid(id, Collection.CollectionAmount);
+
+            //money receipt number
+            Random random = new Random();
+            id = "mny_rcpt_num";
+            waitById(id);
+            inputbyid(id, Collection.MoneyReceipt + random);
+        } else {
+            //Adjust from Advance or regular collection
+            Boolean adjustFromAdvance = true;
+            if (adjustFromAdvance == true) {
+                //click the checkbox
+                id = "adjust_advance";
+                clickbyId(id);
+            } else {
+                //enter pay amount
+                id = "pay_amount";
+                waitById(id);
+                clearById(id);
+                String temp = String.valueOf(getValuebyXpath("//*[@id=\"rcv_amount\"]"));// it stores the value of payable amount
+                System.out.println(temp);
+                waitById(id);
+                inputbyid(id, temp);
+
+
+                //money receipt number
+                Random random = new Random();
+                id = "mny_rcpt_num";
+                waitById(id);
+                inputbyid(id, Collection.MoneyReceipt);
+            }
+
+            int total_adjust_amount = 0;
+
+            //click the order
+            int rowcount = getTotalRowCountByXpath("//*[@id=\"order_number\"]") - 2;
+            System.out.println("Total number of orders is : " + rowcount);
+            for (int i = 0; i < rowcount; i++) {
+                xpath = "//*[@id=\"order_number\"]/tr[" + (i + 1) + "]/td[1]/input";
+                clickbyxpath(xpath);
+                total_adjust_amount = total_adjust_amount + Integer.parseInt(getTextAttributebyXpath("//*[@id=\"order_number\"]/tr[" + (i + 1) + "]/td[1]/input"));
+                break;
+            }
+            softAssert.assertEquals(total_adjust_amount , Integer.parseInt(getTextAttributebyXpath("//*[@id=\"total_adjusted_amount\"]")));
+
+        }
+
+        //click the save button
+        id = "add_col";
+        clickbyId(id);
+        Boolean confirmation = false;
+        if (Objects.equals(GetConfirmationMessage(), "Collections has been saved")) {
+            softAssert.assertTrue(confirmation);
+        }
+        closedriver();
+        softAssert.assertAll();
     }
 }
