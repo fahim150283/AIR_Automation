@@ -15,9 +15,8 @@ Feature: Collection Test
     And create new Collection for an order which will be adjusted from advance
 
   Scenario: creation of a Collection for order in cash
-#    Given login for creating Collection
-#    And create new Collection
-#    Then close the Collection window
+    Given login for creating Collection
+    And create new Collection for order in cash
 
   Scenario: Creation of a Collection for advance payment in Instrument
 #    Given login for creating Collection

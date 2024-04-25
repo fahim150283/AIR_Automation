@@ -3,8 +3,7 @@ Feature: Order Test
 
   Scenario: Create a new regular Order
     Given login for creating new Order
-    And create new Order
-    Then verify if the order is created or not
+    And create new Order and verify its creation
 
   Scenario: Check the grand total calculation
     Given login for creating new Order
