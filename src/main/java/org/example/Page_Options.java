@@ -1,13 +1,8 @@
 package org.example;
 
-import net.lightbody.bmp.BrowserMobProxy;
-import net.lightbody.bmp.BrowserMobProxyServer;
-import net.lightbody.bmp.client.ClientUtil;
-import net.lightbody.bmp.core.har.Har;
-import net.lightbody.bmp.core.har.HarEntry;
-import net.lightbody.bmp.proxy.CaptureType;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -15,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -26,14 +22,14 @@ public class Page_Options extends BrowserUtils {
     public static String classname;
     public static String xpath;
     public static String cssSelector;
-    public static String tempName;
+    public static DevTools devTools;
     public static String newLine = System.getProperty("line.separator");//This will retrieve line separator dependent on OS.;
 
     public static void navigatetourl(String URL) {
         setDriverChrome();
 //        setDriverFirefox();
         driver.manage().window().maximize();
-        driver.get(URL);
+        driver.get(URL);    //enter url in this format only  "https://weatherstack.com/"
     }
 
     public static void scrollToTheBottom() {
@@ -161,7 +157,7 @@ public class Page_Options extends BrowserUtils {
     }
 
     public static void pressEnterbyXpath(String s) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath((s))));
         WebElement element = driver.findElement(By.xpath(s));
         element.sendKeys(Keys.ENTER);
@@ -178,21 +174,21 @@ public class Page_Options extends BrowserUtils {
     }
 
     public static void pressDownbyXpath(String s) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(s)));
         WebElement element = driver.findElement(By.xpath(s));
         element.sendKeys(Keys.ARROW_DOWN);
     }
 
     public static void pressDownbyid(String s) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(By.id(s)));
         WebElement element = driver.findElement(By.id(s));
         element.sendKeys(Keys.ARROW_DOWN);
     }
 
     public static void pressDownbyCssSelector(String s) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(s)));
         WebElement element = driver.findElement(By.cssSelector(s));
         element.sendKeys(Keys.ARROW_DOWN);
@@ -459,7 +455,7 @@ public class Page_Options extends BrowserUtils {
 
     public void PrintConfirmationMessage() {
         // Wait for the modal dialog to be present
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement modalDialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("swal2-popup")));
 
         // Extract the confirmation message from the modal
@@ -470,7 +466,7 @@ public class Page_Options extends BrowserUtils {
 
     public String GetConfirmationMessage() {
         // Wait for the modal dialog to be present
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement modalDialog = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("swal2-popup")));
 
         // Extract the confirmation message from the modal
@@ -505,7 +501,7 @@ public class Page_Options extends BrowserUtils {
     public Boolean IsVisibleByXpath(String xpath) throws InterruptedException {
         Boolean visible = false;
         try {
-            WebDriverWait wait = new WebDriverWait(driver, 10);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
             WebElement confirmationMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 
             // Check if the confirmation message is visible
@@ -520,38 +516,8 @@ public class Page_Options extends BrowserUtils {
         return visible;
     }
 
-    public void BrowserMobProxyToPrint (String url) throws InterruptedException {
-        // Start BrowserMob Proxy server
-        proxy = new BrowserMobProxyServer();
-        proxy.start();
-        // Get the Selenium proxy object
-        Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
-        co.setProxy(seleniumProxy);
+    public void CaptureRequests () throws InterruptedException {
+        System.out.println("Catch the requests");
 
-        // Enable more detailed HAR capture, if desired (see CaptureType for the complete list)
-        proxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
-
-        // Create a new HAR with the label "example.com"
-        proxy.newHar("example.com");
-
-        // Wait for the form submission and associated network requests to complete
-        TimeUnit.SECONDS.sleep(15); // Adjust wait time as needed
-
-
-        // Retrieve the HAR data
-        Har har = proxy.getHar();
-
-        // Print API payload for the form submission
-        System.out.println("API Payload:");
-        for (HarEntry entry : har.getLog().getEntries()) {
-//            if (entry.getRequest().getUrl().contains("api_endpoint")) {
-            if (entry.getRequest().getUrl().contains(url)) {
-                System.out.println(entry.getRequest().getPostData().getText());
-                System.out.println(entry.getRequest().getPostData().getText());
-            }
-        }
-
-        // Stop the BrowserMob Proxy server
-        proxy.stop();
     }
 }

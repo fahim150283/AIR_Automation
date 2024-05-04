@@ -15,6 +15,7 @@ import org.testng.asserts.SoftAssert;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
@@ -277,7 +278,7 @@ public class DistributorInvoices extends Page_Options {
             if (orderNum == null && (i + 1) == rows.size()) {
                 i = 0;
                 //click the next button
-                WebDriverWait wait = new WebDriverWait(driver, 4);
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
                 WebElement nextButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("tableData_next")));
                 // Scroll the element into view using JavaScript
                 JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -783,7 +784,7 @@ public class DistributorInvoices extends Page_Options {
         //the invoice won't be saved and there won't be a confirmation message
         Boolean popUpVisible = false;
         // Wait for the confirmation message to be visible
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement confirmationMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("swal2-popup")));
 
         // Check if the confirmation message is visible

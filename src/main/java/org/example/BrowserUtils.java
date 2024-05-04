@@ -1,8 +1,5 @@
 package org.example;
 
-import net.lightbody.bmp.BrowserMobProxy;
-import net.lightbody.bmp.BrowserMobProxyServer;
-import net.lightbody.bmp.client.ClientUtil;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,6 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Year;
 import java.time.format.DateTimeFormatter;
@@ -20,10 +18,9 @@ import java.util.Date;
 
 public class BrowserUtils extends ReadJson {
     public static WebDriver driver;
-    public static BrowserMobProxy proxy;
     public static ChromeOptions co;
     public static String[] returnedarray = ReadJson.readJsonData();  //This is just to call the function to read the files.
-    // This is not gonna be used anywhere but the json data will be
+    // This is not going to be used anywhere but the json data will be
 
 
     public static void setDriverChrome() {
@@ -59,22 +56,22 @@ public class BrowserUtils extends ReadJson {
     }
 
     public static void waitById(String id) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
     }
 
     public static void waitByxpath(String xpath) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
     }
 
     public static void waitByCssSelector(String cssSelector) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(cssSelector)));
     }
 
     public static void clickbyxpath(String s) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(s)));
         WebElement element = driver.findElement(By.xpath(s));
         element.click();
@@ -89,7 +86,7 @@ public class BrowserUtils extends ReadJson {
     }
 
     public static void clickbyId(String s) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(By.id(s)));
         WebElement element = driver.findElement(By.id(s));
         element.click();
@@ -104,7 +101,7 @@ public class BrowserUtils extends ReadJson {
 
 
     public static void clickbycssselector(String s) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(s)));
         WebElement element = driver.findElement(By.cssSelector(s));
         element.click();
@@ -130,14 +127,14 @@ public class BrowserUtils extends ReadJson {
 
     public static void clickByClassName(String name) {
         WebElement element = driver.findElement(By.className(name));
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(By.className(name)));
         element.click();
     }
 
     public static void RowCount(String name) {
         WebElement element = driver.findElement(By.className(name));
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(By.className(name)));
         element.click();
     }

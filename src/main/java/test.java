@@ -1,13 +1,6 @@
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.example.Page_Options;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -44,12 +37,16 @@ public class test extends Page_Options {
         Login_AIR2(Users.user_Haseeb);
         Click_from_leftSideBar("Products");
         //print the payload
-        BrowserMobProxyToPrint("http://10.101.13.28/apis/api_m/api.php");
+//        BrowserMobProxyToPrint("http://10.101.13.28/apis/api_m/api.php");
         closedriver();
     }
 
     @Test
     public void tatat() throws InterruptedException {
-        navigatetourl("google.com");
+        navigatetourl("https://weatherstack.com/");
+        PrintPageTitle();
+        waitByxpath("/html/body/div/section[1]/div/div/div[1]/a");
+        CaptureRequests();
+        closedriver();
     }
 }
