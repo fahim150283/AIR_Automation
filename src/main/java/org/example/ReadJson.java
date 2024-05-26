@@ -12,6 +12,7 @@ public class ReadJson {
         public static String AIR_2_AIR;
         public static String AIR_2;
         public static String AIR;
+        public static String BPU;
         public static String ItemsArray[] = new String[15];
 
         public static String user_Fahim;
@@ -400,6 +401,7 @@ public class ReadJson {
             {// Read data from the "Login" object
                 JSONObject loginObject = (JSONObject) jsonObject.get("Login");
 //                url_AIR = (String) loginObject.get("url_AIR");
+                Users.BPU = (String) loginObject.get("url_BPU");
                 Users.AIR_2 = (String) loginObject.get("url_AIR_2");
                 Users.AIR_2_AIR = (String) loginObject.get("url_AIR_2_AIR");
                 Users.user_Fahim = (String) loginObject.get("user_Fahim");

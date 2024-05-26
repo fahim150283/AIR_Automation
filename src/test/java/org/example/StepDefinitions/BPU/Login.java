@@ -9,12 +9,12 @@ import org.testng.asserts.SoftAssert;
 public class Login extends Page_Options {
     SoftAssert softAssert = new SoftAssert();
 
-    @Given("Navigate to AIR")
+    @Given("Navigate to AIR for BPU")
     public void navigate_to_air() {
-        navigatetourl(Users.AIR_2);
+        navigatetourl(Users.BPU);
     }
 
-    @When("Input the credentials\\(invalid username and invalid password)")
+    @When("Input the credentials\\(invalid username and invalid password) for BPU")
     public void input_the_credentials_invalid_username_and_invalid_password() {
         id = "username";
         inputbyid(id, "invalid");
@@ -24,7 +24,7 @@ public class Login extends Page_Options {
         clickbyId(id);
     }
 
-    @When("verify if the login is unsuccessful")
+    @When("verify if the login is unsuccessful for BPU")
     public void verify_if_the_login_is_unsuccessful() throws InterruptedException {
         try {
             System.out.println("The expected page title is: AIR - Login" + " and the actual page title is: " + driver.getTitle());
@@ -36,7 +36,7 @@ public class Login extends Page_Options {
         }
     }
 
-    @When("Input the credentials\\(invalid username and valid password)")
+    @When("Input the credentials\\(invalid username and valid password) for BPU")
     public void inputTheCredentialsInvalidUsernameAndValidPassword() {
         id = "username";
         inputbyid(id, "invalid");
@@ -46,7 +46,7 @@ public class Login extends Page_Options {
         clickbyId(id);
     }
 
-    @When("Input the credentials\\(valid username and invalid password)")
+    @When("Input the credentials\\(valid username and invalid password) for BPU")
     public void inputTheCredentialsValidUsernameAndInvalidPassword() {
         id = "username";
         inputbyid(id, Users.user_Haseeb);
@@ -56,7 +56,7 @@ public class Login extends Page_Options {
         clickbyId(id);
     }
 
-    @When("Input the credentials\\(valid username and valid password)")
+    @When("Input the credentials\\(valid username and valid password) for BPU")
     public void inputTheCredentialsValidUsernameAndValidPassword() {
         id = "username";
         inputbyid(id, Users.user_Haseeb);
@@ -66,7 +66,7 @@ public class Login extends Page_Options {
         clickbyId(id);
     }
 
-    @When("verify if the login is successful")
+    @When("verify if the login is successful for BPU")
     public void verify_if_the_login_is_successful() throws InterruptedException {
         try {
             System.out.println("The expected page title is: AIR - Contacts" + " and the actual page title is: " + driver.getTitle());
