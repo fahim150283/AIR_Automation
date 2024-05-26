@@ -194,10 +194,6 @@ public class Page_Options extends BrowserUtils {
         element.sendKeys(Keys.ARROW_DOWN);
     }
 
-//    public static void selectByindex(String s, int i){
-//        Select stateDropdown = new Select(driver.findElement(By.id(s)));
-//        stateDropdown.selectByIndex(i); // Haryana
-//    }
 
     public static void AlertAccept() throws InterruptedException {
         Thread.sleep(1000);

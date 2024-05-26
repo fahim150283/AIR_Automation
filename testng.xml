@@ -2,28 +2,47 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="G:/Abul Hossain Chowdhury/Projects/AIR_Automation">
-        <classes>
-            <class name="org.example.Runner.LoginTestRunner"></class>
-            <class name="org.example.Runner.DashboardTestRunner"></class>
-            <class name="org.example.Runner.ContactsTestRunner"></class>
-            <class name="org.example.Runner.PreInvoiceTestRunner"></class>
-            <class name="org.example.Runner.OrderTestRunner"></class>
-            <class name="org.example.Runner.CancelOrderTestRunner"></class>
-            <class name="org.example.Runner.FinishGoodsStoreTestRunner"></class>
-            <class name="org.example.Runner.GoodsRequisitionTestRunner"></class>
-            <class name="org.example.Runner.DistributorInvoicesTestRunner"></class>
-            <class name="org.example.Runner.CancelInvoiceTestRunner"></class>
-            <class name="org.example.Runner.CollectionsTestRunner"></class>
-            <class name="org.example.Runner.OfferTestRunner"></class>
-            <class name="org.example.Runner.Complementary_InvoiceTestRunner"></class>
-            <class name="org.example.Runner.SalesReturnTestRunner"></class>
-            <class name="org.example.Runner.LoadingSheetTestRunner"></class>
-            <class name="org.example.Runner.DistributorsTestRunner"></class>
-            <class name="org.example.Runner.GeoLocationMappingTestRunner"></class>
-            <class name="org.example.Runner.AppsTestRunner"></class>
-            <class name="org.example.Runner.ProductCategoriesTestRunner"></class>
-            <class name="org.example.Runner.ProductsTestRunner"></class>
-            <class name="org.example.Runner.AuditStockUpdateTestRunner"></class>
-        </classes>
-    </test>
-</suite>
+
+
+<!--
+_________________________________________________
+______________________ AIR ______________________
+_________________________________________________
+-->
+<!--        <classes> &lt;!&ndash; AIR &ndash;&gt;-->
+<!--            <class name="org.example.Runner.AIR.LoginTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.DashboardTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.ContactsTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.PreInvoiceTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.OrderTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.CancelOrderTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.FinishGoodsStoreTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.GoodsRequisitionTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.DistributorInvoicesTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.CancelInvoiceTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.CollectionsTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.OfferTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.Complementary_InvoiceTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.SalesReturnTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.LoadingSheetTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.DistributorsTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.GeoLocationMappingTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.AppsTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.ProductCategoriesTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.ProductsTestRunner"></class>-->
+<!--            <class name="org.example.Runner.AIR.AuditStockUpdateTestRunner"></class>-->
+<!--        </classes>  &lt;!&ndash; AIR &ndash;&gt;-->
+
+<!--
+_________________________________________________
+______________________ BPU ______________________
+_________________________________________________
+-->
+
+        <classes> <!-- BPU -->
+            <class name="org.example.Runner.BPU.LoginTestRunner"></class>
+
+        </classes> <!-- BPU -->
+
+            </test>
+        </suite>

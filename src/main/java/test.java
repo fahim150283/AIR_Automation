@@ -13,11 +13,12 @@ public class test extends Page_Options {
     }
 
     @Given("test2brumbrum")
-    public void test2() {
-        System.out.println("test2");
-        softAssert.assertEquals("test2", "hi2");
-        softAssert.assertAll();
-
+    public void test2() throws InterruptedException {
+        navigatetourl("https://weatherstack.com/");
+        PrintPageTitle();
+        waitByxpath("/html/body/div/section[1]/div/div/div[1]/a");
+        CaptureRequests();
+        closedriver();
     }
 
     @Given("huhu")
@@ -43,10 +44,6 @@ public class test extends Page_Options {
 
     @Test
     public void tatat() throws InterruptedException {
-        navigatetourl("https://weatherstack.com/");
-        PrintPageTitle();
-        waitByxpath("/html/body/div/section[1]/div/div/div[1]/a");
-        CaptureRequests();
-        closedriver();
+
     }
 }
