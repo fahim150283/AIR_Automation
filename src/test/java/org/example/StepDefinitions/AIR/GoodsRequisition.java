@@ -217,7 +217,7 @@ public class GoodsRequisition extends Page_Options {
     }
 
     @And("vehicle load for the good requisition")
-    public void vehicle_load_for_the_good_requisition() {
+    public void vehicle_load_for_the_good_requisition() throws InterruptedException {
         try {
             //select a requisition
             xpath = "//*[@id=\"sent_view2\"]";
@@ -260,7 +260,7 @@ public class GoodsRequisition extends Page_Options {
     }
 
     @And("vehicle unload for the good requisition")
-    public void vehicle_unload_for_the_good_requisition() {
+    public void vehicle_unload_for_the_good_requisition() throws InterruptedException {
         try {
             //select a requisition
             xpath = "//*[@id=\"sent_view2\"]";
@@ -302,7 +302,7 @@ public class GoodsRequisition extends Page_Options {
     }
 
     @And("Receive The Goods")
-    public void receive_the_goods() {
+    public void receive_the_goods() throws InterruptedException {
         try {
             //click the eye button
             id = "sent_view1";

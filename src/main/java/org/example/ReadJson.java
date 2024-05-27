@@ -16,6 +16,8 @@ public class ReadJson {
         public static String ItemsArray[] = new String[15];
 
         public static String user_Fahim;
+        public static String L1Tester;
+        public static String L2Tester;
         public static String user_Haseeb;
         public static String user_Polash;
         public static String user_Ashik;
@@ -389,6 +391,13 @@ public class ReadJson {
         public static String Note;
         public static String FullReturn;
     }
+    public static class StoreType{
+        public static String SearchInfo;
+        public static String FullName;
+        public static String E_FullName;
+        public static String E_ShortName;
+        public static String ShortName;
+    }
 
 
     public static String[] readJsonData() {
@@ -402,6 +411,8 @@ public class ReadJson {
                 JSONObject loginObject = (JSONObject) jsonObject.get("Login");
 //                url_AIR = (String) loginObject.get("url_AIR");
                 Users.BPU = (String) loginObject.get("url_BPU");
+                Users.L1Tester = (String) loginObject.get("L1Tester");
+                Users.L2Tester = (String) loginObject.get("L2Tester");
                 Users.AIR_2 = (String) loginObject.get("url_AIR_2");
                 Users.AIR_2_AIR = (String) loginObject.get("url_AIR_2_AIR");
                 Users.user_Fahim = (String) loginObject.get("user_Fahim");
@@ -803,7 +814,13 @@ public class ReadJson {
                 SalesReturn.Note = (String) PROD_Object.get("Note");
                 SalesReturn.FullReturn = (String) PROD_Object.get("Full Return");
             }
-
+            {JSONObject StoreType_Object = (JSONObject) jsonObject.get("Store Type");
+                StoreType.SearchInfo = (String) StoreType_Object.get("Search_info");
+                StoreType.FullName = (String) StoreType_Object.get("FullName");
+                StoreType.ShortName = (String) StoreType_Object.get("ShortName");
+                StoreType.E_ShortName = (String) StoreType_Object.get("E_FullName");
+                StoreType.E_FullName = (String) StoreType_Object.get("E_ShortName");
+            }
 
         } catch (IOException | ParseException e) {
             e.printStackTrace();

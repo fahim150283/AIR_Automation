@@ -475,7 +475,7 @@ public class Offer extends Page_Options {
     }
 
     @When("navigate to order and click new order button")
-    public void navigateToOrderAndClickNewOrderButton() {
+    public void navigateToOrderAndClickNewOrderButton() throws InterruptedException {
         Login_AIR2_AIR(Users.user_Polash);
         cssSelector = ".menues-bar:nth-child(17) .active";
         waitByCssSelector(cssSelector);

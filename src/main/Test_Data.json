@@ -9,6 +9,8 @@
     "user_Polash": "k.polash",
     "user_Ashik": "a.islam",
     "user_Siam": "mh.siam",
+    "L1Tester": "L1Tester",
+    "L2Tester": "L2Tester",
     "password": "savoy123"
   },
   "Items": {
@@ -415,6 +417,13 @@
   "Loading Sheet": {
     "SearchInfo": "12012",
     "DistributorSearch": "bhai bhai"
+  },
+  "Store Type": {
+    "Search_info": "Toy",
+    "FullName": "Test Store",
+    "ShortName": "Test",
+    "E_FullName": "E_Test Store",
+    "E_ShortName": "E_Test"
   },
   "Logout": {
     "SearchInfo": "12012",

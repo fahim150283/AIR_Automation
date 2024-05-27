@@ -37,7 +37,7 @@ public class FinishGoodsStore extends Page_Options {
     }
 
     @When("description of a store and print")
-    public void description_of_a_store() {
+    public void description_of_a_store() throws InterruptedException {
         try {
             WebElement table = driver.findElement(By.id("fg_store_table"));
             java.util.List<WebElement> rows = table.findElements(By.xpath(".//tr"));

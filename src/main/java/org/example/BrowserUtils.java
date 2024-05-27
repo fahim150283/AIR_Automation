@@ -70,11 +70,12 @@ public class BrowserUtils extends ReadJson {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(cssSelector)));
     }
 
-    public static void clickbyxpath(String s) {
+    public static void clickbyxpath(String s) throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(s)));
         WebElement element = driver.findElement(By.xpath(s));
         element.click();
+        Thread.sleep(200);
     }
 
 
@@ -96,6 +97,7 @@ public class BrowserUtils extends ReadJson {
     public static void inputbyid(String id, String s) {
         WebElement element = driver.findElement(By.id(id));
         //element.click();
+        waitById(id);
         element.sendKeys(s);
     }
 

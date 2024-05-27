@@ -49,7 +49,7 @@ public class Collections extends Page_Options {
     }
 
     @And("create new Collection")
-    public void create_new_collection() {
+    public void create_new_collection() throws InterruptedException {
         try {
 
             //click the create new button

@@ -283,6 +283,18 @@ public class Page_Options extends BrowserUtils {
         Thread.sleep(1000);
     }
 
+    public static void Login_BPU(String username) throws InterruptedException {
+
+        navigatetourl(Users.BPU);
+        id = "username";
+        inputbyid(id, username);
+        id = "password";
+        inputbyid(id, String.valueOf(Users.password));
+        id = "login";
+        clickbyId(id);
+        Thread.sleep(1000);
+    }
+
     public static void Login_AIR2_AIR(String username) {
 
         navigatetourl(Users.AIR_2_AIR);
