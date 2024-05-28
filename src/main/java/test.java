@@ -35,11 +35,12 @@ public class test extends Page_Options {
 
     @Test
     public void tata() throws InterruptedException {
-        Login_AIR2(Users.user_Haseeb);
-        Click_from_leftSideBar("Products");
-        //print the payload
-//        BrowserMobProxyToPrint("http://10.101.13.28/apis/api_m/api.php");
-        closedriver();
+        int j = randomnumber();
+        String Store_type_name = StoreType.FullName + j;
+        for (int i = 0; i < 5; i++) {
+
+            System.out.println(Store_type_name);
+        }
     }
 
     @Test
